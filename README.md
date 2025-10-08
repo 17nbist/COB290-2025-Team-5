@@ -15,3 +15,5 @@
 ## About This Project
 
 This is a team project repository for COB290 2025.
+This is the official GitHub for the Team Project.
+Make sure that all code is reviewed before it's pushed to production (main branch)!!!
