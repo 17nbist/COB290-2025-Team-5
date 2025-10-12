@@ -2,8 +2,8 @@ export default function Card({children, style}) {
   const defaultStyle = {
     padding: "20px",
     borderRadius: "8px",
-    border: "1px solid #dddddd",
-    backgroundColor: "#ffffff",
+    border: "1px solid #000000",
+    backgroundColor: "#ff0000ff",
     boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
   };
 
