@@ -10,8 +10,8 @@ export default function Card({children, style}) {
   const combinedStyle = {...defaultStyle, ...style};
 
   return (
-  <div style={combinedStyle}>
-    {children}
-  </div>
+    <div style={combinedStyle}>
+      {children}
+    </div>
   );
 }
