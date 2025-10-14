@@ -14,7 +14,7 @@ export default function LoginContainer() {
         e.preventDefault();
 
         // Hardcoded validation
-        if (email === "admin" && password === "password123") {
+        if (email === "admin@gmail.com" && password === "password123") {
             router.push("/dashboard");
         } else {
             setError("Invalid email or password.");
