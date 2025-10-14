@@ -48,9 +48,9 @@ export default function LoginForm({
 
 const styles = {
 	form: { display: "flex", flexDirection: "column", gap: 12 },
-	label: { display: "flex", flexDirection: "column", fontSize: 14 },
-	input: { padding: 8, borderRadius: 4, border: "1px solid #ddd" },
-	button: { padding: 10, borderRadius: 6, background: "#2563eb", color: "#fff", border: "none" },
+	label: { display: "flex", flexDirection: "column", fontSize: 14, color: "#4a4a4aff" },
+	input: { padding: 8, borderRadius: 4, border: "1px solid #4a4a4aff" },
+	button: { padding: 10, borderRadius: 6, background: "#2563eb", color: "#ffffffff", border: "none" },
 	forgotPasswordWrapper: {
 		alignSelf: "flex-end",
 	},
