@@ -1,4 +1,4 @@
-import AuthCard from "@/components/AuthCard";
+﻿import AuthCard from "@/components/AuthCard";
 import LoginForm from "@/components/LoginForm";
 
 export default function Home() {
