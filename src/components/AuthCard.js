@@ -1,16 +1,20 @@
 
 
 import Link from "next/link";
+import Logo from "@/components/Logo";
 
 export default function AuthCard({ children }) {
 	return (
 		<div style={styles.card}>
-			<div style={styles.header}>
-				<h1 style={styles.title}>Sign In</h1>
-				<p style={styles.subtitle}>
-					Welcome back! Please enter your details.
-				</p>
-			</div>
+					<div style={styles.header}>
+						<div style={styles.logoWrapper}>
+							<Logo width={64} height={64} title="App logo" />
+						</div>
+						<h1 style={styles.title}>Sign In</h1>
+						<p style={styles.subtitle}>
+							Welcome! Please enter your details.
+						</p>
+					</div>
 			{children}
 			<div style={styles.footer}>
 				Have a setup URL?{" "}
@@ -33,6 +37,11 @@ const styles = {
 	header: {
 		textAlign: "center",
 		marginBottom: "24px",
+	},
+	logoWrapper: {
+		display: "flex",
+		justifyContent: "center",
+		marginBottom: 12,
 	},
 	title: {
 		fontSize: "28px",
