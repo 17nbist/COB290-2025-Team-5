@@ -1,18 +1,39 @@
 "use client";
 
-
-export default function LoginForm() {
+export default function LoginForm({
+	email,
+	setEmail,
+	password,
+	setPassword,
+	error,
+	onSubmit,
+}) {
 	return (
-		<form style={styles.form} onSubmit={(e) => e.preventDefault()}>
+		<form style={styles.form} onSubmit={onSubmit}>
 			<label style={styles.label}>
 				Email
-				<input style={styles.input} type="email" name="email" />
+				<input
+					style={styles.input}
+					type="email"
+					name="email"
+
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+				/>
 			</label>
 
 			<label style={styles.label}>
 				Password
-				<input style={styles.input} type="password" name="password" />
+				<input
+					style={styles.input}
+					type="password"
+					name="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
 			</label>
+
+			{error && <p style={styles.error}>{error}</p>}
 
 			<div style={styles.forgotPasswordWrapper}>
 				<a href="#" onClick={(e) => e.preventDefault()} style={styles.forgotPassword}>
@@ -38,6 +59,11 @@ const styles = {
 		color: "#2563eb",
 		textDecoration: "none",
 		cursor: "pointer",
+	},
+	error: {
+		color: "#ef4444",
+		fontSize: 12,
+		textAlign: "center",
 	},
 };
 
