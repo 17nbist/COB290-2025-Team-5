@@ -1,16 +1,9 @@
 "use client"
 import {useEffect, useState} from "react";
+import Card from "./Card.js";
 
 export default function Calendar({tasks}) {
-  const [startDate, setStartDate] = useState(() => {
-    let date = new Date();
-    date.setHours(0, 0, 0, 0);
-
-    let dayOfWeek = date.getDay()
-    const diff = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
-    date.setDate(date.getDate() + diff);
-    return date;
-  });
+  const [startDate, setStartDate] = useState(dateToWeekIndex(new Date()));
 
   function incrementDate() {
     setStartDate(prev => {
@@ -38,10 +31,23 @@ export default function Calendar({tasks}) {
     return dates;
   }
 
+  function getTasksInRange() {
+    let endDate = new Date(startDate);
+    endDate.setDate(startDate.getDate() + 8);
+
+    let fTasks = tasks.filter(t => (
+      t.from < endDate && t.to >= startDate
+    ));
+
+    console.log(fTasks, tasks);
+
+    return fTasks;
+  }
+
   const calendarWidth = 1200;
 
   return (
-    <div style={{display: "flex", flexDirection: "column", gap: "5px", width: calendarWidth + "px", height: "700px"}}>
+    <div style={{display: "flex", flexDirection: "column", gap: "5px", width: calendarWidth + "px", height: "700px", overflowX: "hidden"}}>
       <h1>{startDate.toDateString()}</h1>
       {/*top bar*/}
       <div style={{display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center"}}>
@@ -58,26 +64,60 @@ export default function Calendar({tasks}) {
         borderStyle: "solid", borderWidth: "1px", 
         height: "100%", 
         gridTemplateColumns: "repeat(7, minmax(0, 1fr))",
-        backgroundColor: "#000",
-        gridColumngap : "1px"
 
       }}>
+
+        {/* dates and dividors */}
         {
-          getDatesInRange().map(e => (
+          getDatesInRange().map((e, i) => (
+            <div key={e.toDateString()}
+              style={{
+                borderRight: i !== 6 ? "1px solid #ddd" : "none",
+              }}
+            >
             <h1>{e.toDateString()}</h1>
+            </div>
           ))
         }
+
+        {/* tasks */}
+        <div style={{position: "absolute", marginTop: "40px"}}>
+        {
+          getTasksInRange().map((t) => (
+            <CalendarTask key={t.id} task={t}></CalendarTask>
+          ))
+        }
+        </div>
+
+
       </div>
     </div>
   )
 }
 
-function CalendarTask() {
-  return (
-    <div>
+function CalendarTask({task}) {
 
-    </div>
+  let fromIndex = dateToWeekIndex(task.from);
+  let toIndex = dateToWeekIndex(task.to);
+  let left = fromIndex * 1200 / 7
+  let right = toIndex * 1200 / 7
+
+
+  return (
+    <Card style={{width: "200px", height: "50px", position: "absolute", left: "171px"}}>
+      <h1>{task.title}</h1>
+    </Card>
   )
+}
+
+function dateToWeekIndex(d) {
+  let date = new Date(d)
+  date.setHours(0, 0, 0, 0);
+
+  let dayOfWeek = date.getDay()
+  const diff = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+  date.setDate(date.getDate() + diff);
+  return date;
 }
 
 function Button({outerstyle, textStyle, text, icon, onClick}) {

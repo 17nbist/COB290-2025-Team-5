@@ -16,14 +16,14 @@ export default function Dashboard() {
   }
 
   const tasks = [
-    {id: 0, title: "Task 1", from: new Date(), from: new Date("2025-10-16")},
+    {id: 0, title: "Task 1", from: new Date(), from: new Date("2025-10-16"), to: new Date("2025-10-17")},
   ]
   return (
     <div style={{display: "flex", justifyContent : "center", marginTop : "100px"}}>
       {/* <NavBar items={navItems} activeTab={activeTab} setActiveTab={setActiveTab}/>
       */}
       {/* <PieChart InputData={InputDataExample}></PieChart> */}
-      <Calendar />
+      <Calendar tasks={tasks}/>
     </div>
   );
 }
