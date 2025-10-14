@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import Card from "./Card.js";
 
 export default function Calendar({tasks}) {
-  const [startDate, setStartDate] = useState(dateToWeekIndex(new Date()));
+  const [startDate, setStartDate] = useState(firstDateOfWeek(new Date()));
 
   function incrementDate() {
     setStartDate(prev => {
@@ -38,16 +38,13 @@ export default function Calendar({tasks}) {
     let fTasks = tasks.filter(t => (
       t.from < endDate && t.to >= startDate
     ));
-
-    console.log(fTasks, tasks);
-
     return fTasks;
   }
 
   const calendarWidth = 1200;
 
   return (
-    <div style={{display: "flex", flexDirection: "column", gap: "5px", width: calendarWidth + "px", height: "700px", overflowX: "hidden"}}>
+    <div style={{display: "flex", flexDirection: "column", gap: "5px", width: calendarWidth + "px", height: "700px"}}>
       <h1>{startDate.toDateString()}</h1>
       {/*top bar*/}
       <div style={{display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center"}}>
@@ -61,9 +58,13 @@ export default function Calendar({tasks}) {
       {/*calendar body*/}
       <div style={{
         display: "grid", 
-        borderStyle: "solid", borderWidth: "1px", 
+        borderStyle: "solid", 
+        borderWidth: "1px",
+        overflowX: "hidden", 
+        position: "relative",
         height: "100%", 
         gridTemplateColumns: "repeat(7, minmax(0, 1fr))",
+        borderRadius: "10px"
 
       }}>
 
@@ -84,7 +85,7 @@ export default function Calendar({tasks}) {
         <div style={{position: "absolute", marginTop: "40px"}}>
         {
           getTasksInRange().map((t) => (
-            <CalendarTask key={t.id} task={t}></CalendarTask>
+            <CalendarTask key={t.id} task={t} weekStartDate={startDate} />
           ))
         }
         </div>
@@ -95,22 +96,32 @@ export default function Calendar({tasks}) {
   )
 }
 
-function CalendarTask({task}) {
-
-  let fromIndex = dateToWeekIndex(task.from);
-  let toIndex = dateToWeekIndex(task.to);
+function CalendarTask({task, weekStartDate}) {
+  let fromIndex = dateToWeekIndex(task.from, weekStartDate);
+  let toIndex = dateToWeekIndex(task.to, weekStartDate);
   let left = fromIndex * 1200 / 7
   let right = toIndex * 1200 / 7
+  let width = right - left;
 
 
   return (
-    <Card style={{width: "200px", height: "50px", position: "absolute", left: "171px"}}>
+    <Card style={{width: width, height: "50px", position: "absolute", left}}>
       <h1>{task.title}</h1>
     </Card>
   )
 }
 
-function dateToWeekIndex(d) {
+function dateToWeekIndex(d, weekStartDate) {
+  weekStartDate = new Date(weekStartDate);
+  weekStartDate.setHours(0, 0, 0, 0);
+  return daysBetween(weekStartDate, d);
+}
+
+function daysBetween(d1, d2) {
+  return (d2 - d1) / (1000 * 60 * 60 * 24)
+}
+
+function firstDateOfWeek(d) {
   let date = new Date(d)
   date.setHours(0, 0, 0, 0);
 
