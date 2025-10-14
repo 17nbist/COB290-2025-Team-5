@@ -6,7 +6,6 @@ export default function Home() {
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh" }}>
       <AuthCard>
         <LoginForm />
-        <LoginForm />
       </AuthCard>
     </div>
   );
