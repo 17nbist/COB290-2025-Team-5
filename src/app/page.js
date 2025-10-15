@@ -1,13 +1,9 @@
-import AuthCard from "@/components/AuthCard";
-import LoginContainer from "@/components/LoginContainer";
+import {redirect} from "next/navigation";
 
 export default function Home() {
-
+  redirect("/login");
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-t from-slate-400 to-slate-200">
-      <AuthCard>
-        <LoginContainer />
-      </AuthCard>
+    <div>
     </div>
   );
 }
