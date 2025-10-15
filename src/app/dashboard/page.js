@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <div className="flex flex-col h-screen justify-center items-center pt-[5vh] bg-[#fefefe]">
       {/* Main Navigation */}
-      <NavBar activeTab={activeTab} items={topNavItems} setActiveTab={setActiveTab} pillStyle={{width: "130px"}}/>
+      <NavBar activeTab={activeTab} items={topNavItems} setActiveTab={setActiveTab} pillStyle={{width: "130px"}} setHash={true}/>
 
       {/* Main Content Area */}
       <main className="flex-grow p-6">
