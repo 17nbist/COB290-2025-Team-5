@@ -9,13 +9,24 @@ const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar"];
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Dashboard");
 
-  // Effect to set tab from URL hash on initial load
+  // Effect to handle hash changes (back/forward navigation)
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    const capitalizedHash = hash.charAt(0).toUpperCase() + hash.slice(1);
-    if (topNavItems.includes(capitalizedHash)) {
-      setActiveTab(capitalizedHash);
-    }
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      const capitalizedHash = hash.charAt(0).toUpperCase() + hash.slice(1);
+      if (topNavItems.includes(capitalizedHash)) {
+        setActiveTab(capitalizedHash);
+      }
+    };
+
+    // Set initial tab from URL hash
+    handleHashChange();
+
+    // Listen for hash changes (back/forward buttons)
+    window.addEventListener("hashchange", handleHashChange);
+
+    // Cleanup
+    return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   const handleNavClick = (tab) => {
