@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-export default function NavPill({style, textStyle, title, active, setActiveTab,}) {
+export default function NavPill({style, textStyle, title, active, setActiveTab, setHash=false}) {
   const [hover, setHover] = useState(false);
 
   const defaultStyle = {
@@ -29,8 +29,15 @@ export default function NavPill({style, textStyle, title, active, setActiveTab,}
 
   const combinedTextStyle = {...defaultTextStyle, ...textStyle};
 
+  function handleClick() {
+    setActiveTab(title);
+    if (setHash) {
+      window.location.hash = title.toLowerCase();
+    }
+  }
+
   return (
-    <div style={combinedStyle} onClick={() => setActiveTab(title)}
+    <div style={combinedStyle} onClick={handleClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
