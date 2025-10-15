@@ -1,7 +1,7 @@
 "use client";
 import NavBar from "@/components/NavBar";
 import SearchBar from "@/components/SearchBar";
-import ForumPost from "@/components/ForumPost";
+import ForumPost from "./ForumPost";
 import { useState } from "react";
 
 export default function Forum() {
@@ -72,7 +72,7 @@ export default function Forum() {
         items={filterTabs} 
         activeTab={activeFilterTab} 
         setActiveTab={setActiveFilterTab}
-        style={{ marginBottom: "24px" }}
+        style={{ marginBottom: "24px"}}
       />
 
       {/* Posts List */}
