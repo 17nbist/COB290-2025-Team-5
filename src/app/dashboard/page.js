@@ -1,7 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import DashboardPage from "@/components/DashboardPage";
-import ForumPage from "@/components/ForumPage";
+import DashboardPage from "./DashboardPage";
+import ForumPage from "./forum/ForumPage";
+import NavBar from "@/components/NavBar";
 
 // Main navigation items
 const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar"];
@@ -36,28 +37,12 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen justify-center items-center pt-[5vh] bg-[#fefefe]">
       {/* Main Navigation */}
-      <nav className="bg-white border-b p-4">
-        <div className="flex space-x-8">
-          {topNavItems.map((item) => (
-            <button
-              key={item}
-              onClick={() => handleNavClick(item)}
-              className={`text-lg font-semibold ${
-                activeTab === item
-                  ? "text-blue-600"
-                  : "text-gray-600 hover:text-blue-600"
-              }`}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-      </nav>
+      <NavBar activeTab={activeTab} items={topNavItems} setActiveTab={setActiveTab} pillStyle={{width: "130px"}}/>
 
       {/* Main Content Area */}
-      <main className="flex-grow p-6 bg-gray-50">
+      <main className="flex-grow p-6">
         {activeTab === "Dashboard" && <DashboardPage />}
         {activeTab === "Forum" && <ForumPage />}
         {/* Add other components for Projects, Requests, etc. here */}

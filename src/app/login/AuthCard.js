@@ -1,7 +1,5 @@
-
-
 import Link from "next/link";
-import Logo from "@/components/Logo";
+import Logo from "./Logo";
 
 export default function AuthCard({ children }) {
 	return (

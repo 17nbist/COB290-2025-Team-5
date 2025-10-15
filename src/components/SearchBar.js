@@ -1,3 +1,5 @@
+import { FcSearch } from "react-icons/fc";
+
 export default function SearchBar({ onSearch, onAdd }) {
   return (
     <div style={{ 
@@ -34,7 +36,7 @@ export default function SearchBar({ onSearch, onAdd }) {
           color: "#9ca3af",
           fontSize: "16px"
         }}>
-          🔍
+          <FcSearch size={20}/>
         </span>
       </div>
 

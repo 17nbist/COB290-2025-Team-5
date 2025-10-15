@@ -1,8 +1,8 @@
 import NavPill from "./NavPill";
-export default function NavBar({style, items, activeTab, setActiveTab}) {
+export default function NavBar({style, pillStyle, textStyle, items, activeTab, setActiveTab}) {
   const defaultStyle = {
     display : "flex",
-    gap : "5px"
+    gap : "8px"
   };
 
   const combinedStyle = {...defaultStyle, ...style};
@@ -10,7 +10,7 @@ export default function NavBar({style, items, activeTab, setActiveTab}) {
   return (
     <div style={combinedStyle}>
       {items.map(e => 
-        <NavPill key={e} title={e} active={activeTab==e} setActiveTab={setActiveTab}/>
+        <NavPill key={e} title={e} active={activeTab==e} setActiveTab={setActiveTab} style={pillStyle} textStyle={textStyle}/>
       )}
     </div>
   );
