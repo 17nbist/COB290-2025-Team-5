@@ -2,18 +2,9 @@ import AuthCard from "@/components/AuthCard";
 import LoginContainer from "@/components/LoginContainer";
 
 export default function Home() {
-  const styles = {
-    container: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      minHeight: "100vh",
-      background: "#f0f2f5",
-    },
-  };
 
   return (
-    <div style={styles.container}>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-t from-slate-400 to-slate-200">
       <AuthCard>
         <LoginContainer />
       </AuthCard>
