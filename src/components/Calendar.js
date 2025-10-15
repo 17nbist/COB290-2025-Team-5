@@ -1,9 +1,14 @@
 "use client"
-import {useEffect, useState} from "react";
+import {useEffect, useState, useMemo} from "react";
 import Card from "./Card.js";
+import Button from "./Button.js";
 
 export default function Calendar({tasks}) {
   const [startDate, setStartDate] = useState(firstDateOfWeek(new Date()));
+  
+    const sortedTasks = useMemo(() => (
+      [...tasks].sort((b, a) => new Date(b.from) - new Date(a.from))
+    ), [tasks]);
 
   function incrementDate() {
     setStartDate(prev => {
@@ -35,9 +40,36 @@ export default function Calendar({tasks}) {
     let endDate = new Date(startDate);
     endDate.setDate(startDate.getDate() + 8);
 
-    let fTasks = tasks.filter(t => (
+    let tracked_tasks = [...sortedTasks];
+
+    let tracks = [];
+
+    for (let i = 0; i < tracked_tasks.length; i++) {
+      if (i == 0) {
+        tracks.push({end: tracked_tasks[i].to});
+        tracked_tasks[i].track = 0;
+      } else {
+        let foundTrack = false;
+        for (let j = 0; j < tracks.length; j++) {
+          
+          if (tracked_tasks[i].from >= tracks[j].end) {
+            foundTrack = true;
+            tracks[j].end = tracked_tasks[i].to;
+            tracked_tasks[i].track = j;
+          }
+        }
+
+        if (!foundTrack) {
+          tracks.push({end: tracked_tasks[i].to})
+          tracked_tasks[i].track = tracks.length - 1;
+        }
+      }
+    }
+
+    let fTasks = sortedTasks.filter(t => (
       t.from < endDate && t.to >= startDate
     ));
+    
     return fTasks;
   }
 
@@ -76,7 +108,7 @@ export default function Calendar({tasks}) {
                 borderRight: i !== 6 ? "1px solid #ddd" : "none",
               }}
             >
-            <h1>{e.toDateString()}</h1>
+            <h1 style={{textAlign: "center"}}>{e.toDateString()}</h1>
             </div>
           ))
         }
@@ -90,23 +122,23 @@ export default function Calendar({tasks}) {
         }
         </div>
 
-
       </div>
     </div>
   )
 }
 
-function CalendarTask({task, weekStartDate}) {
+function CalendarTask({task, weekStartDate, calendarWidth}) {
   let fromIndex = dateToWeekIndex(task.from, weekStartDate);
   let toIndex = dateToWeekIndex(task.to, weekStartDate);
+  console.log(toIndex);
   let left = fromIndex * 1200 / 7
   let right = toIndex * 1200 / 7
   let width = right - left;
-
+  let top = task.track * 60;
 
   return (
-    <Card style={{width: width, height: "50px", position: "absolute", left}}>
-      <h1>{task.title}</h1>
+    <Card style={{width: width, height: "50px", position: "absolute", left, top}}>
+      <h1 style={{width: width, height: "50px", position: "absolute", left: left >= 0 ? 0 : -left, top:0}}>{task.title}</h1>
     </Card>
   )
 }
@@ -129,29 +161,4 @@ function firstDateOfWeek(d) {
   const diff = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
   date.setDate(date.getDate() + diff);
   return date;
-}
-
-function Button({outerstyle, textStyle, text, icon, onClick}) {
-
-  const defaultTouterStyle = {
-    display: "flex",
-    borderRadius: "12px",
-    backgroundColor: "#000",
-    padding: "6px 13px 6px 13px",
-    height: "40px",
-    alignItems: "center"
-  };
-  const combinedOuterStyle = {...defaultTouterStyle, ...outerstyle};
-
-  const defaultTextStyle = {
-    color : "#fff",
-    userSelect : "none",
-  };
-  const combinedTextStyle = {...defaultTextStyle, ...textStyle};
-
-  return (
-    <div onClick={onClick} style={combinedOuterStyle}>
-      <h1 style={combinedTextStyle}>{text}</h1>
-    </div>
-  )
 }
