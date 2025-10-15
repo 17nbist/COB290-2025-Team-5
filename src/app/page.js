@@ -4,7 +4,7 @@ import LoginContainer from "@/components/LoginContainer";
 export default function Home() {
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-t from-slate-400 to-slate-200">
       <AuthCard>
         <LoginContainer />
       </AuthCard>
