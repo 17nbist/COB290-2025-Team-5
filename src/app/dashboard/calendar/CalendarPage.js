@@ -1,7 +1,11 @@
 "use client";
 import Calendar from "@/components/Calendar.js";
 import { useState } from "react";
+import { useEffect } from 'react';
 export default function CalendarPage() {
+  useEffect(() => {
+    document.title = 'Dashboard | Make-It-All';
+  }, []);
     const [tasks, setTasks] = useState([
         {id: 0, title: "Task 1", from: new Date(2025, 9, 14, 8), to: new Date(2025, 9, 23, 14)},
         {id: 1, title: "Task 2", from: new Date(2025, 9, 8, 0), to: new Date(2025, 9, 15, 0)},
