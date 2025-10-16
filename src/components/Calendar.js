@@ -163,54 +163,58 @@ export default function Calendar({tasks}) {
   const calendarWidth = 1200;
 
   return (
-    <div style={{display: "flex", flexDirection: "column", gap: "5px", width: calendarWidth + "px", height: "700px"}}>
-      <h1>{startDate.toDateString()}</h1>
-      {/*top bar*/}
-      <div style={{display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center"}}>
-        <NavBar items={["day", "week", "month", "year"]} activeTab={rangeType} setActiveTab={setRangeType}/>
-        <div style={{display: "flex", gap: "5px"}}>
-          <Button text={"<"} onClick={decrementDate} />
-          <Button text={">"} onClick={incrementDate}/> 
+    <Card>
+      <div style={{display: "flex", flexDirection: "column", gap: "5px", width: calendarWidth + "px", height: "700px"}}>
+        <h1>{startDate.toDateString()}</h1>
+        {/*top bar*/}
+        <div style={{display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center", marginTop: "10px", marginBottom: "10px"}}>
+          <NavBar items={["day", "week", "month", "year"]} activeTab={rangeType} setActiveTab={setRangeType}/>
+          <div style={{display: "flex", gap: "5px"}}>
+            <Button text={"<"} onClick={decrementDate} />
+            <Button text={">"} onClick={incrementDate}/> 
+          </div>
         </div>
-      </div>
 
-      {/*calendar body*/}
-      <div style={{
-        display: "grid", 
-        borderStyle: "solid", 
-        borderWidth: "1px",
-        overflowX: "hidden", 
-        position: "relative",
-        height: "100%", 
-        gridTemplateColumns: `repeat(${getNumberOfDivisions()}, minmax(0, 1fr))`,
-        borderRadius: "10px"
+        {/*calendar body*/}
+        <Card style={{height: "100%", }}>
+          <div style={{
+            display: "grid", 
+            // borderStyle: "solid", 
+            // borderWidth: "1px",
+            overflowX: "hidden", 
+            position: "relative",
+            height: "100%", 
+            gridTemplateColumns: `repeat(${getNumberOfDivisions()}, minmax(0, 1fr))`,
+            borderRadius: "10px"
 
-      }}>
+          }}>
 
-        {/* dates and dividors */}
-        {
-          getDivisionTitles().map((e, i, arr) => (
-            <div key={e}
-              style={{
-                borderRight: i !== arr.length - 1 ? "1px solid #ddd" : "none",
-              }}
-            >
-            <h1 style={{textAlign: "center"}}>{e}</h1>
+            {/* dates and dividors */}
+            {
+              getDivisionTitles().map((e, i, arr) => (
+                <div key={e}
+                  style={{
+                    borderRight: i !== arr.length - 1 ? "1px solid #ddd" : "none",
+                  }}
+                >
+                <h1 style={{textAlign: "center"}}>{e}</h1>
+                </div>
+              ))
+            }
+
+            {/* tasks */}
+            <div style={{position: "absolute", marginTop: "40px"}}>
+            {
+              getTasksInRange().map((t) => (
+                <CalendarTask key={t.id} task={t} startDate={startDate} divisions={getNumberOfDivisions()} rangeType={rangeType} calendarWidth={calendarWidth}/>
+              ))
+            }
             </div>
-          ))
-        }
 
-        {/* tasks */}
-        <div style={{position: "absolute", marginTop: "40px"}}>
-        {
-          getTasksInRange().map((t) => (
-            <CalendarTask key={t.id} task={t} startDate={startDate} divisions={getNumberOfDivisions()} rangeType={rangeType} calendarWidth={calendarWidth}/>
-          ))
-        }
-        </div>
-
+          </div>
+        </Card>
       </div>
-    </div>
+    </Card>
   )
 }
 
