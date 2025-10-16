@@ -26,9 +26,8 @@ body {
 }
 
 .top-right {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
+  justify-content: end;
+  align-items: start;
   height: 100%;
 }
 
