@@ -151,7 +151,7 @@ export default function Calendar({tasks}) {
       }
     } else if (rangeType == "month") {
       let today = new Date(startDate)
-      for (let i = 0; i < daysInMonth(today); i++) {
+      for (let i = 1; i < daysInMonth(today) + 1; i++) {
         titles.push(i);
       }
     } else if (rangeType == "year") {
@@ -160,12 +160,28 @@ export default function Calendar({tasks}) {
     return titles;
   }
 
+  function getRangeText() {
+    let endDate = new Date(startDate);
+
+    if (rangeType == "week") {
+      endDate.setDate(startDate.getDate() + 8);
+    } else if (rangeType == "day") {
+      endDate.setDate(startDate.getDate() + 1);
+    } else if (rangeType == "month") {
+      endDate.setMonth(startDate.getMonth() + 1);
+      endDate.setDate(0);
+    } else if (rangeType == "year") {
+      endDate.setFullYear(startDate.getFullYear() + 1, 0, 1);
+    }
+    return `${startDate.toDateString()} - ${endDate.toDateString()}`;
+  }
+
   const calendarWidth = 1200;
 
   return (
     <Card>
       <div style={{display: "flex", flexDirection: "column", gap: "5px", width: calendarWidth + "px", height: "700px"}}>
-        <h1>{startDate.toDateString()}</h1>
+        <h1>{getRangeText()}</h1>
         {/*top bar*/}
         <div style={{display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center", marginTop: "10px", marginBottom: "10px"}}>
           <NavBar items={["day", "week", "month", "year"]} activeTab={rangeType} setActiveTab={setRangeType}/>
@@ -241,8 +257,12 @@ function CalendarTask({task, startDate, calendarWidth, divisions, rangeType}) {
     toIndex = monthsBetween(startDate, task.to);
   }
   
-  let left = Math.floor(fromIndex * calendarWidth / divisions);
-  let width = Math.floor((toIndex - fromIndex) * calendarWidth / divisions);
+  if (rangeType == "month") {
+    divisions += 1;
+  }
+  
+  let left = fromIndex * calendarWidth / divisions;
+  let width = (toIndex - fromIndex) * calendarWidth / divisions;
   let top = task.track * 60;
 
   return (
