@@ -1,33 +1,58 @@
 "use client";
-import Card from "@/components/Card";
-import NavBar  from "@/components/NavBar";
-import PieChart from "@/components/PieChart";
+import { useState, useEffect } from "react";
+import DashboardPage from "./DashboardPage";
+import ForumPage from "./forum/ForumPage";
+import NavBar from "@/components/NavBar";
 import Calendar from "@/components/Calendar";
-import { useEffect, useState } from "react";
 
-export default function Dashboard() {
-  const navItems = ["Today", "Projects", "Forum", "Requests"]
-  const [activeTab, setActiveTab] = useState(navItems[0]);
-  var InputDataExample = {
-    "labels" : ["Late", "On time", "Early"],
-    "dataSetLabel" : "submission(%)",
-    "data" : [17, 60, 23],
-    "title" : "Submission Timing"
-  }
+const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar"];
 
-  const [tasks, setTasks] = useState([
-    {id: 0, title: "Task 1", from: new Date(2025, 9, 14, 8), to: new Date(2025, 9, 23, 14)},
-    {id: 1, title: "Task 2", from: new Date(2025, 9, 8, 0), to: new Date(2025, 9, 15, 0)},
-    {id: 2, title: "Task 3", from: new Date(2025, 9, 13, 8), to: new Date(2025, 9, 15, 14)},
-    {id: 3, title: "Task 4", from: new Date(2025, 9, 15, 0), to: new Date(2025, 9, 17, 0)},
-    {id: 4, title: "Task 5", from: new Date(2025, 9, 15, 0), to: new Date(2025, 12, 17, 0)},
-  ]);
-  
+export default function Home() {
+  const [activeTab, setActiveTab] = useState("Dashboard");
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      const capitalizedHash = hash.charAt(0).toUpperCase() + hash.slice(1);
+      if (topNavItems.includes(capitalizedHash)) {
+        setActiveTab(capitalizedHash);
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const handleNavClick = (tab) => {
+    setActiveTab(tab);
+    window.location.hash = tab.toLowerCase();
+  };
+
   return (
-    <div style={{display: "flex", justifyContent : "center", marginTop : "100px"}}>
-      {/* <NavBar items={navItems} activeTab={activeTab} setActiveTab={setActiveTab}/> */}
-      {/* <PieChart InputData={InputDataExample}></PieChart> */}
-      <Calendar tasks={tasks} />
+    <div className="flex flex-col min-h-screen bg-[#0f172a]">
+      {/* Main Navigation */}
+      <div className="pt-8 pb-4">
+        <NavBar
+          activeTab={activeTab}
+          items={topNavItems}
+          setActiveTab={setActiveTab}
+          pillStyle={{ width: "130px" }}
+          setHash={true}
+        />
+      </div>
+
+      {/* Main Content Area */}
+      <main className="flex-grow">
+        {activeTab === "Dashboard" && <DashboardPage />}
+        {activeTab === "Forum" && <ForumPage />}
+        {activeTab !== "Dashboard" && activeTab !== "Forum" && (
+          <div className="max-w-6xl mx-auto px-4 py-6">
+            <h1 className="text-2xl font-bold text-white">{activeTab}</h1>
+            <p className="text-gray-400">Content for {activeTab} coming soon.</p>
+          </div>
+        )}
+      </main>
     </div>
   );
 }

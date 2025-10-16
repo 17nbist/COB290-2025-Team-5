@@ -1,12 +1,9 @@
-import AuthCard from "@/components/AuthCard";
-import LoginForm from "@/components/LoginForm";
+import {redirect} from "next/navigation";
 
 export default function Home() {
+  redirect("/login");
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh" }}>
-      <AuthCard>
-        <LoginForm />
-      </AuthCard>
+    <div>
     </div>
   );
 }
