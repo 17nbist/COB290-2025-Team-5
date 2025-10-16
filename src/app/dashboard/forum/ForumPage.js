@@ -4,6 +4,7 @@ import SearchBar from "@/components/SearchBar";
 import ForumPost from "./ForumPost";
 import CreatePostModal from "./CreatePostModal";
 import { useState } from "react";
+import { useEffect } from 'react';
 
 export default function Forum() {
   const filterTabs = ["My Posts", "Directed To Me", "All Posts"];
@@ -58,6 +59,10 @@ export default function Forum() {
   const handlePostClick = (postId) => {
     console.log("Clicked post:", postId);
   };
+
+  useEffect(() => {
+    document.title = 'Forum | Make-It-All';
+  }, []);
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">

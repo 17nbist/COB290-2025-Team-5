@@ -1,6 +1,11 @@
 "use client";
+import { useEffect } from 'react';
+
 
 export default function DashboardPage() {
+    useEffect(() => {
+      document.title = 'Dashboard | Make-It-All';
+    }, []);
     return (
         <div>
         <h1 className="text-2xl font-bold">Dashboard</h1>
