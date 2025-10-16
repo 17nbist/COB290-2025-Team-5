@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { MdOutlineEmail, MdLockOutline } from "react-icons/md";
+import { MdVisibility, MdVisibilityOff } from "react-icons/md";
+
 
 export default function LoginForm({
 	email,
@@ -10,6 +12,7 @@ export default function LoginForm({
 	error,
 	onSubmit,
 }) {
+	const [showPassword, setShowPassword] = React.useState(false);
 	return (
 		<form style={styles.form} onSubmit={onSubmit}>
 			<label style={styles.label}>
@@ -31,12 +34,24 @@ export default function LoginForm({
 				<div style={styles.inputWrapper}>
 					<MdLockOutline style={styles.icon} />
 					<input
-						style={{ ...styles.input, paddingLeft: 32 }}
-						type="password"
+						style={{ ...styles.input, paddingLeft: 32, paddingRight: 40 }}
+						type={showPassword ? "text" : "password"}
 						name="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 					/>
+					<button
+						type="button"
+						onClick={() => setShowPassword((s) => !s)}
+						aria-label={showPassword ? "Hide password" : "Show password"}
+						style={styles.showIconButton}
+					>
+						{showPassword ? (
+							<MdVisibilityOff style={styles.showIcon} />
+						) : (
+							<MdVisibility style={styles.showIcon} />
+						)}
+					</button>
 				</div>
 			</label>
 
@@ -74,5 +89,13 @@ const styles = {
 		fontSize: 12,
 		textAlign: "center",
 	},
+	showIconButton: { 
+		background: "none", 
+		border: "none", 
+		cursor: "pointer", 
+		position: "absolute", 
+		right: 8 }
+	,
+	showIcon: { color: "#9ca3af", width: 20, height: 20 }
 };
 
