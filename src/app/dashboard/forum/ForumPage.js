@@ -59,28 +59,25 @@ export default function Forum() {
   };
 
   return (
-    <div style={{ 
-      maxWidth: "800px", 
-      margin: "0 auto", 
-      padding: "20px" 
-    }}>
+    <div className="max-w-4xl mx-auto p-5 bg-gray-100 rounded-xl">
       {/* Search Bar */}
       <SearchBar onSearch={handleSearch} onAdd={handleAddPost} />
 
       {/* Filter Tabs */}
-      <NavBar 
-        items={filterTabs} 
-        activeTab={activeFilterTab} 
-        setActiveTab={setActiveFilterTab}
-        style={{ marginBottom: "24px"}}
-      />
+      <div className="mb-6">
+        <NavBar
+          items={filterTabs}
+          activeTab={activeFilterTab}
+          setActiveTab={setActiveFilterTab}
+        />
+      </div>
 
       {/* Posts List */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <div className="flex flex-col gap-4">
         {posts.map(post => (
-          <ForumPost 
-            key={post.id} 
-            post={post} 
+          <ForumPost
+            key={post.id}
+            post={post}
             onClick={() => handlePostClick(post.id)}
           />
         ))}

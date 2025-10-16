@@ -1,67 +1,45 @@
-export default function ForumPost({ post, onClick }) {
-  const defaultStyle = {
-    padding: "20px",
-    borderRadius: "8px",
-    border: "1px solid #e5e7eb",
-    backgroundColor: "#ffffff",
-    cursor: "pointer",
-    transition: "all 0.2s ease",
-  };
+import { FaRegCommentDots, FaArrowUp, FaArrowDown } from "react-icons/fa";
 
+export default function ForumPost({ post, onClick }) {
   return (
-    <div 
-      style={defaultStyle} 
+    <div
+      className="bg-gray-800 border border-gray-700 rounded-lg p-5 cursor-pointer transition-all duration-200 ease-in-out hover:shadow-lg hover:-translate-y-0.5"
       onClick={onClick}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
-        e.currentTarget.style.transform = "translateY(-2px)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "none";
-        e.currentTarget.style.transform = "translateY(0)";
-      }}
     >
       {/* Title */}
-      <h2 style={{ fontSize: "18px", fontWeight: "600", marginBottom: "8px" }}>
+      <h2 className="text-lg font-semibold text-gray-100 mb-2">
         {post.title}
       </h2>
 
       {/* Preview Text */}
-      <p style={{ 
-        color: "#6b7280", 
-        fontSize: "14px", 
-        marginBottom: "12px",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap"
-      }}>
+      <p className="text-gray-400 text-sm mb-3 overflow-hidden text-ellipsis whitespace-nowrap">
         {post.preview}
       </p>
 
       {/* Metadata Row */}
-      <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
-        <span style={{ fontSize: "12px", color: "#9ca3af" }}>
+      <div className="flex items-center gap-2 flex-wrap">
+        <span className="text-xs text-gray-500">
           posted {post.timeAgo}
         </span>
         {post.tags.map((tag, index) => (
-          <span key={index} style={{ fontSize: "12px", color: "#9ca3af" }}>
+          <span key={index} className="text-xs text-gray-500">
             | {tag}
           </span>
         ))}
       </div>
 
       {/* Engagement Metrics */}
-      <div style={{ display: "flex", gap: "16px", marginTop: "12px", alignItems: "center" }}>
-        <span style={{ fontSize: "14px", display: "flex", alignItems: "center", gap: "4px" }}>
-          <span>↑</span>
+      <div className="flex items-center gap-4 mt-3 text-gray-400">
+        <span className="text-sm flex items-center gap-1">
+          <FaArrowUp />
           <span>{post.upvotes}</span>
         </span>
-        <span style={{ fontSize: "14px", display: "flex", alignItems: "center", gap: "4px" }}>
-          <span>↓</span>
+        <span className="text-sm flex items-center gap-1">
+          <FaArrowDown />
           <span>{post.downvotes}</span>
         </span>
-        <span style={{ fontSize: "14px", display: "flex", alignItems: "center", gap: "4px" }}>
-          <span>💬</span>
+        <span className="text-sm flex items-center gap-1">
+          <FaRegCommentDots />
           <span>{post.comments}</span>
         </span>
       </div>
