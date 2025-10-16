@@ -2,14 +2,14 @@
 import NavBar from "@/components/NavBar";
 import SearchBar from "@/components/SearchBar";
 import ForumPost from "./ForumPost";
+import CreatePostModal from "./CreatePostModal";
 import { useState } from "react";
 
 export default function Forum() {
-  // Filter tabs
   const filterTabs = ["My Posts", "Directed To Me", "All Posts"];
   const [activeFilterTab, setActiveFilterTab] = useState("My Posts");
+  const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
 
-  // Mock data for posts
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -45,23 +45,26 @@ export default function Forum() {
 
   const handleSearch = (query) => {
     console.log("Searching for:", query);
-    // You can filter posts here in the future
   };
 
   const handleAddPost = () => {
-    console.log("Add new post");
-    // Handle add post modal/navigation
+    setIsCreatePostOpen(true);
+  };
+
+  const handleCreatePost = (newPost) => {
+    setPosts([newPost, ...posts]);
   };
 
   const handlePostClick = (postId) => {
     console.log("Clicked post:", postId);
-    // Navigate to detailed post view
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-5 bg-gray-100 rounded-xl">
+    <div className="max-w-6xl mx-auto px-4 py-6">
       {/* Search Bar */}
-      <SearchBar onSearch={handleSearch} onAdd={handleAddPost} />
+      <div className="mb-6">
+        <SearchBar onSearch={handleSearch} onAdd={handleAddPost} />
+      </div>
 
       {/* Filter Tabs */}
       <div className="mb-6">
@@ -73,7 +76,7 @@ export default function Forum() {
       </div>
 
       {/* Posts List */}
-      <div className="flex flex-col gap-4">
+      <div className="space-y-4">
         {posts.map(post => (
           <ForumPost
             key={post.id}
@@ -82,6 +85,13 @@ export default function Forum() {
           />
         ))}
       </div>
+
+      {/* Create Post Modal */}
+      <CreatePostModal
+        isOpen={isCreatePostOpen}
+        onClose={() => setIsCreatePostOpen(false)}
+        onSubmit={handleCreatePost}
+      />
     </div>
   );
 }
