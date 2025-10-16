@@ -1,7 +1,11 @@
 "use client";
+import Head from 'next/head';
 
 export default function DashboardPage() {
     return (
+        <Head>
+        <title>Dashboard</title>
+        </Head>
         <div>
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <p>Welcome to the Dashboard!</p>
