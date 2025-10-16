@@ -7,7 +7,7 @@ import NavBar from "./NavBar.js";
 export default function Calendar({tasks}) {
   const [startDate, setStartDate] = useState(firstDateOfWeek(new Date()));
 
-  const [rangeType, setRangeType] = useState("day");
+  const [rangeType, setRangeType] = useState("week");
 
   useEffect(() => {
     let newStart = new Date();
@@ -179,7 +179,7 @@ export default function Calendar({tasks}) {
   const calendarWidth = 1200;
 
   return (
-    <Card>
+    <Card style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
       <div style={{display: "flex", flexDirection: "column", gap: "5px", width: calendarWidth + "px", height: "700px"}}>
         <h1>{getRangeText()}</h1>
         {/*top bar*/}
