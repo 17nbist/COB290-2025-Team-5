@@ -1,11 +1,12 @@
 "use client";
-import Head from 'next/head';
+import { useEffect } from 'react';
+
 
 export default function DashboardPage() {
+    useEffect(() => {
+      document.title = 'Dashboard | Make-It-All';
+    }, []);
     return (
-        <Head>
-        <title>Dashboard</title>
-        </Head>
         <div>
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <p>Welcome to the Dashboard!</p>
