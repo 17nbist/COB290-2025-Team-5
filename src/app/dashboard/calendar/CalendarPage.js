@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from 'react';
 export default function CalendarPage() {
   useEffect(() => {
-    document.title = 'Dashboard | Make-It-All';
+    document.title = 'Calendar | Make-It-All';
   }, []);
     const [tasks, setTasks] = useState([
         {id: 0, title: "Task 1", from: new Date(2025, 9, 14, 8), to: new Date(2025, 9, 23, 14)},
