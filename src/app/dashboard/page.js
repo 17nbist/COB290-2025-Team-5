@@ -37,7 +37,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col h-screen justify-center items-center pt-[5vh] bg-[#fefefe]">
+    <div className="flex flex-col h-screen items-center pt-[5vh] bg-[#fefefe]">
       {/* Main Navigation */}
       <NavBar activeTab={activeTab} items={topNavItems} setActiveTab={setActiveTab} pillStyle={{width: "130px"}} setHash={true}/>
 
