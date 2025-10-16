@@ -24,6 +24,7 @@ export default function Home() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+
   const handleNavClick = (tab) => {
     setActiveTab(tab);
     window.location.hash = tab.toLowerCase();
