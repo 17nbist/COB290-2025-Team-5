@@ -85,8 +85,8 @@ export default function Calendar({tasks}) {
         fromIndex = (t.from - startDate) / (1000 * 60 * 60);
         toIndex = (t.to - startDate) / (1000 * 60 * 60);
       } else if (rangeType == "Year") {
-        fromIndex = MonthsBetween(startDate, t.from);
-        toIndex = MonthsBetween(startDate, t.to);
+        fromIndex = monthsBetween(startDate, t.from);
+        toIndex = monthsBetween(startDate, t.to);
       }
 
       const widthFraction = (toIndex - fromIndex) / divisions;
@@ -128,7 +128,7 @@ export default function Calendar({tasks}) {
     } else if (rangeType == "Day") {
       return 24;
     } else if (rangeType == "Month") {
-      return DaysInMonth(startDate);
+      return daysInMonth(startDate);
     } else if (rangeType == "Year") {
       return 12;
     }
@@ -138,20 +138,20 @@ export default function Calendar({tasks}) {
     let titles = [];
     if (rangeType == "Week") {
       for (let i = 0; i < 7; i++) {
-        let toDay = new Date(startDate)
-        toDay.setHours(0, 0, 0, 0);
-        toDay.setDate(toDay.getDate() + i);
-        titles.push(toDay.toDateString());
+        let today = new Date(startDate)
+        today.setHours(0, 0, 0, 0);
+        today.setDate(today.getDate() + i);
+        titles.push(today.toDateString());
       }
     } else if (rangeType == "Day") {
-      let toDay = new Date(startDate)
+      let today = new Date(startDate)
       for (let i = 0; i < 24; i++) {
         // titles.push(`${i.toString().padStart(2, "0")}:00 - ${(i+1).toString().padStart(2, "0")}:00`)
         titles.push(`${i.toString().padStart(2, "0")}:00`)
       }
     } else if (rangeType == "Month") {
-      let toDay = new Date(startDate)
-      for (let i = 1; i < DaysInMonth(toDay) + 1; i++) {
+      let today = new Date(startDate)
+      for (let i = 1; i < daysInMonth(today) + 1; i++) {
         titles.push(i);
       }
     } else if (rangeType == "Year") {
@@ -234,7 +234,7 @@ export default function Calendar({tasks}) {
   )
 }
 
-function DaysInMonth(d) {
+function daysInMonth(d) {
   let lastDate = new Date(d);
   lastDate.setMonth(lastDate.getMonth() + 1);
   lastDate.setDate(0);
@@ -253,8 +253,8 @@ function CalendarTask({task, startDate, calendarWidth, divisions, rangeType}) {
     fromIndex = (task.from - startDate) / (1000 * 60 * 60);
     toIndex = (task.to - startDate) / (1000 * 60 * 60);
   } else if (rangeType == "Year") {
-    fromIndex = MonthsBetween(startDate, task.from);
-    toIndex = MonthsBetween(startDate, task.to);
+    fromIndex = monthsBetween(startDate, task.from);
+    toIndex = monthsBetween(startDate, task.to);
   }
 
   if (rangeType == "Month") {
@@ -272,19 +272,19 @@ function CalendarTask({task, startDate, calendarWidth, divisions, rangeType}) {
   )
 }
 
-function MonthsBetween(start, end) {
-  const Years = end.getFullYear() - start.getFullYear();
-  const Months = end.getMonth() - start.getMonth();
-  const Days = (end.getDate() - start.getDate()) / DaysInMonth(start); // fractional Month
-  return Years * 12 + Months + Days;
+function monthsBetween(start, end) {
+  const years = end.getFullYear() - start.getFullYear();
+  const months = end.getMonth() - start.getMonth();
+  const days = (end.getDate() - start.getDate()) / daysInMonth(start); // fractional month
+  return years * 12 + months + days;
 }
 
 function firstDateOfWeek(d) {
   let date = new Date(d)
   date.setHours(0, 0, 0, 0);
 
-  let DayOfWeek = date.getDay()
-  const diff = DayOfWeek === 0 ? -6 : 1 - DayOfWeek;
+  let dayOfWeek = date.getDay()
+  const diff = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
   date.setDate(date.getDate() + diff);
   return date;
 }
