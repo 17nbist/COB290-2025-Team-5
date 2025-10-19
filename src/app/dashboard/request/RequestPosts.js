@@ -1,13 +1,11 @@
 import {FaFlag} from "react-icons/fa";
+import Card from "@/components/Card"
 
 export default function RequestPost({ request, onClick, onTogglePriority }) {
   return (
-    <div
-      className="bg-[#1e293b] border border-[#334155] rounded-xl p-6 cursor-pointer transition-all duration-200 hover:border-[#475569] hover:shadow-xl hover:-translate-y-1"
-      onClick={onClick}
-    >
+    <Card>
       {/* Title */}
-      <h2 className="text-xl font-semibold text-white mb-3">
+      <h2 className="text-xl font-semibold text-black mb-3">
         {request.title}
       </h2>
 
@@ -38,6 +36,6 @@ export default function RequestPost({ request, onClick, onTogglePriority }) {
           </button>
         </div> )}
       </div>
-    </div>
+    </Card>
   );
 }

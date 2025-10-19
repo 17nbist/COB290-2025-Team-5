@@ -5,8 +5,15 @@ import ForumPage from "./forum/ForumPage";
 import RequestPage from "./request/RequestPage";
 import NavBar from "@/components/NavBar";
 import CalendarPage from "./calendar/CalendarPage.js";
+import ProjectsPage from "./projects/ProjectsPage";
 
 const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar"];
+
+const events = [
+  {id: 0, title: "Google Auth Meeting", from: new Date(2025, 9, 19, 8), to: new Date(2025, 9, 19, 16)},
+  {id: 1, title: "Other Meeting", from: new Date(2025, 9, 19, 12), to: new Date(2025, 9, 19, 15)},
+  {id: 2, title: "Dashboard Meeting", from: new Date(2025, 9, 20, 12), to: new Date(2025, 9, 20, 15)},
+];
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Dashboard");
@@ -25,14 +32,13 @@ export default function Home() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-
   const handleNavClick = (tab) => {
     setActiveTab(tab);
     window.location.hash = tab.toLowerCase();
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#0f172a]">
+    <div className="flex flex-col min-h-screen bg-[#f5f7fa]">
       {/* Main Navigation */}
       <div className="pt-8 pb-4 flex justify-center">
         <NavBar
@@ -46,16 +52,11 @@ export default function Home() {
 
       {/* Main Content Area */}
       <main className="flex-grow flex justify-center">
-        {activeTab === "Dashboard" && <DashboardPage />}
+        {activeTab === "Dashboard" && <DashboardPage events={events}/>}
         {activeTab === "Forum" && <ForumPage />}
         {activeTab === "Requests" && <RequestPage />}
-        {activeTab === "Calendar" && <CalendarPage />}
-        {activeTab !== "Dashboard" && activeTab !== "Forum" && activeTab !== "Calendar" && activeTab !== "Requests" && (
-          <div className="max-w-6xl mx-auto px-4 py-6">
-            <h1 className="text-2xl font-bold text-white">{activeTab}</h1>
-            <p className="text-gray-400">Content for {activeTab} coming soon.</p>
-          </div>
-        )}
+        {activeTab === "Calendar" && <CalendarPage events={events}/>}
+        {activeTab === "Projects" && <ProjectsPage />}
       </main>
     </div>
   );

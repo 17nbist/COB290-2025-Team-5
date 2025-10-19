@@ -1,4 +1,4 @@
-export default function Card({children, style, hoverStyle}) {
+export default function Card({children, style, hoverStyle, onClick}) {
   const defaultStyle = {
     padding: "20px",
     borderRadius: "8px",
@@ -22,6 +22,7 @@ export default function Card({children, style, hoverStyle}) {
     <div style={combinedStyle} 
       onMouseEnter={e => Object.assign(e.currentTarget.style, combinedHoverStyle)}
       onMouseLeave={e => Object.assign(e.currentTarget.style, combinedStyle)}
+      onClick={onClick}
     >
       {children}
     </div>

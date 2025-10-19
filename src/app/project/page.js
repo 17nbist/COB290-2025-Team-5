@@ -7,7 +7,8 @@ import EventsPage from "./events/EventsPage";
 
 export default function ProjectPage() {
 	const topNavItems = ["Today", "Tasks", "Events", "Members"];
-	const [activeTab, setActiveTab] = useState("Dashboard");
+	const [activeTab, setActiveTab] = useState("Today");
+	
 	const [tasks, setTasks] = useState([
 		{id: 0, title: "Google Auth", from: new Date(2025, 9, 14, 8), to: new Date(2025, 9, 23, 14)},
 		{id: 1, title: "Main Dashboard", from: new Date(2025, 9, 8, 0), to: new Date(2025, 9, 15, 0)},
@@ -37,7 +38,7 @@ export default function ProjectPage() {
 	}, []);
 
 	return (
-		<div className="flex flex-col min-h-screen">
+		<div className="flex flex-col min-h-screen bg-[#f5f7fa]">
 			<div className="pt-8 pb-4 flex justify-center">
 				<NavBar
 					activeTab={activeTab}
