@@ -40,7 +40,7 @@ export default function Forum() {
       flair: "technical",
       preview: "For security reasons, we have a separate WiFi code for visitors. This code is updated weekly, ensuring that only genuine...",
       timeAgo: "2 hours ago",
-      tags: ["wifi", "tech", "vistors"],
+      tags: ["wifi", "tech", "visitors"],
       upvotes: 10,
       downvotes: 0,
       comments: 0
