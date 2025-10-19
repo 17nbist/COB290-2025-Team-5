@@ -14,7 +14,7 @@ export default function Forum() {
   const [posts, setPosts] = useState([
     {
       id: 1,
-      title: "How Can I Access API keys?",
+      title: "How can I access API keys?",
       preview: "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently...",
       timeAgo: "3 weeks ago",
       tags: ["api", "help"],
