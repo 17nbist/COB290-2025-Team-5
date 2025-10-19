@@ -60,7 +60,7 @@ export default function Forum() {
       id: 5,
       title: "Windows 11 Upgrade Information",
       flair: "technical",
-      preview: "After many years utilising Windows 10, the Execuitve Management Team have authorised the launch of the Windows 11 Project...",
+      preview: "After many years utilising Windows 10, the Executive Management Team have authorised the launch of the Windows 11 Project...",
       timeAgo: "1 day ago",
       tags: ["release", "upgrade", "windows 10", "windows 11", "tech", "it"],
       upvotes: 45,
