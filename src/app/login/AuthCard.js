@@ -1,36 +1,81 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "./Logo";
+import { motion } from "framer-motion";
 
 export default function AuthCard({ children }) {
 	return (
-		<div style={styles.card}>
-					<div style={styles.header}>
-						<div style={styles.logoWrapper}>
-							<Logo width={64} height={64} title="App logo" />
+
+	<motion.div
+		style={styles.card}
+		initial={{ opacity: 0, scale: 0.95}}
+		animate={{ opacity: 1, scale: 1 }}
+		transition={{ duration: 0.6, ease: "easeOut" }}
+	>
+		<motion.div
+			style={styles.leftPanel}
+			initial={{ width: "100%",x: "50%"}}
+			animate={{ width: "50%", x: "0%"}}
+			transition={{ duration: 0.6, ease: "easeOut" }}
+		>
+			<div style={styles.header}>
+				<div style={styles.logoWrapper}>
+					<Logo width={64} height={64} title="App logo" />
 						</div>
-						<h1 style={styles.title}>Sign In</h1>
-						<p style={styles.subtitle}>
+						<h1 style={styles.title}>
 							Welcome! Please enter your details.
-						</p>
-					</div>
-			{children}
-			<div style={styles.footer}>
-				Have a setup URL?{" "}
-				<Link href="#" style={styles.link}>
-					Click Here
-				</Link>
+						</h1>
 			</div>
-		</div>
+						<div style={styles.footer}>
+							Have a set up URL?{" "}
+							<Link href="#" style={styles.link}>
+								Click Here
+							</Link>
+					</div>
+				</motion.div>
+
+			<motion.div
+			style={styles.rightPanel}
+			initial={{ width: "0%", opacity: 0 }}
+			animate={{ width: "50%" , opacity: 1 }}
+			transition={{ duration: 0.6, ease: "easeOut", delay: 0.5, }} >
+
+				<h1 style={styles.title}>    Sign In</h1>
+			{children}
+			</motion.div>
+		</motion.div>
 	);
 }
 
 const styles = {
 	card: {
-		width: 380,
+		display: "flex",
+		width: "880px",
+		height: "490px",
 		padding: 24,
 		borderRadius: 8,
 		boxShadow: "0 6px 18px rgba(0,0,0,0.1)",
-		background: "#fff",
+		overflow: "hidden",
+		background: "#ffffff31",
+	},
+	leftPanel: {
+		flex: 1,
+		background: "#f4cc9eff",
+		display: "flex",
+		flexDirection: "column",
+		alighItems: "center",
+		justifyContent: "center",
+		padding: "40px",
+	},
+	rightPanel: {
+		flex: 1,
+		background: "#f4f3f4ff",
+		display : "flex",
+		flexDirection: "column",
+		alighItems: "center",
+		justifyContent: "center",
+		padding: "40px",
 	},
 	header: {
 		textAlign: "center",
@@ -44,7 +89,7 @@ const styles = {
 	title: {
 		fontSize: "28px",
 		fontWeight: "bold",
-		color: "#1f2937",
+		color: "#000000ff",
 	},
 	subtitle: {
 		color: "#6b7280",
@@ -55,7 +100,7 @@ const styles = {
 		marginTop: "24px",
 		textAlign: "center",
 		fontSize: "14px",
-		color: "#4b5563",
+		color: "#000000ff",
 	},
 	link: {
 		color: "#2563eb",

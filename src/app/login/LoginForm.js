@@ -86,7 +86,7 @@ const styles = {
 	},
 	error: {
 		color: "#ef4444",
-		fontSize: 12,
+		fontSize: 14,
 		textAlign: "center",
 	},
 	showIconButton: { 
