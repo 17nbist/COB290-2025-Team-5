@@ -65,7 +65,7 @@ export default function Forum() {
   {
     id: 6,
     title: "Updates to Flexible Working Policy",
-    preview: "Following the full return of \"business as usual\", the Executive Management Team have consulted with a range of colleauges...",
+    preview: "Following the full return of \"business as usual\", the Executive Management Team have consulted with a range of colleagues...",
     timeAgo: "just now",
     tags: ["return to office", "hr", "mandatory", "update", "redundancy"],
     upvotes: 12,
