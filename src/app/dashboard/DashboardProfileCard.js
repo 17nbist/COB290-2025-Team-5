@@ -13,7 +13,7 @@ export default function DashboardProfileCard({ title, label, result, Icon }) {
                     </div>
                 </div>
                 <div className="grid bottom-left" style={{ lineHeight: "1", alignItems: "flex-start", bottom: "10px", left: "15px", display: "flex", flexDirection: "column", gridTemplateRows: "auto auto", rowGap: "0px", marginTop: "18%", padding: "0" }}>
-                    <span style={{ fontSize: "40px", fontFamily: "bold" }}>{result}</span>
+                    <span style={{ fontSize: "40px" }}>{result}</span>
                     <span>{label}</span>
                 </div>
             </div>
