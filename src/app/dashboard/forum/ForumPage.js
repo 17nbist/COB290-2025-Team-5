@@ -47,7 +47,7 @@ export default function Forum() {
       title: "Organisational Development: Continuing Professional Development Courses",
       preview: "Here at Make-It-All, we invest in our staff and want to see them develop. After a comprehensive review of our CPD provision...",
       timeAgo: "5 minutes ago",
-      tags: ["learning for life", "cpd", "linkedin learing"],
+      tags: ["learning for life", "cpd", "linkedin learning"],
       upvotes: 25,
       downvotes: 1,
       comments: 3
