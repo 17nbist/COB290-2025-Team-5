@@ -1,13 +1,15 @@
 "use client"
 import {useEffect, useState, useMemo} from "react";
-import Card from "./Card.js";
-import Button from "./Button.js";
-import NavBar from "./NavBar.js";
+import Card from "../Card.js";
+import Button from "../Button.js";
+import NavBar from "../NavBar.js";
+import CalendarBody from "./CalendarBody.js";
+import {daysInMonth, monthsBetween, firstDateOfWeek} from "./calendarUtils.js";
 
-export default function Calendar({tasks}) {
+export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
   const [startDate, setStartDate] = useState(firstDateOfWeek(new Date()));
 
-  const [rangeType, setRangeType] = useState("Week");
+  const [rangeType, setRangeType] = useState(startRangeType);
 
   useEffect(() => {
     let newStart = new Date();
@@ -176,115 +178,24 @@ export default function Calendar({tasks}) {
     return `${startDate.toDateString()} - ${endDate.toDateString()}`;
   }
 
-  const calendarWidth = 1200;
-
   return (
     <Card style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-      <div style={{display: "flex", flexDirection: "column", gap: "5px", width: calendarWidth + "px", height: "700px"}}>
+      <div style={{display: "flex", flexDirection: "column", gap: "5px", height: "700px"}}>
         <h1>{getRangeText()}</h1>
         {/*top bar*/}
         <div style={{display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center", marginTop: "10px", marginBottom: "10px"}}>
           <NavBar items={["Day", "Week", "Month", "Year"]} activeTab={rangeType} setActiveTab={setRangeType}/>
           <div style={{display: "flex", gap: "5px"}}>
             <Button text={"<"} onClick={decrementDate} />
-            <Button text={">"} onClick={incrementDate}/>
+            <Button text={">"} onClick={incrementDate} />
           </div>
         </div>
 
+        {addOnClick && <Button outerStyle={{marginBottom: "10px"}} text={"+"}></Button>}
+
         {/*calendar body*/}
-        <Card style={{height: "100%", }}>
-          <div style={{
-            display: "grid",
-            // borderStyle: "solid",
-            // borderWidth: "1px",
-            overflowX: "hidden",
-            position: "relative",
-            height: "100%",
-            gridTemplateColumns: `repeat(${getNumberOfDivisions()}, minmax(0, 1fr))`,
-            borderRadius: "10px"
-
-          }}>
-
-            {/* dates and dividors */}
-            {
-              getDivisionTitles().map((e, i, arr) => (
-                <div key={e}
-                  style={{
-                    borderRight: i !== arr.length - 1 ? "1px solid #ddd" : "none",
-                  }}
-                >
-                <h1 style={{textAlign: "center"}}>{e}</h1>
-                </div>
-              ))
-            }
-
-            {/* tasks */}
-            <div style={{position: "absolute", marginTop: "40px"}}>
-            {
-              getTasksInRange().map((t) => (
-                <CalendarTask key={t.id} task={t} startDate={startDate} divisions={getNumberOfDivisions()} rangeType={rangeType} calendarWidth={calendarWidth}/>
-              ))
-            }
-            </div>
-
-          </div>
-        </Card>
+        <CalendarBody tasks={getTasksInRange()} divisions={getNumberOfDivisions()} rangeType={rangeType} divisionTitles={getDivisionTitles()} startDate={startDate} calendarWidth={1250}/>
       </div>
     </Card>
   )
-}
-
-function daysInMonth(d) {
-  let lastDate = new Date(d);
-  lastDate.setMonth(lastDate.getMonth() + 1);
-  lastDate.setDate(0);
-  return lastDate.getDate();
-}
-
-function CalendarTask({task, startDate, calendarWidth, divisions, rangeType}) {
-  startDate = new Date(startDate);
-  let fromIndex = 0;
-  let toIndex = 0;
-
-  if (rangeType == "Week" || rangeType == "Month") {
-    fromIndex = (task.from - startDate) / (1000 * 60 * 60 * 24);
-    toIndex = (task.to - startDate) / (1000 * 60 * 60 * 24);
-  } else if (rangeType == "Day") {
-    fromIndex = (task.from - startDate) / (1000 * 60 * 60);
-    toIndex = (task.to - startDate) / (1000 * 60 * 60);
-  } else if (rangeType == "Year") {
-    fromIndex = monthsBetween(startDate, task.from);
-    toIndex = monthsBetween(startDate, task.to);
-  }
-
-  if (rangeType == "Month") {
-    divisions += 1;
-  }
-
-  let left = fromIndex * calendarWidth / divisions;
-  let width = (toIndex - fromIndex) * calendarWidth / divisions;
-  let top = task.track * 60;
-
-  return (
-    <Card style={{width: width, height: "50px", position: "absolute", left, top, cursor: "pointer"}}>
-      <h1 style={{width: width, height: "50px", position: "absolute", left: left >= 0 ? 0 : -left, top:0}}>{task.title}</h1>
-    </Card>
-  )
-}
-
-function monthsBetween(start, end) {
-  const years = end.getFullYear() - start.getFullYear();
-  const months = end.getMonth() - start.getMonth();
-  const days = (end.getDate() - start.getDate()) / daysInMonth(start); // fractional month
-  return years * 12 + months + days;
-}
-
-function firstDateOfWeek(d) {
-  let date = new Date(d)
-  date.setHours(0, 0, 0, 0);
-
-  let dayOfWeek = date.getDay()
-  const diff = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
-  date.setDate(date.getDate() + diff);
-  return date;
 }
