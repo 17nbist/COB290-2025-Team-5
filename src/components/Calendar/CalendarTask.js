@@ -19,11 +19,27 @@ export default function CalendarTask({task, startDate, calendarWidth, divisions,
 
   let left = fromIndex * calendarWidth / divisions;
   let width = (toIndex - fromIndex) * calendarWidth / divisions;
-  let top = task.track * 60;
+  let top = task.track * 75;
 
   return (
-    <Card style={{width: width, height: "50px", position: "absolute", left, top, cursor: "pointer"}}>
-      <h1 style={{width: width, height: "50px", position: "absolute", left: left >= 0 ? 0 : -left, top:0}}>{task.title}</h1>
+    <Card style={{width: width, height: "55px", position: "absolute", left, top, cursor: "pointer", padding: "5px"}}>
+      <div style={{width: "100%", height: "100%", position: "absolute"}}>
+        <h1
+          className="truncate"
+          style={{
+            position: "absolute",
+            top: "5px",
+            left: left >=0 ? "5px" : -left,
+            right: "5px",
+            bottom: "5px",
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {task.title}
+        </h1>
+      </div>
     </Card>
   )
 }

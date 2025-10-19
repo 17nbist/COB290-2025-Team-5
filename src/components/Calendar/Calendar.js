@@ -191,7 +191,7 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
           </div>
         </div>
 
-        {addOnClick && <Button outerStyle={{marginBottom: "10px"}} text={"+"}></Button>}
+        {addOnClick && <Button outerStyle={{marginBottom: "10px"}} textStyle={{fontSize: "20px", fontWeight: "500"}} text={"+"} />}
 
         {/*calendar body*/}
         <CalendarBody tasks={getTasksInRange()} divisions={getNumberOfDivisions()} rangeType={rangeType} divisionTitles={getDivisionTitles()} startDate={startDate} calendarWidth={1250}/>
