@@ -1,31 +1,15 @@
 "use client";
-import ProfileOverview from "./ProfileOverview";
-import { useEffect } from 'react';
-
-
-export default function DashboardPage() {
-    useEffect(() => {
-      document.title = 'Dashboard | Make-It-All';
-    }, []);
-    return (
-        <div>
-        <ProfileOverview name={"John Doe"} position={"CEO"} taskAllocated={"12"} ProjectAllocated={"18"}/>
-        </div>
-    );
-}*/
-
-//May need to change later, just testing if miniCalendar works. 
-"use client";
 
 import { useEffect } from "react";
-import MiniCalendar from "@/components/MiniCalendar"; 
+import ProfileOverview from "./ProfileOverview";
+import MiniCalendar from "@/components/MiniCalendar";
 
 export default function DashboardPage() {
   useEffect(() => {
     document.title = "Dashboard | Make-It-All";
   }, []);
 
-  // Dummy data to test
+  // Dummy data for MiniCalendar
   const tasks2 = [
     {
       id: 1,
@@ -42,15 +26,24 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>
-      <div>
-        <h1 className="text-2xl font-bold">Dashboard</h1>
-        <p>Welcome to the Dashboard!</p>
-        <p>This is where you can see an overview of your activities.</p>
+    <div className="p-6 bg-gray-900 min-h-screen text-white">
+      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="lg:w-1/3">
+          <ProfileOverview
+            name={"John Doe"}
+            position={"CEO"}
+            taskAllocated={"12"}
+            ProjectAllocated={"18"}
+          />
+        </div>
+        <div className="lg:w-2/3">
+          <div className="bg-gray-800 p-4 rounded-lg">
+            <h2 className="text-xl font-semibold mb-4">Upcoming Tasks</h2>
+            <MiniCalendar tasks={tasks2} />
+          </div>
+        </div>
       </div>
-
-      {/* calendar is below*/}
-      <MiniCalendar tasks={tasks2} />
     </div>
   );
 }
