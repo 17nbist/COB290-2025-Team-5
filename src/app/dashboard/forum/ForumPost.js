@@ -13,7 +13,7 @@ export default function ForumPost({ post, onClick }) {
       </h2>
 
       {/* Flair */}
-      <span className={post.flair === "technical" ? "items-center px-2 py-1 h-[32px] bg-[#122eb8] text-white-400 rounded-md" : "items-center px-2 py-1 h-[32px] bg-[#286b23] text-white-400 rounded-md"}
+      <span className={post.flair === "technical" ? "items-center px-2 py-1 h-[32px] bg-[#122eb8] text-white rounded-md" : "items-center px-2 py-1 h-[32px] bg-[#286b23] text-white rounded-md"}
       >
         {post.flair}
       </span>
