@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, act } from "react";
 import DashboardPage from "./DashboardPage";
 import ForumPage from "./forum/ForumPage";
+import RequestPage from "./request/RequestPage";
 import NavBar from "@/components/NavBar";
 
 const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar"];
@@ -45,7 +46,8 @@ export default function Home() {
       <main className="flex-grow">
         {activeTab === "Dashboard" && <DashboardPage />}
         {activeTab === "Forum" && <ForumPage />}
-        {activeTab !== "Dashboard" && activeTab !== "Forum" && (
+        {activeTab === "Requests" && <RequestPage />}
+        {activeTab !== "Dashboard" && activeTab !== "Forum" && activeTab !== "Requests" && (
           <div className="max-w-6xl mx-auto px-4 py-6">
             <h1 className="text-2xl font-bold text-white">{activeTab}</h1>
             <p className="text-gray-400">Content for {activeTab} coming soon.</p>
