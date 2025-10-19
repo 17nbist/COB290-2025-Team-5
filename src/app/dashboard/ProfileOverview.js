@@ -14,7 +14,7 @@ import DashboardCard from "./DashboardCard";
 
 export default function ProfileOverview() {
     return (
-        <div style={{ display: "flex", justifyContent: "center", height: "25vw", width: "60vw" }}>
+        <div style={{ display: "flex", justifyContent: "center", height: "600px", width: "1400px" }}>
             <div style={{ display: "grid", gridTemplateColumns: "30% 70%", height: "100%", width: "100%" }}>
 
                 <div style={{ padding: "10px" }}>
