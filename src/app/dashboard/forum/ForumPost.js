@@ -1,19 +1,17 @@
 import { FaRegCommentDots, FaArrowUp, FaArrowDown } from "react-icons/fa";
+import Card from "@/components/Card"
 
 export default function ForumPost({ post, onClick }) {
   return (
-    <div
-      className="bg-[#1e293b] border border-[#334155] rounded-xl p-6 cursor-pointer transition-all duration-200 hover:border-[#475569] hover:shadow-xl hover:-translate-y-1"
-      onClick={onClick}
-    >
+    <Card>
       {/* Title */}
       <div className="flex space-x-3">
-      <h2 className="text-xl font-semibold text-white mb-3">
+      <h2 className="text-xl font-semibold text-black mb-3">
         {post.title}
       </h2>
 
       {/* Flair */}
-      <span className={post.flair === "technical" ? "items-center px-2 py-1 h-[32px] bg-[#122eb8] text-white rounded-md" : "items-center px-2 py-1 h-[32px] bg-[#286b23] text-white rounded-md"}
+      <span className={post.flair === "technical" ? "items-center px-2 py-1 h-[32px] bg-[#122eb8] text-black rounded-md" : "items-center px-2 py-1 h-[32px] bg-[#286b23] text-black rounded-md"}
       >
         {post.flair}
       </span>
@@ -55,6 +53,6 @@ export default function ForumPost({ post, onClick }) {
           </span>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }
