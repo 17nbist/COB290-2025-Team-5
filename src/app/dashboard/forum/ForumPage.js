@@ -10,6 +10,10 @@ export default function Forum() {
   const filterTabs = ["My Posts", "Directed To Me", "All Posts"];
   const [activeFilterTab, setActiveFilterTab] = useState("All Posts");
   const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Dummy current user ID
+  const currentUserId = "user1";
 
   const [posts, setPosts] = useState([
     {
@@ -21,7 +25,9 @@ export default function Forum() {
       tags: ["api", "help"],
       upvotes: 15,
       downvotes: 0,
-      comments: 2
+      comments: 2,
+      author: "user2",
+      directedTo: "user1"
     },
     {
       id: 2,
@@ -32,7 +38,9 @@ export default function Forum() {
       tags: ["hr", "referral", "recruitment", "selection"],
       upvotes: 10,
       downvotes: 1,
-      comments: 10
+      comments: 10,
+      author: "user1",
+      directedTo: null
     },
     {
       id: 3,
@@ -43,7 +51,9 @@ export default function Forum() {
       tags: ["wifi", "tech", "visitors"],
       upvotes: 10,
       downvotes: 0,
-      comments: 0
+      comments: 0,
+      author: "user3",
+      directedTo: null
     },
     {
       id: 4,
@@ -54,7 +64,9 @@ export default function Forum() {
       tags: ["learning for life", "cpd", "linkedin learning"],
       upvotes: 25,
       downvotes: 1,
-      comments: 3
+      comments: 3,
+      author: "user1",
+      directedTo: null
     },
     {
       id: 5,
@@ -64,24 +76,50 @@ export default function Forum() {
       tags: ["release", "upgrade", "windows 10", "windows 11", "tech", "it"],
       upvotes: 45,
       downvotes: 4,
-      comments: 16
-  },
-  {
-    id: 6,
-    title: "Updates to Flexible Working Policy",
-    preview: "Following the full return of \"business as usual\", the Executive Management Team have consulted with a range of colleagues...",
-    timeAgo: "just now",
-    tags: ["return to office", "hr", "mandatory", "update", "redundancy"],
-    upvotes: 12,
-    downvotes: 60,
-    comments: 25
-  },
-
-
+      comments: 16,
+      author: "user4",
+      directedTo: "user1"
+    },
+    {
+      id: 6,
+      title: "Updates to Flexible Working Policy",
+      preview: "Following the full return of \"business as usual\", the Executive Management Team have consulted with a range of colleagues...",
+      timeAgo: "just now",
+      tags: ["return to office", "hr", "mandatory", "update", "redundancy"],
+      upvotes: 12,
+      downvotes: 60,
+      comments: 25,
+      author: "user5",
+      directedTo: null
+    },
   ]);
 
+  // Filter posts based on active tab and search
+  const getFilteredPosts = () => {
+    let filtered = [...posts];
+
+    // Apply filter tab
+    if (activeFilterTab === "My Posts") {
+      filtered = filtered.filter(post => post.author === currentUserId);
+    } else if (activeFilterTab === "Directed To Me") {
+      filtered = filtered.filter(post => post.directedTo === currentUserId);
+    }
+
+    // Apply search
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(post =>
+        post.title.toLowerCase().includes(query) ||
+        post.preview.toLowerCase().includes(query) ||
+        post.tags.some(tag => tag.toLowerCase().includes(query))
+      );
+    }
+
+    return filtered;
+  };
+
   const handleSearch = (query) => {
-    console.log("Searching for:", query);
+    setSearchQuery(query);
   };
 
   const handleAddPost = () => {
@@ -99,6 +137,8 @@ export default function Forum() {
   useEffect(() => {
     document.title = 'Forum | Make-It-All';
   }, []);
+
+  const filteredPosts = getFilteredPosts();
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
@@ -118,7 +158,7 @@ export default function Forum() {
 
       {/* Posts List */}
       <div className="space-y-4">
-        {posts.map(post => (
+        {filteredPosts.map(post => (
           <ForumPost
             key={post.id}
             post={post}

@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, act } from "react";
 import DashboardPage from "./DashboardPage";
 import ForumPage from "./forum/ForumPage";
+import RequestPage from "./request/RequestPage";
 import NavBar from "@/components/NavBar";
 import CalendarPage from "./calendar/CalendarPage.js";
 
@@ -47,8 +48,9 @@ export default function Home() {
       <main className="flex-grow flex justify-center">
         {activeTab === "Dashboard" && <DashboardPage />}
         {activeTab === "Forum" && <ForumPage />}
+        {activeTab === "Requests" && <RequestPage />}
         {activeTab === "Calendar" && <CalendarPage />}
-        {activeTab !== "Dashboard" && activeTab !== "Forum" && activeTab !== "Calendar" && (
+        {activeTab !== "Dashboard" && activeTab !== "Forum" && activeTab !== "Calendar" && activeTab !== "Requests" && (
           <div className="max-w-6xl mx-auto px-4 py-6">
             <h1 className="text-2xl font-bold text-white">{activeTab}</h1>
             <p className="text-gray-400">Content for {activeTab} coming soon.</p>
