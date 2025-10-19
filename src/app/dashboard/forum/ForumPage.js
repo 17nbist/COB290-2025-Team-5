@@ -15,6 +15,7 @@ export default function Forum() {
     {
       id: 1,
       title: "How can I access API keys?",
+      flair: "technical",
       preview: "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently...",
       timeAgo: "3 weeks ago",
       tags: ["api", "help"],
@@ -25,6 +26,7 @@ export default function Forum() {
     {
       id: 2,
       title: "How can I make a referral for a job posting?",
+      flair: "non-technical",
       preview: "Here at Make-It-All, we value the insights that our staff members have on the job market. For this reason, we have an attractive...",
       timeAgo: "2 weeks ago",
       tags: ["hr", "referral", "recruitment", "selection"],
@@ -35,7 +37,8 @@ export default function Forum() {
     {
       id: 3,
       title: "Weekly Guest WiFi Code - Week 45",
-      preview: "For security reasons, we have a seperate WiFi code for visitors. This code is updated weekly, ensuring that only genuine...",
+      flair: "technical",
+      preview: "For security reasons, we have a separate WiFi code for visitors. This code is updated weekly, ensuring that only genuine...",
       timeAgo: "2 hours ago",
       tags: ["wifi", "tech", "visitors"],
       upvotes: 10,
@@ -45,6 +48,7 @@ export default function Forum() {
     {
       id: 4,
       title: "Organisational Development: Continuing Professional Development Courses",
+      flair: "non-technical",
       preview: "Here at Make-It-All, we invest in our staff and want to see them develop. After a comprehensive review of our CPD provision...",
       timeAgo: "5 minutes ago",
       tags: ["learning for life", "cpd", "linkedin learning"],
