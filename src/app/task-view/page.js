@@ -4,6 +4,8 @@ import NavBar from "@/components/NavBar";
 import PieChart from "@/components/PieChart";
 import { useEffect, useState } from "react";
 import TaskViewMembers from "./TaskViewMembers";
+import TaskViewOverview from "./TaskViewOverview";
+
 
 export default function Dashboard() {
   const navItems = ["Overview", "To-Do", "Members"];
@@ -53,6 +55,11 @@ export default function Dashboard() {
         {activeTab === "Members" && (
           <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
             <TaskViewMembers />
+          </div>
+        )}
+        {activeTab === "Overview" && (
+          <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+            <TaskViewOverview />
           </div>
         )}
       </main>
