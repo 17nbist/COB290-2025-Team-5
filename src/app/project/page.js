@@ -38,7 +38,7 @@ export default function ProjectPage() {
 	}, []);
 
 	return (
-		<div className="flex flex-col min-h-screen">
+		<div className="flex flex-col min-h-screen bg-[#f5f7fa]">
 			<div className="pt-8 pb-4 flex justify-center">
 				<NavBar
 					activeTab={activeTab}
