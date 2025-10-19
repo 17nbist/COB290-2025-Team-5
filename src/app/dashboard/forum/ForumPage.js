@@ -59,7 +59,6 @@ export default function Forum() {
     {
       id: 5,
       title: "Windows 11 Upgrade Information",
-      flair: "technical",
       preview: "After many years utilising Windows 10, the Executive Management Team have authorised the launch of the Windows 11 Project...",
       timeAgo: "1 day ago",
       tags: ["release", "upgrade", "windows 10", "windows 11", "tech", "it"],
@@ -70,7 +69,6 @@ export default function Forum() {
   {
     id: 6,
     title: "Updates to Flexible Working Policy",
-    flair: "non-technical",
     preview: "Following the full return of \"business as usual\", the Executive Management Team have consulted with a range of colleagues...",
     timeAgo: "just now",
     tags: ["return to office", "hr", "mandatory", "update", "redundancy"],

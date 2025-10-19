@@ -7,16 +7,16 @@ import NavBar from "./NavBar.js";
 export default function Calendar({tasks}) {
   const [startDate, setStartDate] = useState(firstDateOfWeek(new Date()));
 
-  const [rangeType, setRangeType] = useState("week");
+  const [rangeType, setRangeType] = useState("Week");
 
   useEffect(() => {
     let newStart = new Date();
     newStart.setHours(0, 0, 0, 0);
-    if (rangeType === "week") {
+    if (rangeType === "Week") {
       newStart = firstDateOfWeek(newStart);
-    } else if (rangeType === "month") {
+    } else if (rangeType === "Month") {
       newStart.setDate(1);
-    } else if (rangeType === "year") {
+    } else if (rangeType === "Year") {
       newStart.setMonth(0);
       newStart.setDate(1);
     }
@@ -25,20 +25,20 @@ export default function Calendar({tasks}) {
     }
   }, [rangeType]);
 
-  
+
   const sortedTasks = useMemo(() => (
     [...tasks].sort((b, a) => new Date(b.from) - new Date(a.from))
   ), [tasks]);
 
   function incrementDate() {
     const newDate = new Date(startDate);
-    if (rangeType == "week") {
+    if (rangeType == "Week") {
       newDate.setDate(newDate.getDate() + 7);
-    } else if (rangeType == "day") {
+    } else if (rangeType == "Day") {
       newDate.setDate(newDate.getDate() + 1);
-    } else if (rangeType == "month") {
+    } else if (rangeType == "Month") {
       newDate.setMonth(newDate.getMonth() + 1);
-    } else if (rangeType == "year") {
+    } else if (rangeType == "Year") {
       newDate.setFullYear(newDate.getFullYear() + 1);
     }
     setStartDate(newDate);
@@ -46,13 +46,13 @@ export default function Calendar({tasks}) {
 
   function decrementDate() {
     const newDate = new Date(startDate);
-    if (rangeType == "week") {
+    if (rangeType == "Week") {
       newDate.setDate(newDate.getDate() - 7);
-    } else if (rangeType == "day") {
+    } else if (rangeType == "Day") {
       newDate.setDate(newDate.getDate() - 1);
-    } else if (rangeType == "month") {
+    } else if (rangeType == "Month") {
       newDate.setMonth(newDate.getMonth() - 1)
-    } else if (rangeType == "year") {
+    } else if (rangeType == "Year") {
       newDate.setFullYear(newDate.getFullYear() - 1);
     }
     setStartDate(newDate);
@@ -61,30 +61,30 @@ export default function Calendar({tasks}) {
   function getTasksInRange() {
     let endDate = new Date(startDate);
 
-    if (rangeType == "week") {
+    if (rangeType == "Week") {
       endDate.setDate(startDate.getDate() + 8);
-    } else if (rangeType == "day") {
+    } else if (rangeType == "Day") {
       endDate.setDate(startDate.getDate() + 1);
-    } else if (rangeType == "month") {
+    } else if (rangeType == "Month") {
       endDate.setMonth(startDate.getMonth() + 1);
       endDate.setDate(0);
-    } else if (rangeType == "year") {
+    } else if (rangeType == "Year") {
       endDate.setFullYear(startDate.getFullYear() + 1, 0, 1);
     }
-    
 
-    let tracked_tasks = [...sortedTasks].filter(t => {      
+
+    let tracked_tasks = [...sortedTasks].filter(t => {
       let fromIndex = 0;
       let toIndex = 0;
       let divisions = getNumberOfDivisions();
 
-      if (rangeType == "week" || rangeType == "month") {
+      if (rangeType == "Week" || rangeType == "Month") {
         fromIndex = (t.from - startDate) / (1000 * 60 * 60 * 24);
         toIndex = (t.to - startDate) / (1000 * 60 * 60 * 24);
-      } else if (rangeType == "day") {
+      } else if (rangeType == "Day") {
         fromIndex = (t.from - startDate) / (1000 * 60 * 60);
         toIndex = (t.to - startDate) / (1000 * 60 * 60);
-      } else if (rangeType == "year") {
+      } else if (rangeType == "Year") {
         fromIndex = monthsBetween(startDate, t.from);
         toIndex = monthsBetween(startDate, t.to);
       }
@@ -102,7 +102,7 @@ export default function Calendar({tasks}) {
       } else {
         let foundTrack = false;
         for (let j = 0; j < tracks.length; j++) {
-          
+
           if (tracked_tasks[i].from >= tracks[j].end) {
             foundTrack = true;
             tracks[j].end = tracked_tasks[i].to;
@@ -118,43 +118,43 @@ export default function Calendar({tasks}) {
     }
 
     let fTasks = tracked_tasks.filter(t => t.from < endDate && t.to > startDate);
-    
+
     return fTasks;
   }
 
   function getNumberOfDivisions() {
-    if (rangeType == "week") {
+    if (rangeType == "Week") {
       return 7;
-    } else if (rangeType == "day") {
+    } else if (rangeType == "Day") {
       return 24;
-    } else if (rangeType == "month") {
+    } else if (rangeType == "Month") {
       return daysInMonth(startDate);
-    } else if (rangeType == "year") {
+    } else if (rangeType == "Year") {
       return 12;
     }
   }
 
   function getDivisionTitles() {
     let titles = [];
-    if (rangeType == "week") {
+    if (rangeType == "Week") {
       for (let i = 0; i < 7; i++) {
         let today = new Date(startDate)
         today.setHours(0, 0, 0, 0);
         today.setDate(today.getDate() + i);
         titles.push(today.toDateString());
       }
-    } else if (rangeType == "day") {
+    } else if (rangeType == "Day") {
       let today = new Date(startDate)
       for (let i = 0; i < 24; i++) {
         // titles.push(`${i.toString().padStart(2, "0")}:00 - ${(i+1).toString().padStart(2, "0")}:00`)
         titles.push(`${i.toString().padStart(2, "0")}:00`)
       }
-    } else if (rangeType == "month") {
+    } else if (rangeType == "Month") {
       let today = new Date(startDate)
       for (let i = 1; i < daysInMonth(today) + 1; i++) {
         titles.push(i);
       }
-    } else if (rangeType == "year") {
+    } else if (rangeType == "Year") {
       titles = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     }
     return titles;
@@ -163,14 +163,14 @@ export default function Calendar({tasks}) {
   function getRangeText() {
     let endDate = new Date(startDate);
 
-    if (rangeType == "week") {
+    if (rangeType == "Week") {
       endDate.setDate(startDate.getDate() + 8);
-    } else if (rangeType == "day") {
+    } else if (rangeType == "Day") {
       endDate.setDate(startDate.getDate() + 1);
-    } else if (rangeType == "month") {
+    } else if (rangeType == "Month") {
       endDate.setMonth(startDate.getMonth() + 1);
       endDate.setDate(0);
-    } else if (rangeType == "year") {
+    } else if (rangeType == "Year") {
       endDate.setFullYear(startDate.getFullYear() + 1, 0, 1);
     }
     return `${startDate.toDateString()} - ${endDate.toDateString()}`;
@@ -184,22 +184,22 @@ export default function Calendar({tasks}) {
         <h1>{getRangeText()}</h1>
         {/*top bar*/}
         <div style={{display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center", marginTop: "10px", marginBottom: "10px"}}>
-          <NavBar items={["day", "week", "month", "year"]} activeTab={rangeType} setActiveTab={setRangeType}/>
+          <NavBar items={["Day", "Week", "Month", "Year"]} activeTab={rangeType} setActiveTab={setRangeType}/>
           <div style={{display: "flex", gap: "5px"}}>
             <Button text={"<"} onClick={decrementDate} />
-            <Button text={">"} onClick={incrementDate}/> 
+            <Button text={">"} onClick={incrementDate}/>
           </div>
         </div>
 
         {/*calendar body*/}
         <Card style={{height: "100%", }}>
           <div style={{
-            display: "grid", 
-            // borderStyle: "solid", 
+            display: "grid",
+            // borderStyle: "solid",
             // borderWidth: "1px",
-            overflowX: "hidden", 
+            overflowX: "hidden",
             position: "relative",
-            height: "100%", 
+            height: "100%",
             gridTemplateColumns: `repeat(${getNumberOfDivisions()}, minmax(0, 1fr))`,
             borderRadius: "10px"
 
@@ -245,22 +245,22 @@ function CalendarTask({task, startDate, calendarWidth, divisions, rangeType}) {
   startDate = new Date(startDate);
   let fromIndex = 0;
   let toIndex = 0;
-  
-  if (rangeType == "week" || rangeType == "month") {
+
+  if (rangeType == "Week" || rangeType == "Month") {
     fromIndex = (task.from - startDate) / (1000 * 60 * 60 * 24);
     toIndex = (task.to - startDate) / (1000 * 60 * 60 * 24);
-  } else if (rangeType == "day") {
+  } else if (rangeType == "Day") {
     fromIndex = (task.from - startDate) / (1000 * 60 * 60);
     toIndex = (task.to - startDate) / (1000 * 60 * 60);
-  } else if (rangeType == "year") {
+  } else if (rangeType == "Year") {
     fromIndex = monthsBetween(startDate, task.from);
     toIndex = monthsBetween(startDate, task.to);
   }
-  
-  if (rangeType == "month") {
+
+  if (rangeType == "Month") {
     divisions += 1;
   }
-  
+
   let left = fromIndex * calendarWidth / divisions;
   let width = (toIndex - fromIndex) * calendarWidth / divisions;
   let top = task.track * 60;
