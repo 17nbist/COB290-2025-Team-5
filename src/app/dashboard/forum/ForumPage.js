@@ -38,7 +38,7 @@ export default function Forum() {
       id: 3,
       title: "Weekly Guest WiFi Code - Week 45",
       flair: "technical",
-      preview: "For security reasons, we have a seperate WiFi code for visitors. This code is updated weekly, ensuring that only genuine...",
+      preview: "For security reasons, we have a separate WiFi code for visitors. This code is updated weekly, ensuring that only genuine...",
       timeAgo: "2 hours ago",
       tags: ["wifi", "tech", "vistors"],
       upvotes: 10,
