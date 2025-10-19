@@ -1,10 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import LoginForm from "./LoginForm";
 
 export default function LoginContainer() {
+    useEffect(() => {
+      document.title = 'Login | Make-It-All';
+    }, []);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");

@@ -7,9 +7,17 @@ export default function ForumPost({ post, onClick }) {
       onClick={onClick}
     >
       {/* Title */}
+      <div className="flex space-x-3">
       <h2 className="text-xl font-semibold text-white mb-3">
         {post.title}
       </h2>
+
+      {/* Flair */}
+      <span className={post.flair === "technical" ? "items-center px-2 py-1 h-[32px] bg-[#122eb8] text-white rounded-md" : "items-center px-2 py-1 h-[32px] bg-[#286b23] text-white rounded-md"}
+      >
+        {post.flair}
+      </span>
+    </div>
 
       {/* Preview Text */}
       <p className="text-gray-400 text-sm mb-4 line-clamp-2">

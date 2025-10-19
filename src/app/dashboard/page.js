@@ -4,6 +4,7 @@ import DashboardPage from "./DashboardPage";
 import ForumPage from "./forum/ForumPage";
 import RequestPage from "./request/RequestPage";
 import NavBar from "@/components/NavBar";
+import CalendarPage from "./calendar/CalendarPage.js";
 
 const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar"];
 
@@ -24,6 +25,7 @@ export default function Home() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+
   const handleNavClick = (tab) => {
     setActiveTab(tab);
     window.location.hash = tab.toLowerCase();
@@ -32,7 +34,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-[#0f172a]">
       {/* Main Navigation */}
-      <div className="pt-8 pb-4">
+      <div className="pt-8 pb-4 flex justify-center">
         <NavBar
           activeTab={activeTab}
           items={topNavItems}
@@ -43,11 +45,12 @@ export default function Home() {
       </div>
 
       {/* Main Content Area */}
-      <main className="flex-grow">
+      <main className="flex-grow flex justify-center">
         {activeTab === "Dashboard" && <DashboardPage />}
         {activeTab === "Forum" && <ForumPage />}
         {activeTab === "Requests" && <RequestPage />}
-        {activeTab !== "Dashboard" && activeTab !== "Forum" && activeTab !== "Requests" && (
+        {activeTab === "Calendar" && <CalendarPage />}
+        {activeTab !== "Dashboard" && activeTab !== "Forum" && activeTab !== "Calendar" && activeTab !== "Requests" && (
           <div className="max-w-6xl mx-auto px-4 py-6">
             <h1 className="text-2xl font-bold text-white">{activeTab}</h1>
             <p className="text-gray-400">Content for {activeTab} coming soon.</p>

@@ -6,12 +6,13 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit }) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [tags, setTags] = useState("");
+    const [flair, setFlair] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!title.trim() || !content.trim()) {
-            alert("Please fill in title and content");
+        if (!title.trim() || !content.trim() || !flair.trim()) {
+            alert("Please fill in title, content and flair.");
             return;
         }
 
@@ -27,6 +28,7 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit }) {
         const newPost = {
             id: Date.now(),
             title: title.trim(),
+            flair: flair,
             preview: createPreview(content.trim()),
             timeAgo: "just now",
             tags: tags.split(",").map(tag => tag.trim()).filter(tag => tag),
@@ -41,6 +43,7 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit }) {
         setTitle("");
         setContent("");
         setTags("");
+        setFlair("");
         onClose();
     };
 
@@ -75,6 +78,22 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit }) {
                             className="w-full bg-gray-700 text-gray-100 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             required
                         />
+
+                    </div>
+
+                    {/* Flair Input */}
+                    <div className="mb-4">
+                        <label className="block text-gray-300 text-sm font-medium mb-2">
+                            Flair *
+                        </label>
+                        <select
+                          className="w-full bg-gray-700 text-gray-100 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          onChange={(e) => setFlair(e.target.value)}
+                          required>
+                        <option value="" selected disabled>--Select an option--</option>
+                        <option value="technical">Technical</option>
+                        <option value="non-technical">Non-Technical</option>
+                        </select>
                     </div>
 
                     {/* Content Textarea */}
@@ -85,7 +104,7 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit }) {
                         <textarea
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
-                            placeholder="Write your post content here. Be descriptive and provide context..."
+                            placeholder="Write your post content here. Be descriptive and provide context."
                             rows={8}
                             className="w-full bg-gray-700 text-gray-100 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                             required
