@@ -3,106 +3,35 @@ import NavBar from "@/components/NavBar";
 import SearchBar from "@/components/SearchBar";
 import ForumPost from "./ForumPost";
 import CreatePostModal from "./CreatePostModal";
-import { useState } from "react";
-import { useEffect } from 'react';
+import { useState, useEffect } from "react";
+import { useAuth } from "@/lib/AuthContext";
 
 export default function Forum() {
+  const { user, data } = useAuth(); // Get user and data from context
   const filterTabs = ["My Posts", "Directed To Me", "All Posts"];
   const [activeFilterTab, setActiveFilterTab] = useState("All Posts");
   const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Dummy current user ID
-  const currentUserId = "user1";
+  // Get posts from context, fallback to empty array
+  const [posts, setPosts] = useState(data?.forumPosts || []);
 
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "How can I access API keys?",
-      flair: "technical",
-      preview: "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently...",
-      timeAgo: "3 weeks ago",
-      tags: ["api", "help"],
-      upvotes: 15,
-      downvotes: 0,
-      comments: 2,
-      author: "user2",
-      directedTo: "user1"
-    },
-    {
-      id: 2,
-      title: "How can I make a referral for a job posting?",
-      flair: "non-technical",
-      preview: "Here at Make-It-All, we value the insights that our staff members have on the job market. For this reason, we have an attractive...",
-      timeAgo: "2 weeks ago",
-      tags: ["hr", "referral", "recruitment", "selection"],
-      upvotes: 10,
-      downvotes: 1,
-      comments: 10,
-      author: "user1",
-      directedTo: null
-    },
-    {
-      id: 3,
-      title: "Weekly Guest WiFi Code - Week 45",
-      flair: "technical",
-      preview: "For security reasons, we have a separate WiFi code for visitors. This code is updated weekly, ensuring that only genuine...",
-      timeAgo: "2 hours ago",
-      tags: ["wifi", "tech", "visitors"],
-      upvotes: 10,
-      downvotes: 0,
-      comments: 0,
-      author: "user3",
-      directedTo: null
-    },
-    {
-      id: 4,
-      title: "Organisational Development: Continuing Professional Development Courses",
-      flair: "non-technical",
-      preview: "Here at Make-It-All, we invest in our staff and want to see them develop. After a comprehensive review of our CPD provision...",
-      timeAgo: "5 minutes ago",
-      tags: ["learning for life", "cpd", "linkedin learning"],
-      upvotes: 25,
-      downvotes: 1,
-      comments: 3,
-      author: "user1",
-      directedTo: null
-    },
-    {
-      id: 5,
-      title: "Windows 11 Upgrade Information",
-      preview: "After many years utilising Windows 10, the Executive Management Team have authorised the launch of the Windows 11 Project...",
-      timeAgo: "1 day ago",
-      tags: ["release", "upgrade", "windows 10", "windows 11", "tech", "it"],
-      upvotes: 45,
-      downvotes: 4,
-      comments: 16,
-      author: "user4",
-      directedTo: "user1"
-    },
-    {
-      id: 6,
-      title: "Updates to Flexible Working Policy",
-      preview: "Following the full return of \"business as usual\", the Executive Management Team have consulted with a range of colleagues...",
-      timeAgo: "just now",
-      tags: ["return to office", "hr", "mandatory", "update", "redundancy"],
-      upvotes: 12,
-      downvotes: 60,
-      comments: 25,
-      author: "user5",
-      directedTo: null
-    },
-  ]);
+  // Update posts when data changes (when user logs in)
+  useEffect(() => {
+    if (data?.forumPosts) {
+      setPosts(data.forumPosts);
+    }
+  }, [data]);
 
   // Filter posts based on active tab and search
   const getFilteredPosts = () => {
     let filtered = [...posts];
 
-    // Apply filter tab
+    // Apply filter tab using user email
     if (activeFilterTab === "My Posts") {
-      filtered = filtered.filter(post => post.author === currentUserId);
+      filtered = filtered.filter(post => post.author === user?.email);
     } else if (activeFilterTab === "Directed To Me") {
-      filtered = filtered.filter(post => post.directedTo === currentUserId);
+      filtered = filtered.filter(post => post.directedTo === user?.email);
     }
 
     // Apply search
@@ -127,7 +56,12 @@ export default function Forum() {
   };
 
   const handleCreatePost = (newPost) => {
-    setPosts([newPost, ...posts]);
+    // Add current user as author
+    const postWithAuthor = {
+      ...newPost,
+      author: user?.email
+    };
+    setPosts([postWithAuthor, ...posts]);
   };
 
   const handlePostClick = (postId) => {
@@ -158,13 +92,19 @@ export default function Forum() {
 
       {/* Posts List */}
       <div className="space-y-4">
-        {filteredPosts.map(post => (
-          <ForumPost
-            key={post.id}
-            post={post}
-            onClick={() => handlePostClick(post.id)}
-          />
-        ))}
+        {filteredPosts.length === 0 ? (
+          <div className="text-center text-gray-400 py-12">
+            No posts found
+          </div>
+        ) : (
+          filteredPosts.map(post => (
+            <ForumPost
+              key={post.id}
+              post={post}
+              onClick={() => handlePostClick(post.id)}
+            />
+          ))
+        )}
       </div>
 
       {/* Create Post Modal */}
@@ -172,6 +112,7 @@ export default function Forum() {
         isOpen={isCreatePostOpen}
         onClose={() => setIsCreatePostOpen(false)}
         onSubmit={handleCreatePost}
+        userEmail={user?.email}
       />
     </div>
   );
