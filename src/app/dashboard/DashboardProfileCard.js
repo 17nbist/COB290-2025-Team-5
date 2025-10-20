@@ -2,6 +2,8 @@ import Card from "@/components/Card";
 import { FaTasks } from 'react-icons/fa';
 import { GoProject } from 'react-icons/go';
 import Image from "next/image";
+import PieChartWork from "@/components/PieChartWork";
+
 export default function DashboardProfileCard({ Title, Name, Position, TaskAllocated, ProjectAllocated, ProfilePicLink }) {
     return (
 
