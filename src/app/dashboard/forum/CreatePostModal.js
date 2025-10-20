@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
 
-export default function CreatePostModal({ isOpen, onClose, onSubmit }) {
+export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [tags, setTags] = useState("");
@@ -34,7 +34,9 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit }) {
             tags: tags.split(",").map(tag => tag.trim()).filter(tag => tag),
             upvotes: 0,
             downvotes: 0,
-            comments: 0
+            comments: 0,
+            author: userEmail,
+            directedTo: null
         };
 
         onSubmit(newPost);
@@ -87,12 +89,12 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit }) {
                             Flair *
                         </label>
                         <select
-                          className="w-full bg-gray-700 text-gray-100 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                          onChange={(e) => setFlair(e.target.value)}
-                          required>
-                        <option value="" selected disabled>--Select an option--</option>
-                        <option value="technical">Technical</option>
-                        <option value="non-technical">Non-Technical</option>
+                            className="w-full bg-gray-700 text-gray-100 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            onChange={(e) => setFlair(e.target.value)}
+                            required>
+                            <option value="" selected disabled>--Select an option--</option>
+                            <option value="technical">Technical</option>
+                            <option value="non-technical">Non-Technical</option>
                         </select>
                     </div>
 

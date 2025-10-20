@@ -4,16 +4,91 @@ import { useRouter } from 'next/navigation';
 
 const AuthContext = createContext();
 
+// user data. everyone in the team should add more data here for the demo as needed.
+const userData = {
+    'manager@gmail.com': {
+        events: [
+            { id: 0, title: "Google Auth Meeting", from: new Date(2025, 9, 19, 8), to: new Date(2025, 9, 19, 16) },
+            { id: 1, title: "Other Meeting", from: new Date(2025, 9, 19, 12), to: new Date(2025, 9, 19, 15) },
+            { id: 2, title: "Dashboard Meeting", from: new Date(2025, 9, 20, 12), to: new Date(2025, 9, 20, 15) },
+        ],
+        forumPosts: [
+            {
+                id: 1,
+                title: "How can I access API keys?",
+                flair: "technical",
+                preview: "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently...",
+                timeAgo: "3 weeks ago",
+                tags: ["api", "help"],
+                upvotes: 15,
+                downvotes: 0,
+                comments: 2,
+                author: "manager@gmail.com",
+                directedTo: "employee@gmail.com"
+            },
+            {
+                id: 2,
+                title: "How can I make a referral for a job posting?",
+                flair: "non-technical",
+                preview: "Here at Make-It-All, we value the insights that our staff members have on the job market. For this reason, we have an attractive...",
+                timeAgo: "2 weeks ago",
+                tags: ["hr", "referral", "recruitment", "selection"],
+                upvotes: 10,
+                downvotes: 1,
+                comments: 10,
+                author: "manager@gmail.com",
+                directedTo: null
+            },
+        ]
+    },
+    'employee@gmail.com': {
+        events: [
+            { id: 0, title: "Team Standup", from: new Date(2025, 9, 19, 9), to: new Date(2025, 9, 19, 10) },
+            { id: 1, title: "Code Review", from: new Date(2025, 9, 19, 14), to: new Date(2025, 9, 19, 15) },
+        ],
+        forumPosts: [
+            {
+                id: 3,
+                title: "Weekly Guest WiFi Code - Week 45",
+                flair: "technical",
+                preview: "For security reasons, we have a separate WiFi code for visitors. This code is updated weekly, ensuring that only genuine...",
+                timeAgo: "2 hours ago",
+                tags: ["wifi", "tech", "visitors"],
+                upvotes: 10,
+                downvotes: 0,
+                comments: 0,
+                author: "employee@gmail.com",
+                directedTo: null
+            },
+        ]
+    }
+};
+
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
+    const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
 
-    // Load user from localStorage on mount
+    // Load user and data from localStorage on mount
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
+        const storedData = localStorage.getItem('userData');
         if (storedUser) {
             setUser(JSON.parse(storedUser));
+        }
+        if (storedData) {
+            const parsedData = JSON.parse(storedData);
+
+            if (parsedData.events) {
+                parsedData.events = parsedData.events.map(event => ({
+                    ...event,
+                    from: new Date(event.from),
+                    to: new Date(event.to)
+                }));
+            }
+
+            setData(parsedData);
         }
         setLoading(false);
     }, []);
@@ -42,9 +117,15 @@ export function AuthProvider({ children }) {
         const validPassword = 'password123';
 
         if (users[email] && password === validPassword) {
-            const userData = users[email];
-            setUser(userData);
-            localStorage.setItem('user', JSON.stringify(userData));
+            const userInfo = users[email];
+            const userSpecificData = userData[email] || {};
+
+            setUser(userInfo);
+            setData(userSpecificData);
+
+            localStorage.setItem('user', JSON.stringify(userInfo));
+            localStorage.setItem('userData', JSON.stringify(userSpecificData));
+
             router.push('/dashboard');
             return { success: true };
         } else {
@@ -54,12 +135,14 @@ export function AuthProvider({ children }) {
 
     const logout = () => {
         setUser(null);
+        setData(null);
         localStorage.removeItem('user');
+        localStorage.removeItem('userData');
         router.push('/login');
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, loading }}>
+        <AuthContext.Provider value={{ user, data, login, logout, loading }}>
             {children}
         </AuthContext.Provider>
     );

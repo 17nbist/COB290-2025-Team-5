@@ -9,18 +9,19 @@ import NavBar from "@/components/NavBar";
 import CalendarPage from "./calendar/CalendarPage.js";
 import ProjectsPage from "./projects/ProjectsPage";
 
+
 const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar"];
 
-const events = [
-  { id: 0, title: "Google Auth Meeting", from: new Date(2025, 9, 19, 8), to: new Date(2025, 9, 19, 16) },
-  { id: 1, title: "Other Meeting", from: new Date(2025, 9, 19, 12), to: new Date(2025, 9, 19, 15) },
-  { id: 2, title: "Dashboard Meeting", from: new Date(2025, 9, 20, 12), to: new Date(2025, 9, 20, 15) },
-];
+
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Dashboard");
-  const { user, loading, logout } = useAuth();
+  const { user, data, loading, logout } = useAuth();
   const router = useRouter();
+
+  // Extract events from user data (authcontext)
+  const events = data?.events || [];
+
 
   // Redirect to login if not authenticated
   useEffect(() => {
@@ -59,8 +60,8 @@ export default function Home() {
         <div className="flex items-center gap-4">
           <span className="text-sm text-gray-600">Welcome, {user.name}</span>
           <span className={`px-3 py-1 rounded-full text-xs font-semibold ${user.role === 'manager'
-              ? 'bg-purple-100 text-purple-800'
-              : 'bg-blue-100 text-blue-800'
+            ? 'bg-purple-100 text-purple-800'
+            : 'bg-blue-100 text-blue-800'
             }`}>
             {user.role.toUpperCase()} DASHBOARD
           </span>
