@@ -5,11 +5,23 @@ import PieChart from "@/components/PieChart";
 import { useEffect, useState } from "react";
 import TaskViewMembers from "./TaskViewMembers";
 import TaskViewOverview from "./TaskViewOverview";
-
+import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
   const navItems = ["Overview", "To-Do", "Members"];
   const [activeTab, setActiveTab] = useState(navItems[0]);
+
+  // ✅ Added: store selected task
+  const [task, setTask] = useState(null);
+  const router = useRouter();
+
+  // ✅ Added: load selected task from localStorage
+  useEffect(() => {
+    const storedTask = localStorage.getItem("selectedTask");
+    if (storedTask) {
+      setTask(JSON.parse(storedTask));
+    }
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -35,7 +47,36 @@ export default function Dashboard() {
         paddingTop: "60px",
       }}
     >
-      {/* Top Nav Bar */}
+      {/* ✅ Added: Back Button */}
+      <button
+        onClick={() => router.back()}
+        style={{
+          position: "absolute",
+          top: "20px",
+          left: "20px",
+          background: "#f3f3f3",
+          padding: "8px 14px",
+          borderRadius: "8px",
+          cursor: "pointer",
+        }}
+      >
+        ← Back
+      </button>
+
+      {/* ✅ Added: Task title display */}
+      {task && (
+        <h1
+          style={{
+            fontSize: "28px",
+            fontWeight: "600",
+            marginBottom: "20px",
+          }}
+        >
+          {task.title}
+        </h1>
+      )}
+
+      {/* Top Nav Bar (unchanged) */}
       <NavBar
         items={navItems}
         activeTab={activeTab}
@@ -43,7 +84,7 @@ export default function Dashboard() {
         setHash={true}
       />
 
-      {/* Content Area */}
+      {/* Content Area (unchanged) */}
       <main
         style={{
           width: "100%",
@@ -59,7 +100,8 @@ export default function Dashboard() {
         )}
         {activeTab === "Overview" && (
           <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-            <TaskViewOverview />
+            {/* ✅ Pass task info to Overview, but preserve existing layout */}
+            <TaskViewOverview task={task} />
           </div>
         )}
       </main>
