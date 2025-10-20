@@ -42,7 +42,7 @@ export default function TaskViewOverview() {
 
       {/* Main Overview Box */}
       <div className="bg-white shadow-md rounded-lg w-full max-w-3xl p-8">
-        <h1 className="text-2xl font-semibold mb-6">Design Main Dashboard</h1>
+        <h1 className="text-2xl font-semibold mb-6">Google Auth</h1>
 
         <div className="text-gray-800 mb-6">
           <p className="font-semibold">
