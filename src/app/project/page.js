@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar";
 import TodayPage from "./today/TodayPage";
 import TasksPage from "./tasks/TasksPage";
 import EventsPage from "./events/EventsPage";
+import MembersPage from "./members/MembersPage";
 
 
 export default function ProjectPage() {
@@ -66,6 +67,11 @@ export default function ProjectPage() {
 				{activeTab == "Today" && <TodayPage tasks={tasks} events={events}/>}
 				{activeTab == "Tasks" && <TasksPage tasks={tasks} setTasks={setTasks}/>}
 				{activeTab == "Events" && <EventsPage events={events} setTasks={setTasks}/>}
+				{activeTab === "Members" && (
+					<div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+						<MembersPage />
+					</div>
+				)}
 				
 			</main>
 		</div>
