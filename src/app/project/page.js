@@ -1,12 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
+import {useRouter} from "next/navigation";
 import NavBar from "@/components/NavBar";
 import TodayPage from "./today/TodayPage";
 import TasksPage from "./tasks/TasksPage";
 import EventsPage from "./events/EventsPage";
 
+
 export default function ProjectPage() {
-	const topNavItems = ["Today", "Tasks", "Events", "Members"];
+	const router = useRouter();
+	const topNavItems = ["All Projects", "Today", "Tasks", "Events", "Members"];
 	const [activeTab, setActiveTab] = useState("Today");
 	
 	const [tasks, setTasks] = useState([
@@ -37,13 +40,22 @@ export default function ProjectPage() {
 		return () => window.removeEventListener("hashchange", handleHashChange);
 	}, []);
 
+	const handleTabClick = (tab) => {
+		if (tab == "All Projects") {
+			router.push("/dashboard#projects");
+			return;
+		}
+		setActiveTab(tab);
+	};
+
+
 	return (
 		<div className="flex flex-col w-screen h-screen bg-[#f5f7fa]">
 			<div className="pt-8 pb-4 flex justify-center">
 				<NavBar
 					activeTab={activeTab}
 					items={topNavItems}
-					setActiveTab={setActiveTab}
+					setActiveTab={handleTabClick}
 					pillStyle={{ width: "130px" }}
 					setHash={true}
 					style={{marginBottom: "50px"}}
@@ -54,6 +66,7 @@ export default function ProjectPage() {
 				{activeTab == "Today" && <TodayPage tasks={tasks} events={events}/>}
 				{activeTab == "Tasks" && <TasksPage tasks={tasks} setTasks={setTasks}/>}
 				{activeTab == "Events" && <EventsPage events={events} setTasks={setTasks}/>}
+				
 			</main>
 		</div>
 	);
