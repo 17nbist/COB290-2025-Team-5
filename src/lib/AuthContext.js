@@ -4,16 +4,49 @@ import { useRouter } from 'next/navigation';
 
 const AuthContext = createContext();
 
+// user data. everyone in the team should add more data here for the demo as needed.
+const userData = {
+    'manager@gmail.com': {
+        events: [
+            { id: 0, title: "Google Auth Meeting", from: new Date(2025, 9, 19, 8), to: new Date(2025, 9, 19, 16) },
+            { id: 1, title: "Other Meeting", from: new Date(2025, 9, 19, 12), to: new Date(2025, 9, 19, 15) },
+            { id: 2, title: "Dashboard Meeting", from: new Date(2025, 9, 20, 12), to: new Date(2025, 9, 20, 15) },
+        ],
+    },
+    'employee@gmail.com': {
+        events: [
+            { id: 0, title: "Google Auth Meeting", from: new Date(2025, 9, 19, 8), to: new Date(2025, 9, 19, 16) },
+            { id: 1, title: "Other Meeting", from: new Date(2025, 9, 19, 12), to: new Date(2025, 9, 19, 15) },
+            { id: 2, title: "Dashboard Meeting", from: new Date(2025, 9, 20, 12), to: new Date(2025, 9, 20, 15) },
+        ],
+    }
+};
+
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
+    const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
 
-    // Load user from localStorage on mount
+    // Load user and data from localStorage on mount
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
+        const storedData = localStorage.getItem('userData');
         if (storedUser) {
             setUser(JSON.parse(storedUser));
+        }
+        if (storedData) {
+            const parsedData = JSON.parse(storedData);
+
+            if (parsedData.events) {
+                parsedData.events = parsedData.events.map(event => ({
+                    ...event,
+                    from: new Date(event.from),
+                    to: new Date(event.to)
+                }));
+            }
+
+            setData(parsedData);
         }
         setLoading(false);
     }, []);
@@ -42,9 +75,15 @@ export function AuthProvider({ children }) {
         const validPassword = 'password123';
 
         if (users[email] && password === validPassword) {
-            const userData = users[email];
-            setUser(userData);
-            localStorage.setItem('user', JSON.stringify(userData));
+            const userInfo = users[email];
+            const userSpecificData = userData[email] || {};
+
+            setUser(userInfo);
+            setData(userSpecificData);
+
+            localStorage.setItem('user', JSON.stringify(userInfo));
+            localStorage.setItem('userData', JSON.stringify(userSpecificData));
+
             router.push('/dashboard');
             return { success: true };
         } else {
@@ -54,12 +93,14 @@ export function AuthProvider({ children }) {
 
     const logout = () => {
         setUser(null);
+        setData(null);
         localStorage.removeItem('user');
+        localStorage.removeItem('userData');
         router.push('/login');
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, loading }}>
+        <AuthContext.Provider value={{ user, data, login, logout, loading }}>
             {children}
         </AuthContext.Provider>
     );
