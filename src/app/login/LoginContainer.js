@@ -1,28 +1,27 @@
 "use client";
 
-import { useState } from "react";
-import { useEffect } from 'react';
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useAuth } from "@/lib/AuthContext";
 import LoginForm from "./LoginForm";
 
 export default function LoginContainer() {
     useEffect(() => {
-      document.title = 'Login | Make-It-All';
+        document.title = 'Login | Make-It-All';
     }, []);
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const router = useRouter();
+    const { login } = useAuth();
 
     const handleSignIn = (e) => {
         e.preventDefault();
+        const result = login(email, password);
 
-        // Hardcoded validation
-        if (email === "admin@gmail.com" && password === "password123") {
-            router.push("/dashboard");
-        } else {
-            setError("Invalid email or password.");
+        if (!result.success) {
+            setError(result.error);
         }
+        // If successful, the login function handles the redirect
     };
 
     return (
