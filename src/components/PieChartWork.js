@@ -1,3 +1,5 @@
+'use client';
+import React from 'react';
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -113,8 +115,8 @@ const submittedClassData = [...testData]
       percentage:
         (item.Count /
           (item.Submitted === 'Yes'
-            ? SubmittedData[0].value
-            : SubmittedData[1].value)) *
+            ? SubmissionData[0].value
+            : SubmissionData[1].value)) *
         100,
       color: hexToRgba(baseColor, opacityMap[item.Class] || 1),
     };
