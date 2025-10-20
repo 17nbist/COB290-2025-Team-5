@@ -6,7 +6,7 @@ import {daysInMonth, monthsBetween, firstDateOfWeek} from "./calendarUtils.js";
 import CalendarTask from "./CalendarTask.js";
 import Button from "@/components/Button.js";
 
-export default function DashCalendar({tasks, width, height}) {
+export default function DashCalendar({tasks}) {
   const [startDate, setStartDate] = useState(() => {
     const today = new Date();
     const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
@@ -85,48 +85,46 @@ export default function DashCalendar({tasks, width, height}) {
   }
 
   return (
-      <Card>
-        <div className="flex items-center justify-between">
-          <h1 className="font-[600] text-[20px]">Today's Events</h1>
-          <Button outerStyle={{}} text={"Full Calendar"} onClick={() => {window.location.hash = "Calendar"}}/>
-        </div>
-        
-        <div style={{
-          width: width,
-          display: "grid",
-          overflowX: "hidden",
-          position: "relative",
-          gridTemplateColumns: `repeat(${getNumberOfDivisions()}, minmax(0, 1fr))`,
-          borderRadius: "10px",
-          width: "100%",
-          height: "100%",
-          marginTop: "15px",
-          width: width + "px",
-          height: height + "px"
-        }}>
-
-          {/* dates and dividors */}
-          {
-            getDivisionTitles().map((e, i, arr) => (
-              <div key={e}
-                style={{
-                  borderRight: i !== arr.length - 1 ? "1px solid #ddd" : "none",
-                }}
-              >
-              <h1 style={{textAlign: "center"}}>{e}</h1>
-              </div>
-            ))
-          }
-
-          {/* tasks */}
-          <div style={{position: "absolute", marginTop: "40px"}}>
-          {
-            getTasksInRange().map((t) => (
-              <CalendarTask key={t.id} task={t} startDate={startDate} divisions={getNumberOfDivisions()} rangeType={"Day"} calendarWidth={width} gap={1}/>
-            ))
-          }
+      <Card style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "100%", height: "100%"}}>
+        <div style={{display: "flex", flexDirection: "column", gap: "5px", width: "100%", height: "100%"}}>
+          <div className="flex items-center justify-between">
+            <h1 className="font-[600] text-[20px]">Today's Events</h1>
+            <Button outerStyle={{}} text={"Full Calendar"} onClick={() => {window.location.hash = "Calendar"}}/>
           </div>
+          
+          <div style={{
+            display: "grid",
+            overflowX: "hidden",
+            position: "relative",
+            gridTemplateColumns: `repeat(${getNumberOfDivisions()}, minmax(0, 1fr))`,
+            borderRadius: "10px",
+            marginTop: "15px",
+            width: "100%",
+            height: "100%"
+          }}>
 
+            {/* dates and dividors */}
+            {
+              getDivisionTitles().map((e, i, arr) => (
+                <div key={e}
+                  style={{
+                    borderRight: i !== arr.length - 1 ? "1px solid #ddd" : "none",
+                  }}
+                >
+                <h1 style={{textAlign: "center"}}>{e}</h1>
+                </div>
+              ))
+            }
+
+            {/* tasks */}
+            <div style={{position: "absolute", marginTop: "40px", width: "100%"}}>
+            {
+              getTasksInRange().map((t) => (
+                <CalendarTask key={t.id} task={t} startDate={startDate} divisions={getNumberOfDivisions()} rangeType={"Day"} gap={1}/>
+              ))
+            }
+            </div>
+          </div>
         </div>
       </Card>
   )

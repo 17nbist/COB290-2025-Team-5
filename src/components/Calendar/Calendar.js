@@ -29,7 +29,7 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
 
 
   const sortedTasks = useMemo(() => (
-    [...tasks].sort((b, a) => new Date(b.from) - new Date(a.from))
+    [...tasks].sort((a, b) => new Date(a.from) - new Date(b.from))
   ), [tasks]);
 
   function incrementDate() {
@@ -104,11 +104,11 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
       } else {
         let foundTrack = false;
         for (let j = 0; j < tracks.length; j++) {
-
           if (tracked_tasks[i].from >= tracks[j].end) {
             foundTrack = true;
             tracks[j].end = tracked_tasks[i].to;
             tracked_tasks[i].track = j;
+            break;
           }
         }
 
@@ -148,7 +148,6 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
     } else if (rangeType == "Day") {
       let today = new Date(startDate)
       for (let i = 0; i < 24; i++) {
-        // titles.push(`${i.toString().padStart(2, "0")}:00 - ${(i+1).toString().padStart(2, "0")}:00`)
         titles.push(`${i.toString().padStart(2, "0")}:00`)
       }
     } else if (rangeType == "Month") {
@@ -179,8 +178,8 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
   }
 
   return (
-    <Card style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-      <div style={{display: "flex", flexDirection: "column", gap: "5px", height: "700px"}}>
+    <Card style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "100%", height: "100%"}}>
+      <div style={{display: "flex", flexDirection: "column", gap: "5px", width: "100%", height: "100%"}}>
         <h1>{getRangeText()}</h1>
         {/*top bar*/}
         <div style={{display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center", marginTop: "10px", marginBottom: "10px"}}>
@@ -194,7 +193,9 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
         {addOnClick && <Button outerStyle={{marginBottom: "10px"}} textStyle={{fontSize: "20px", fontWeight: "500"}} text={"+"} />}
 
         {/*calendar body*/}
-        <CalendarBody tasks={getTasksInRange()} divisions={getNumberOfDivisions()} rangeType={rangeType} divisionTitles={getDivisionTitles()} startDate={startDate} calendarWidth={1250}/>
+        <div className="flex-1">
+          <CalendarBody tasks={getTasksInRange()} divisions={getNumberOfDivisions()} rangeType={rangeType} divisionTitles={getDivisionTitles()} startDate={startDate}/>
+        </div>
       </div>
     </Card>
   )

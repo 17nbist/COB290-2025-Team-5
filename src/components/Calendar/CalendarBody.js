@@ -1,16 +1,14 @@
 import Card from "../Card.js";
 import CalendarTask from "./CalendarTask.js";
 
-export default function CalendarBody({tasks, divisions, divisionTitles, rangeType, calendarWidth, startDate}) {
-
-	
+export default function CalendarBody({tasks, divisions, divisionTitles, rangeType, startDate, taskGap}) {	
 	return (
-		<Card style={{height: "100%"}}>
+		<Card style={{height: "100%", width: "100%"}}>
 			<div style={{
 				display: "grid",
 				overflowX: "hidden",
 				position: "relative",
-				width: `${calendarWidth}px`,
+				width: `100%`,
 				height: "100%",
 				gridTemplateColumns: `repeat(${divisions}, minmax(0, 1fr))`,
 				borderRadius: "10px"
@@ -30,10 +28,10 @@ export default function CalendarBody({tasks, divisions, divisionTitles, rangeTyp
 				}
 
 				{/* tasks */}
-				<div style={{position: "absolute", marginTop: "40px"}}>
+				<div style={{position: "absolute", marginTop: "40px", width: "100%"}}>
 				{
 					tasks.map((t) => (
-						<CalendarTask key={t.id} task={t} startDate={startDate} divisions={divisions} rangeType={rangeType} calendarWidth={calendarWidth}/>
+						<CalendarTask key={t.id} task={t} startDate={startDate} divisions={divisions} rangeType={rangeType} gap={taskGap}/>
 					))
 				}
 				</div>
