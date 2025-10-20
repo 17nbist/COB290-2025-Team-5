@@ -38,7 +38,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#f5f7fa]">
+    <div className="flex flex-col w-screen h-screen bg-[#f5f7fa]">
       {/* Main Navigation */}
       <div className="pt-8 pb-4 flex justify-center">
         <NavBar

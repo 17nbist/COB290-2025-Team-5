@@ -6,9 +6,10 @@ export default function CalendarPage({events}) {
   useEffect(() => {
     document.title = 'Calendar | Make-It-All';
   }, []);
-    return (
-      <div style={{height: "900px", marginTop: "30px"}}>
-          <Calendar tasks={events} startRangeType="Day"/>
-      </div>
-    );
+
+  return (
+    <div style={{width: "80%", height: "80%", marginTop: "30px"}}>
+        <Calendar tasks={events} startRangeType="Day"/>
+    </div>
+  );
 }

@@ -10,11 +10,11 @@ export default function ProjectPage() {
 	const [activeTab, setActiveTab] = useState("Today");
 	
 	const [tasks, setTasks] = useState([
-		{id: 0, title: "Google Auth", from: new Date(2025, 9, 14, 8), to: new Date(2025, 9, 23, 14)},
+		{id: 0, title: "Google Auth", from: new Date(2025, 9, 19, 0), to: new Date(2025, 9, 23, 0)},
 		{id: 1, title: "Main Dashboard", from: new Date(2025, 9, 8, 0), to: new Date(2025, 9, 15, 0)},
 		{id: 2, title: "A Task", from: new Date(2025, 9, 14, 8), to: new Date(2025, 10, 28, 14)},
 		{id: 3, title: "Other Task", from: new Date(2025, 9, 13, 8), to: new Date(2025, 9, 15, 14)},
-		{id: 4, title: "Task B", from: new Date(2025, 9, 14, 8), to: new Date(2025, 9, 19, 20)},
+		{id: 4, title: "Task B", from: new Date(2025, 9, 14, 0), to: new Date(2025, 9, 19, 20)},
 	]);
 
 	const [events, setEvents] = useState([
@@ -38,7 +38,7 @@ export default function ProjectPage() {
 	}, []);
 
 	return (
-		<div className="flex flex-col min-h-screen bg-[#f5f7fa]">
+		<div className="flex flex-col w-screen h-screen bg-[#f5f7fa]">
 			<div className="pt-8 pb-4 flex justify-center">
 				<NavBar
 					activeTab={activeTab}
@@ -50,7 +50,7 @@ export default function ProjectPage() {
 				/>
 			</div>
 
-			<main className="flex-grow flex justify-center">
+			<main className="flex justify-center flex-1">
 				{activeTab == "Today" && <TodayPage tasks={tasks} events={events}/>}
 				{activeTab == "Tasks" && <TasksPage tasks={tasks} setTasks={setTasks}/>}
 				{activeTab == "Events" && <EventsPage events={events} setTasks={setTasks}/>}

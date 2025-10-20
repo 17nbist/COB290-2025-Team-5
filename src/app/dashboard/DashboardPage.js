@@ -10,9 +10,11 @@ export default function DashboardPage({events}) {
   }, []);
   
   return (
-    <div className="flex flex-col items-center">
-      <ProfileOverview name={"John Doe"} position={"CEO"} taskAllocated={"12"} ProjectAllocated={"18"} />
-      <DashCalendar tasks={events} width={1325} height ={400}/>
+    <div className="flex flex-col items-center w-full h-full">
+      <ProfileOverview name={"John Doe"} position={"CEO"} taskAllocated={"12"} ProjectAllocated={"18"} events={events}/>
+      {/* <div className="w-[1400px] h-[400px]">
+        <DashCalendar tasks={events}/>
+      </div> */}
     </div>
   );
 }

@@ -7,16 +7,16 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaTasks } from 'react-icons/fa';
 import { GoProject } from 'react-icons/go';
+import DashCalendar from "@/components/Calendar/DashCalendar";
 
 import DashboardProfileCard from "./DashboardProfileCard";
 import DashboardCard from "./DashboardCard";
 
 
-export default function ProfileOverview() {
+export default function ProfileOverview({events}) {
     return (
-        <div style={{ display: "flex", justifyContent: "center", height: "600px", width: "1400px" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "30% 70%", height: "100%", width: "100%" }}>
-
+        <div style={{ display: "flex", justifyContent: "center", height: "90%", width: "70%", flexDirection: "column"}}>
+            <div style={{ display: "grid", gridTemplateColumns: "30% 70%", height: "65%", width: "100%", flex: "flex-1" }}>
                 <div style={{ padding: "10px" }}>
                      <DashboardProfileCard Title={"Profile"} Name={"Mike Oxlarge"} Position={"CEO"} TaskAllocated={12} ProjectAllocated={18} ProfilePicLink={"/defaultPFP.png"} />
                 </div>
@@ -37,8 +37,10 @@ export default function ProfileOverview() {
                     </div>
 
                 </div>
-
             </div >
+            <div className="flex-1 h-full w-full">
+                <DashCalendar tasks={events}/>
+            </div>
         </div >
     )
 }
