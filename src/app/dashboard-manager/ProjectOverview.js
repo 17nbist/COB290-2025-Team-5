@@ -1,9 +1,10 @@
 import { progress } from "framer-motion"
+import Card from "@/components/Card"
 export default function ProjectOverview() {
     return (
         // style={{ height: "40vh", width: "40vh" }}
         <>
-            <div className="table"  >
+            <div className="table transition hover:-translate-y-[1px] hover:shadow-[0_4px_16px_rgba(0,0,0,0.15)]"  >
                 <div className="table__title">Project Overview</div>
                 <div className="table_header">
                     <div className="item_header">Project</div>
