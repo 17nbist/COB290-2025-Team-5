@@ -88,7 +88,7 @@ export default function DashCalendar({tasks}) {
       <Card style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "100%", height: "100%"}}>
         <div style={{display: "flex", flexDirection: "column", gap: "5px", width: "100%", height: "100%"}}>
           <div className="flex items-center justify-between">
-            <h1 className="font-[600] text-[20px]">Today's Events</h1>
+            <h1 className="font-[600] text-[20px]">Today&apos;s Events</h1>
             <Button outerStyle={{}} text={"Full Calendar"} onClick={() => {window.location.hash = "Calendar"}}/>
           </div>
           
