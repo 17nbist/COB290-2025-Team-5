@@ -20,7 +20,11 @@
   }
 }
 
-h1, p, h2, h3, span {
+h1,
+p,
+h2,
+h3,
+span {
   font-family: var(--font-inter), sans-serif;
 }
 
@@ -28,6 +32,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0%;
 }
 
 .top-right {
@@ -65,9 +71,11 @@ body {
 }
 
 .table {
-  background: rgb(44, 44, 44);
+  margin-top: 10%;
+  background: #f5f5f5;;
+
   font-family: "Courier New", Courier, monospace;
-  border-radius: 12px 12px 4px 4px;
+  border-radius: 4%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -75,24 +83,24 @@ body {
 }
 
 .table__title {
-  color: white;
-  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
   padding: clamp(8px, 2%, 16px) clamp(12px, 3%, 24px);
-  border-bottom: 1px solid rgb(167, 159, 159);
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  border-bottom: 1px solid rgb(203, 203, 203);
+  font-size: clamp(0.9rem, 2.3vw, 1.1rem);
   flex-shrink: 0;
 }
 
 .table_header {
   display: flex;
   width: 100%;
-  border-right: 1px solid rgb(203, 203, 203);
-  border-left: 1px solid rgb(203, 203, 203);
-  border-bottom: 1px solid rgb(203, 203, 203);
+  border-bottom: 1px rgb(208, 0, 0);
 }
 
 .item_header {
-  background: rgb(201, 201, 201);
+  background: #f5f5f5;;
+
+  border-bottom: 1px solid rgb(203, 203, 203);
   color: black;
   font-weight: bold;
   font-size: clamp(0.75rem, 1.5vw, 1rem);
@@ -101,19 +109,19 @@ body {
   align-items: center;
   justify-content: center;
   padding: clamp(8px, 1.5%, 12px) clamp(8px, 2%, 16px);
-  border-right: 1px solid rgb(203, 203, 203);
+  border-top: 1px solid rgb(203, 203, 203);
   text-align: center;
 }
 
 .item_header:last-child {
   border-right: none;
+
 }
 
 .table__data {
   display: flex;
   flex: 1;
-  border-right: 1px solid rgb(203, 203, 203);
-  border-left: 1px solid rgb(203, 203, 203);
+
   min-height: 0;
 }
 
@@ -121,7 +129,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid rgb(203, 203, 203);
+  border-right: none;
 }
 
 .table__right:last-child {
@@ -130,6 +138,7 @@ body {
 
 .item {
   background-color: white;
+  background: #f5f5f5;;
   color: black;
   font-size: clamp(0.75rem, 1.5vw, 0.95rem);
   flex: 1;
@@ -145,7 +154,8 @@ body {
 }
 
 .item:nth-child(even) {
-  background: rgb(234, 235, 234);
+
+  background: #f5f5f5;;
 }
 
 
@@ -156,7 +166,7 @@ body {
 
 .item_header p:first-child {
   font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .item_header p:last-child {

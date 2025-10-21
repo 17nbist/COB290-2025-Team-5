@@ -79,8 +79,8 @@ export default function PieChart({ inputData }) {
         for (let i = 0; i < data.length; i++) {
             let colour 
             do {
-                colour = Math.ceil((Math.random() * 50))
-            } while (colour.includes(backGroundColorList));
+                colour = pieChartColors[Math.ceil((Math.random() * 50))]
+            } while (backGroundColorList.includes(colour));
 
             backGroundColorList.push(colour)
         }
