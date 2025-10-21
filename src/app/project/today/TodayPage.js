@@ -30,7 +30,7 @@ export default function TodayPage({ tasks, events }) {
   const getEventSubTitle = (e) =>
     `${e.from.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })} - ${e.to.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
 
-  // ✅ Task click handler
+  // Task click handler
   const handleTaskClick = (task) => {
     if (task.title === "Google Auth" || task.title === "A Task") {
       console.log("Navigating to /task-view for:", task.title);

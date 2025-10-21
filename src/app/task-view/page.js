@@ -11,11 +11,11 @@ export default function Dashboard() {
   const navItems = ["Overview", "To-Do", "Members"];
   const [activeTab, setActiveTab] = useState(navItems[0]);
 
-  // ✅ Added: store selected task
+  // Added: store selected task
   const [task, setTask] = useState(null);
   const router = useRouter();
 
-  // ✅ Added: load selected task from localStorage
+  // Added: load selected task from localStorage
   useEffect(() => {
     const storedTask = localStorage.getItem("selectedTask");
     if (storedTask) {
@@ -47,7 +47,7 @@ export default function Dashboard() {
         paddingTop: "60px",
       }}
     >
-      {/* ✅ Added: Back Button */}
+      {/* Added: Back Button */}
       <button
         onClick={() => router.back()}
         style={{
@@ -62,19 +62,6 @@ export default function Dashboard() {
       >
         ← Back
       </button>
-
-      {/* ✅ Added: Task title display */}
-      {task && (
-        <h1
-          style={{
-            fontSize: "28px",
-            fontWeight: "600",
-            marginBottom: "20px",
-          }}
-        >
-          {task.title}
-        </h1>
-      )}
 
       {/* Top Nav Bar (unchanged) */}
       <NavBar
@@ -100,7 +87,7 @@ export default function Dashboard() {
         )}
         {activeTab === "Overview" && (
           <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-            {/* ✅ Pass task info to Overview, but preserve existing layout */}
+            {/* Pass task info to Overview, but preserve existing layout */}
             <TaskViewOverview task={task} />
           </div>
         )}
