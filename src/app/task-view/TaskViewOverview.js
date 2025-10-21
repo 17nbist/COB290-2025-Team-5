@@ -1,20 +1,21 @@
 "use client";
 import { useRouter } from "next/navigation";
 
-export default function TaskViewOverview() {
+export default function TaskViewOverview({ task }) {
   const router = useRouter();
 
-  // Create dummy data for "yesterday"
+  // Fallback title if no task is passed
+  const title = task?.title || "Untitled Task";
+
+  // Dummy date logic (same as before)
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
-  yesterday.setHours(14, 0, 0, 0); // creates fake time of 14:00
+  yesterday.setHours(14, 0, 0, 0);
 
-  // Create dummy data for "tomorrow"
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setHours(17, 0, 0, 0); // creates fake time of 17:00
+  tomorrow.setHours(17, 0, 0, 0);
 
-  // Format date
   const formatDate = (date) => {
     const hours = String(date.getHours()).padStart(2, "0");
     const minutes = String(date.getMinutes()).padStart(2, "0");
@@ -29,20 +30,21 @@ export default function TaskViewOverview() {
 
   return (
     <div className="flex flex-col items-center bg-gray-50 py-10 px-4">
-      {/* Creates back arrow */}
+      {/* Back button (keep it here if you want it at the top of the page) */}
       <div className="flex items-center justify-start w-full max-w-5xl mb-10">
         <button
-            onClick={() => router.back()}
-            className="flex items-center gap-2 text-gray-600 hover:text-black transition"
-            >
-            <span className="text-lg">←</span>
-            <span>Back</span>
+          onClick={() => router.back()}
+          className="flex items-center gap-2 text-gray-600 hover:text-black transition"
+        >
+          <span className="text-lg">←</span>
+          <span>Back</span>
         </button>
       </div>
 
       {/* Main Overview Box */}
       <div className="bg-white shadow-md rounded-lg w-full max-w-3xl p-8">
-        <h1 className="text-2xl font-semibold mb-6">Google Auth</h1>
+        {/* Moved dynamic title into the card header */}
+        <h1 className="text-2xl font-semibold mb-6">{title}</h1>
 
         <div className="text-gray-800 mb-6">
           <p className="font-semibold">
@@ -67,3 +69,4 @@ export default function TaskViewOverview() {
     </div>
   );
 }
+
