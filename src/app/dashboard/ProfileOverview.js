@@ -13,26 +13,11 @@ export default function ProfileOverview({ events }) {
   const { user } = useAuth();
   const router = useRouter(); // initialize router
 
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        height: "90%",
-        width: "70%",
-        flexDirection: "column",
-      }}
-    >
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "30% 70%",
-          height: "65%",
-          width: "100%",
-          flex: "flex-1",
-        }}
-      >
-        <div style={{ padding: "10px" }}>
+
+
+    return (
+      <div className="box-border" style={{display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gridTemplateRows: "repeat(8, 1fr)", gap: "1rem", padding: "2rem", width: "70%", height: "100%"}}>
+        <div style={{gridRow: "1/6", gridColumn: "1/3"}}>
           <DashboardProfileCard
             Title={"Profile"}
             Name={user?.name || "User"}
@@ -42,49 +27,28 @@ export default function ProfileOverview({ events }) {
             ProfilePicLink={"/defaultPFP.png"}
           />
         </div>
-
-        {/* Task Section */}
-        <div
-          className="justify-left item-start"
-          style={{
-            display: "grid",
-            gridTemplateRows: "60% 40%",
-            padding: "10px",
-            margin: "1%",
-          }}
-        >
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "50% 50%",
-              gap: "5px",
-            }}
-          >
-            <DashboardCard
-              title={"Task Summary"}
-              label={"Task progress"}
-              result={"83%"}
-              Icon={<FaTasks />}
-            />
-            <DashboardCard
-              title={"Project Summary"}
-              label={"Project progress"}
-              result={"53%"}
-              Icon={<GoProject />}
-            />
-          </div>
-
-          {/* To-Do Section moved into its own file */}
-          <div className="w-full mt-[1%]">
-            <DashboardToDoCard />
-          </div>
+        <div style={{gridRow: "1/4", gridColumn: "3/5"}}>
+          <DashboardCard
+            title={"Task Summary"}
+            label={"Task progress"}
+            result={"83%"}
+            Icon={<FaTasks />}
+          />
+        </div>
+        <div style={{gridRow: "1/4", gridColumn: "5/7"}}>
+          <DashboardCard
+            title={"Project Summary"}
+            label={"Project progress"}
+            result={"53%"}
+            Icon={<GoProject />}
+          />
+        </div>
+        <div style={{gridRow: "4/6", gridColumn: "3/7"}}>
+          <DashboardToDoCard />
+        </div>
+        <div style={{gridRow: "6/9", gridColumn: "1/7"}}>
+          <DashCalendar tasks={events} />
         </div>
       </div>
-
-      {/* Calendar below */}
-      <div className="flex-1 h-full w-full">
-        <DashCalendar tasks={events} />
-      </div>
-    </div>
-  );
+    )
 }

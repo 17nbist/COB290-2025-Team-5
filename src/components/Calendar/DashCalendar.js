@@ -72,8 +72,7 @@ export default function DashCalendar({tasks}) {
     let titles = [];
     let today = new Date(startDate)
     for (let i = 0; i < 24; i++) {
-      // titles.push(`${i.toString().padStart(2, "0")}:00 - ${(i+1).toString().padStart(2, "0")}:00`)
-      titles.push(`${i.toString().padStart(2, "0")}:00`)
+      titles.push(`${i.toString().padStart(2, "0")}`)
     }
     return titles;
   }
@@ -85,11 +84,11 @@ export default function DashCalendar({tasks}) {
   }
 
   return (
-      <Card style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "100%", height: "100%"}}>
-        <div style={{display: "flex", flexDirection: "column", gap: "5px", width: "100%", height: "100%"}}>
+      <Card style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "100%", height: "100%", padding: "10px"}}>
+        <div style={{display: "flex", flexDirection: "column", gap: "10px", width: "100%", height: "100%"}}>
           <div className="flex items-center justify-between">
-            <h1 className="font-[600] text-[20px]">Today&apos;s Events</h1>
-            <Button outerStyle={{}} text={"Full Calendar"} onClick={() => {window.location.hash = "Calendar"}}/>
+            <h1 className="font-[600] text-[15px]">Today&apos;s Events</h1>
+            <Button outerStyle={{height: "30px"}} textStyle={{fontSize: "10px"}} text={"Full Calendar"} onClick={() => {window.location.hash = "Calendar"}}/>
           </div>
           
           <div style={{
@@ -98,7 +97,7 @@ export default function DashCalendar({tasks}) {
             position: "relative",
             gridTemplateColumns: `repeat(${getNumberOfDivisions()}, minmax(0, 1fr))`,
             borderRadius: "10px",
-            marginTop: "15px",
+            marginTop: "5px",
             width: "100%",
             height: "100%"
           }}>
@@ -120,7 +119,7 @@ export default function DashCalendar({tasks}) {
             <div style={{position: "absolute", marginTop: "40px", width: "100%"}}>
             {
               getTasksInRange().map((t) => (
-                <CalendarTask key={t.id} task={t} startDate={startDate} divisions={getNumberOfDivisions()} rangeType={"Day"} gap={1}/>
+                <CalendarTask key={t.id} task={t} startDate={startDate} divisions={getNumberOfDivisions()} rangeType={"Day"} gap={1} taskWidth={40}/>
               ))
             }
             </div>
