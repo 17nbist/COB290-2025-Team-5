@@ -54,7 +54,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col w-screen h-screen bg-[#f5f7fa]">
+    <div className="flex flex-col bg-[#f5f7fa] h-screen" style={{width:"100vw"}}>
       {/* Header with role indicator and logout */}
       <div className="flex justify-between items-center px-8 pt-4">
         <div className="flex items-center gap-4">
@@ -86,7 +86,7 @@ export default function Home() {
       </div>
 
       {/* Main Content Area */}
-      <main className="flex-grow flex justify-center">
+      <main className="flex justify-center flex-1 min-h-0">
         {activeTab === "Dashboard" && <DashboardPage events={events} />}
         {activeTab === "Forum" && <ForumPage />}
         {activeTab === "Requests" && <RequestPage />}
