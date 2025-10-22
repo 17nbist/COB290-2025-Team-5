@@ -20,6 +20,11 @@ export default function DashboardTodoCard() {
     setStarred((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
+  // Helper function to navigate
+  const goToTodo = () => {
+    router.push("/task-view#to-do");
+  };
+
   return (
     <Card
       className="border border-black hover:bg-gray-100 transition-colors duration-200"
@@ -63,7 +68,10 @@ export default function DashboardTodoCard() {
                 key={key}
                 className="relative w-[55%] sm:w-[45%] md:w-[40%]"
               >
-                <button className="bg-white text-black px-3 py-1.5 text-[13px] rounded-md border border-gray-400 hover:bg-gray-200 transition w-full text-center relative">
+                <button
+                  onClick={goToTodo}
+                  className="bg-white text-black px-3 py-1.5 text-[13px] rounded-md border border-gray-400 hover:bg-gray-200 transition w-full text-center relative"
+                >
                   {label}
                 </button>
                 <button
