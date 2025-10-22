@@ -3,6 +3,8 @@ import Card from "@/components/Card";
 import { useRouter } from "next/navigation";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { useState } from "react";
+import SearchBar from "@/components/SearchBar";
+import NavBar from "@/components/NavBar";
 
 export default function DashboardTodoCard() {
   const router = useRouter();
@@ -15,6 +17,11 @@ export default function DashboardTodoCard() {
     test: false,
   });
 
+  const [searchVal, setSearchVal] = useState("");
+
+  const filterTabs = ["Start Date", "End Date", "Name"];
+  const [activeFilterTab, setActiveFilterTab] = useState(null); // ✅ no filter selected initially
+
   // Toggle a star’s filled state
   const toggleStar = (key) => {
     setStarred((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -26,13 +33,25 @@ export default function DashboardTodoCard() {
       style={{ color: "black", padding: "16px", width: "100%", height: "100%" }}
     >
       <div className="flex flex-col w-full h-full">
-        {/* Header */}
-        <h1 className="text-[16px] font-[600] mb-[10px] text-center">To-Do</h1>
+        {/* Header section with title + search + filters */}
+        <div className="flex mb-[30px] items-center justify-between w-full">
+          {/* Centered title */}
+          <h1 className="text-[24px] font-[700] flex-1 text-center">To-Do</h1>
 
+          {/* Search + Filters (aligned right) */}
+          <div className="flex items-center justify-end flex-1 gap-[20px] mr-[40px]">
+            <SearchBar />
+            <NavBar
+              items={filterTabs}
+              activeTab={activeFilterTab}
+              setActiveTab={setActiveFilterTab}
+            />
+          </div>
+        </div>
+
+        {/* Buttons section */}
         <div style={{ height: "100%", overflow: "auto" }}>
-          {/* Button group */}
           <div className="flex flex-col items-start gap-[10px] pl-[4px]">
-            
             {/* Main button */}
             <div className="relative w-[55%] sm:w-[45%] md:w-[40%]">
               <button
