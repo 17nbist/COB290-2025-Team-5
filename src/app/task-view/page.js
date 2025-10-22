@@ -5,6 +5,7 @@ import PieChart from "@/components/PieChart";
 import { useEffect, useState } from "react";
 import TaskViewMembers from "./TaskViewMembers";
 import TaskViewOverview from "./TaskViewOverview";
+import TaskViewToDo from "./TaskViewToDo";
 import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
@@ -89,6 +90,12 @@ export default function Dashboard() {
           <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
             {/* Pass task info to Overview, but preserve existing layout */}
             <TaskViewOverview task={task} />
+          </div>
+        )}
+        {activeTab === "To-Do" && (
+          <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+            {/* Pass task info to To-Do, but preserve existing layout */}
+            <TaskViewToDo task={task} />
           </div>
         )}
       </main>
