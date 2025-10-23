@@ -21,6 +21,7 @@ export default function PieChart({ inputData }) {
     //     "title" : "title"
     // }
 
+
     const pieChartColors = [
         'rgb(255, 99, 132)',   // Bright Pink
         'rgb(54, 162, 235)',   // Sky Blue
