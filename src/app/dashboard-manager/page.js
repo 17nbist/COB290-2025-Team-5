@@ -8,8 +8,6 @@ const InputDataExample = {
   "data": [7, 13, 40, 3, 14, 34],
   "title": "Employee workload"
 
-
-
 }
 export default function Home() {
 
