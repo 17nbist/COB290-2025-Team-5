@@ -14,7 +14,7 @@ export default function ProjectPage() {
 	const [activeTab, setActiveTab] = useState("Today");
 	
 	const [tasks, setTasks] = useState([
-		{id: 0, title: "Google Auth", from: new Date(2025, 9, 19, 0), to: new Date(2025, 9, 23, 0)},
+		{id: 0, title: "Google Auth", from: new Date(2025, 9, 19, 0), to: new Date(2025, 10, 7, 0)},
 		{id: 1, title: "Main Dashboard", from: new Date(2025, 9, 8, 0), to: new Date(2025, 9, 15, 0)},
 		{id: 2, title: "A Task", from: new Date(2025, 9, 14, 8), to: new Date(2025, 10, 28, 14)},
 		{id: 3, title: "Other Task", from: new Date(2025, 9, 13, 8), to: new Date(2025, 9, 15, 14)},
