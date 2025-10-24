@@ -14,17 +14,17 @@ export default function ProjectPage() {
 	const [activeTab, setActiveTab] = useState("Today");
 	
 	const [tasks, setTasks] = useState([
-		{id: 0, title: "Google Auth", from: new Date(2025, 9, 19, 0), to: new Date(2025, 10, 7, 0)},
-		{id: 1, title: "Main Dashboard", from: new Date(2025, 9, 8, 0), to: new Date(2025, 9, 15, 0)},
-		{id: 2, title: "A Task", from: new Date(2025, 9, 14, 8), to: new Date(2025, 10, 28, 14)},
+		{id: 0, title: "Google Auth", from: new Date(2025, 9, 29, 0), to: new Date(2025, 10, 7, 0)},
+		{id: 1, title: "Main Dashboard", from: new Date(2025, 10, 8, 0), to: new Date(2025, 10, 18, 0)},
+		{id: 2, title: "A Task", from: new Date(2025, 10, 14, 8), to: new Date(2025, 10, 28, 14)},
 		{id: 3, title: "Other Task", from: new Date(2025, 9, 13, 8), to: new Date(2025, 9, 15, 14)},
 		{id: 4, title: "Task B", from: new Date(2025, 9, 14, 0), to: new Date(2025, 9, 19, 20)},
 	]);
 
 	const [events, setEvents] = useState([
-		{id: 0, title: "Google Auth Meeting", from: new Date(2025, 9, 19, 8), to: new Date(2025, 9, 19, 16)},
-		{id: 1, title: "Other Meeting", from: new Date(2025, 9, 19, 12), to: new Date(2025, 9, 19, 15)},
-		{id: 2, title: "Dashboard Meeting", from: new Date(2025, 9, 20, 12), to: new Date(2025, 9, 20, 15)},
+		{id: 0, title: "Google Auth Meeting", from: new Date(2025, 10, 19, 8), to: new Date(2025, 10, 19, 16)},
+		{id: 1, title: "Other Meeting", from: new Date(2025, 10, 19, 12), to: new Date(2025, 10, 19, 15)},
+		{id: 2, title: "Dashboard Meeting", from: new Date(2025, 10, 20, 12), to: new Date(2025, 10, 20, 15)},
 	]);
 
 	useEffect(() => {
