@@ -6,22 +6,31 @@ import NavBar from "../NavBar.js";
 import CalendarBody from "./CalendarBody.js";
 import {daysInMonth, monthsBetween, firstDateOfWeek} from "./calendarUtils.js";
 
-export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
+export default function Calendar({tasks, startRangeType="Week", addOnClick, excludeNav=[]}) {
   const [startDate, setStartDate] = useState(firstDateOfWeek(new Date()));
 
+  const rangeTypes = ["8h", "Day", "Week" , "Month", "Year"].filter(e => !(excludeNav.includes(e)));
   const [rangeType, setRangeType] = useState(startRangeType);
 
   useEffect(() => {
     let newStart = new Date();
-    newStart.setHours(0, 0, 0, 0);
+    
     if (rangeType === "Week") {
+      newStart.setHours(0, 0, 0, 0);
       newStart = firstDateOfWeek(newStart);
     } else if (rangeType === "Month") {
+      newStart.setHours(0, 0, 0, 0);
       newStart.setDate(1);
     } else if (rangeType === "Year") {
+      newStart.setHours(0, 0, 0, 0);
       newStart.setMonth(0);
       newStart.setDate(1);
+    } else if (rangeType === "8h") {
+      newStart.setHours(newStart.getHours(), 0, 0, 0)
     }
+
+    
+
     if (startDate.getTime() !== newStart.getTime()) {
       setStartDate(newStart);
     }
@@ -42,6 +51,8 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
       newDate.setMonth(newDate.getMonth() + 1);
     } else if (rangeType == "Year") {
       newDate.setFullYear(newDate.getFullYear() + 1);
+    } else if (rangeType == "8h") {
+      newDate.setHours(newDate.getHours() + 8, 0, 0, 0)
     }
     setStartDate(newDate);
   }
@@ -56,6 +67,8 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
       newDate.setMonth(newDate.getMonth() - 1)
     } else if (rangeType == "Year") {
       newDate.setFullYear(newDate.getFullYear() - 1);
+    } else if (rangeType == "8h") {
+      newDate.setHours(newDate.getHours() - 8, 0, 0, 0)
     }
     setStartDate(newDate);
   }
@@ -72,6 +85,8 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
       endDate.setDate(0);
     } else if (rangeType == "Year") {
       endDate.setFullYear(startDate.getFullYear() + 1, 0, 1);
+    } else if (rangeType == "8h") {
+      endDate.setHours(endDate.getHours() + 8, 0, 0, 0)
     }
 
 
@@ -83,7 +98,7 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
       if (rangeType == "Week" || rangeType == "Month") {
         fromIndex = (t.from - startDate) / (1000 * 60 * 60 * 24);
         toIndex = (t.to - startDate) / (1000 * 60 * 60 * 24);
-      } else if (rangeType == "Day") {
+      } else if (rangeType == "Day" || rangeType == "8h") {
         fromIndex = (t.from - startDate) / (1000 * 60 * 60);
         toIndex = (t.to - startDate) / (1000 * 60 * 60);
       } else if (rangeType == "Year") {
@@ -133,6 +148,8 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
       return daysInMonth(startDate);
     } else if (rangeType == "Year") {
       return 12;
+    } else if (rangeType == "8h") {
+      return 8;
     }
   }
 
@@ -157,24 +174,48 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
       }
     } else if (rangeType == "Year") {
       titles = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    } else if (rangeType == "8h") {
+      let now = new Date(startDate)
+      now.setHours(now.getHours(), 0, 0, 0, 0)
+      for (let i = 0; i < 8; i++) {
+        titles.push(`${now.getHours().toString().padStart(2, "0")}:00`)
+        now.setHours(now.getHours() + 1, 0, 0, 0, 0) 
+      }
     }
     return titles;
   }
 
-  function getRangeText() {
+function getRangeText() {
     let endDate = new Date(startDate);
 
-    if (rangeType == "Week") {
+    if (rangeType === "Week") {
       endDate.setDate(startDate.getDate() + 8);
-    } else if (rangeType == "Day") {
+    } else if (rangeType === "Day") {
       endDate.setDate(startDate.getDate() + 1);
-    } else if (rangeType == "Month") {
+    } else if (rangeType === "Month") {
       endDate.setMonth(startDate.getMonth() + 1);
       endDate.setDate(0);
-    } else if (rangeType == "Year") {
+    } else if (rangeType === "Year") {
       endDate.setFullYear(startDate.getFullYear() + 1, 0, 1);
+    } else if (rangeType === "8h") {
+      endDate.setHours(startDate.getHours() + 8);
     }
-    return `${startDate.toDateString()} - ${endDate.toDateString()}`;
+
+    if (rangeType === "8h") {
+      const dateOpts = {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+      };
+      const timeOpts = {
+        hour: "2-digit",
+        minute: "2-digit",
+      };
+
+      return `${startDate.toLocaleDateString(undefined, dateOpts)} ${startDate.toLocaleTimeString(undefined, timeOpts)} - ${endDate.toLocaleDateString(undefined, dateOpts)} ${endDate.toLocaleTimeString(undefined, timeOpts)}`;
+    } else {
+      return `${startDate.toDateString()} - ${endDate.toDateString()}`;
+    }
   }
 
   return (
@@ -183,7 +224,7 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick}) {
         <h1>{getRangeText()}</h1>
         {/*top bar*/}
         <div style={{display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center", marginTop: "10px", marginBottom: "10px"}}>
-          <NavBar items={["Day", "Week", "Month", "Year"]} activeTab={rangeType} setActiveTab={setRangeType}/>
+          <NavBar items={rangeTypes} activeTab={rangeType} setActiveTab={setRangeType}/>
           <div style={{display: "flex", gap: "5px"}}>
             <Button text={"<"} onClick={decrementDate} />
             <Button text={">"} onClick={incrementDate} />

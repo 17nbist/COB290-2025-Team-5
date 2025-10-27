@@ -22,9 +22,9 @@ export default function ProjectPage() {
 	]);
 
 	const [events, setEvents] = useState([
-	{id: 0, title: "Google Auth Meeting", from: new Date(2025, 10, 4, 8), to: new Date(2025, 10, 4, 16)},
-	{id: 1, title: "Other Meeting", from: new Date(2025, 10, 5, 12), to: new Date(2025, 10, 5, 15)},
-	{id: 2, title: "Dashboard Meeting", from: new Date(2025, 10, 6, 11), to: new Date(2025, 10, 6, 15)},
+		{id: 0, title: "Google Auth Meeting", from: new Date(2025, 10, 4, 8), to: new Date(2025, 10, 4, 16)},
+		{id: 1, title: "Other Meeting", from: new Date(2025, 10, 5, 12), to: new Date(2025, 10, 5, 15)},
+		{id: 2, title: "Dashboard Meeting", from: new Date(2025, 10, 6, 11), to: new Date(2025, 10, 6, 15)},
 	]);
 
 	useEffect(() => {

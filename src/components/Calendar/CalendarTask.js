@@ -9,7 +9,7 @@ export default function CalendarTask({task, startDate, divisions, rangeType, tas
   if (rangeType == "Week" || rangeType == "Month") {
     fromIndex = (task.from - startDate) / (1000 * 60 * 60 * 24);
     toIndex = (task.to - startDate) / (1000 * 60 * 60 * 24);
-  } else if (rangeType == "Day") {
+  } else if (rangeType == "Day" || rangeType == "8h") {
     fromIndex = (task.from - startDate) / (1000 * 60 * 60);
     toIndex = (task.to - startDate) / (1000 * 60 * 60);
   } else if (rangeType == "Year") {
