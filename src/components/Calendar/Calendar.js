@@ -27,9 +27,9 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick, excl
       newStart.setHours(0, 0, 0, 0);
     } else if (rangeType === "8h") {
       newStart.setHours(newStart.getHours(), 0, 0, 0)
+    } else if (rangeType == "Day") {
+      newStart.setHours(0, 0, 0, 0);
     }
-
-    
 
     if (startDate.getTime() !== newStart.getTime()) {
       setStartDate(newStart);

@@ -19,6 +19,9 @@ export default function EventsPage({events, setEvents}) {
 		
 		setEvents(prev => [...prev, {id:prev.length, title, from, to}]);
 		setShowModal(false);
+		setTitle("")
+		setFrom(new Date());
+		setTo(new Date());
 	}
 
 	return (

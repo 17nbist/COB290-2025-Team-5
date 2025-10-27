@@ -22,6 +22,10 @@ export default function TasksPage({tasks, setTasks}) {
 		console.log(from, to);
 		setTasks(prev => [...prev, {id:prev.length, title, description, from, to}]);
 		setShowModal(false);
+		setTitle("");
+		setDescription("");
+		setFrom(new Date());
+		setTo(new Date());
 	}
 
 	function handleTaskClick (task) {
