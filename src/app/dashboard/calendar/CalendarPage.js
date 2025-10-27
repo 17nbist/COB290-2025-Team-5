@@ -4,24 +4,12 @@ import Calendar from "@/components/Calendar/Calendar.js";
 import { useEffect } from "react";
 import { useAuth } from "@/lib/AuthContext.js";
 
-export default function CalendarPage() {
-const { user, data, loading } = useAuth();
+export default function CalendarPage({events}) {
+  
 
-useEffect(() => {
-  document.title = "Calendar | Make-It-All";
-  }, []);
-
-  // Prevent rendering before data is ready
-  if (loading) return <p>Loading...</p>;
-
-  if (!user) return <p>Please log in to view your calendar.</p>;
-
-  //  Fallback if data or events missing
-  const events = data?.events?.map(e => ({
-    ...e,
-    from: new Date(e.from),
-    to: new Date(e.to),
-    })) || [];
+  useEffect(() => {
+    document.title = "Calendar | Make-It-All";
+    }, []);
 
   const events2 = [
   {
@@ -53,7 +41,7 @@ useEffect(() => {
     height: "80%",
     marginTop: "30px",
     }}
-    > <Calendar tasks={events} startRangeType="Month" /> </div>
+    > <Calendar tasks={events} startRangeType="Day" excludeNav={"Year"}/> </div>
     
   );
 }
