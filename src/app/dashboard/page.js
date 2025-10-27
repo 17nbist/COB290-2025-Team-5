@@ -54,11 +54,11 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col bg-[#f5f7fa] h-screen" style={{width:"100vw"}}>
+    <div  className="flex flex-col h-screen bg-[#c4daff] dark:bg-[#303640] text-black dark:text-white transition-colors duration-300" style={{width:"100vw"} } >
       {/* Header with role indicator and logout */}
       <div className="flex justify-between items-center px-8 pt-4">
         <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-600">Welcome, {user.name}</span>
+          <span className="text-sm text-gray-600 dark:text-white">Welcome, {user.name}</span>
           <span className={`px-3 py-1 rounded-full text-xs font-semibold ${user.role === 'manager'
             ? 'bg-purple-100 text-purple-800'
             : 'bg-blue-100 text-blue-800'
@@ -68,10 +68,18 @@ export default function Home() {
         </div>
         <button
           onClick={logout}
-          className="text-sm text-gray-600 hover:text-gray-900 underline"
+          className="
+            text-sm font-medium 
+            px-4 py-2 
+            rounded-md 
+            bg-gray-100 text-gray-700 
+            hover:bg-red-800 hover:text-white 
+            transition-all duration-500
+          "
         >
           Logout
         </button>
+
       </div>
 
       {/* Main Navigation */}
