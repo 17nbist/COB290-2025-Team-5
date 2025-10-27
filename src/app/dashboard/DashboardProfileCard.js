@@ -8,7 +8,7 @@ export default function DashboardProfileCard({ Title, Name, Position, TaskAlloca
     return (
 
         <>
-            <Card style={{ height: "100%", width: "100%", color: "black" }}>
+            <Card style={{ height: "100%", width: "100%"}}>
                 <div style={{ display: "grid", height: "100%", width: "100%", position: "relative", gridTemplateRows: "10% 70% 10% 10%" }}>
                     <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
                         <div style={{ justifySelf: "start" }}>

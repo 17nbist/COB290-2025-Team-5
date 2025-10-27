@@ -34,7 +34,10 @@ export default function DashboardTodoCard() {
 
   return (
     <Card
-      className="border border-black hover:bg-gray-100 transition-colors duration-200"
+      className="
+        border border-black 
+        bg-gradient-to-r from-pink-300 to-pink-300
+      "
       style={{ color: "black", padding: "16px", width: "100%", height: "100%" }}
     >
       <div className="flex flex-col w-full h-full">

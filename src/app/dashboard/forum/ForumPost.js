@@ -6,7 +6,7 @@ export default function ForumPost({ post, onClick }) {
     <Card>
       {/* Title */}
       <div className="flex space-x-3">
-        <h2 className="text-xl font-semibold text-black mb-3">
+        <h2 className="text-xl font-semibold mb-3">
           {post.title}
         </h2>
 

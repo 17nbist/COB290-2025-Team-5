@@ -15,8 +15,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #222222;
+    --foreground: #c2c2c2;
   }
 }
 
@@ -62,4 +62,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+[data-theme="dark"]{
+  --background: #a81176;
+  --foreground: #dbf305;
 }

@@ -60,8 +60,8 @@ function ProjectCard({title, description, creationDate}) {
 	return (
 		<Card style={{width: "100%", height: "100%", cursor: "pointer"}} onClick={handleClick}>
 			<h1 className="text-[24px] font-[700] mb-[5px]">{title}</h1>
-			<h1 className="text-[16px] font-[500] text-[#4B5563]">{description}</h1>
-			<h1 className="text-[12px] font-[400] text-[#6B7280]">Created on {creationDate.toDateString()}</h1>
+			<h1 className="text-[16px] font-[500] ">{description}</h1>
+			<h1 className="text-[12px] font-[400]  ">Created on {creationDate.toDateString()}</h1>
 		</Card>
 	);
 }
