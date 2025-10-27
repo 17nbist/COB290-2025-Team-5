@@ -5,8 +5,10 @@ import Modal from "@/components/Modal.js";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/AuthContext";
 
 export default function EventsPage({events, setEvents}) {
+	const { user } = useAuth();
 	const [showModal, setShowModal] = useState(false);
 	const [title, setTitle] = useState("");
 	const [from, setFrom] = useState(new Date());
@@ -26,7 +28,7 @@ export default function EventsPage({events, setEvents}) {
 
 	return (
 		<div style={{width: "80%", height: "80%", backgroundColor: "#fff"}}>
-			<Calendar tasks={events} startRangeType={"Day"} addOnClick={() => setShowModal(true)} excludeNav={["Year"]}/>
+			<Calendar tasks={events} startRangeType={"Day"} addOnClick={user?.role == "manager" && (() => setShowModal(true))} excludeNav={["Year"]}/>
 			<Modal isOpen={showModal}> 
 				<Card style={{width: "40%"}}>
 					<div className="flex flex-col gap-[20px]">

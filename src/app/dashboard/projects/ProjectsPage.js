@@ -5,9 +5,12 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Button from "@/components/Button";
 import NavBar from "@/components/NavBar";
+import { useAuth } from "@/lib/AuthContext";
 
 export default function ProjectsPage() {
+	const { user } = useAuth();
 	const [searchVal, setSearchVal] = useState("");
+	
 	const projects = [
 		{id: 0, title: "Mobile App", description: "Mobile App for services", creationDate: new Date(2025, 9, 18)},
 		{id: 1, title: "Website", description: "Website for merchandise",  creationDate: new Date(2025, 8, 20)},
@@ -26,7 +29,7 @@ export default function ProjectsPage() {
 				<div className="flex justify-end flex-1 gap-[20px] flex-col w-full">
 					<div className="flex">
 						<SearchBar onSearch={(e) => setSearchVal(e)}/>
-						<Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"}/>
+						{user?.role == "manager" && <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"}/>}
 					</div>
 					<NavBar
 					items={filterTabs}

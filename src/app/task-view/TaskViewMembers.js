@@ -4,8 +4,10 @@ import NavBar from "@/components/NavBar";
 import { useState } from "react";
 import Member from "./Member";
 import Button from "@/components/Button";
+import { useAuth } from "@/lib/AuthContext";
 
 export default function TaskViewMembers() {
+  const { user } = useAuth();
   const filterTabs = ["Name", "Workload"];
   const [activeFilterTab, setActiveFilterTab] = useState("Workload");
 
@@ -69,7 +71,7 @@ export default function TaskViewMembers() {
         {/* Search Bar (centered) */}
         <div style={{display: "flex", width: "100%"}}>
           <SearchBar onSearch={handleSearch} />
-          <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"} onClick={handleAddMember}/>
+          {user?.role == "manager" && <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"} onClick={handleAddMember}/>}
         </div>
 
         {/* Filters to the right */}

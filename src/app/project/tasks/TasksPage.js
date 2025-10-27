@@ -5,8 +5,10 @@ import Modal from "@/components/Modal.js";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/AuthContext";
 
 export default function TasksPage({tasks, setTasks}) {
+	const { user } = useAuth();
 	const router = useRouter();
 	const [showModal, setShowModal] = useState(false);
 	const [title, setTitle] = useState("");
@@ -36,7 +38,7 @@ export default function TasksPage({tasks, setTasks}) {
 
 	return (
 		<div style={{width: "80%", height: "80%", backgroundColor: "#fff"}}>
-			<Calendar tasks={tasks} addOnClick={() => setShowModal(true)} taskOnClick={handleTaskClick} excludeNav={["8h"]}/>
+			<Calendar tasks={tasks} addOnClick={user?.role == "manager" && (() => setShowModal(true))} taskOnClick={ handleTaskClick} excludeNav={["8h"]}/>
 			<Modal isOpen={showModal}> 
 				<Card style={{width: "40%"}}>
 					<div className="flex flex-col gap-[20px]">
