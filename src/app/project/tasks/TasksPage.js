@@ -37,7 +37,7 @@ export default function TasksPage({tasks, setTasks}) {
 
 
 	return (
-		<div style={{width: "80%", height: "80%", backgroundColor: "#fff"}}>
+		<div style={{width: "80%", height: "80%"}}>
 			<Calendar tasks={tasks} addOnClick={user?.role == "manager" && (() => setShowModal(true))} taskOnClick={ handleTaskClick} excludeNav={["8h"]}/>
 			<Modal isOpen={showModal}> 
 				<Card style={{width: "40%"}}>
