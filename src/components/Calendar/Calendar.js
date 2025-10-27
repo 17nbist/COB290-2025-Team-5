@@ -6,7 +6,7 @@ import NavBar from "../NavBar.js";
 import CalendarBody from "./CalendarBody.js";
 import {daysInMonth, monthsBetween, firstDateOfWeek} from "./calendarUtils.js";
 
-export default function Calendar({tasks, startRangeType="Week", addOnClick, excludeNav=[]}) {
+export default function Calendar({tasks, startRangeType="Week", addOnClick, excludeNav=[], taskOnClick}) {
   const [startDate, setStartDate] = useState(firstDateOfWeek(new Date()));
 
   const rangeTypes = ["8h", "Day", "Week" , "Month", "Year"].filter(e => !(excludeNav.includes(e)));
@@ -16,15 +16,15 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick, excl
     let newStart = new Date();
     
     if (rangeType === "Week") {
-      newStart.setHours(0, 0, 0, 0);
       newStart = firstDateOfWeek(newStart);
+      newStart.setHours(0, 0, 0, 0);
     } else if (rangeType === "Month") {
-      newStart.setHours(0, 0, 0, 0);
       newStart.setDate(1);
-    } else if (rangeType === "Year") {
       newStart.setHours(0, 0, 0, 0);
+    } else if (rangeType === "Year") {
       newStart.setMonth(0);
       newStart.setDate(1);
+      newStart.setHours(0, 0, 0, 0);
     } else if (rangeType === "8h") {
       newStart.setHours(newStart.getHours(), 0, 0, 0)
     }
@@ -77,7 +77,7 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick, excl
     let endDate = new Date(startDate);
 
     if (rangeType == "Week") {
-      endDate.setDate(startDate.getDate() + 8);
+      endDate.setDate(startDate.getDate() + 7);
     } else if (rangeType == "Day") {
       endDate.setDate(startDate.getDate() + 1);
     } else if (rangeType == "Month") {
@@ -107,7 +107,7 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick, excl
       }
 
       const widthFraction = (toIndex - fromIndex) / divisions;
-      return widthFraction >= 1/18;
+      return widthFraction >= 1/30;
     });
 
     let tracks = [];
@@ -231,11 +231,11 @@ function getRangeText() {
           </div>
         </div>
 
-        {addOnClick && <Button outerStyle={{marginBottom: "10px"}} textStyle={{fontSize: "20px", fontWeight: "500"}} text={"+"} />}
+        {addOnClick && <Button onClick={addOnClick} outerStyle={{marginBottom: "10px"}} textStyle={{fontSize: "20px", fontWeight: "500"}} text={"+"} />}
 
         {/*calendar body*/}
         <div className="flex-1">
-          <CalendarBody tasks={getTasksInRange()} divisions={getNumberOfDivisions()} rangeType={rangeType} divisionTitles={getDivisionTitles()} startDate={startDate}/>
+          <CalendarBody tasks={getTasksInRange()} divisions={getNumberOfDivisions()} rangeType={rangeType} divisionTitles={getDivisionTitles()} startDate={startDate} taskOnClick={taskOnClick}/>
         </div>
       </div>
     </Card>

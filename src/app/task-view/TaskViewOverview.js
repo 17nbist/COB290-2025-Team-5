@@ -3,9 +3,18 @@ import { useRouter } from "next/navigation";
 
 export default function TaskViewOverview({ task }) {
   const router = useRouter();
+  console.log(task)
+
+  if (!task) {
+    return (
+      <>
+      No task selected 404
+      </>
+    )
+  }
 
   // Fallback title if no task is passed
-  const title = task?.title || "Untitled Task";
+  const title = task.title;
 
   // Dummy date logic (same as before)
   const yesterday = new Date();
@@ -17,6 +26,7 @@ export default function TaskViewOverview({ task }) {
   tomorrow.setHours(17, 0, 0, 0);
 
   const formatDate = (date) => {
+    console.log(date);
     const hours = String(date.getHours()).padStart(2, "0");
     const minutes = String(date.getMinutes()).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
@@ -25,20 +35,20 @@ export default function TaskViewOverview({ task }) {
     return `${hours}:${minutes} ${day}/${month}/${year}`;
   };
 
-  const startDate = formatDate(yesterday);
-  const dueDate = formatDate(tomorrow);
+  const startDate = formatDate(new Date(task.from));
+  const dueDate = formatDate(new Date(task.to));
 
   return (
     <div className="flex flex-col items-center bg-gray-50 py-10 px-4">
       {/* Back button (keep it here if you want it at the top of the page) */}
       <div className="flex items-center justify-start w-full max-w-5xl mb-10">
-        <button
+        {/* <button
           onClick={() => router.back()}
           className="flex items-center gap-2 text-gray-600 hover:text-black transition"
         >
           <span className="text-lg">←</span>
           <span>Back</span>
-        </button>
+        </button> */}
       </div>
 
       {/* Main Overview Box */}

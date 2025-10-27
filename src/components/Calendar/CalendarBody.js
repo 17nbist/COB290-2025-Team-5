@@ -1,7 +1,7 @@
 import Card from "../Card.js";
 import CalendarTask from "./CalendarTask.js";
 
-export default function CalendarBody({tasks, divisions, divisionTitles, rangeType, startDate, taskGap}) {	
+export default function CalendarBody({tasks, divisions, divisionTitles, rangeType, startDate, taskGap, taskOnClick}) {	
 	return (
 		<Card style={{height: "100%", width: "100%"}}>
 			<div style={{
@@ -72,7 +72,7 @@ export default function CalendarBody({tasks, divisions, divisionTitles, rangeTyp
 					<div style={{position: "absolute", marginTop: "40px", width: "100%"}}>
 						{
 							tasks.map((t) => (
-								<CalendarTask key={t.id} task={t} startDate={startDate} divisions={divisions} rangeType={rangeType} gap={taskGap}/>
+								<CalendarTask key={t.id} task={t} startDate={startDate} divisions={divisions} rangeType={rangeType} gap={taskGap} taskOnClick={taskOnClick}/>
 							))
 						}
 					</div>

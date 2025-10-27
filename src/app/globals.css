@@ -20,7 +20,7 @@
   }
 }
 
-h1, p, h2, h3, span {
+h1, p, h2, h3, span, input {
   font-family: var(--font-inter), sans-serif;
 }
 

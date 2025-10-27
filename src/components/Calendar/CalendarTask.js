@@ -1,7 +1,7 @@
 import Card from "../Card.js";
 import {daysInMonth, monthsBetween, firstDateOfWeek} from "./calendarUtils.js";
 
-export default function CalendarTask({task, startDate, divisions, rangeType, taskWidth=55, gap=20}) {
+export default function CalendarTask({task, startDate, divisions, rangeType, taskWidth=55, gap=20, taskOnClick}) {
   startDate = new Date(startDate);
   let fromIndex = 0;
   let toIndex = 0;
@@ -35,7 +35,7 @@ export default function CalendarTask({task, startDate, divisions, rangeType, tas
   });
 
   return (
-    <Card style={{width: width + "%", height: taskWidth, position: "absolute", left: left + "%", top, cursor: "pointer", padding: "5px"}}>
+    <Card style={{width: width + "%", height: taskWidth, position: "absolute", left: left + "%", top, cursor: "pointer", padding: "5px"}} onClick={taskOnClick? () => taskOnClick(task): ()=>{}}>
       <h1
         className="truncate"
         style={{

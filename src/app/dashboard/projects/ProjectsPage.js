@@ -3,6 +3,7 @@ import Card from "@/components/Card";
 import SearchBar from "@/components/SearchBar";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Button from "@/components/Button";
 import NavBar from "@/components/NavBar";
 
 export default function ProjectsPage() {
@@ -14,18 +15,19 @@ export default function ProjectsPage() {
 		{id: 3, title: "Finance Simulator Update", description: "Update for finance simulator", creationDate: new Date(2025, 9, 18)},
 	];
 
+	const filteredProjects = projects.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()));
+
 	const filterTabs = ["Name", "Group", "Upcoming"];
     const [activeFilterTab, setActiveFilterTab] = useState("Name");
 
 	return (
 		<div className="flex flex-col w-[1200px] flex-wrap items-center">
 			<div className="flex mb-[30px] items-center justify-between w-full">
-				{/* Centered title */}
-				<h1 className="text-[24px] font-[700] flex-1 text-center">Projects</h1>
-
-				{/* Search + Filters group (aligned to right but slightly inward) */}
-				<div className="flex items-center justify-end flex-1 gap-[20px] mr-[40px]">
-					<SearchBar />
+				<div className="flex justify-end flex-1 gap-[20px] flex-col w-full">
+					<div className="flex">
+						<SearchBar onSearch={(e) => setSearchVal(e)}/>
+						<Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"}/>
+					</div>
 					<NavBar
 					items={filterTabs}
 					activeTab={activeFilterTab}
@@ -35,9 +37,9 @@ export default function ProjectsPage() {
 			</div>
 
 			
-			<div className="flex gap-[25px] w-[1100px] flex-wrap justify-between">
+			<div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", width: "100%"}}>
 				{
-					projects.map(p => 
+					filteredProjects.map(p => 
 						<ProjectCard key={p.id} title={p.title} description={p.description} creationDate={p.creationDate}/>
 					)
 				}
@@ -53,7 +55,7 @@ function ProjectCard({title, description, creationDate}) {
 		router.push("/project");
 	}
 	return (
-		<Card style={{width: "350px", cursor: "pointer"}} onClick={handleClick}>
+		<Card style={{width: "100%", height: "100%", cursor: "pointer"}} onClick={handleClick}>
 			<h1 className="text-[24px] font-[700] mb-[5px]">{title}</h1>
 			<h1 className="text-[16px] font-[500] text-[#4B5563]">{description}</h1>
 			<h1 className="text-[12px] font-[400] text-[#6B7280]">Created on {creationDate.toDateString()}</h1>

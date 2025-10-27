@@ -5,6 +5,7 @@ import ForumPost from "./ForumPost";
 import CreatePostModal from "./CreatePostModal";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/AuthContext";
+import Button from "@/components/Button";
 
 export default function Forum() {
   const { user, data } = useAuth(); // Get user and data from context
@@ -75,10 +76,11 @@ export default function Forum() {
   const filteredPosts = getFilteredPosts();
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-6">
+    <div className="w-6xl mx-auto px-4 py-6">
       {/* Search Bar */}
-      <div className="mb-6">
+      <div className="mb-6 flex">
         <SearchBar onSearch={handleSearch} onAdd={handleAddPost} />
+        <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"} onClick={handleAddPost}/>
       </div>
 
       {/* Filter Tabs */}

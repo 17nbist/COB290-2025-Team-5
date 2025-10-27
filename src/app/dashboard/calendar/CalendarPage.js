@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useAuth } from "@/lib/AuthContext.js";
 
 export default function CalendarPage({events}) {
+  
 
   useEffect(() => {
     document.title = "Calendar | Make-It-All";
