@@ -34,7 +34,7 @@ export default function DashCalendar({tasks}) {
       toIndex = (t.to - startDate) / (1000 * 60 * 60);
 
       const widthFraction = (toIndex - fromIndex) / divisions;
-      return widthFraction >= 1/18;
+      return widthFraction >= 1/30;
     });
 
     let tracks = [];

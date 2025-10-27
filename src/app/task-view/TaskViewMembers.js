@@ -3,8 +3,11 @@ import SearchBar from "@/components/SearchBar";
 import NavBar from "@/components/NavBar";
 import { useState } from "react";
 import Member from "./Member";
+import Button from "@/components/Button";
+import { useAuth } from "@/lib/AuthContext";
 
 export default function TaskViewMembers() {
+  const { user } = useAuth();
   const filterTabs = ["Name", "Workload"];
   const [activeFilterTab, setActiveFilterTab] = useState("Workload");
 
@@ -51,7 +54,7 @@ export default function TaskViewMembers() {
         alignItems: "center",
         justifyContent: "flex-start",
         width: "100%",
-        maxWidth: "1000px",
+        maxWidth: "600px",
         padding: "40px 20px",
       }}
     >
@@ -59,26 +62,24 @@ export default function TaskViewMembers() {
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          flexDirection: "column",
           gap: "20px",
           flexWrap: "wrap",
           width: "100%",
         }}
       >
         {/* Search Bar (centered) */}
-        <div style={{ flex: "0 1 400px" }}>
-          <SearchBar onSearch={handleSearch} onAdd={handleAddMember} />
+        <div style={{display: "flex", width: "100%"}}>
+          <SearchBar onSearch={handleSearch} />
+          {user?.role == "manager" && <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"} onClick={handleAddMember}/>}
         </div>
 
         {/* Filters to the right */}
-        <div style={{ flex: "0 1 auto" }}>
-          <NavBar
-            items={filterTabs}
-            activeTab={activeFilterTab}
-            setActiveTab={setActiveFilterTab}
-          />
-        </div>
+        <NavBar
+          items={filterTabs}
+          activeTab={activeFilterTab}
+          setActiveTab={setActiveFilterTab}
+        />
       </div>
 
       {/* Members List */}
