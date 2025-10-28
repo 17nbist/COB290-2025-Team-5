@@ -2,7 +2,7 @@
 import Card from "@/components/Card";
 import SearchBar from "@/components/SearchBar";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/Button";
 import NavBar from "@/components/NavBar";
 import { useAuth } from "@/lib/AuthContext";

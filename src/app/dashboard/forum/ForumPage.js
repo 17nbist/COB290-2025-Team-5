@@ -3,7 +3,7 @@ import NavBar from "@/components/NavBar";
 import SearchBar from "@/components/SearchBar";
 import ForumPost from "./ForumPost";
 import CreatePostModal from "./CreatePostModal";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "@/lib/AuthContext";
 import Button from "@/components/Button";
 import Link from "next/link";

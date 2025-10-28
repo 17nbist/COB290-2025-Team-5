@@ -4,7 +4,7 @@ import SearchBar from "@/components/SearchBar";
 import RequestPost from "./RequestPosts";
 import CreateRequestModal from "./CreateRequestPost";
 import Button from "@/components/Button";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function RequestPage() {
   const filterTabs = ["Incoming", "Outgoing"];
