@@ -2,7 +2,7 @@
 import Card from "@/components/Card";
 import SearchBar from "@/components/SearchBar";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@/components/Button";
 import NavBar from "@/components/NavBar";
 import { useAuth } from "@/lib/AuthContext";
@@ -10,7 +10,11 @@ import { useAuth } from "@/lib/AuthContext";
 export default function ProjectsPage() {
 	const { user } = useAuth();
 	const [searchVal, setSearchVal] = useState("");
-	
+
+	useEffect(() => {
+		document.title = 'Projects | Make-It-All';
+  }, []);
+
 	const projects = [
 		{id: 0, title: "Mobile App", description: "Mobile App for services", creationDate: new Date(2025, 9, 18)},
 		{id: 1, title: "Website", description: "Website for merchandise",  creationDate: new Date(2025, 8, 20)},
@@ -39,10 +43,10 @@ export default function ProjectsPage() {
 				</div>
 			</div>
 
-			
+
 			<div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", width: "100%"}}>
 				{
-					filteredProjects.map(p => 
+					filteredProjects.map(p =>
 						<ProjectCard key={p.id} title={p.title} description={p.description} creationDate={p.creationDate}/>
 					)
 				}
