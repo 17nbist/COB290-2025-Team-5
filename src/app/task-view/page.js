@@ -57,10 +57,11 @@ export default function Dashboard() {
         minHeight: "100vh",
         paddingTop: "60px",
       }}
+      className="bg-[#f5f7fa]"
     >
       {/* Back Button */}
       <button
-        onClick={() => router.back()}
+        onClick={() => router.push("/project")}
         style={{
           position: "absolute",
           top: "20px",

@@ -5,7 +5,7 @@ export default function RequestPost({ request, onClick, onTogglePriority }) {
   return (
     <Card>
       {/* Title */}
-      <h2 className="text-xl font-semibold text-black mb-3">
+      <h2 className="text-xl font-semibold mb-3">
         {request.title}
       </h2>
 

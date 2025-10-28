@@ -1,12 +1,14 @@
 import { FcSearch } from "react-icons/fc";
 
-export default function SearchBar({ onSearch, onAdd }) {
+export default function SearchBar({onSearch}) {
   return (
     <div style={{ 
       display: "flex", 
       gap: "12px", 
       alignItems: "center",
-      marginBottom: "20px" 
+      marginBottom: "20px",
+      width: "100%",
+      marginRight: "30px"
     }}>
       {/* Search Input */}
       <div style={{ 
@@ -27,6 +29,7 @@ export default function SearchBar({ onSearch, onAdd }) {
             fontSize: "14px",
             outline: "none"
           }}
+          className="bg-[#fff]"
           onFocus={(e) => e.target.style.borderColor = "#000000"}
           onBlur={(e) => e.target.style.borderColor = "#e5e7eb"}
         />
@@ -40,34 +43,6 @@ export default function SearchBar({ onSearch, onAdd }) {
         </span>
       </div>
 
-      {/* Add Button */}
-      <button
-        onClick={onAdd}
-        style={{
-          width: "44px",
-          height: "44px",
-          borderRadius: "8px",
-          backgroundColor: "#000000",
-          color: "#ffffff",
-          border: "none",
-          fontSize: "24px",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          transition: "all 0.2s ease"
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "#1f2937";
-          e.currentTarget.style.transform = "scale(1.05)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "#000000";
-          e.currentTarget.style.transform = "scale(1)";
-        }}
-      >
-        +
-      </button>
     </div>
   );
 }

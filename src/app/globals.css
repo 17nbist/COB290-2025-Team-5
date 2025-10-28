@@ -49,6 +49,14 @@ p,
 h2,
 h3,
 span {
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #222222;
+    --foreground: #c2c2c2;
+  }
+}
+
+h1, p, h2, h3, span, input {
   font-family: var(--font-inter), sans-serif;
 }
 
@@ -271,4 +279,7 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+[data-theme="dark"]{
+  --background: #a81176;
+  --foreground: #dbf305;
 }

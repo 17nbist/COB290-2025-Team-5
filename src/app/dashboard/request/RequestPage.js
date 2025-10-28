@@ -3,6 +3,7 @@ import NavBar from "@/components/NavBar";
 import SearchBar from "@/components/SearchBar";
 import RequestPost from "./RequestPosts";
 import CreateRequestModal from "./CreateRequestPost";
+import Button from "@/components/Button";
 import { useState } from "react";
 
 export default function RequestPage() {
@@ -77,15 +78,12 @@ export default function RequestPage() {
     request.preview.toLowerCase().includes(searchQuery)
   );
 
-
-
-
-
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
       {/* Search Bar */}
-      <div className="mb-6">
+      <div className="mb-6 flex">
         <SearchBar onSearch={handleSearch} onAdd={handleAddRequest} />
+        <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"} onClick={handleAddRequest}/>
       </div>
 
       {/* Filter Tabs */}
