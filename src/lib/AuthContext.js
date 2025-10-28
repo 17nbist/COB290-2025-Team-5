@@ -5,7 +5,9 @@ import { useRouter } from 'next/navigation';
 const AuthContext = createContext();
 
 // user data. everyone in the team should add more data here for the demo as needed.
-const userData = {
+
+//leave as export so server components "[TaskId]/page.js" can access it too.
+export const userData = {
     'manager@gmail.com': {
         events: [
             { id: 0, title: "Google Auth Meeting", from: new Date(2025, 9, 19, 8), to: new Date(2025, 9, 19, 16) },
@@ -44,12 +46,12 @@ const userData = {
     'employee@gmail.com': {
         events: [
             { id: 0, title: "Team Standup", from: new Date(2025, 9, 19, 9), to: new Date(2025, 9, 20, 10), },
-            { id: 1, title: "Code Review", from: new Date(2025, 9, 19, 14), to: new Date(2025, 9, 29, 15) ,},
-            {id: 2,  title: "Team Meeting",from: new Date(2025, 9, 24, 9, 0),to: new Date(2025, 9, 24, 10, 0),},
-            {id: 3,  title: "Project Deadline", from: new Date(2025, 9, 24, 0, 0),to: new Date(2025, 9, 25, 23, 59),},
-            {id: 4,title: "why Review",from: new Date(2025, 9, 25, 13, 0),to: new Date(2025, 9, 25, 15, 0),},
-            {id: 5,  title: "Please Deadline", from: new Date(2025, 9, 25, 0, 0),to: new Date(2025, 9, 25, 23, 59),},
-            {id: 6,  title: "help Deadline", from: new Date(2025, 9, 26, 0, 0),to: new Date(2025, 9, 26, 23, 59),},
+            { id: 1, title: "Code Review", from: new Date(2025, 9, 19, 14), to: new Date(2025, 9, 29, 15), },
+            { id: 2, title: "Team Meeting", from: new Date(2025, 9, 24, 9, 0), to: new Date(2025, 9, 24, 10, 0), },
+            { id: 3, title: "Project Deadline", from: new Date(2025, 9, 24, 0, 0), to: new Date(2025, 9, 25, 23, 59), },
+            { id: 4, title: "why Review", from: new Date(2025, 9, 25, 13, 0), to: new Date(2025, 9, 25, 15, 0), },
+            { id: 5, title: "Please Deadline", from: new Date(2025, 9, 25, 0, 0), to: new Date(2025, 9, 25, 23, 59), },
+            { id: 6, title: "help Deadline", from: new Date(2025, 9, 26, 0, 0), to: new Date(2025, 9, 26, 23, 59), },
         ],
         forumPosts: [
             {
