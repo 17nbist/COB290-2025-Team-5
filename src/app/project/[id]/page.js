@@ -6,26 +6,21 @@ import TodayPage from "./today/TodayPage";
 import TasksPage from "./tasks/TasksPage";
 import EventsPage from "./events/EventsPage";
 import MembersPage from "./members/MembersPage";
+import { useAuth } from "@/lib/AuthContext";
 
 
 export default function ProjectPage() {
+	const { user, allProjects, allTasks, allEvents } = useAuth();
 	const router = useRouter();
 	const topNavItems = ["All Projects", "Today", "Tasks", "Events", "Members"];
 	const [activeTab, setActiveTab] = useState("Today");
-	
-	const [tasks, setTasks] = useState([
-		{id: 0, title: "Google Auth", from: new Date(2025, 9, 24, 0), to: new Date(2025, 10, 7, 0)},
-		{id: 1, title: "Main Dashboard", from: new Date(2025, 9, 31, 0), to: new Date(2025, 10, 8, 0)},
-		{id: 2, title: "A Task", from: new Date(2025, 10, 2, 8), to: new Date(2025, 10, 11, 14)},
-		{id: 3, title: "Other Task", from: new Date(2025, 10, 5, 8), to: new Date(2025, 10, 11, 14)},
-		{id: 4, title: "Task B", from: new Date(2025, 10, 4, 0), to: new Date(2025, 10, 9, 20)},
-	]);
+	const [tasks, setTasks] = useState([]);
+	const [events, setEvents] = useState([]);
+	const [loading, setLoading] = useState();
 
-	const [events, setEvents] = useState([
-		{id: 0, title: "Google Auth Meeting", from: new Date(2025, 10, 4, 8), to: new Date(2025, 10, 4, 16)},
-		{id: 1, title: "Other Meeting", from: new Date(2025, 10, 5, 12), to: new Date(2025, 10, 5, 15)},
-		{id: 2, title: "Dashboard Meeting", from: new Date(2025, 10, 6, 11), to: new Date(2025, 10, 6, 15)},
-	]);
+	useEffect(() => {
+		
+	});
 
 	useEffect(() => {
 		const handleHashChange = () => {

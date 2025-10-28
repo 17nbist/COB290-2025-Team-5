@@ -8,17 +8,13 @@ import NavBar from "@/components/NavBar";
 import { useAuth } from "@/lib/AuthContext";
 
 export default function ProjectsPage() {
-	const { user } = useAuth();
+	const { user, projects } = useAuth();
 	const [searchVal, setSearchVal] = useState("");
-	
-	const projects = [
-		{id: 0, title: "Mobile App", description: "Mobile App for services", creationDate: new Date(2025, 9, 18)},
-		{id: 1, title: "Website", description: "Website for merchandise",  creationDate: new Date(2025, 8, 20)},
-		{id: 2, title: "Finance Simulator", description: "Back-testing for investing", creationDate: new Date(2025, 9, 18)},
-		{id: 3, title: "Finance Simulator Update", description: "Update for finance simulator", creationDate: new Date(2025, 9, 18)},
-	];
 
-	const filteredProjects = projects.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()));
+
+	const filteredProjects = projects
+									.filter(p => p.members.has(user.id))
+									.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()));
 
 	const filterTabs = ["Name", "Group", "Upcoming"];
     const [activeFilterTab, setActiveFilterTab] = useState("Name");
@@ -43,7 +39,7 @@ export default function ProjectsPage() {
 			<div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", width: "100%"}}>
 				{
 					filteredProjects.map(p => 
-						<ProjectCard key={p.id} title={p.title} description={p.description} creationDate={p.creationDate}/>
+						<ProjectCard key={p.id} project={p}/>
 					)
 				}
 			</div>
@@ -51,17 +47,18 @@ export default function ProjectsPage() {
 	)
 }
 
-function ProjectCard({title, description, creationDate}) {
+function ProjectCard({project}) {
 	const router = useRouter();
 
 	function handleClick() {
-		router.push("/project");
+		router.push(`/project/${project.id}`);
 	}
+
 	return (
 		<Card style={{width: "100%", height: "100%", cursor: "pointer"}} onClick={handleClick}>
-			<h1 className="text-[24px] font-[700] mb-[5px]">{title}</h1>
-			<h1 className="text-[16px] font-[500] ">{description}</h1>
-			<h1 className="text-[12px] font-[400]  ">Created on {creationDate.toDateString()}</h1>
+			<h1 className="text-[24px] font-[700] mb-[5px]">{project.title}</h1>
+			<h1 className="text-[16px] font-[500] ">{project.description}</h1>
+			<h1 className="text-[12px] font-[400]  ">Created on {project.creationDate.toDateString()}</h1>
 		</Card>
 	);
 }
