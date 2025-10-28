@@ -12,23 +12,26 @@ const InputDataExample = {
 export default function Home() {
 
   return (
-    <div style={{ display: "grid", justifyItems: "center", justifyContent: "center", gridTemplateColumns: "70% 30%", backgroundColor: "white", minHeight: "100vh", width: "100vw" }}>
-      <div style={{ display: "grid", justifyItems: "center", justifyContent: "center", gridTemplateRows: "40% 60%" }}>
+    <div className="box-border" style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gridTemplateRows: "repeat(8, 1fr)", gap: "1rem", padding: "2rem", width: "70%", height: "100%" }}>
+      <div style={{ gridRow: "2/6", gridColumn: "2/3" }}>
         {/* project section */}
-        <div style={{ display: "grid", justifyItems: "center", justifyContent: "center", gridTemplateColumns: "auto auto", gap: "5px" }}>
-          <ProjectOverview />
-          <ProjectOverview />
-        </div>
-        {/* analytics */}
-        <div style={{ display: "grid", justifyItems: "center", justifyContent: "center", alignItems: "center" }}>this is analytics</div>
+        <ProjectOverview />
       </div>
-
-      <div style={{ display: "grid", justifyItems: "center", justifyContent: "center", gridTemplateRows: "40% 60%", backgroundColor: "smoke" }}>
+      <div style={{ gridRow: "2/6", gridColumn: "2/3" }}>
+        {/* project section */}
+        <ProjectOverview />
+      </div>
+      <div style={{ gridRow: "2/6", gridColumn: "1/3" }}>
         <Card style={{ backgroundColor: "#f5f5f5" }}>
           <PieChart inputData={InputDataExample} />
         </Card>
-        <div style={{ display: "grid", justifyItems: "center", justifyContent: "center", alignItems: "center" }}>this is the chatbot</div>
       </div>
+      {/* analytics */}
+      <div style={{ gridRow: "4/6", gridColumn: "2/3" }}>
+        this is analytics</div>
+
+      <div style={{ gridRow: "4/6", gridColumn: "1/3" }}>this is the chatbot</div>
     </div>
+
   );
 }
