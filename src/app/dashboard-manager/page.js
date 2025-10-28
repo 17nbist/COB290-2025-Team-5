@@ -24,7 +24,7 @@ export default function Home() {
       </div>
 
       <div style={{ display: "grid", justifyItems: "center", justifyContent: "center", gridTemplateRows: "40% 60%", backgroundColor: "smoke" }}>
-        <Card style={{ backgroundColor: "#f5f5f5" }}>
+        <Card style={{backgroundColor: "#f5f5f5"}}>
           <PieChart inputData={InputDataExample} />
         </Card>
         <div style={{ display: "grid", justifyItems: "center", justifyContent: "center", alignItems: "center" }}>this is the chatbot</div>
