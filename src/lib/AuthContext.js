@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
     const [allProjects, setAllProjects] = useState(null)
     const [allTasks, setAllTasks] = useState(null)
     const [allEvents, setAllEvents] = useState(null)
-    const [users, setUsers] = useState(null);
+    const [allUsers, setAllUsers] = useState(null);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
@@ -27,9 +27,9 @@ export function AuthProvider({ children }) {
 
         const localUsers = localStorage.getItem('users');
         if (localUsers) {
-            setUsers(JSON.parse(localUsers));
+            setAllUsers(JSON.parse(localUsers));
         } else {
-            setUsers(baseUsers);
+            setAllUsers(baseUsers);
             localStorage.setItem('users', JSON.stringify(baseUsers));
         }
 
@@ -38,17 +38,12 @@ export function AuthProvider({ children }) {
         if (localProjects) {
             setAllProjects(JSON.parse(localProjects).map(e => ({
                 ...e, 
-                members: new Set(e.members),
                 creationDate: new Date(e.creationDate),
                 dueDate: new Date(e.dueDate),
             })));
         } else {
             setAllProjects(baseProjects);
-            localStorage.setItem('projects', JSON.stringify(
-                baseProjects.map(p => ({
-                ...p,
-                members: [...p.members],
-            }))));
+            localStorage.setItem('projects', JSON.stringify(baseProjects));
         }
 
         const localTasks = localStorage.getItem('tasks');
@@ -82,7 +77,7 @@ export function AuthProvider({ children }) {
     const login = (inputEmail, inputPassword) => {
         const validPassword = 'password123';
         
-        let matches = users.filter(({email, password}) => inputEmail == email && inputPassword == password);
+        let matches = allUsers.filter(({email, password}) => inputEmail == email && inputPassword == password);
         if (matches.length == 0) {
             return { success: false, error: 'Invalid email or password.' }
         }
@@ -130,7 +125,7 @@ export function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ users, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks, addToAllEvents}}>
+        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks, addToAllEvents}}>
             {children}
         </AuthContext.Provider>
     );

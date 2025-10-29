@@ -13,7 +13,7 @@ export default function ProjectsPage() {
 
 
 	const filteredProjects = allProjects
-									.filter(p => p.members.has(user.id))
+									.filter(p => p.members.includes(user.id))
 									.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()));
 
 	const filterTabs = ["Name", "Group", "Upcoming"];

@@ -11,26 +11,36 @@ import { useParams } from "next/navigation";
 
 
 export default function ProjectPage() {
-	const { user, allProjects, allTasks, allEvents } = useAuth();
+	const { user, allProjects, allTasks, allEvents, allUsers } = useAuth();
 	const router = useRouter();
 	const topNavItems = ["All Projects", "Today", "Tasks", "Events", "Members"];
 	const [activeTab, setActiveTab] = useState("Today");
 	const [errText, setErrText] = useState("");
 	const projectId = parseInt(useParams().id);
-	const tasks = allTasks?.filter(t => t.projectId == projectId) || [];
-	const events = allEvents?.filter(t => t.projectId == projectId) || [];
+	const [project, setProject] = useState(null);
+	console.log(allTasks, user?.id);
+	const tasks = allTasks?.filter(t => 
+		t.projectId == project?.id && 
+		(user.role == "manager" || user?.id == project?.leaderId || t.members?.includes(user?.id))) || [];
+
+	const events = allEvents?.filter(e => 
+		e.projectId == project?.id && 
+		(user.role == "manager" || user?.id == project?.leaderId || e.members?.includes(user?.id))) || [];
+
+	const projectMembers = allUsers?.filter(u => project?.members.includes(u.id));
 
 	useEffect(() => {
-		if (!user || !allProjects || !allTasks || !allEvents) {
+		if (!user || !allProjects || !allTasks || !allEvents || !allUsers) {
 			return;
 		}
 
 		const currentProject = allProjects.find(p => p.id == projectId);
-		if (!currentProject || !currentProject.members.has(user.id)){
+		if (!currentProject || !currentProject.members.includes(user.id)){
 			setErrText("No access or project doesn't exist");
 			return;
 		}
 
+		setProject(currentProject);
 		setErrText(null);
 	}, [allProjects, allTasks, allEvents, user]);
 
@@ -80,11 +90,11 @@ export default function ProjectPage() {
 
 			<main className="flex justify-center flex-1">
 				{activeTab == "Today" && <TodayPage tasks={tasks} events={events}/>}
-				{activeTab == "Tasks" && <TasksPage tasks={tasks} projectId={projectId}/>}
+				{activeTab == "Tasks" && <TasksPage tasks={tasks} projectId={projectId} projectMembers={projectMembers}/>}
 				{activeTab == "Events" && <EventsPage events={events} projectId={projectId}/>}
 				{activeTab === "Members" && (
 					<div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-						<MembersPage />
+						<MembersPage members={projectMembers}/>
 					</div>
 				)}
 			</main>
