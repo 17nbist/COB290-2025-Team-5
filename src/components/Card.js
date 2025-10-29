@@ -7,7 +7,9 @@ export default function Card({children, style, hoverStyle, onClick, className = 
     padding: "20px",
     borderRadius: "8px",
     border: "1px solid",
-    
+    minWidth: 0,
+    minHeight: 0,
+    flexShrink: 1,
     boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
     transform: "translateY(0px)",
     transition: "transform 0.2s, box-shadow 0.2s"
