@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "@/components/Card";
 
 export default function ToDoPage() {
@@ -24,6 +24,10 @@ export default function ToDoPage() {
   ];
 
   const generalTasks = ["Task1", "Task2", "Task3", "Task4", "Task5"];
+
+  useEffect(() => {
+      document.title = 'To-Do | Make-It-All';
+    }, []);
 
   return (
     <div className="flex justify-center items-start min-h-screen py-10 text-black">
