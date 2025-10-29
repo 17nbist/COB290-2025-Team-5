@@ -12,13 +12,23 @@ export default function ProjectsPage({projects, employees}) {
 	const { user, allProjects } = useAuth();
 	const [searchVal, setSearchVal] = useState("");
 
-
-	const filteredProjects = projects.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()));
-
-	const filterTabs = ["Name", "Group", "Upcoming"];
+	const filterTabs = ["Name", "Due Date"];
     const [activeFilterTab, setActiveFilterTab] = useState("Name");
 
 	const [showModal, setShowModal] = useState(false);
+
+
+	function sortByName(a, b) {
+		return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
+	}
+
+	function sortByDue(a, b) {
+		return new Date(a.dueDate) - new Date(b.dueDate);
+	}
+
+	const filteredProjects = projects
+		.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()))
+		.sort(activeFilterTab == "Name"? sortByName : sortByDue);
 
 	return (
 		<div className="flex flex-col w-[1200px] flex-wrap items-center">
@@ -27,7 +37,6 @@ export default function ProjectsPage({projects, employees}) {
 					<div className="mb-6 flex">
 						<SearchBar onSearch={(e) => setSearchVal(e)}/>
 						{user?.role == "manager" && <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"} onClick={() => setShowModal(true)}/>}
-						{user?.role == "manager" && <Button outerStyle={{ width: "47px", height: "47px" }} textStyle={{ fontSize: "30px" }} text={"+"}/>}
 					</div>
 					<NavBar
 					items={filterTabs}
@@ -68,7 +77,7 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 			return
 		}
 		
-		addToAllProjects({title, description, creationDate: new Date(), endDate, members: [...selectedMembers, user.id]});
+		addToAllProjects({title, description, creationDate: new Date(), dueDate: endDate, members: [...selectedMembers, user.id]});
 		setShowModal(false);
 		setTitle("");
 		setDescription("");
@@ -156,7 +165,8 @@ function ProjectCard({project}) {
 		<Card style={{width: "100%", height: "100%", cursor: "pointer"}} onClick={handleClick}>
 			<h1 className="text-[24px] font-[700] mb-[5px]">{project.title}</h1>
 			<h1 className="text-[16px] font-[500] ">{project.description}</h1>
-			<h1 className="text-[12px] font-[400]  ">Created on {project.creationDate.toDateString()}</h1>
+			{/* <h1 className="text-[12px] font-[400]  ">Created on {project.creationDate.toDateString()}</h1> */}
+			<h1 className="text-[12px] font-[400] ">Due at {project.dueDate.toDateString()}</h1>
 		</Card>
 	);
 }
