@@ -48,6 +48,10 @@ export default function Dashboard() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+  useEffect(() => {
+    document.title = 'Selected Task | Make-It-All';
+  }, []);
+
   return (
     <div
       style={{

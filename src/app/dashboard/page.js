@@ -8,10 +8,11 @@ import RequestPage from "./request/RequestPage";
 import NavBar from "@/components/NavBar";
 import CalendarPage from "./calendar/CalendarPage.js";
 import ProjectsPage from "./projects/ProjectsPage";
+import ToDoPage from "./todo/ToDoPage";
 
 import DarkModeToggle from "@/components/DarkModeToggle";
 
-const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar"];
+const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar", "To-Do"];
 
 
 
@@ -103,6 +104,7 @@ export default function Home() {
         {activeTab === "Requests" && <RequestPage />}
         {activeTab === "Calendar" && <CalendarPage events={events} />}
         {activeTab === "Projects" && <ProjectsPage />}
+        {activeTab === "To-Do" && <ToDoPage />}
       </main>
     </div>
   );
