@@ -52,11 +52,15 @@ export default function ProjectPage() {
 				setActiveTab(capitalizedHash);
 			}
 		};
-	
+
 		handleHashChange();
 		window.addEventListener("hashchange", handleHashChange);
 		return () => window.removeEventListener("hashchange", handleHashChange);
 	}, []);
+
+	useEffect(() => {
+		document.title = 'Active Project | Make-It-All';
+  }, []);
 
 	const handleTabClick = (tab) => {
 		if (tab == "All Projects") {

@@ -13,6 +13,7 @@ export default function TasksPage({tasks, projectId, projectMembers}) {
 	const [showModal, setShowModal] = useState(false);
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
+	const [employeeName, setEmployeeName] = useState([]);
 	const [from, setFrom] = useState(new Date());
 	const [to, setTo] = useState(new Date());
 	const [selectedMembers, setSelectedMembers] = useState([]);
@@ -47,14 +48,23 @@ export default function TasksPage({tasks, projectId, projectMembers}) {
 					<div className="flex flex-col gap-[20px]">
 						<h1 className="text-[30px] font-[600]">Add A Task</h1>
 						<div className="flex flex-col">
-							<h1>Title:</h1>
-							<input className="rounded-[3px] outline outline-gray-400" value={title} onChange={(e) => setTitle(e.target.value)} type="text"/>
+							<div className="textInput-group">
+								<input required="" placeholder="Title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} name="text" autoComplete="off" className="textInput" />
+								<label className="label">Title</label>
+							</div>
 						</div>
 						<div className="flex flex-col">
-							<h1>Description:</h1>
-							<textarea className="rounded-[3px] outline outline-gray-400" value={description} onChange={(e) => setDescription(e.target.value)} type="text" />
+							<div className="textInput-group">
+								<input required="" placeholder="Description" type="text" value={description} onChange={(e) => setDescription(e.target.value)} name="text" autoComplete="off" className="textInput" />
+								<label className="label">Description</label>
+							</div>
 						</div>
-
+						<div className="flex flex-col">
+							<div className="textInput-group">
+								<input required="" placeholder="Assign To" type="text" value={employeeName} onChange={(e) => setEmployeeName(e.target.value)} name="text" autoComplete="off" className="textInput" />
+								<label className="label">Assign To</label>
+							</div>
+						</div>
 						<div className="flex flex-col">
 							<h1>From:</h1>
 							<input
@@ -109,8 +119,8 @@ export default function TasksPage({tasks, projectId, projectMembers}) {
 						</div>
 						<div className="flex w-full justify-end">
 							<div className="flex gap-2">
-								<Button onClick={() => setShowModal(false)} text={"Cancel"}/>
-								<Button onClick={addTask} text={"Add"}/>
+								<Button onClick={() => setShowModal(false)} text={"Cancel"} />
+								<Button onClick={addTask} text={"Add"} />
 							</div>
 						</div>
 					</div>

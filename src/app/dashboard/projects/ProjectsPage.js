@@ -3,7 +3,7 @@ import Card from "@/components/Card";
 import SearchBar from "@/components/SearchBar";
 import Modal from "@/components/Modal";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/Button";
 import NavBar from "@/components/NavBar";
 import { useAuth } from "@/lib/AuthContext";
@@ -37,7 +37,7 @@ export default function ProjectsPage({projects, employees}) {
 				</div>
 			</div>
 
-			
+
 			<div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", width: "100%"}}>
 				{
 					filteredProjects.map(p => 
