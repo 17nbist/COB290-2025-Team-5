@@ -67,7 +67,8 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 	const [endDate, setEndDate] = useState(new Date());
 	const [selectedMembers, setSelectedMembers] = useState([]);
 	const [memberSearch, setMemberSearch] = useState("");
-	
+	const [leaderId, setLeaderId] = useState(null);
+
 	const filteredEmployees = employees
 		.filter(e => e.name.toLowerCase().includes(memberSearch.toLowerCase()))
 		.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
@@ -77,7 +78,7 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 			return
 		}
 		
-		addToAllProjects({title, description, creationDate: new Date(), dueDate: endDate, members: [...selectedMembers, user.id]});
+		addToAllProjects({title, description, creationDate: new Date(), dueDate: endDate, members: [...selectedMembers, user.id], leaderId});
 		setShowModal(false);
 		setTitle("");
 		setDescription("");
@@ -110,6 +111,28 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 						/>
 					</div>
 					<div className="flex flex-col gap-1">
+						<h1>Team Leader (optional)</h1>
+
+            <select
+              className="rounded-[3px] outline outline-gray-400 p-1"
+              value={leaderId ?? ""}
+              onChange={e => {
+                const id = e.target.value ? parseInt(e.target.value) : null;
+                setLeaderId(id);
+
+                if (id && !selectedMembers.includes(id)) {
+                  setSelectedMembers(prev => [...prev, id]);
+                }
+              }}
+            >
+              <option value="">None</option>
+              {employees.map(member => (
+                <option key={member.id} value={member.id}>
+                  {member.name}
+                </option>
+              ))}
+            </select>
+
 						<h1>Members ({selectedMembers.length} selected)</h1>
 						<input 
 							className="rounded-[3px] outline outline-gray-400"
@@ -121,22 +144,23 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 						<div className="h-[150px] overflow-auto">
 							{
 								filteredEmployees.map(member => (
-										<label key={member.id} className="flex items-center gap-2">
-											<input
-											type="checkbox"
-											checked={selectedMembers.includes(member.id)}
-											onChange={e => {
-												if (e.target.checked) {
-													setSelectedMembers(prev => [...prev, member.id]);
-												}
-												
-												else {
-													setSelectedMembers(prev => prev.filter(x => x !== member.id));
-												}
-											}}
-											/>
-											{member?.name || `User ${id}`}
-										</label>
+									<label key={member.id} className="flex items-center gap-2">
+										<input
+										type="checkbox"
+										checked={selectedMembers.includes(member.id)}
+										disabled={member.id == leaderId}
+										onChange={e => {
+											if (e.target.checked) {
+												setSelectedMembers(prev => [...prev, member.id]);
+											}
+											
+											else {
+												setSelectedMembers(prev => prev.filter(x => x !== member.id));
+											}
+										}}
+										/>
+										{member?.name || `User ${id}`}
+									</label>
 
 								))
 							}
@@ -162,9 +186,9 @@ function ProjectCard({project}) {
 	}
 
 	return (
-		<Card style={{width: "100%", height: "100%", cursor: "pointer"}} onClick={handleClick}>
+		<Card style={{width: "100%", height: "100%", cursor: "pointer", overflow:"hidden"}} onClick={handleClick}>
 			<h1 className="text-[24px] font-[700] mb-[5px]">{project.title}</h1>
-			<h1 className="text-[16px] font-[500] ">{project.description}</h1>
+			<h1 className="text-[16px] font-[500] text-ellipsis">{project.description}</h1>
 			{/* <h1 className="text-[12px] font-[400]  ">Created on {project.creationDate.toDateString()}</h1> */}
 			<h1 className="text-[12px] font-[400] ">Due at {project.dueDate.toDateString()}</h1>
 		</Card>

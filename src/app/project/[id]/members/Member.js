@@ -1,6 +1,6 @@
 "use client";
 
-export default function Member({ member, onClick }) {
+export default function Member({ member, onClick, project }) {
   return (
     <div
       onClick={onClick}
@@ -18,7 +18,7 @@ export default function Member({ member, onClick }) {
       <h3 style={{ margin: 0, fontSize: "18px", fontWeight: "600" }}>
         {member.name}
       </h3>
-      <p style={{ margin: "4px 0 0 0", color: "#555" }}>{member.role}</p>
+      <p style={{ margin: "4px 0 0 0", color: "#555" }}> {member.role + (member.id == project.leaderId? " (Team Leader)" : "")}</p>
     </div>
   );
 }
