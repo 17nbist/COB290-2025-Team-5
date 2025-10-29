@@ -1,30 +1,35 @@
 import { FaRegCommentDots, FaArrowUp, FaArrowDown } from "react-icons/fa";
-import Card from "@/components/Card"
+import Card from "@/components/Card";
 
-export default function ForumPost({ post, onClick }) {
+export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
+  const handleUpvoteClick = (e) => {
+    e.stopPropagation();
+    onUpvote(post.id);
+  };
+
+  const handleDownvoteClick = (e) => {
+    e.stopPropagation();
+    onDownvote(post.id);
+  };
+
   return (
-    <Card>
-      {/* Title */}
+    <Card onClick={() => onClick(post.id)}>
       <div className="flex space-x-3">
-        <h2 className="text-xl font-semibold mb-3">
-          {post.title}
-        </h2>
-
-        {/* Flair */}
-        <span className={post.flair === "technical" ? "items-center px-2 py-1 h-[32px] bg-emerald-300 text-black rounded-md" : "items-center px-2 py-1 h-[32px] bg-sky-300 text-black rounded-md"}
+        <h2 className="text-xl font-semibold mb-3">{post.title}</h2>
+        <span
+          className={
+            post.flair === "technical"
+              ? "items-center px-2 py-1 h-[32px] bg-emerald-300 text-black rounded-md"
+              : "items-center px-2 py-1 h-[32px] bg-sky-300 text-black rounded-md"
+          }
         >
           {post.flair}
         </span>
       </div>
 
-      {/* Preview Text */}
-      <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-        {post.preview}
-      </p>
+      <p className="text-gray-400 text-sm mb-4 line-clamp-2">{post.preview}</p>
 
-      {/* Metadata and Engagement Row */}
       <div className="flex items-center justify-between">
-        {/* Left: Metadata */}
         <div className="flex items-center gap-3 text-xs text-gray-500">
           <span>posted {post.timeAgo}</span>
           {post.tags.map((tag, index) => (
@@ -37,19 +42,32 @@ export default function ForumPost({ post, onClick }) {
           ))}
         </div>
 
-        {/* Right: Engagement Metrics */}
         <div className="flex items-center gap-4 text-gray-400">
-          <span className="flex items-center gap-1.5 hover:text-green-400 transition-colors">
+          <button
+            onClick={handleUpvoteClick}
+            className={`flex items-center gap-1.5 transition-colors ${post.userVote === "up"
+                ? "text-green-500"
+                : "hover:text-green-400"
+              }`}
+          >
             <FaArrowUp size={14} />
             <span className="text-sm font-medium">{post.upvotes}</span>
-          </span>
-          <span className="flex items-center gap-1.5 hover:text-red-400 transition-colors">
+          </button>
+
+          <button
+            onClick={handleDownvoteClick}
+            className={`flex items-center gap-1.5 transition-colors ${post.userVote === "down"
+                ? "text-red-500"
+                : "hover:text-red-400"
+              }`}
+          >
             <FaArrowDown size={14} />
             <span className="text-sm font-medium">{post.downvotes}</span>
-          </span>
+          </button>
+
           <span className="flex items-center gap-1.5 hover:text-blue-400 transition-colors">
             <FaRegCommentDots size={14} />
-            <span className="text-sm font-medium">{post.comments}</span>
+            <span className="text-sm font-medium">{post.comments.length}</span>
           </span>
         </div>
       </div>

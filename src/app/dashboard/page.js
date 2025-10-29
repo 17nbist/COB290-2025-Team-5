@@ -27,11 +27,6 @@ export default function Home() {
 
 
   // Redirect to login if not authenticated
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push('/login');
-    }
-  }, [user, loading, router]);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -63,7 +58,7 @@ export default function Home() {
   }
 
   return (
-    <div  className="flex flex-col h-screen bg-[#d2d2d2] dark:bg-[#303030] text-black dark:text-white transition-colors duration-300" style={{width:"100vw"} } >
+    <div className="flex flex-col h-screen bg-[#d2d2d2] dark:bg-[#303030] text-black dark:text-white transition-colors duration-300" style={{ width: "100vw" }} >
       {/* Header with role indicator and logout */}
       <div className="flex justify-between items-center px-8 pt-4">
         <div className="flex items-center gap-4">
@@ -75,7 +70,7 @@ export default function Home() {
             {user.role.toUpperCase()} DASHBOARD
           </span>
         </div>
-        <DarkModeToggle/>
+        <DarkModeToggle />
         <button
           onClick={logout}
           className="
@@ -98,7 +93,7 @@ export default function Home() {
           activeTab={activeTab}
           items={topNavItems}
           setActiveTab={setActiveTab}
-          pillStyle={{ width: "12vw"}}
+          pillStyle={{ width: "12vw" }}
           setHash={true}
           textStyle={{ fontSize: "1.2vw" }}
         />
@@ -110,7 +105,7 @@ export default function Home() {
         {activeTab === "Forum" && <ForumPage />}
         {activeTab === "Requests" && <RequestPage />}
         {activeTab === "Calendar" && <CalendarPage events={events} />}
-        {activeTab === "Projects" && <ProjectsPage projects={projects} employees={employees}/>}
+        {activeTab === "Projects" && <ProjectsPage projects={projects} employees={employees} />}
         {activeTab === "To-Do" && <ToDoPage />}
       </main>
     </div>
