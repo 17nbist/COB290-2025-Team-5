@@ -7,7 +7,7 @@ import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/AuthContext";
 
-export default function EventsPage({events, projectId, projectMembers}) {
+export default function EventsPage({events, project, projectMembers, adminPerms}) {
 	const { user, addToAllEvents } = useAuth();
 	const [showModal, setShowModal] = useState(false);
 	const [title, setTitle] = useState("");
@@ -23,7 +23,7 @@ export default function EventsPage({events, projectId, projectMembers}) {
 			return
 		}
 		
-		addToAllEvents({title, from, to, projectId, members: selectedMembers});
+		addToAllEvents({title, from, to, projectId: project.id, members: selectedMembers});
 		setShowModal(false);
 		setTitle("")
 		setFrom(new Date());
@@ -32,7 +32,7 @@ export default function EventsPage({events, projectId, projectMembers}) {
 
 	return (
 		<div style={{width: "80%", height: "80%"}}>
-			<Calendar tasks={events} startRangeType={"Day"} addOnClick={user?.role == "manager" && (() => setShowModal(true))} excludeNav={["Year", "Month"]}/>
+			<Calendar tasks={events} startRangeType={"Day"} addOnClick={adminPerms && (() => setShowModal(true))} excludeNav={["Year", "Month"]}/>
 			<Modal isOpen={showModal}> 
 				<Card style={{width: "40%"}}>
 					<div className="flex flex-col gap-[20px]">

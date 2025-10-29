@@ -19,7 +19,9 @@ export default function ToDoPage() {
   const projects = [];
   const idToIndex = {};
 
-  allTasks.forEach(task => {
+  allTasks
+  .filter(t => t.members?.includes(user?.id))
+  .forEach(task => {
     const project = allProjects.find(p => p.id === task.projectId);
 
     const checked = task.todos.filter(t => t.checked).length;

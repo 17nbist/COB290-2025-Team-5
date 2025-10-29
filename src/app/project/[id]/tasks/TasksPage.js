@@ -7,7 +7,7 @@ import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/AuthContext";
 
-export default function TasksPage({tasks, projectId, projectMembers}) {
+export default function TasksPage({tasks, projectId, projectMembers, adminPerms, project}) {
 	const { user, addToAllTasks, users } = useAuth();
 	const router = useRouter();
 	const [showModal, setShowModal] = useState(false);
@@ -26,7 +26,7 @@ export default function TasksPage({tasks, projectId, projectMembers}) {
 			return
 		}
 		
-		addToAllTasks({title, description, from, to, projectId, members: selectedMembers});
+		addToAllTasks({title, description, from, to, projectId: project.id, members: selectedMembers});
 		setShowModal(false);
 		setTitle("");
 		setDescription("");
@@ -42,7 +42,7 @@ export default function TasksPage({tasks, projectId, projectMembers}) {
 
 	return (
 		<div style={{width: "80%", height: "80%"}}>
-			<Calendar tasks={tasks} addOnClick={user?.role == "manager" && (() => setShowModal(true))} taskOnClick={handleTaskClick} excludeNav={["8h"]}/>
+			<Calendar tasks={tasks} addOnClick={adminPerms && (() => setShowModal(true))} taskOnClick={handleTaskClick} excludeNav={["8h"]}/>
 			<Modal isOpen={showModal}> 
 				<Card style={{width: "40%"}}>
 					<div className="flex flex-col gap-[20px]">
