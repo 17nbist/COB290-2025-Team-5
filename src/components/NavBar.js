@@ -1,5 +1,11 @@
 import NavPill from "./NavPill";
-export default function NavBar({style, pillStyle, textStyle, items, activeTab, setActiveTab, setHash}) {
+export default function NavBar({style, 
+  pillStyle, 
+  textStyle, 
+  items, 
+  activeTab, 
+  setActiveTab, 
+  setHash}){
   const defaultStyle = {
     display : "flex",
     gap : "8px"

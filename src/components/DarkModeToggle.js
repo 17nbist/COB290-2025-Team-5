@@ -1,29 +1,40 @@
-// App.jsx
+"use client"; // required if you're using Next.js App Router
+
 import { useEffect, useState } from "react";
 
 export default function DarkModeToggle() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    if (darkMode) {
+    // Check saved preference or system setting
+    const storedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = storedTheme === "dark" || (!storedTheme && prefersDark);
+
+    setDarkMode(isDark);
+    document.documentElement.classList.toggle("dark", isDark);
+  }, []);
+
+  const toggleTheme = () => {
+    const newDark = !darkMode;
+    setDarkMode(newDark);
+
+    if (newDark) {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
-  }, [darkMode]);
+  };
+
 
   return (
-    <div
-      className="flex flex-col h-screen bg-[#f5f7fa] dark:bg-[#0a0a0a] text-black dark:text-white items-center justify-center transition-colors duration-500"
-      style={{ width: "100vw" }}
+    <button
+      onClick={toggleTheme}
+      className="px-4 py-2 rounded-md border border-gray-300 bg-white dark:bg-gray-800 dark:text-white transition-colors duration-300"
     >
-      <h1 className="text-3xl font-bold mb-4">Tailwind Dark Mode</h1>
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        className="px-4 py-2 bg-gray-300 dark:bg-gray-700 dark:text-white rounded"
-      >
-        Toggle {darkMode ? "Light" : "Dark"} Mode
-      </button>
-    </div>
+      {darkMode ? "Switch to Light 🌞" : "Switch to Dark 🌙"}
+    </button>
   );
 }

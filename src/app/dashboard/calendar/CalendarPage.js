@@ -9,6 +9,21 @@ export default function CalendarPage({events}) {
     document.title = "Calendar | Make-It-All";
   }, []);
 
+  // Define your color palette
+  const colorPalette = [
+    "#FFB3BA",
+    "#BAE1FF",
+    "#BAFFC9",
+    "#FFFFBA",
+    "#D7BAFF",
+  ];
+
+  // Assign a color to each event (cyclically)
+  const coloredEvents = events.map((event, index) => ({
+    ...event,
+    color: colorPalette[index % colorPalette.length],
+  }));
+
   return (
     <div
       style={{
