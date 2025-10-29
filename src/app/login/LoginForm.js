@@ -61,7 +61,7 @@ export default function LoginForm({
 			<div style={styles.forgotPasswordWrapper}>
 				<Link href="/login/Forgot" style={styles.forgotPassword}>
 					Forgot Password?
-				</Link> // CASE SENSITIVE
+				</Link> 
 			</div>
 
 			<button style={styles.button} type="submit">Sign in</button>
