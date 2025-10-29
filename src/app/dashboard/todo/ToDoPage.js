@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Card from "@/components/Card";
 
 export default function ToDoPage() {
   const [openProjects, setOpenProjects] = useState({});
@@ -30,42 +31,40 @@ export default function ToDoPage() {
 
   return (
     <div className="flex justify-center items-start min-h-screen py-10 text-black">
-      <div className="flex gap-[110px] mt-10">
+      <div className="flex gap-10">
         {/* Projects Column */}
         <div className="w-[344px] flex flex-col items-center">
-          <h1 className="text-[50px] font-[700] text-center mb-[20px]">
-            Projects
-          </h1>
+          <h1 className="text-[50px] font-bold text-center mb-8">Projects</h1>
 
-          <div className="flex flex-col gap-[18px] w-full items-center relative">
+          <div className="flex flex-col gap-6 w-full items-center">
             {projects.map((project) => (
               <div
                 key={project.name}
-                className="bg-white shadow-md p-5 w-[344px] border border-black"
+                className="bg-white shadow-lg rounded-xl p-5 w-[344px] border border-gray-300"
               >
+                <Card>
+                {/* Project Card Header */}
                 <button
                   onClick={() => toggleProject(project.name)}
-                  className="w-full text-left text-xl font-semibold mb-2 focus:outline-none flex justify-between"
+                  className="w-full text-left text-xl font-semibold mb-3 flex justify-between focus:outline-none"
                 >
                   {project.name}
-                  <span className="text-lg">
-                    {openProjects[project.name] ? "▲" : "▼"}
-                  </span>
+                  <span className="text-lg">{openProjects[project.name] ? "▲" : "▼"}</span>
                 </button>
+                </Card>
 
+                {/* Project Tasks */}
                 {openProjects[project.name] && (
-                  <div className="mt-3">
-                    <ul className="space-y-2">
-                      {project.tasks.map((task, i) => (
-                        <li
-                          key={i}
-                          className="bg-white hover:bg-gray-50 px-3 py-2 border border-gray-200 cursor-pointer transition-all"
-                        >
-                          {task}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <ul className="space-y-2">
+                    {project.tasks.map((task, i) => (
+                      <li
+                        key={i}
+                        className="bg-gray-50 hover:bg-gray-100 px-4 py-2 rounded-lg shadow-sm border border-gray-200 cursor-pointer transition-all"
+                      >
+                        {task}
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
             ))}
@@ -74,22 +73,23 @@ export default function ToDoPage() {
 
         {/* General Column */}
         <div className="w-[344px] flex flex-col items-center">
-          <h1 className="text-[50px] font-[700] text-center mb-[20px]">
-            General
-          </h1>
+          <h1 className="text-[50px] font-bold text-center mb-8">To-Do</h1>
 
-          <div className="bg-white shadow-md p-5 w-[344px] border border-black">
-            <h3 className="text-xl font-semibold mb-3">To-Do List</h3>
+          <div className="bg-white shadow-lg rounded-xl p-5 w-[344px] border border-gray-300">
+            
             <ul className="space-y-2">
+              <Card>
               {generalTasks.map((task, i) => (
                 <li
                   key={i}
-                  className="bg-white hover:bg-gray-50 px-3 py-2 border border-gray-200 cursor-pointer transition-all"
+                  className="bg-gray-50 hover:bg-gray-100 px-4 py-2 rounded-lg shadow-sm border border-gray-200 cursor-pointer transition-all"
                 >
                   {task}
                 </li>
               ))}
+              </Card>
             </ul>
+            
           </div>
         </div>
       </div>
