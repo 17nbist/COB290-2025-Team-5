@@ -1,6 +1,11 @@
 "use client";
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import baseUsers from "./base-data/users.js"
+import baseProjects from "./base-data/projects.js"
+import baseTasks from "./base-data/tasks.js"
+import baseEvents from "./base-data/events.js"
+
 
 const AuthContext = createContext();
 
@@ -72,84 +77,167 @@ export const userData = {
 };
 
 export function AuthProvider({ children }) {
+    const [allProjects, setAllProjects] = useState(null)
+    const [allTasks, setAllTasks] = useState(null)
+    const [allEvents, setAllEvents] = useState(null)
+    const [allUsers, setAllUsers] = useState(null);
     const [user, setUser] = useState(null);
-    const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
 
     // Load user and data from localStorage on mount
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
-        const storedData = localStorage.getItem('userData');
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
+        const localUser = localStorage.getItem('user')
+        if (localUser) {
+            setUser(JSON.parse(localUser));
         }
-        if (storedData) {
-            const parsedData = JSON.parse(storedData);
 
-            if (parsedData.events) {
-                parsedData.events = parsedData.events.map(event => ({
-                    ...event,
-                    from: new Date(event.from),
-                    to: new Date(event.to)
-                }));
-            }
-
-            setData(parsedData);
+        const localUsers = localStorage.getItem('users');
+        if (localUsers) {
+            setAllUsers(JSON.parse(localUsers));
+        } else {
+            setAllUsers(baseUsers);
+            localStorage.setItem('users', JSON.stringify(baseUsers));
         }
+
+
+        const localProjects = localStorage.getItem('projects');
+        if (localProjects) {
+            setAllProjects(JSON.parse(localProjects).map(e => ({
+                ...e, 
+                creationDate: new Date(e.creationDate),
+                dueDate: new Date(e.dueDate),
+            })));
+        } else {
+            setAllProjects(baseProjects);
+            localStorage.setItem('projects', JSON.stringify(baseProjects));
+        }
+
+        const localTasks = localStorage.getItem('tasks');
+        if (localTasks) {
+            setAllTasks(JSON.parse(localTasks).map(e => ({
+                ...e, 
+                from: new Date(e.from),
+                to: new Date(e.to),
+            })));
+        } else {
+            setAllTasks(baseTasks);
+            localStorage.setItem('tasks', JSON.stringify(baseTasks));
+        }
+
+        const localEvents = localStorage.getItem('events');
+        if (localEvents) {
+            setAllEvents(JSON.parse(localEvents).map(e => ({
+                ...e, 
+                from: new Date(e.from),
+                to: new Date(e.to),
+            })));
+        } else {
+            setAllEvents(baseEvents);
+            localStorage.setItem('events', JSON.stringify(baseEvents));
+        }
+
+
         setLoading(false);
     }, []);
 
-    const login = (email, password) => {
-        // Hardcoded credentials
-        const users = {
-            'manager@gmail.com': {
-                email: 'manager@gmail.com',
-                name: 'Mike Oxlarge',
-                role: 'manager',
-                position: 'CEO',
-                taskAllocated: 12,
-                projectAllocated: 18
-            },
-            'employee@gmail.com': {
-                email: 'employee@gmail.com',
-                name: 'John Doe',
-                role: 'employee',
-                position: 'Developer',
-                taskAllocated: 8,
-                projectAllocated: 5
-            }
-        };
-
+    const login = (inputEmail, inputPassword) => {
         const validPassword = 'password123';
-
-        if (users[email] && password === validPassword) {
-            const userInfo = users[email];
-            const userSpecificData = userData[email] || {};
-
-            setUser(userInfo);
-            setData(userSpecificData);
-
-            localStorage.setItem('user', JSON.stringify(userInfo));
-            localStorage.setItem('userData', JSON.stringify(userSpecificData));
-
-            router.push('/dashboard');
-            return { success: true };
-        } else {
-            return { success: false, error: 'Invalid email or password.' };
+        
+        let matches = allUsers.filter(({email, password}) => inputEmail == email && inputPassword == password);
+        if (matches.length == 0) {
+            return { success: false, error: 'Invalid email or password.' }
         }
+
+        let matchedUser = matches[0];
+
+        setUser(matchedUser);
+
+        localStorage.setItem('user', JSON.stringify(matchedUser));
+
+        router.push('/dashboard');
+        return { success: true };
     };
 
     const logout = () => {
         setUser(null);
-        setData(null);
         localStorage.removeItem('user');
-        localStorage.removeItem('userData');
         router.push('/login');
     };
 
+    function addToAllTasks(task) {
+        setAllTasks(prev => {
+            const maxId = prev.length > 0 ? Math.max(...prev.map(t => t.id)) : 0;
+            const newTask = {
+                ...task,
+                id: maxId + 1,
+            };
+            const updated = [...prev, newTask]
+            localStorage.setItem('tasks', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
+    function addToAllEvents(event) {
+        setAllEvents(prev => {
+            const maxId = prev.length > 0 ? Math.max(...prev.map(t => t.id)) : 0;
+            const newEvent = {
+                ...event,
+                id: maxId + 1,
+            };
+            const updated = [...prev, newEvent]
+            localStorage.setItem('events', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
+    function addToAllProjects(project) {
+        setAllProjects(prev => {
+            const maxId = prev.length > 0 ? Math.max(...prev.map(t => t.id)) : 0;
+            const newProject = {
+                ...project,
+                id: maxId + 1,
+            };
+            const updated = [...prev, newProject]
+            localStorage.setItem('projects', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
+    function editProjectMembers(projectId, members) {
+        setAllProjects(prev => {
+            const updated = prev.map(project => {
+            if (project.id === projectId) {
+                return { ...project, members };
+            }
+            return project;
+            });
+
+            localStorage.setItem('projects', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
+    function updateTodo(taskId, todoId) {
+        setAllTasks(prev => {
+            const updated = prev.map(task => {
+                if (task.id === taskId) {
+                    return {...task,
+                        todos: task.todos.map(todo =>
+                            todo.id === todoId? { ...todo, checked: !todo.checked }: todo
+                        )
+                    };
+                }
+                return task;
+            })
+
+            localStorage.setItem('tasks', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
     return (
-        <AuthContext.Provider value={{ user, data, login, logout, loading }}>
+        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks, addToAllEvents, updateTodo, addToAllProjects, editProjectMembers}}>
             {children}
         </AuthContext.Provider>
     );

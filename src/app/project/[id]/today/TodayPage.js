@@ -32,9 +32,7 @@ export default function TodayPage({ tasks, events }) {
 
   // Task click handler
   const handleTaskClick = (task) => {
-    console.log("Navigating to /task-view for:", task.title);
-    localStorage.setItem("selectedTask", JSON.stringify(task));
-    router.push("/task-view"); // This works under /app structure
+    router.push(`/task/${task.id}`); // This works under /app structure
   };
 
   return (
@@ -48,11 +46,7 @@ export default function TodayPage({ tasks, events }) {
               key={t.id}
               title={t.title}
               subTitle={getTaskDueDate(t)}
-              onClick={
-                t.title === "Google Auth" || t.title === "A Task"
-                  ? () => handleTaskClick(t)
-                  : undefined
-              }
+              onClick={() => handleTaskClick(t)}
             />
           ))}
         </div>
