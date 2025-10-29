@@ -16,6 +16,9 @@ export default function TasksPage({tasks, projectId, projectMembers}) {
 	const [from, setFrom] = useState(new Date());
 	const [to, setTo] = useState(new Date());
 	const [selectedMembers, setSelectedMembers] = useState([]);
+	const [memberSearch, setMemberSearch] = useState("");
+	
+	const filteredMembers = projectMembers.filter(e => e.name.toLowerCase().includes(memberSearch.toLowerCase())).sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
 	function addTask() {
 		if (title == "" || to <= from) {
@@ -72,29 +75,37 @@ export default function TasksPage({tasks, projectId, projectMembers}) {
 							/>
 						</div>
 						<div className="flex flex-col gap-1">
-						<h1>Assign Members:</h1>
-						{
-							projectMembers.map(member => {
-								return (
-								<label key={member.id} className="flex items-center gap-2">
-									<input
-									type="checkbox"
-									checked={selectedMembers.includes(member.id)}
-									onChange={e => {
-										if (e.target.checked) {
-											setSelectedMembers(prev => [...prev, member.id]);
-										}
-										
-										else {
-											setSelectedMembers(prev => prev.filter(x => x !== member.id));
-										}
-									}}
-									/>
-									{member?.name || `User ${id}`}
-								</label>
-								);
-							})
-						}
+							<h1>Members ({selectedMembers.length} selected)</h1>
+							<input 
+								className="rounded-[3px] outline outline-gray-400"
+								type="text"
+								placeholder="Search"
+								value={memberSearch}
+								onChange={e => setMemberSearch(e.target.value)}
+							/>
+							<div className="h-[150px] overflow-auto">
+								{
+									filteredMembers.map(member => (
+											<label key={member.id} className="flex items-center gap-2">
+												<input
+												type="checkbox"
+												checked={selectedMembers.includes(member.id)}
+												onChange={e => {
+													if (e.target.checked) {
+														setSelectedMembers(prev => [...prev, member.id]);
+													}
+													
+													else {
+														setSelectedMembers(prev => prev.filter(x => x !== member.id));
+													}
+												}}
+												/>
+												{member?.name || `User ${id}`}
+											</label>
+
+									))
+								}
+							</div>
 						</div>
 						<div className="flex w-full justify-end">
 							<div className="flex gap-2">

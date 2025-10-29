@@ -3,7 +3,7 @@ const baseProjects = [
         id: 0, 
         managerId:0, 
         leaderId: 0,
-        members: [0, 1, 2],
+        members: [0, 1, 2, 3, 4, 5, 6, 7],
         title: "Mobile App", 
         description: "The one and only mobile app",
         creationDate: new Date(2025, 9, 28),

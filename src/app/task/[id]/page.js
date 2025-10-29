@@ -11,11 +11,13 @@ import { useAuth } from "@/lib/AuthContext";
 import { useParams } from "next/navigation";
 
 export default function Dashboard() {
-  const { user, allProjects, allTasks, allEvents } = useAuth();
+  const { user, allProjects, allTasks, allEvents, allUsers } = useAuth();
   const navItems = ["Overview", "To-Do", "Members"];
   const [activeTab, setActiveTab] = useState(navItems[0]);
   const [errText, setErrText] = useState("");
   const [task, setTask] = useState(null);
+
+  const taskMembers = allUsers?.filter(u => task?.members?.includes(u?.id));
 
   const taskId = parseInt(useParams().id);
   const router = useRouter();
@@ -152,7 +154,7 @@ export default function Dashboard() {
       >
         {activeTab === "Members" && (
           <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-            <TaskViewMembers />
+            <TaskViewMembers taskMembers={taskMembers}/>
           </div>
         )}
         {activeTab === "Overview" && (

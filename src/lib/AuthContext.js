@@ -124,8 +124,53 @@ export function AuthProvider({ children }) {
         });
     }
 
+    function addToAllProjects(project) {
+        setAllProjects(prev => {
+            const maxId = prev.length > 0 ? Math.max(...prev.map(t => t.id)) : 0;
+            const newProject = {
+                ...project,
+                id: maxId + 1,
+            };
+            const updated = [...prev, newProject]
+            localStorage.setItem('projects', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
+    function editProjectMembers(projectId, members) {
+        setAllProjects(prev => {
+            const updated = prev.map(project => {
+            if (project.id === projectId) {
+                return { ...project, members };
+            }
+            return project;
+            });
+
+            localStorage.setItem('projects', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
+    function updateTodo(taskId, todoId) {
+        setAllTasks(prev => {
+            const updated = prev.map(task => {
+                if (task.id === taskId) {
+                    return {...task,
+                        todos: task.todos.map(todo =>
+                            todo.id === todoId? { ...todo, checked: !todo.checked }: todo
+                        )
+                    };
+                }
+                return task;
+            })
+
+            localStorage.setItem('tasks', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
     return (
-        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks, addToAllEvents}}>
+        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks, addToAllEvents, updateTodo, addToAllProjects, editProjectMembers}}>
             {children}
         </AuthContext.Provider>
     );

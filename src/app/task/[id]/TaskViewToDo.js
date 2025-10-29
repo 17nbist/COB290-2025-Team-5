@@ -1,9 +1,12 @@
 "use client";
 import Card from "@/components/Card";
+import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/AuthContext";
 
 export default function TaskViewToDo({ task }) {
   const router = useRouter();
+  const { updateTodo } = useAuth();
 
   return (
     <div className="w-full flex justify-center">
@@ -22,25 +25,26 @@ export default function TaskViewToDo({ task }) {
       >
         <div className="flex flex-col gap-[16px] w-full">
           {/* Dynamic task title button (centered) */}
-          <button
-            onClick={() => router.push("/task-view")}
-            className="bg-transparent text-black text-[20px] font-bold px-3 py-3 rounded-md w-full text-center hover:text-gray-600 transition"
-          >
-            {task?.title || "Task Title"}
-          </button>
+            <h1>{task?.title || "Task Title"}</h1>
 
-          {/* To-Do buttons */}
-          <button className="bg-white text-black px-4 py-3 text-[15px] rounded-md border border-gray-400 hover:bg-gray-200 transition w-full text-center">
-            Setup
-          </button>
-          <button className="bg-white text-black px-4 py-3 text-[15px] rounded-md border border-gray-400 hover:bg-gray-200 transition w-full text-center">
-            Authentication
-          </button>
-          <button className="bg-white text-black px-4 py-3 text-[15px] rounded-md border border-gray-400 hover:bg-gray-200 transition w-full text-center">
-            Testing
-          </button>
+          {
+            task.todos.map(t => (
+              <ToDo key={t.id} todo={t} task={task} updateTodo={updateTodo}/>
+            ))
+          }
         </div>
       </Card>
     </div>
   );
+}
+
+function ToDo({todo, task, updateTodo}) {
+  return (
+    <Card>
+      <div className="flex justify-between items-center">
+        <h1 style={{textDecorationLine: todo.checked? "line-through" : "none"}}>{todo.title}</h1>
+        <Button text={todo.checked? "undo" : "mark as done"} onClick={() => updateTodo(task.id, todo.id)}/>
+      </div>
+    </Card>
+  )
 }

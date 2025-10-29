@@ -18,7 +18,7 @@ export default function ProjectPage() {
 	const [errText, setErrText] = useState("");
 	const projectId = parseInt(useParams().id);
 	const [project, setProject] = useState(null);
-	console.log(allTasks, user?.id);
+
 	const tasks = allTasks?.filter(t => 
 		t.projectId == project?.id && 
 		(user.role == "manager" || user?.id == project?.leaderId || t.members?.includes(user?.id))) || [];
@@ -27,7 +27,7 @@ export default function ProjectPage() {
 		e.projectId == project?.id && 
 		(user.role == "manager" || user?.id == project?.leaderId || e.members?.includes(user?.id))) || [];
 
-	const projectMembers = allUsers?.filter(u => project?.members.includes(u.id));
+	const projectMembers = allUsers?.filter(u => project?.members?.includes(u?.id));
 
 	useEffect(() => {
 		if (!user || !allProjects || !allTasks || !allEvents || !allUsers) {
@@ -91,10 +91,10 @@ export default function ProjectPage() {
 			<main className="flex justify-center flex-1">
 				{activeTab == "Today" && <TodayPage tasks={tasks} events={events}/>}
 				{activeTab == "Tasks" && <TasksPage tasks={tasks} projectId={projectId} projectMembers={projectMembers}/>}
-				{activeTab == "Events" && <EventsPage events={events} projectId={projectId}/>}
+				{activeTab == "Events" && <EventsPage events={events} projectId={projectId} projectMembers={projectMembers}/>}
 				{activeTab === "Members" && (
 					<div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-						<MembersPage members={projectMembers}/>
+						<MembersPage members={projectMembers} projectId={projectId}/>
 					</div>
 				)}
 			</main>

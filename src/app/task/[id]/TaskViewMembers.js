@@ -6,33 +6,10 @@ import Member from "./Member";
 import Button from "@/components/Button";
 import { useAuth } from "@/lib/AuthContext";
 
-export default function TaskViewMembers() {
+export default function TaskViewMembers({taskMembers}) {
   const { user } = useAuth();
   const filterTabs = ["Name", "Workload"];
   const [activeFilterTab, setActiveFilterTab] = useState("Workload");
-
-  const [members, setMembers] = useState([
-    {
-      id: 1,
-      title: "Ryan Mitchell",
-      preview: "Lead Software Engineer",
-    },
-    {
-      id: 2,
-      title: "Neha Sharma",
-      preview: "Senior Software Engineer",
-    },
-    {
-      id: 3,
-      title: "Sofia Rivera",
-      preview: "Software Engineer",
-    },
-    {
-      id: 4,
-      title: "Andrei Petrov",
-      preview: "Junior Software Engineer",
-    },
-  ]);
 
   const handleSearch = (query) => {
     console.log("Searching for:", query); // future search feature
@@ -71,7 +48,6 @@ export default function TaskViewMembers() {
         {/* Search Bar (centered) */}
         <div style={{display: "flex", width: "100%"}}>
           <SearchBar onSearch={handleSearch} />
-          {user?.role == "manager" && <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"} onClick={handleAddMember}/>}
         </div>
 
         {/* Filters to the right */}
@@ -93,11 +69,10 @@ export default function TaskViewMembers() {
           gap: "12px",
         }}
       >
-        {members.map((member) => (
+        {taskMembers.map((member) => (
           <Member
             key={member.id}
             member={member}
-            onClick={() => handleMemberClick(member.id)}
           />
         ))}
       </div>
