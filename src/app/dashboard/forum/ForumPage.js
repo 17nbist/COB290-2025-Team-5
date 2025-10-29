@@ -3,9 +3,10 @@ import NavBar from "@/components/NavBar";
 import SearchBar from "@/components/SearchBar";
 import ForumPost from "./ForumPost";
 import CreatePostModal from "./CreatePostModal";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "@/lib/AuthContext";
 import Button from "@/components/Button";
+import Link from "next/link";
 
 export default function Forum() {
   const { user, data } = useAuth(); // Get user and data from context
@@ -65,10 +66,6 @@ export default function Forum() {
     setPosts([postWithAuthor, ...posts]);
   };
 
-  const handlePostClick = (postId) => {
-    console.log("Clicked post:", postId);
-  };
-
   useEffect(() => {
     document.title = 'Forum | Make-It-All';
   }, []);
@@ -80,7 +77,7 @@ export default function Forum() {
       {/* Search Bar */}
       <div className="mb-6 flex">
         <SearchBar onSearch={handleSearch} onAdd={handleAddPost} />
-        <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"} onClick={handleAddPost}/>
+        <Button outerStyle={{ width: "47px", height: "47px" }} textStyle={{ fontSize: "30px" }} text={"+"} onClick={handleAddPost} />
       </div>
 
       {/* Filter Tabs */}
@@ -100,11 +97,9 @@ export default function Forum() {
           </div>
         ) : (
           filteredPosts.map(post => (
-            <ForumPost
-              key={post.id}
-              post={post}
-              onClick={() => handlePostClick(post.id)}
-            />
+            <Link key={post.id} href={`/dashboard/forum/${post.id}`}>
+              <ForumPost post={post} />
+            </Link>
           ))
         )}
       </div>

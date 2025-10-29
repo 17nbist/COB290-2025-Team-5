@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import {useRouter} from "next/navigation";
 import NavBar from "@/components/NavBar";
 import TodayPage from "./today/TodayPage";
@@ -12,7 +12,7 @@ export default function ProjectPage() {
 	const router = useRouter();
 	const topNavItems = ["All Projects", "Today", "Tasks", "Events", "Members"];
 	const [activeTab, setActiveTab] = useState("Today");
-	
+
 	const [tasks, setTasks] = useState([
 		{id: 0, title: "Google Auth", from: new Date(2025, 9, 24, 0), to: new Date(2025, 10, 7, 0)},
 		{id: 1, title: "Main Dashboard", from: new Date(2025, 9, 31, 0), to: new Date(2025, 10, 8, 0)},
@@ -35,11 +35,15 @@ export default function ProjectPage() {
 				setActiveTab(capitalizedHash);
 			}
 		};
-	
+
 		handleHashChange();
 		window.addEventListener("hashchange", handleHashChange);
 		return () => window.removeEventListener("hashchange", handleHashChange);
 	}, []);
+
+	useEffect(() => {
+		document.title = 'Active Project | Make-It-All';
+  }, []);
 
 	const handleTabClick = (tab) => {
 		if (tab == "All Projects") {
@@ -72,7 +76,7 @@ export default function ProjectPage() {
 						<MembersPage />
 					</div>
 				)}
-				
+
 			</main>
 		</div>
 	);
