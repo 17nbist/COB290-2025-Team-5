@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-export default function Logo({ width = 48, height = 48, className = "", title = "App logo" }) {
+export default function Logo({ width = 0, height = 0, className = "", title = "App logo" }) {
   return (
     <Image
-      src="/next.svg"
+      src="/mia.png"
       alt={title}
-      width={width}
+      width="350"
       height={height}
       className={className}
     />
