@@ -29,7 +29,7 @@ export default function AuthCard({ children }) {
 			</div>
 						<div style={styles.footer}>
 							Have a set up URL?{" "}
-							<Link href="#" style={styles.link}>
+							<Link href="/login/registration/UrlPage" style={styles.link}>
 								Click Here
 							</Link>
 					</div>
@@ -64,7 +64,7 @@ const styles = {
 		background: "#f4cc9eff",
 		display: "flex",
 		flexDirection: "column",
-		alighItems: "center",
+
 		justifyContent: "center",
 		padding: "40px",
 	},
@@ -73,7 +73,6 @@ const styles = {
 		background: "#f4f3f4ff",
 		display : "flex",
 		flexDirection: "column",
-		alighItems: "center",
 		justifyContent: "center",
 		padding: "40px",
 	},
