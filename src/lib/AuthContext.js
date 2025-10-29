@@ -204,11 +204,11 @@ export function AuthProvider({ children }) {
         });
     }
 
-    function editProjectMembers(projectId, members) {
+    function editProjectMembers(projectId, members, leaderId) {
         setAllProjects(prev => {
             const updated = prev.map(project => {
                 if (project.id === projectId) {
-                    return { ...project, members };
+                    return { ...project, members, leaderId };
                 }
                 return project;
             });

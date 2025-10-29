@@ -8,7 +8,7 @@ import Modal from "@/components/Modal";
 import Card from "@/components/Card";
 import { useAuth } from "@/lib/AuthContext";
 
-export default function MembersPage({members, projectId}) {
+export default function MembersPage({members, project, adminPerms}) {
     const { user } = useAuth();
     const filterTabs = ["Name", "Workload"];
     const [activeFilterTab, setActiveFilterTab] = useState("Name");
@@ -46,7 +46,7 @@ export default function MembersPage({members, projectId}) {
           {/* Search Bar (centered) */}
           <div style={{display: "flex", width: "100%"}}>
             <SearchBar onSearch={setSearch} />
-            {user?.role == "manager" && <Button outerStyle={{height: "47px"}} textStyle={{}} text={"edit"} onClick={() => setShowModal(true)}/>}
+            {adminPerms && <Button outerStyle={{height: "47px"}} textStyle={{}} text={"edit"} onClick={() => setShowModal(true)}/>}
           </div>
   
           {/* Filters to the right */}
@@ -72,20 +72,23 @@ export default function MembersPage({members, projectId}) {
             <Member
               key={member.id}
               member={member}
+              project={project}
             />
           ))}
         </div>
-        <EditMembersModal showModal={showModal} setShowModal={setShowModal} members={members} projectId={projectId}/>
+        <EditMembersModal showModal={showModal} setShowModal={setShowModal} members={members} project={project}/>
       </div>
     );
 }
 
-function EditMembersModal({showModal, setShowModal, members, projectId}) {
+function EditMembersModal({showModal, setShowModal, members, project}) {
 
-  const { allUsers, editProjectMembers } = useAuth();
+  const { user, allUsers, editProjectMembers } = useAuth();
 
   const [selectedMembers, setSelectedMembers] = useState(members.map(m => m.id));
   const [employeeSearch, setEmployeeSearch] = useState("");
+  const [leaderId, setLeaderId] = useState(null);
+  const employees = allUsers?.filter(u => u?.role != "manager");
   
   const filteredEmployees = allUsers.filter(e => e.name.toLowerCase().includes(employeeSearch.toLowerCase())).sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
@@ -93,8 +96,12 @@ function EditMembersModal({showModal, setShowModal, members, projectId}) {
     setSelectedMembers(members.map(m => m.id));
   }, [members])
 
+  useEffect(() => {
+    setLeaderId(project?.leaderId);
+  }, [project])
+
   function saveMembers() {
-    editProjectMembers(projectId, selectedMembers)
+    editProjectMembers(project.id, selectedMembers, leaderId)
     setShowModal(false);
   }
 
@@ -104,6 +111,29 @@ function EditMembersModal({showModal, setShowModal, members, projectId}) {
       <Card style={{width: "40%"}}>
         <div className="flex flex-col gap-[20px]">
           <div className="flex flex-col gap-1">
+
+             <h1>Team Leader (optional)</h1>
+            <select
+              disabled={user?.role != "manager"}
+              className="rounded-[3px] outline outline-gray-400 p-1"
+              value={leaderId ?? ""}
+              onChange={e => {
+                const id = e.target.value ? parseInt(e.target.value) : null;
+                setLeaderId(id);
+
+                if (id && !selectedMembers.includes(id)) {
+                  setSelectedMembers(prev => [...prev, id]);
+                }
+              }}
+            >
+              <option value="">None</option>
+              {employees.map(member => (
+                <option key={member.id} value={member.id}>
+                  {member.name}
+                </option>
+              ))}
+            </select>
+           
             <h1>Members ({selectedMembers.length} selected)</h1>
             <input 
               className="rounded-[3px] outline outline-gray-400"
@@ -119,7 +149,7 @@ function EditMembersModal({showModal, setShowModal, members, projectId}) {
                       <input
                       type="checkbox"
                       checked={selectedMembers.includes(member.id)}
-                      disabled={member.role == "manager"}
+                      disabled={member.role == "manager" || leaderId == member.id}
                       onChange={e => {
                         if (e.target.checked) {
                           setSelectedMembers(prev => [...prev, member.id]);
