@@ -32,7 +32,7 @@ export default function EventsPage({events, projectId, projectMembers}) {
 
 	return (
 		<div style={{width: "80%", height: "80%"}}>
-			<Calendar tasks={events} startRangeType={"Day"} addOnClick={user?.role == "manager" && (() => setShowModal(true))} excludeNav={["Year"]}/>
+			<Calendar tasks={events} startRangeType={"Day"} addOnClick={user?.role == "manager" && (() => setShowModal(true))} excludeNav={["Year", "Month"]}/>
 			<Modal isOpen={showModal}> 
 				<Card style={{width: "40%"}}>
 					<div className="flex flex-col gap-[20px]">

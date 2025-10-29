@@ -17,7 +17,7 @@ export default function CalendarPage({events}) {
       marginTop: "30px",
       }}
     > 
-      <Calendar tasks={events} startRangeType="Day" excludeNav={"Year"}/> 
+      <Calendar tasks={events} startRangeType="Day" excludeNav={["Year", "Month"]}/> 
     
     </div>
     
