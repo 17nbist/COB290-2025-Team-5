@@ -1,31 +1,48 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState, useEffect, use } from "react";
 import {useRouter} from "next/navigation";
 import NavBar from "@/components/NavBar";
 import TodayPage from "./today/TodayPage";
 import TasksPage from "./tasks/TasksPage";
 import EventsPage from "./events/EventsPage";
 import MembersPage from "./members/MembersPage";
+import { useAuth } from "@/lib/AuthContext";
+import { useParams } from "next/navigation";
 
 
 export default function ProjectPage() {
+	const { user, allProjects, allTasks, allEvents, allUsers } = useAuth();
 	const router = useRouter();
 	const topNavItems = ["All Projects", "Today", "Tasks", "Events", "Members"];
 	const [activeTab, setActiveTab] = useState("Today");
+	const [errText, setErrText] = useState("");
+	const projectId = parseInt(useParams().id);
+	const [project, setProject] = useState(null);
 
-	const [tasks, setTasks] = useState([
-		{id: 0, title: "Google Auth", from: new Date(2025, 9, 24, 0), to: new Date(2025, 10, 7, 0)},
-		{id: 1, title: "Main Dashboard", from: new Date(2025, 9, 31, 0), to: new Date(2025, 10, 8, 0)},
-		{id: 2, title: "A Task", from: new Date(2025, 10, 2, 8), to: new Date(2025, 10, 11, 14)},
-		{id: 3, title: "Other Task", from: new Date(2025, 10, 5, 8), to: new Date(2025, 10, 11, 14)},
-		{id: 4, title: "Task B", from: new Date(2025, 10, 4, 0), to: new Date(2025, 10, 9, 20)},
-	]);
+	const tasks = allTasks?.filter(t => 
+		t.projectId == project?.id && 
+		(user.role == "manager" || user?.id == project?.leaderId || t.members?.includes(user?.id))) || [];
 
-	const [events, setEvents] = useState([
-		{id: 0, title: "Google Auth Meeting", from: new Date(2025, 10, 4, 8), to: new Date(2025, 10, 4, 16)},
-		{id: 1, title: "Other Meeting", from: new Date(2025, 10, 5, 12), to: new Date(2025, 10, 5, 15)},
-		{id: 2, title: "Dashboard Meeting", from: new Date(2025, 10, 6, 11), to: new Date(2025, 10, 6, 15)},
-	]);
+	const events = allEvents?.filter(e => 
+		e.projectId == project?.id && 
+		(user.role == "manager" || user?.id == project?.leaderId || e.members?.includes(user?.id))) || [];
+
+	const projectMembers = allUsers?.filter(u => project?.members?.includes(u?.id));
+
+	useEffect(() => {
+		if (!user || !allProjects || !allTasks || !allEvents || !allUsers) {
+			return;
+		}
+
+		const currentProject = allProjects.find(p => p.id == projectId);
+		if (!currentProject || !currentProject.members.includes(user.id)){
+			setErrText("No access or project doesn't exist");
+			return;
+		}
+
+		setProject(currentProject);
+		setErrText(null);
+	}, [allProjects, allTasks, allEvents, user]);
 
 	useEffect(() => {
 		const handleHashChange = () => {
@@ -53,6 +70,14 @@ export default function ProjectPage() {
 		setActiveTab(tab);
 	};
 
+	if (errText) {
+		return(
+			<div className="flex flex-col w-screen h-screen bg-[#c4daff] dark:bg-[#303640]">
+				<h1>{errText}</h1>
+			</div>
+		)
+	}
+
 
 	return (
 		<div className="flex flex-col w-screen h-screen bg-[#c4daff] dark:bg-[#303640]">
@@ -69,14 +94,13 @@ export default function ProjectPage() {
 
 			<main className="flex justify-center flex-1">
 				{activeTab == "Today" && <TodayPage tasks={tasks} events={events}/>}
-				{activeTab == "Tasks" && <TasksPage tasks={tasks} setTasks={setTasks}/>}
-				{activeTab == "Events" && <EventsPage events={events} setEvents={setEvents}/>}
+				{activeTab == "Tasks" && <TasksPage tasks={tasks} projectId={projectId} projectMembers={projectMembers}/>}
+				{activeTab == "Events" && <EventsPage events={events} projectId={projectId} projectMembers={projectMembers}/>}
 				{activeTab === "Members" && (
 					<div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-						<MembersPage />
+						<MembersPage members={projectMembers} projectId={projectId}/>
 					</div>
 				)}
-
 			</main>
 		</div>
 	);

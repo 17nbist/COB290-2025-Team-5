@@ -17,14 +17,21 @@ const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar", "
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("Dashboard");
-  const { user, data, loading, logout } = useAuth();
+  const { user, loading, logout, allEvents, allProjects, allUsers } = useAuth();
   const router = useRouter();
 
-  // Extract events from user data (authcontext)
-  const events = data?.events || [];
+  const projects = allProjects?.filter(p => p.members?.includes(user?.id));
+  const events = allEvents?.filter(e => e.members?.includes(user?.id));
+  const employees = allUsers?.filter(u => u?.role != "manager");
 
 
   // Redirect to login if not authenticated
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [user, loading, router]);
+
   useEffect(() => {
     if (!loading && !user) {
       router.push('/login');
@@ -100,7 +107,7 @@ export default function Home() {
         {activeTab === "Forum" && <ForumPage />}
         {activeTab === "Requests" && <RequestPage />}
         {activeTab === "Calendar" && <CalendarPage events={events} />}
-        {activeTab === "Projects" && <ProjectsPage />}
+        {activeTab === "Projects" && <ProjectsPage projects={projects} employees={employees}/>}
         {activeTab === "To-Do" && <ToDoPage />}
       </main>
     </div>
