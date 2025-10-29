@@ -49,7 +49,7 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-    document.title = 'Selected Task | Make-It-All';;
+    document.title = 'Selected Task | Make-It-All';
   }, []);
 
   return (
