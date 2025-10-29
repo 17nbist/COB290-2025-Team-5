@@ -7,8 +7,8 @@ import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/AuthContext";
 
-export default function EventsPage({events, setEvents}) {
-	const { user } = useAuth();
+export default function EventsPage({events, projectId}) {
+	const { user, addToAllEvents } = useAuth();
 	const [showModal, setShowModal] = useState(false);
 	const [title, setTitle] = useState("");
 	const [from, setFrom] = useState(new Date());
@@ -19,7 +19,7 @@ export default function EventsPage({events, setEvents}) {
 			return
 		}
 		
-		setEvents(prev => [...prev, {id:prev.length, title, from, to}]);
+		addToAllEvents({title, from, to, projectId});
 		setShowModal(false);
 		setTitle("")
 		setFrom(new Date());

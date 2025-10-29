@@ -116,8 +116,21 @@ export function AuthProvider({ children }) {
         });
     }
 
+    function addToAllEvents(event) {
+        setAllEvents(prev => {
+            const maxId = prev.length > 0 ? Math.max(...prev.map(t => t.id)) : 0;
+            const newEvent = {
+                ...event,
+                id: maxId + 1,
+            };
+            const updated = [...prev, newEvent]
+            localStorage.setItem('events', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
     return (
-        <AuthContext.Provider value={{ users, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks}}>
+        <AuthContext.Provider value={{ users, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks, addToAllEvents}}>
             {children}
         </AuthContext.Provider>
     );

@@ -7,7 +7,7 @@ import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/AuthContext";
 
-export default function TasksPage({tasks, setTasks, projectId}) {
+export default function TasksPage({tasks, projectId}) {
 	const { user, addToAllTasks } = useAuth();
 	const router = useRouter();
 	const [showModal, setShowModal] = useState(false);

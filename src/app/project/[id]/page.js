@@ -21,7 +21,10 @@ export default function ProjectPage() {
 	const events = allEvents?.filter(t => t.projectId == projectId) || [];
 
 	useEffect(() => {
-		if (!user || !allProjects || !allTasks || !allEvents) return;
+		if (!user || !allProjects || !allTasks || !allEvents) {
+			return;
+		}
+
 		const currentProject = allProjects.find(p => p.id == projectId);
 		if (!currentProject || !currentProject.members.has(user.id)){
 			setErrText("No access or project doesn't exist");
@@ -78,7 +81,7 @@ export default function ProjectPage() {
 			<main className="flex justify-center flex-1">
 				{activeTab == "Today" && <TodayPage tasks={tasks} events={events}/>}
 				{activeTab == "Tasks" && <TasksPage tasks={tasks} projectId={projectId}/>}
-				{activeTab == "Events" && <EventsPage events={events}/>}
+				{activeTab == "Events" && <EventsPage events={events} projectId={projectId}/>}
 				{activeTab === "Members" && (
 					<div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
 						<MembersPage />
