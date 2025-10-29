@@ -26,7 +26,7 @@ export default function TasksPage({tasks, projectId, projectMembers, adminPerms,
 			return
 		}
 		
-		addToAllTasks({title, description, from, to, projectId: project.id, members: selectedMembers});
+		addToAllTasks({title, description, from, to, projectId: project.id, members: selectedMembers, todos: []});
 		setShowModal(false);
 		setTitle("");
 		setDescription("");
@@ -49,20 +49,19 @@ export default function TasksPage({tasks, projectId, projectMembers, adminPerms,
 						<h1 className="text-[30px] font-[600]">Add A Task</h1>
 						<div className="flex flex-col">
 							<div className="textInput-group">
-								<input required="" placeholder="Title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} name="text" autoComplete="off" className="textInput" />
-								<label className="label">Title</label>
+								<label className="label flex flex-col">
+									<h1>Title:</h1>
+									<input required="" type="text" value={title} onChange={(e) => setTitle(e.target.value)} name="text" autoComplete="off" className="rounded-[3px] outline outline-gray-400" />
+								</label>
 							</div>
 						</div>
 						<div className="flex flex-col">
 							<div className="textInput-group">
-								<input required="" placeholder="Description" type="text" value={description} onChange={(e) => setDescription(e.target.value)} name="text" autoComplete="off" className="textInput" />
-								<label className="label">Description</label>
-							</div>
-						</div>
-						<div className="flex flex-col">
-							<div className="textInput-group">
-								<input required="" placeholder="Assign To" type="text" value={employeeName} onChange={(e) => setEmployeeName(e.target.value)} name="text" autoComplete="off" className="textInput" />
-								<label className="label">Assign To</label>
+								<label className="label flex flex-col">
+									<h1>Description:</h1>
+									<input required="" type="text" value={description} onChange={(e) => setDescription(e.target.value)} name="text" autoComplete="off" className="rounded-[3px] outline outline-gray-400" />
+								</label>
+								
 							</div>
 						</div>
 						<div className="flex flex-col">
@@ -106,7 +105,7 @@ export default function TasksPage({tasks, projectId, projectMembers, adminPerms,
 													}
 													
 													else {
-														setSelectedMembers(prev => prev.filter(x => x !== member.id));
+														setSelectedMembers(prev => prev.filter(x => x != member.id));
 													}
 												}}
 												/>

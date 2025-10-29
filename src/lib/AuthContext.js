@@ -237,8 +237,38 @@ export function AuthProvider({ children }) {
         });
     }
 
+    function addTodoToTask(taskId, newTodo) {
+        setAllTasks(prev => {
+            const updated = prev.map(task => {
+                if (task.id == taskId) {
+                    const maxId = task?.todos?.length > 0 ? Math.max(...task.todos.map(t => t.id)) : 0;
+
+                    const todoToAdd = {
+                        id: maxId + 1,
+                        title: newTodo.title,
+                        checked: newTodo.checked ?? false,
+                    };
+
+                    return { ...task, todos: [...task.todos, todoToAdd] };
+                }
+                return task;
+            });
+
+        localStorage.setItem("tasks", JSON.stringify(updated));
+        return updated;
+    });
+}
+
+    function userIsProjectLeader(projectId, userId) {
+        const project = allProjects.find(p => p.projectId);
+        if (!project) {
+            return false
+        }
+        return project.leaderId == userId;
+    }
+
     return (
-        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks, addToAllEvents, updateTodo, addToAllProjects, editProjectMembers }}>
+        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks, addToAllEvents, updateTodo, addToAllProjects, editProjectMembers, userIsProjectLeader, addTodoToTask}}>
             {children}
         </AuthContext.Provider>
     );
