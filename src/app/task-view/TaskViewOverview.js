@@ -27,7 +27,7 @@ export default function TaskViewOverview({ task }) {
   const dueDate = formatDate(task.to);
 
   return (
-    <div className="flex flex-col items-center bg-gray-50 py-10 px-4">
+    <div className="flex flex-col items-center py-10 px-4">
       {/* Back button (keep it here if you want it at the top of the page) */}
       <div className="flex items-center justify-start w-full max-w-5xl mb-10">
         {/* <button
@@ -44,7 +44,7 @@ export default function TaskViewOverview({ task }) {
         {/* Moved dynamic title into the card header */}
         <h1 className="text-2xl font-semibold mb-6">{title}</h1>
 
-        <div className="text-gray-800 mb-6">
+        <div className="text-gray-800 mb-6 dark:text-[#D9D9D9]">
           <p className="font-semibold">
             Start: <span className="font-normal">{startDate}</span>
           </p>
@@ -53,8 +53,8 @@ export default function TaskViewOverview({ task }) {
           </p>
         </div>
 
-        <h2 className="text-xl font-semibold mb-2">Description</h2>
-        <p className="text-gray-700 leading-relaxed">
+        <h2 className="text-gray-800 dark:text-white text-xl font-semibold mb-2">Description</h2>
+        <p className="text-gray-700 dark:text-[#D9D9D9] leading-relaxed">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut

@@ -22,7 +22,6 @@ export default function Card({children, style, hoverStyle, onClick, className = 
 
   const combinedHoverStyle = {...defaultHoverStyle, ...hoverStyle};
 
-  // Randomize delay + slight overshoot animation
   const delay = Math.random() * 0.5;
   const scaleStart = 0.6 + Math.random() * 0.5;
 
