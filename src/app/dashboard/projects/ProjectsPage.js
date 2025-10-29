@@ -59,7 +59,9 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 	const [selectedMembers, setSelectedMembers] = useState([]);
 	const [memberSearch, setMemberSearch] = useState("");
 	
-	const filteredEmployees = employees.filter(e => e.name.toLowerCase().includes(memberSearch.toLowerCase())).sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+	const filteredEmployees = employees
+		.filter(e => e.name.toLowerCase().includes(memberSearch.toLowerCase()))
+		.sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
 	function addProject() {
 		if (title == "" || endDate <= new Date()) {

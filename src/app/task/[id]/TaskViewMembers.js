@@ -9,19 +9,13 @@ import { useAuth } from "@/lib/AuthContext";
 export default function TaskViewMembers({taskMembers}) {
   const { user } = useAuth();
   const filterTabs = ["Name", "Workload"];
-  const [activeFilterTab, setActiveFilterTab] = useState("Workload");
+  const [activeFilterTab, setActiveFilterTab] = useState("Name");
 
-  const handleSearch = (query) => {
-    console.log("Searching for:", query); // future search feature
-  };
+  const [search, setSearch] = useState("");
 
-  const handleAddMember = () => {
-    console.log("Add new member"); // for managers in future
-  };
-
-  const handleMemberClick = (memberId) => {
-    console.log("Clicked member:", memberId);
-  };
+  const filteredMembers = taskMembers
+      .filter(e => e.name.toLowerCase().includes(search.toLowerCase()))
+      .sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
 
   return (
     <div
@@ -47,7 +41,7 @@ export default function TaskViewMembers({taskMembers}) {
       >
         {/* Search Bar (centered) */}
         <div style={{display: "flex", width: "100%"}}>
-          <SearchBar onSearch={handleSearch} />
+          <SearchBar onSearch={setSearch} />
         </div>
 
         {/* Filters to the right */}
@@ -69,7 +63,7 @@ export default function TaskViewMembers({taskMembers}) {
           gap: "12px",
         }}
       >
-        {taskMembers.map((member) => (
+        {filteredMembers.map((member) => (
           <Member
             key={member.id}
             member={member}

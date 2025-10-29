@@ -11,9 +11,15 @@ import { useAuth } from "@/lib/AuthContext";
 export default function MembersPage({members, projectId}) {
     const { user } = useAuth();
     const filterTabs = ["Name", "Workload"];
-    const [activeFilterTab, setActiveFilterTab] = useState("Workload");
+    const [activeFilterTab, setActiveFilterTab] = useState("Name");
 
     const [showModal, setShowModal] = useState(false);
+
+    const [search, setSearch] = useState("");
+
+    const filteredMembers = members
+      .filter(e => e.name.toLowerCase().includes(search.toLowerCase()))
+      .sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   
     return (
       <div
@@ -39,7 +45,7 @@ export default function MembersPage({members, projectId}) {
         >
           {/* Search Bar (centered) */}
           <div style={{display: "flex", width: "100%"}}>
-            <SearchBar onSearch={() => {}} />
+            <SearchBar onSearch={setSearch} />
             {user?.role == "manager" && <Button outerStyle={{height: "47px"}} textStyle={{}} text={"edit"} onClick={() => setShowModal(true)}/>}
           </div>
   
@@ -62,7 +68,7 @@ export default function MembersPage({members, projectId}) {
             gap: "12px",
           }}
         >
-          {members.map((member) => (
+          {filteredMembers.map((member) => (
             <Member
               key={member.id}
               member={member}
