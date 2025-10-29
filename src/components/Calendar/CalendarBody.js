@@ -25,8 +25,7 @@ export default function CalendarBody({tasks, divisions, divisionTitles, rangeTyp
 						divisionTitles.map((e, i, arr) => (
 							<div key={e}
 								style={{
-									borderRight: i !== arr.length - 1 ? "1px solid #ddd" : "none",
-									backgroundColor: "#fff",
+									borderRight: i !== arr.length - 1 ? "1px solid #0084ffff" : "none"
 								}}
 							>
 							<h1 style={{textAlign: "center"}}>{e}</h1>
@@ -49,7 +48,7 @@ export default function CalendarBody({tasks, divisions, divisionTitles, rangeTyp
 						divisionTitles.map((e, i, arr) => (
 							<div key={e}
 								style={{
-									borderRight: i !== arr.length - 1 ? "1px solid #ddd" : "none",
+									borderRight: i !== arr.length - 1 ? "1px solid #0084ffff" : "none",
 								}}
 							>
 							</div>

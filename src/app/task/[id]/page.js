@@ -80,16 +80,17 @@ export default function Dashboard() {
         minHeight: "100vh",
         paddingTop: "60px",
       }}
-      className="bg-[#f5f7fa]"
+      className="bg-[#f5f7fa] dark:bg-[#3C5433]"
     >
       {/* Back Button */}
       <button
         onClick={() => router.push(`/project/${task.projectId}`)}
+        className={"bg-[#f3f3f3] dark:bg-[#000000]"}
         style={{
           position: "absolute",
           top: "20px",
           left: "20px",
-          background: "#f3f3f3",
+          /*background: "#f3f3f3",*/
           padding: "8px 14px",
           borderRadius: "8px",
           cursor: "pointer",
@@ -105,11 +106,11 @@ export default function Dashboard() {
           top: "20px",
           right: "20px",
         }}
-        className="relative"
+        className="relative "
       >
         <button
           onClick={() => setDropdownOpen(!dropdownOpen)}
-          className="bg-white border border-gray-400 px-4 py-2 rounded-md text-sm hover:bg-gray-100 transition"
+          className="dark:text-white border border-gray-400 px-4 py-2 rounded-md text-sm hover:bg-gray-100 transition dark:hover:bg-black"
         >
           {selectedAssignee}
         </button>
