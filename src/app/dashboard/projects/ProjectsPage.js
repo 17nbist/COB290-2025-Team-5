@@ -23,10 +23,11 @@ export default function ProjectsPage({projects, employees}) {
 	return (
 		<div className="flex flex-col w-[1200px] flex-wrap items-center">
 			<div className="flex mb-[30px] items-center justify-between w-full">
-				<div className="flex justify-end flex-1 gap-[20px] flex-col w-full">
-					<div className="flex">
+				<div className="w-6xl mx-auto px-4 py-6">
+					<div className="mb-6 flex">
 						<SearchBar onSearch={(e) => setSearchVal(e)}/>
 						{user?.role == "manager" && <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"} onClick={() => setShowModal(true)}/>}
+						{user?.role == "manager" && <Button outerStyle={{ width: "47px", height: "47px" }} textStyle={{ fontSize: "30px" }} text={"+"}/>}
 					</div>
 					<NavBar
 					items={filterTabs}
