@@ -107,7 +107,7 @@ export default function Home() {
         {activeTab === "Forum" && <ForumPage />}
         {activeTab === "Requests" && <RequestPage />}
         {activeTab === "Calendar" && <CalendarPage events={events} />}
-        {activeTab === "Projects" && <ProjectsPage />}
+        {activeTab === "Projects" && <ProjectsPage projects={projects} employees={employees}/>}
         {activeTab === "To-Do" && <ToDoPage />}
       </main>
     </div>

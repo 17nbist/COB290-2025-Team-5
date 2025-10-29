@@ -13,8 +13,7 @@ export default function ProjectsPage({projects, employees}) {
 	const [searchVal, setSearchVal] = useState("");
 
 
-	const filteredProjects = projects
-									.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()));
+	const filteredProjects = projects.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()));
 
 	const filterTabs = ["Name", "Group", "Upcoming"];
     const [activeFilterTab, setActiveFilterTab] = useState("Name");
