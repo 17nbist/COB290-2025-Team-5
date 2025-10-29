@@ -9,6 +9,7 @@ import NavBar from "@/components/NavBar";
 import CalendarPage from "./calendar/CalendarPage.js";
 import ProjectsPage from "./projects/ProjectsPage";
 
+import DarkModeToggle from "@/components/DarkModeToggle";
 
 const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar"];
 
@@ -54,7 +55,7 @@ export default function Home() {
   }
 
   return (
-    <div  className="flex flex-col h-screen bg-[#c4daff] dark:bg-[#303640] text-black dark:text-white transition-colors duration-300" style={{width:"100vw"} } >
+    <div  className="flex flex-col h-screen bg-[#d2d2d2] dark:bg-[#303030] text-black dark:text-white transition-colors duration-300" style={{width:"100vw"} } >
       {/* Header with role indicator and logout */}
       <div className="flex justify-between items-center px-8 pt-4">
         <div className="flex items-center gap-4">
@@ -66,6 +67,7 @@ export default function Home() {
             {user.role.toUpperCase()} DASHBOARD
           </span>
         </div>
+        <DarkModeToggle/>
         <button
           onClick={logout}
           className="
@@ -88,8 +90,9 @@ export default function Home() {
           activeTab={activeTab}
           items={topNavItems}
           setActiveTab={setActiveTab}
-          pillStyle={{ width: "130px" }}
+          pillStyle={{ width: "12vw"}}
           setHash={true}
+          textStyle={{ fontSize: "1.2vw" }}
         />
       </div>
 

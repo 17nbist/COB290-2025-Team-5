@@ -10,7 +10,6 @@ export default function TaskViewToDo({ task }) {
       <Card
         className="border border-black hover:bg-gray-100 transition-colors duration-200"
         style={{
-          color: "black",
           padding: "24px",
           width: "100%",
           maxWidth: "800px",
@@ -24,7 +23,7 @@ export default function TaskViewToDo({ task }) {
           {/* Dynamic task title button (centered) */}
           <button
             onClick={() => router.push("/task-view")}
-            className="bg-transparent text-black text-[20px] font-bold px-3 py-3 rounded-md w-full text-center hover:text-gray-600 transition"
+            className="bg-transparent text-[20px] font-bold px-3 py-3 rounded-md w-full text-center hover:text-gray-600 transition"
           >
             {task?.title || "Task Title"}
           </button>

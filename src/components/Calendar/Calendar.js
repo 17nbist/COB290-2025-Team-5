@@ -6,11 +6,13 @@ import NavBar from "../NavBar.js";
 import CalendarBody from "./CalendarBody.js";
 import {daysInMonth, monthsBetween, firstDateOfWeek} from "./calendarUtils.js";
 
-export default function Calendar({tasks, startRangeType="Week", addOnClick, excludeNav=[], taskOnClick}) {
+export default function Calendar({tasks, color="#2e815fff",startRangeType="Week", addOnClick, excludeNav=[], taskOnClick}) {
   const [startDate, setStartDate] = useState(firstDateOfWeek(new Date()));
 
   const rangeTypes = ["8h", "Day", "Week" , "Month", "Year"].filter(e => !(excludeNav.includes(e)));
   const [rangeType, setRangeType] = useState(startRangeType);
+
+  let gradientClass = `bg-gradient-to-r from-${color} to-${color}`;
 
   useEffect(() => {
     let newStart = new Date();
@@ -219,7 +221,7 @@ function getRangeText() {
   }
 
   return (
-    <Card style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "100%", height: "100%"}}>
+    <Card className="flex flex-col justify-center items-center w-full h-full ">
       <div style={{display: "flex", flexDirection: "column", gap: "5px", width: "100%", height: "100%"}}>
         <h1>{getRangeText()}</h1>
         {/*top bar*/}
