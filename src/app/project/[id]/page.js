@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import {useRouter} from "next/navigation";
 import NavBar from "@/components/NavBar";
 import TodayPage from "./today/TodayPage";
@@ -7,6 +7,7 @@ import TasksPage from "./tasks/TasksPage";
 import EventsPage from "./events/EventsPage";
 import MembersPage from "./members/MembersPage";
 import { useAuth } from "@/lib/AuthContext";
+import { useParams } from "next/navigation";
 
 
 export default function ProjectPage() {
@@ -14,13 +15,21 @@ export default function ProjectPage() {
 	const router = useRouter();
 	const topNavItems = ["All Projects", "Today", "Tasks", "Events", "Members"];
 	const [activeTab, setActiveTab] = useState("Today");
-	const [tasks, setTasks] = useState([]);
-	const [events, setEvents] = useState([]);
-	const [loading, setLoading] = useState();
+	const [errText, setErrText] = useState("");
+	const projectId = parseInt(useParams().id);
+	const tasks = allTasks?.filter(t => t.projectId == projectId) || [];
+	const events = allEvents?.filter(t => t.projectId == projectId) || [];
 
 	useEffect(() => {
-		
-	});
+		if (!user || !allProjects || !allTasks || !allEvents) return;
+		const currentProject = allProjects.find(p => p.id == projectId);
+		if (!currentProject || !currentProject.members.has(user.id)){
+			setErrText("No access or project doesn't exist");
+			return;
+		}
+
+		setErrText(null);
+	}, [allProjects, allTasks, allEvents, user]);
 
 	useEffect(() => {
 		const handleHashChange = () => {
@@ -44,6 +53,14 @@ export default function ProjectPage() {
 		setActiveTab(tab);
 	};
 
+	if (errText) {
+		return(
+			<div className="flex flex-col w-screen h-screen bg-[#c4daff] dark:bg-[#303640]">
+				<h1>{errText}</h1>
+			</div>
+		)
+	}
+
 
 	return (
 		<div className="flex flex-col w-screen h-screen bg-[#c4daff] dark:bg-[#303640]">
@@ -60,14 +77,13 @@ export default function ProjectPage() {
 
 			<main className="flex justify-center flex-1">
 				{activeTab == "Today" && <TodayPage tasks={tasks} events={events}/>}
-				{activeTab == "Tasks" && <TasksPage tasks={tasks} setTasks={setTasks}/>}
-				{activeTab == "Events" && <EventsPage events={events} setEvents={setEvents}/>}
+				{activeTab == "Tasks" && <TasksPage tasks={tasks} projectId={projectId}/>}
+				{activeTab == "Events" && <EventsPage events={events}/>}
 				{activeTab === "Members" && (
 					<div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
 						<MembersPage />
 					</div>
 				)}
-				
 			</main>
 		</div>
 	);

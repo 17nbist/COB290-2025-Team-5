@@ -24,15 +24,15 @@ export default function CalendarTask({task, startDate, divisions, rangeType, tas
 
   let top = task.track * (taskWidth + gap);
 
-  console.log({
-    task: task.title,
-    fromIndex,
-    toIndex,
-    divisions,
-    left,
-    width,
-    textLeft
-  });
+  // console.log({
+  //   task: task.title,
+  //   fromIndex,
+  //   toIndex,
+  //   divisions,
+  //   left,
+  //   width,
+  //   textLeft
+  // });
 
   return (
     <Card style={{width: width + "%", height: taskWidth, position: "absolute", left: left + "%", top, cursor: "pointer", padding: "5px"}} onClick={taskOnClick? () => taskOnClick(task): ()=>{}}>

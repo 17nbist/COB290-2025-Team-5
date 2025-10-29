@@ -7,8 +7,8 @@ import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/AuthContext";
 
-export default function TasksPage({tasks, setTasks}) {
-	const { user } = useAuth();
+export default function TasksPage({tasks, setTasks, projectId}) {
+	const { user, addToAllTasks } = useAuth();
 	const router = useRouter();
 	const [showModal, setShowModal] = useState(false);
 	const [title, setTitle] = useState("");
@@ -21,8 +21,7 @@ export default function TasksPage({tasks, setTasks}) {
 			return
 		}
 		
-		console.log(from, to);
-		setTasks(prev => [...prev, {id:prev.length, title, description, from, to}]);
+		addToAllTasks({title, description, from, to, projectId});
 		setShowModal(false);
 		setTitle("");
 		setDescription("");

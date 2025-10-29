@@ -8,11 +8,11 @@ import NavBar from "@/components/NavBar";
 import { useAuth } from "@/lib/AuthContext";
 
 export default function ProjectsPage() {
-	const { user, projects } = useAuth();
+	const { user, allProjects } = useAuth();
 	const [searchVal, setSearchVal] = useState("");
 
 
-	const filteredProjects = projects
+	const filteredProjects = allProjects
 									.filter(p => p.members.has(user.id))
 									.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()));
 

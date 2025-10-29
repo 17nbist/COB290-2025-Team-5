@@ -3,8 +3,8 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import baseUsers from "./base-data/users.js"
 import baseProjects from "./base-data/projects.js"
+import baseTasks from "./base-data/tasks.js"
 import baseEvents from "./base-data/events.js"
-import baseprojects from "./base-data/projects.js"
 
 
 const AuthContext = createContext();
@@ -55,22 +55,24 @@ export function AuthProvider({ children }) {
         if (localTasks) {
             setAllTasks(JSON.parse(localTasks).map(e => ({
                 ...e, 
-                from: new Set(e.from),
+                from: new Date(e.from),
                 to: new Date(e.to),
             })));
         } else {
-            setUsers(baseTasks);
+            setAllTasks(baseTasks);
+            localStorage.setItem('tasks', JSON.stringify(baseTasks));
         }
 
         const localEvents = localStorage.getItem('events');
         if (localEvents) {
             setAllEvents(JSON.parse(localEvents).map(e => ({
                 ...e, 
-                from: new Set(e.from),
+                from: new Date(e.from),
                 to: new Date(e.to),
             })));
         } else {
-            setUsers(baseEvents);
+            setAllEvents(baseEvents);
+            localStorage.setItem('events', JSON.stringify(baseEvents));
         }
 
 
@@ -101,8 +103,21 @@ export function AuthProvider({ children }) {
         router.push('/login');
     };
 
+    function addToAllTasks(task) {
+        setAllTasks(prev => {
+            const maxId = prev.length > 0 ? Math.max(...prev.map(t => t.id)) : 0;
+            const newTask = {
+                ...task,
+                id: maxId + 1,
+            };
+            const updated = [...prev, newTask]
+            localStorage.setItem('tasks', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
     return (
-        <AuthContext.Provider value={{ users, user, allProjects, allTasks, allEvents, login, logout, loading }}>
+        <AuthContext.Provider value={{ users, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks}}>
             {children}
         </AuthContext.Provider>
     );

@@ -4,4 +4,6 @@ const baseTasks = [
     {id: 2, projectId: 0, title: "A Task", description: "abacadaba", from: new Date(2025, 10, 2, 8), to: new Date(2025, 10, 11, 14)},
     {id: 3, projectId: 1, title: "Other Task", description: "abacadaba", from: new Date(2025, 10, 5, 8), to: new Date(2025, 10, 11, 14)},
     {id: 4, projectId: 0, title: "Task B", description: "abacadaba", from: new Date(2025, 10, 4, 0), to: new Date(2025, 10, 9, 20)},
-]
+];
+
+export default baseTasks;
