@@ -30,8 +30,6 @@ export default function ProjectsPage({projects, employees}) {
 		.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()))
 		.sort(activeFilterTab == "Name"? sortByName : sortByDue);
 
-	console.log(projects);
-
 	return (
 		<div className="flex flex-col w-[1200px] flex-wrap items-center">
 			<div className="flex mb-[30px] items-center justify-between w-full">
