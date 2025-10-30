@@ -2,6 +2,7 @@
 import React from "react";
 import { MdOutlineEmail, MdLockOutline } from "react-icons/md";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
+import Link from "next/link";
 
 
 export default function LoginForm({
@@ -58,9 +59,9 @@ export default function LoginForm({
 			{error && <p style={styles.error}>{error}</p>}
 
 			<div style={styles.forgotPasswordWrapper}>
-				<a href="#" onClick={(e) => e.preventDefault()} style={styles.forgotPassword}>
+				<Link href="/login/Forgot" style={styles.forgotPassword}>
 					Forgot Password?
-				</a>
+				</Link> 
 			</div>
 
 			<button style={styles.button} type="submit">Sign in</button>
@@ -76,13 +77,17 @@ const styles = {
 	icon: { position: "absolute", left: 8, color: "#9ca3af" },
 	button: { padding: 10, borderRadius: 6, background: "#2563eb", color: "#ffffffff", border: "none" },
 	forgotPasswordWrapper: {
+		margintop: -4,
+		paddingRight: 8,
 		alignSelf: "flex-end",
+
 	},
 	forgotPassword: {
 		fontSize: 12,
 		color: "#2563eb",
 		textDecoration: "none",
 		cursor: "pointer",
+		
 	},
 	error: {
 		color: "#ef4444",

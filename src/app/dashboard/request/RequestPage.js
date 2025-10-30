@@ -4,7 +4,7 @@ import SearchBar from "@/components/SearchBar";
 import RequestPost from "./RequestPosts";
 import CreateRequestModal from "./CreateRequestPost";
 import Button from "@/components/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function RequestPage() {
   const filterTabs = ["Incoming", "Outgoing"];
@@ -73,13 +73,17 @@ export default function RequestPage() {
     request.type === activeFilterTab
   );
 
-  const filteredRequests = filteredByTypeRequests.filter((request) => 
+  const filteredRequests = filteredByTypeRequests.filter((request) =>
     request.title.toLowerCase().includes(searchQuery) ||
     request.preview.toLowerCase().includes(searchQuery)
   );
 
+  useEffect(() => {
+    document.title = 'Requests | Make-It-All';
+  }, []);
+
   return (
-    <div className="max-w-6xl mx-auto px-4 py-6">
+    <div className="w-6xl mx-auto px-4 py-6">
       {/* Search Bar */}
       <div className="mb-6 flex">
         <SearchBar onSearch={handleSearch} onAdd={handleAddRequest} />

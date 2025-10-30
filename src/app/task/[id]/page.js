@@ -7,33 +7,34 @@ import TaskViewMembers from "./TaskViewMembers";
 import TaskViewOverview from "./TaskViewOverview";
 import TaskViewToDo from "./TaskViewToDo";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/AuthContext";
+import { useParams } from "next/navigation";
 
 export default function Dashboard() {
+  const { user, allProjects, allTasks, allEvents, allUsers } = useAuth();
   const navItems = ["Overview", "To-Do", "Members"];
   const [activeTab, setActiveTab] = useState(navItems[0]);
-
-  // store selected task
+  const [errText, setErrText] = useState("");
   const [task, setTask] = useState(null);
+
+  const taskMembers = allUsers?.filter(u => task?.members?.includes(u?.id));
+
+  const taskId = parseInt(useParams().id);
   const router = useRouter();
-
-  // Dropdown state
-  const [selectedAssignee, setSelectedAssignee] = useState("Unassigned");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const assignees = [
-    "Unassigned",
-    "You",
-    "Ryan Mitchell",
-    "Neha Sharma",
-    "Sofia Rivera",
-    "Andrei Petrov",
-  ];
-
-  // Load selected task from localStorage
   useEffect(() => {
-    const storedTask = localStorage.getItem("selectedTask");
-    if (storedTask) setTask(JSON.parse(storedTask));
-  }, []);
+		if (!user || !allTasks || !allEvents) {
+			return;
+		}
+
+		const currentTask = allTasks.find(t => t.id == taskId);
+		if (!currentTask){
+			setErrText("No access or task doesn't exist");
+			return;
+		}
+
+    setTask(currentTask);
+		setErrText(null);
+	}, [allProjects, allTasks, allEvents, user]);
 
   // Handle hash navigation
   useEffect(() => {
@@ -48,6 +49,14 @@ export default function Dashboard() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+  if (errText) {
+		return(
+			<div className="flex flex-col w-screen h-screen bg-[#c4daff] dark:bg-[#303640]">
+				<h1>{errText}</h1>
+			</div>
+		)
+	}
+
   return (
     <div
       style={{
@@ -57,16 +66,17 @@ export default function Dashboard() {
         minHeight: "100vh",
         paddingTop: "60px",
       }}
-      className="bg-[#f5f7fa]"
+      className="bg-[#f5f7fa] dark:bg-[#3C5433]"
     >
       {/* Back Button */}
       <button
-        onClick={() => router.push("/project")}
+        onClick={() => router.push(`/project/${task.projectId}`)}
+        className={"bg-[#f3f3f3] dark:bg-[#000000]"}
         style={{
           position: "absolute",
           top: "20px",
           left: "20px",
-          background: "#f3f3f3",
+          /*background: "#f3f3f3",*/
           padding: "8px 14px",
           borderRadius: "8px",
           cursor: "pointer",
@@ -74,42 +84,6 @@ export default function Dashboard() {
       >
         ← Back
       </button>
-
-      {/* Assignee Dropdown */}
-      <div
-        style={{
-          position: "absolute",
-          top: "20px",
-          right: "20px",
-        }}
-        className="relative"
-      >
-        <button
-          onClick={() => setDropdownOpen(!dropdownOpen)}
-          className="bg-white border border-gray-400 px-4 py-2 rounded-md text-sm hover:bg-gray-100 transition"
-        >
-          {selectedAssignee}
-        </button>
-
-        {dropdownOpen && (
-          <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-md shadow-md z-10">
-            {assignees.map((name) => (
-              <button
-                key={name}
-                onClick={() => {
-                  setSelectedAssignee(name);
-                  setDropdownOpen(false);
-                }}
-                className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 ${
-                  selectedAssignee === name ? "font-semibold bg-gray-50" : ""
-                }`}
-              >
-                {name}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
 
       {/* Top Nav Bar */}
       <NavBar
@@ -123,6 +97,7 @@ export default function Dashboard() {
       <main
         style={{
           width: "100%",
+          height: "100%",
           display: "flex",
           justifyContent: "center",
           marginTop: "40px",
@@ -130,7 +105,7 @@ export default function Dashboard() {
       >
         {activeTab === "Members" && (
           <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-            <TaskViewMembers />
+            <TaskViewMembers taskMembers={taskMembers}/>
           </div>
         )}
         {activeTab === "Overview" && (

@@ -6,11 +6,13 @@ import NavBar from "../NavBar.js";
 import CalendarBody from "./CalendarBody.js";
 import {daysInMonth, monthsBetween, firstDateOfWeek} from "./calendarUtils.js";
 
-export default function Calendar({tasks, startRangeType="Week", addOnClick, excludeNav=[], taskOnClick}) {
+export default function Calendar({tasks, color="#2e815fff",startRangeType="Week", addOnClick, excludeNav=[], taskOnClick}) {
   const [startDate, setStartDate] = useState(firstDateOfWeek(new Date()));
 
   const rangeTypes = ["8h", "Day", "Week" , "Month", "Year"].filter(e => !(excludeNav.includes(e)));
   const [rangeType, setRangeType] = useState(startRangeType);
+
+  let gradientClass = `bg-gradient-to-r from-${color} to-${color}`;
 
   useEffect(() => {
     let newStart = new Date();
@@ -74,70 +76,81 @@ export default function Calendar({tasks, startRangeType="Week", addOnClick, excl
   }
 
   function getTasksInRange() {
-    let endDate = new Date(startDate);
+  let endDate = new Date(startDate);
 
-    if (rangeType == "Week") {
-      endDate.setDate(startDate.getDate() + 7);
-    } else if (rangeType == "Day") {
-      endDate.setDate(startDate.getDate() + 1);
-    } else if (rangeType == "Month") {
-      endDate.setMonth(startDate.getMonth() + 1);
-      endDate.setDate(0);
-    } else if (rangeType == "Year") {
-      endDate.setFullYear(startDate.getFullYear() + 1, 0, 1);
-    } else if (rangeType == "8h") {
-      endDate.setHours(endDate.getHours() + 8, 0, 0, 0)
-    }
-
-
-    let tracked_tasks = [...sortedTasks].filter(t => {
-      let fromIndex = 0;
-      let toIndex = 0;
-      let divisions = getNumberOfDivisions();
-
-      if (rangeType == "Week" || rangeType == "Month") {
-        fromIndex = (t.from - startDate) / (1000 * 60 * 60 * 24);
-        toIndex = (t.to - startDate) / (1000 * 60 * 60 * 24);
-      } else if (rangeType == "Day" || rangeType == "8h") {
-        fromIndex = (t.from - startDate) / (1000 * 60 * 60);
-        toIndex = (t.to - startDate) / (1000 * 60 * 60);
-      } else if (rangeType == "Year") {
-        fromIndex = monthsBetween(startDate, t.from);
-        toIndex = monthsBetween(startDate, t.to);
-      }
-
-      const widthFraction = (toIndex - fromIndex) / divisions;
-      return widthFraction >= 1/30;
-    });
-
-    let tracks = [];
-
-    for (let i = 0; i < tracked_tasks.length; i++) {
-      if (i == 0) {
-        tracks.push({end: tracked_tasks[i].to});
-        tracked_tasks[i].track = 0;
-      } else {
-        let foundTrack = false;
-        for (let j = 0; j < tracks.length; j++) {
-          if (tracked_tasks[i].from >= tracks[j].end) {
-            foundTrack = true;
-            tracks[j].end = tracked_tasks[i].to;
-            tracked_tasks[i].track = j;
-            break;
-          }
-        }
-
-        if (!foundTrack) {
-          tracks.push({end: tracked_tasks[i].to})
-          tracked_tasks[i].track = tracks.length - 1;
-        }
-      }
-    }
-
-    let fTasks = tracked_tasks.filter(t => t.from < endDate && t.to > startDate);
-
-    return fTasks;
+  if (rangeType === "Week") {
+    endDate.setDate(startDate.getDate() + 7);
+  } else if (rangeType === "Day") {
+    endDate.setDate(startDate.getDate() + 1);
+  } else if (rangeType === "Month") {
+    endDate.setMonth(startDate.getMonth() + 1);
+    endDate.setDate(0);
+  } else if (rangeType === "Year") {
+    endDate.setFullYear(startDate.getFullYear() + 1, 0, 1);
+  } else if (rangeType === "8h") {
+    endDate.setHours(endDate.getHours() + 8, 0, 0, 0);
   }
+
+  let tracked_tasks = [...sortedTasks].filter(t => {
+    let fromIndex = 0;
+    let toIndex = 0;
+    const divisions = getNumberOfDivisions();
+
+    if (rangeType === "Week" || rangeType === "Month") {
+      fromIndex = (t.from - startDate) / (1000 * 60 * 60 * 24);
+      toIndex = (t.to - startDate) / (1000 * 60 * 60 * 24);
+    } else if (rangeType === "Day" || rangeType === "8h") {
+      fromIndex = (t.from - startDate) / (1000 * 60 * 60);
+      toIndex = (t.to - startDate) / (1000 * 60 * 60);
+    } else if (rangeType === "Year") {
+      fromIndex = monthsBetween(startDate, t.from);
+      toIndex = monthsBetween(startDate, t.to);
+    }
+
+    const widthFraction = (toIndex - fromIndex) / divisions;
+
+    // if in week view and task < 1 day wide, round to full day
+    if (rangeType === "Week" && (toIndex - fromIndex) < 1) {
+      const startOfDay = new Date(t.from);
+      startOfDay.setHours(0, 0, 0, 0);
+
+      const endOfDay = new Date(t.from);
+      endOfDay.setHours(23, 59, 59);
+
+      t.from = startOfDay;
+      t.to = endOfDay;
+    }
+
+    return widthFraction >= 1 / 30;
+  });
+
+  let tracks = [];
+
+  for (let i = 0; i < tracked_tasks.length; i++) {
+    if (i === 0) {
+      tracks.push({ end: tracked_tasks[i].to });
+      tracked_tasks[i].track = 0;
+    } else {
+      let foundTrack = false;
+      for (let j = 0; j < tracks.length; j++) {
+        if (tracked_tasks[i].from >= tracks[j].end) {
+          foundTrack = true;
+          tracks[j].end = tracked_tasks[i].to;
+          tracked_tasks[i].track = j;
+          break;
+        }
+      }
+      if (!foundTrack) {
+        tracks.push({ end: tracked_tasks[i].to });
+        tracked_tasks[i].track = tracks.length - 1;
+      }
+    }
+  }
+
+  const fTasks = tracked_tasks.filter(t => t.from < endDate && t.to > startDate);
+
+  return fTasks;
+}
 
   function getNumberOfDivisions() {
     if (rangeType == "Week") {
@@ -219,7 +232,7 @@ function getRangeText() {
   }
 
   return (
-    <Card style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "100%", height: "100%"}}>
+    <Card className="flex flex-col justify-center items-center w-full h-full ">
       <div style={{display: "flex", flexDirection: "column", gap: "5px", width: "100%", height: "100%"}}>
         <h1>{getRangeText()}</h1>
         {/*top bar*/}

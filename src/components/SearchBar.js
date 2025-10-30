@@ -29,7 +29,7 @@ export default function SearchBar({onSearch}) {
             fontSize: "14px",
             outline: "none"
           }}
-          className="bg-[#fff]"
+          className="bg-[#fff] dark:bg-[#242424]"
           onFocus={(e) => e.target.style.borderColor = "#000000"}
           onBlur={(e) => e.target.style.borderColor = "#e5e7eb"}
         />
