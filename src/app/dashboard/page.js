@@ -12,7 +12,7 @@ import ToDoPage from "./todo/ToDoPage";
 
 import DarkModeToggle from "@/components/DarkModeToggle";
 
-const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar", "To-Do"];
+const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar", "To-do"];
 
 
 
@@ -106,7 +106,7 @@ export default function Home() {
         {activeTab === "Requests" && <RequestPage />}
         {activeTab === "Calendar" && <CalendarPage events={events} />}
         {activeTab === "Projects" && <ProjectsPage projects={projects} employees={employees} />}
-        {activeTab === "To-Do" && <ToDoPage />}
+        {activeTab === "To-do" && <ToDoPage />}
       </main>
     </div>
   );

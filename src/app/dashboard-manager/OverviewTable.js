@@ -1,8 +1,21 @@
 "use client";
 import { motion } from "framer-motion";
 import Card from "@/components/Card";
-
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 export default function OverviewTable({label, data, stats}) {
+    const router = useRouter()
+    function routChange(labelName){
+        
+    
+        if (labelName == "project"){
+            router.push("/dashboard#projects");
+        }
+        else if (labelName == "task"){
+            router.push("/dashboard#To-do");
+        }
+    }
+    
     return (
         <Card className="w-full h-full flex flex-col overflow-hidden" style={{ minWidth: 0, minHeight: 0, padding: 0 }}>
 
@@ -10,7 +23,7 @@ export default function OverviewTable({label, data, stats}) {
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{label} overview</h2>
           
                 <button
-                    onClick={() => router.push("/task-view")}
+                    onClick={() => routChange(label)}
                     className={"text-lg bg-green-100 font-semibold p-0 w-40 md: w-30 p-0 ftext-gray-900 dark:text-gray-100"}
                     style={{justifySelf: "self-end", borderRadius: "20px"}}
                 >
