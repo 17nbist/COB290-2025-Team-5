@@ -29,7 +29,7 @@ export default function AuthCard({ children }) {
 			</div>
 						<div style={styles.footer}>
 							Have a set up URL?{" "}
-							<Link href="/login/registration/UrlPage" style={styles.link}>
+							<Link href="/login/registration" style={styles.link}>
 								Click Here
 							</Link>
 					</div>
