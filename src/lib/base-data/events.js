@@ -2,42 +2,50 @@ const baseEvents = [
     {
         id: 0, 
         projectId: 0,
-        members: [0, 1, 2],
+        members: [0, 2, 4, 5, 6],
         title: "Meeting",
-        from: new Date(2025, 9, 24, 0), 
-        to: new Date(2025, 10, 7, 0)
+        from: new Date(2025, 10, 3, 9), 
+        to: new Date(2025, 10, 3, 11)
     },
     {
         id: 1, 
         projectId: 1, 
-        members: [0, 1, 2],
+        members: [2, 3, 4, 6],
         title: "Other meeting",
-        from: new Date(2025, 9, 31, 0), 
-        to: new Date(2025, 10, 8, 0)
+        from: new Date(2025, 10, 3, 14), 
+        to: new Date(2025, 10, 3, 16)
     },
     {
         id: 2, 
         projectId: 0, 
-        members: [0, 1, 2],
+        members: [0, 2, 4, 5, 6],
         title: "Meeting 3", 
-        from: new Date(2025, 10, 2, 8), 
-        to: new Date(2025, 10, 11, 14)
+        from: new Date(2025, 10, 4, 9), 
+        to: new Date(2025, 10, 4, 11)
     },
     {
         id: 3, 
         projectId: 1, 
-        members: [0, 1, 2],
+        members: [2, 3, 4, 6],
         title: "Yet Another meeting", 
-        from: new Date(2025, 10, 5, 8), 
-        to: new Date(2025, 10, 11, 14)
+        from: new Date(2025, 10, 5, 11), 
+        to: new Date(2025, 10, 5, 13)
     },
     {
         id: 4, 
         projectId: 0, 
-        members: [0, 1, 2],
-        title: "catchup session", 
-        from: new Date(2025, 10, 4, 0), 
-        to: new Date(2025, 10, 9, 20)
+        members: [0, 2, 4, 5, 6],
+        title: "Catchup session", 
+        from: new Date(2025, 10, 4, 13), 
+        to: new Date(2025, 10, 4, 16)
+    },
+        {
+        id: 5, 
+        projectId: 2, 
+        members: [0, 1, 3, 7],
+        title: "Manager meeting", 
+        from: new Date(2025, 10, 4, 10), 
+        to: new Date(2025, 10, 4, 12)
     },
 ];
 
