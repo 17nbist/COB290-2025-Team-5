@@ -1,40 +1,32 @@
 "use client";
 import { motion } from "framer-motion";
 import Card from "@/components/Card";
-import Button from "@/components/Button";
 
-const projectData = [
-    { name: "Website Design", progress: 0.6, status: "On Track" },
-    { name: "Mobile App", progress: 0.2, status: "Behind" },
-    { name: "Internal Dashboard", progress: 0.9, status: "Almost Completed" },
-];
-
-const summaryStats = [
-    { value: 45, label: "Total Tasks" },
-    { value: 25, label: "Completed" },
-    { value: 14, label: "In Progress" },
-    { value: 6, label: "Pending Review" },
-];
-
-export default function ProjectOverview() {
+export default function OverviewTable({label, data, stats}) {
     return (
         <Card className="w-full h-full flex flex-col overflow-hidden" style={{ minWidth: 0, minHeight: 0, padding: 0 }}>
 
-            <div className="p-4 md:p-6 bg-red-100 border-b border-gray-200 dark:border-gray-700 grid grid-cols-2">
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Project overview</h2>
-                <Button className="h-6 w-6 p-0 flex items-center justify-center">
-                </Button>
+            <div className="p-4 md:p-6 border-b border-gray-200 dark:border-gray-700 grid grid-cols-2">
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{label} overview</h2>
+          
+                <button
+                    onClick={() => router.push("/task-view")}
+                    className={"text-lg bg-green-100 font-semibold p-0 w-40 md: w-30 p-0 ftext-gray-900 dark:text-gray-100"}
+                    style={{justifySelf: "self-end", borderRadius: "20px"}}
+                >
+                    See all {label}s
+                </button>
             </div>
 
             {/* Header */}
             <div className="grid grid-cols-1 sm:grid-cols-3 text-sm font-medium text-gray-500 uppercase tracking-wide border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#1c1c1c]">
-                <div className="p-3 text-center">Project</div>
+                <div className="p-3 text-center">{label}</div>
                 <div className="p-3 text-center">Progress</div>
                 <div className="p-3 text-center">Status</div>
             </div>
 
             {/* Data Rows */}
-            {projectData.map((item, index) => (
+            {data.map((item, index) => (
                 <motion.div key={index} className={`grid grid-cols-1 sm:grid-cols-3 items-center text-center text-gray-800 dark:text-gray-200 text-sm ${index % 2 === 0 ? "bg-white dark:bg-[#242424]" : "bg-gray-50 dark:bg-[#1e1e1e]"}`} whileHover={{ backgroundColor: "rgba(0,0,0,0.03)" }}>
                     <div className="p-3 font-medium">{item.name}</div>
                     <div className="p-3 flex justify-center">
@@ -66,7 +58,7 @@ export default function ProjectOverview() {
 
             {/* Summary */}
             <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#1c1c1c]">
-                {summaryStats.map((stat, idx) => (
+                {stats.map((stat, idx) => (
                     <div key={idx} className="p-3 text-center flex flex-col items-center justify-center">
                         <p className="text-lg md:text-2xl font-bold text-gray-900 dark:text-gray-100">{stat.value}</p>
                         <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{stat.label}</p>
