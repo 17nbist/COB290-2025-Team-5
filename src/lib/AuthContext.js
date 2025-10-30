@@ -104,7 +104,7 @@ export function AuthProvider({ children }) {
         const localProjects = localStorage.getItem('projects');
         if (localProjects) {
             setAllProjects(JSON.parse(localProjects).map(e => ({
-                ...e, 
+                ...e,
                 creationDate: new Date(e.creationDate),
                 dueDate: new Date(e.dueDate),
             })));
@@ -116,7 +116,7 @@ export function AuthProvider({ children }) {
         const localTasks = localStorage.getItem('tasks');
         if (localTasks) {
             setAllTasks(JSON.parse(localTasks).map(e => ({
-                ...e, 
+                ...e,
                 from: new Date(e.from),
                 to: new Date(e.to),
             })));
@@ -128,7 +128,7 @@ export function AuthProvider({ children }) {
         const localEvents = localStorage.getItem('events');
         if (localEvents) {
             setAllEvents(JSON.parse(localEvents).map(e => ({
-                ...e, 
+                ...e,
                 from: new Date(e.from),
                 to: new Date(e.to),
             })));
@@ -143,8 +143,8 @@ export function AuthProvider({ children }) {
 
     const login = (inputEmail, inputPassword) => {
         const validPassword = 'password123';
-        
-        let matches = allUsers.filter(({email, password}) => inputEmail == email && inputPassword == password);
+
+        let matches = allUsers.filter(({ email, password }) => inputEmail == email && inputPassword == password);
         if (matches.length == 0) {
             return { success: false, error: 'Invalid email or password.' }
         }
@@ -204,13 +204,13 @@ export function AuthProvider({ children }) {
         });
     }
 
-    function editProjectMembers(projectId, members) {
+    function editProjectMembers(projectId, members, leaderId) {
         setAllProjects(prev => {
             const updated = prev.map(project => {
-            if (project.id === projectId) {
-                return { ...project, members };
-            }
-            return project;
+                if (project.id === projectId) {
+                    return { ...project, members, leaderId };
+                }
+                return project;
             });
 
             localStorage.setItem('projects', JSON.stringify(updated));
@@ -222,9 +222,10 @@ export function AuthProvider({ children }) {
         setAllTasks(prev => {
             const updated = prev.map(task => {
                 if (task.id === taskId) {
-                    return {...task,
+                    return {
+                        ...task,
                         todos: task.todos.map(todo =>
-                            todo.id === todoId? { ...todo, checked: !todo.checked }: todo
+                            todo.id === todoId ? { ...todo, checked: !todo.checked } : todo
                         )
                     };
                 }
@@ -236,8 +237,38 @@ export function AuthProvider({ children }) {
         });
     }
 
+    function addTodoToTask(taskId, newTodo) {
+        setAllTasks(prev => {
+            const updated = prev.map(task => {
+                if (task.id == taskId) {
+                    const maxId = task?.todos?.length > 0 ? Math.max(...task.todos.map(t => t.id)) : 0;
+
+                    const todoToAdd = {
+                        id: maxId + 1,
+                        title: newTodo.title,
+                        checked: newTodo.checked ?? false,
+                    };
+
+                    return { ...task, todos: [...task.todos, todoToAdd] };
+                }
+                return task;
+            });
+
+        localStorage.setItem("tasks", JSON.stringify(updated));
+        return updated;
+    });
+}
+
+    function userIsProjectLeader(projectId, userId) {
+        const project = allProjects.find(p => p.projectId);
+        if (!project) {
+            return false
+        }
+        return project.leaderId == userId;
+    }
+
     return (
-        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks, addToAllEvents, updateTodo, addToAllProjects, editProjectMembers}}>
+        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks, addToAllEvents, updateTodo, addToAllProjects, editProjectMembers, userIsProjectLeader, addTodoToTask}}>
             {children}
         </AuthContext.Provider>
     );

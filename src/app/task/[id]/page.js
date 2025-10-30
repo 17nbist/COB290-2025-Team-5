@@ -21,20 +21,6 @@ export default function Dashboard() {
 
   const taskId = parseInt(useParams().id);
   const router = useRouter();
-
-  // Dropdown state
-  const [selectedAssignee, setSelectedAssignee] = useState("Unassigned");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const assignees = [
-    "Unassigned",
-    "You",
-    "Ryan Mitchell",
-    "Neha Sharma",
-    "Sofia Rivera",
-    "Andrei Petrov",
-  ];
-
   useEffect(() => {
 		if (!user || !allTasks || !allEvents) {
 			return;
@@ -98,42 +84,6 @@ export default function Dashboard() {
       >
         ← Back
       </button>
-
-      {/* Assignee Dropdown */}
-      <div
-        style={{
-          position: "absolute",
-          top: "20px",
-          right: "20px",
-        }}
-        className="relative "
-      >
-        <button
-          onClick={() => setDropdownOpen(!dropdownOpen)}
-          className="dark:text-white border border-gray-400 px-4 py-2 rounded-md text-sm hover:bg-gray-100 transition dark:hover:bg-black"
-        >
-          {selectedAssignee}
-        </button>
-
-        {dropdownOpen && (
-          <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-md shadow-md z-10">
-            {assignees.map((name) => (
-              <button
-                key={name}
-                onClick={() => {
-                  setSelectedAssignee(name);
-                  setDropdownOpen(false);
-                }}
-                className={`block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 ${
-                  selectedAssignee === name ? "font-semibold bg-gray-50" : ""
-                }`}
-              >
-                {name}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
 
       {/* Top Nav Bar */}
       <NavBar
