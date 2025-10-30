@@ -16,8 +16,10 @@ export default function ProfileOverview({ events }) {
 
 
     return (
-      <div className="box-border" style={{display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gridTemplateRows: "repeat(8, 1fr)", gap: "1rem", padding: "2rem", width: "70%", height: "100%"}}>
-        <div style={{gridRow: "1/6", gridColumn: "1/3"}}>
+      <div className="grid gap-4 p-8 w-[70%] h-[calc(100vh-4rem)] overflow-auto
+                grid-cols-1 md:grid-cols-6 
+                md:grid-rows-[repeat(8,minmax(0,1fr))] md:overflow-hidden overflow-auto scrollbar-hide">
+        <div className="col-span-1 md:col-span-2 md:row-span-4">
           <DashboardProfileCard
             Title={"Profile"}
             Name={user?.name || "User"}
@@ -27,7 +29,7 @@ export default function ProfileOverview({ events }) {
             ProfilePicLink={"/defaultPFP.png"}
           />
         </div>
-        <div style={{gridRow: "1/4", gridColumn: "3/5"}}>
+        <div className="col-span-1 md:col-span-2 md:row-span-4">
           <DashboardCard
             title={"Task Summary"}
             label={"Task progress"}
@@ -35,7 +37,7 @@ export default function ProfileOverview({ events }) {
             Icon={<FaTasks />}
           />
         </div>
-        <div style={{gridRow: "1/4", gridColumn: "5/7"}}>
+        <div className="col-span-1 md:col-span-2 md:row-span-4">
           <DashboardCard
             title={"Project Summary"}
             label={"Project progress"}
@@ -43,10 +45,8 @@ export default function ProfileOverview({ events }) {
             Icon={<GoProject />}
           />
         </div>
-        <div style={{gridRow: "4/6", gridColumn: "3/7"}}>
-          <DashboardToDoCard />
-        </div>
-        <div style={{gridRow: "6/9", gridColumn: "1/7"}}>
+        
+        <div className="col-span-1 md:col-span-6 md:row-span-5">
           <DashCalendar tasks={events} />
         </div>
       </div>
