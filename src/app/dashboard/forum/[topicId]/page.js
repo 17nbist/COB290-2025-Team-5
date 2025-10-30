@@ -156,6 +156,7 @@ export default function TopicPage({ params }) {
                     </div>
                 </Card>
             </div>
+            <hr className="border-gray-700 mb-8" />
 
             <div className="px-6 pb-6">
                 <Card>

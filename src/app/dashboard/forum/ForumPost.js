@@ -1,3 +1,5 @@
+"use client";
+import { useAuth } from "@/lib/AuthContext";
 import { FaRegCommentDots, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import Card from "@/components/Card";
 
@@ -33,10 +35,7 @@ export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
         <div className="flex items-center gap-3 text-xs text-gray-500">
           <span>posted {post.timeAgo}</span>
           {post.tags.map((tag, index) => (
-            <span
-              key={index}
-              className="px-2 py-1 bg-[#334155] text-gray-400 rounded-md"
-            >
+            <span key={index} className="px-2 py-1 bg-[#334155] text-gray-400 rounded-md">
               {tag}
             </span>
           ))}
