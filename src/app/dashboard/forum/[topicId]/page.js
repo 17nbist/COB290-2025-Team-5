@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FaRegCommentDots, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import Card from "@/components/Card";
 import { forumPosts } from "@/lib/base-data/forums";
