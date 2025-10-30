@@ -40,7 +40,7 @@ export default function Calendar({tasks, color="#2e815fff",startRangeType="Week"
 
 
   const sortedTasks = useMemo(() => (
-    [...tasks].sort((a, b) => new Date(a.from) - new Date(b.from))
+    [...(tasks || [])].sort((a, b) => new Date(a.from) - new Date(b.from))
   ), [tasks]);
 
   function incrementDate() {
