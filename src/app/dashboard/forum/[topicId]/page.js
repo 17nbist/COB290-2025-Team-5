@@ -1,79 +1,78 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaRegCommentDots, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import Card from "@/components/Card";
-import { forumPosts } from "@/lib/base-data/forums";
 import { useAuth } from "@/lib/AuthContext";
 import Button from "@/components/Button";
 
 export default function TopicPage({ params }) {
     const { topicId } = params;
-    const post = forumPosts.find((p) => String(p.id) === String(topicId));
+    const { user, allForumPosts, updateForumPost } = useAuth();
 
-    const { user } = useAuth();
+    const post = allForumPosts?.find((p) => String(p.id) === String(topicId));
 
-    const [votes, setVotes] = useState({
-        upvotes: post?.upvotes || 0,
-        downvotes: post?.downvotes || 0,
-    });
-    const [comments, setComments] = useState(post?.comments || []);
     const [newComment, setNewComment] = useState("");
-
-    const [userVoteStatus, setUserVoteStatus] = useState(null);
-
-    useEffect(() => {
-        if (post) {
-            setVotes({ upvotes: post.upvotes || 0, downvotes: post.downvotes || 0 });
-            setComments(post.comments || []);
-        }
-    }, [post]);
 
     if (!post) return <div className="p-6">Post not found</div>;
 
     const handleUpvoteClick = (e) => {
         e.stopPropagation();
 
-        let newVotes = { ...votes };
+        let newUpvotes = post.upvotes;
+        let newDownvotes = post.downvotes;
+        let newVoteStatus = post.userVote;
 
-        switch (userVoteStatus) {
+        switch (post.userVote) {
             case null:
-                setUserVoteStatus("up");
-                newVotes.upvotes += 1;
+                newVoteStatus = "up";
+                newUpvotes += 1;
                 break;
             case "up":
-                setUserVoteStatus(null);
-                newVotes.upvotes -= 1;
+                newVoteStatus = null;
+                newUpvotes -= 1;
                 break;
             case "down":
-                setUserVoteStatus("up");
-                newVotes.upvotes += 1;
-                newVotes.downvotes -= 1;
+                newVoteStatus = "up";
+                newUpvotes += 1;
+                newDownvotes -= 1;
                 break;
         }
-        setVotes(newVotes);
+
+        updateForumPost(post.id, {
+            upvotes: newUpvotes,
+            downvotes: newDownvotes,
+            userVote: newVoteStatus,
+        });
     };
 
     const handleDownvoteClick = (e) => {
         e.stopPropagation();
 
-        let newVotes = { ...votes };
+        let newUpvotes = post.upvotes;
+        let newDownvotes = post.downvotes;
+        let newVoteStatus = post.userVote;
 
-        switch (userVoteStatus) {
+        switch (post.userVote) {
             case null:
-                setUserVoteStatus("down");
-                newVotes.downvotes += 1;
+                newVoteStatus = "down";
+                newDownvotes += 1;
                 break;
             case "down":
-                setUserVoteStatus(null);
-                newVotes.downvotes -= 1;
+                newVoteStatus = null;
+                newDownvotes -= 1;
                 break;
             case "up":
-                setUserVoteStatus("down");
-                newVotes.downvotes += 1;
-                newVotes.upvotes -= 1;
+                newVoteStatus = "down";
+                newDownvotes += 1;
+                newUpvotes -= 1;
                 break;
         }
-        setVotes(newVotes);
+
+        updateForumPost(post.id, {
+            upvotes: newUpvotes,
+            downvotes: newDownvotes,
+            userVote: newVoteStatus,
+        });
     };
 
     const handleSubmitComment = (e) => {
@@ -87,7 +86,8 @@ export default function TopicPage({ params }) {
             timeAgo: "just now",
         };
 
-        setComments([commentToAdd, ...comments]);
+        const updatedComments = [commentToAdd, ...(post.comments || [])];
+        updateForumPost(post.id, { comments: updatedComments });
         setNewComment("");
     };
 
@@ -100,25 +100,25 @@ export default function TopicPage({ params }) {
                         <span
                             className={
                                 post.flair === "technical"
-                                    ? "items-center px-2 py-1 h-[32px] bg-emerald-300 text-black rounded-md"
-                                    : "items-center px-2 py-1 h-[32px] bg-sky-300 text-black rounded-md"
+                                    ? "items-center px-2 py-1 h-[32px] bg-[#ffca1d] text-black rounded-md font-medium"
+                                    : "items-center px-2 py-1 h-[32px] bg-black dark:bg-white text-white dark:text-black rounded-md font-medium"
                             }
                         >
                             {post.flair}
                         </span>
                     </div>
 
-                    <p className="text-gray-100 text-base mb-4 whitespace-pre-wrap">
+                    <p className="text-gray-800 dark:text-gray-100 text-base mb-4 whitespace-pre-wrap">
                         {post.content}
                     </p>
 
                     <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 text-xs text-gray-500">
+                        <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
                             <span>posted {post.timeAgo}</span>
                             {post.tags.map((tag, index) => (
                                 <span
                                     key={index}
-                                    className="px-2 py-1 bg-[#334155] text-gray-400 rounded-md"
+                                    className="px-2 py-1 bg-gray-200 dark:bg-[#334155] text-gray-700 dark:text-gray-400 rounded-md"
                                 >
                                     {tag}
                                 </span>
@@ -128,29 +128,29 @@ export default function TopicPage({ params }) {
                         <div className="flex items-center gap-4 text-gray-400">
                             <button
                                 onClick={handleUpvoteClick}
-                                className={`flex items-center gap-1.5 transition-colors ${userVoteStatus === "up"
+                                className={`flex items-center gap-1.5 transition-colors ${post.userVote === "up"
                                         ? "text-green-500"
                                         : "hover:text-green-400"
                                     }`}
                             >
                                 <FaArrowUp size={14} />
-                                <span className="text-sm font-medium">{votes.upvotes}</span>
+                                <span className="text-sm font-medium">{post.upvotes}</span>
                             </button>
 
                             <button
                                 onClick={handleDownvoteClick}
-                                className={`flex items-center gap-1.5 transition-colors ${userVoteStatus === "down"
+                                className={`flex items-center gap-1.5 transition-colors ${post.userVote === "down"
                                         ? "text-red-500"
                                         : "hover:text-red-400"
                                     }`}
                             >
                                 <FaArrowDown size={14} />
-                                <span className="text-sm font-medium">{votes.downvotes}</span>
+                                <span className="text-sm font-medium">{post.downvotes}</span>
                             </button>
 
                             <span className="flex items-center gap-1.5 hover:text-blue-400 transition-colors">
                                 <FaRegCommentDots size={14} />
-                                <span className="text-sm font-medium">{comments.length}</span>
+                                <span className="text-sm font-medium">{post.comments?.length || 0}</span>
                             </span>
                         </div>
                     </div>
@@ -163,7 +163,7 @@ export default function TopicPage({ params }) {
                     <form onSubmit={handleSubmitComment}>
                         <h3 className="text-lg font-semibold mb-2">Add a Comment</h3>
                         <textarea
-                            className="w-full p-2 bg-gray-700 rounded-md text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-2 border border-gray-400 rounded-md focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white"
                             rows="3"
                             placeholder={`Comment as ${user?.email || "..."}`}
                             value={newComment}
@@ -177,11 +177,11 @@ export default function TopicPage({ params }) {
             </div>
 
             <div className="px-6 pb-6 space-y-4">
-                {comments.map((comment) => (
+                {(post.comments || []).map((comment) => (
                     <Card key={comment.id}>
-                        <p className="text-gray-100">{comment.text}</p>
+                        <p className="text-gray-800 dark:text-gray-100">{comment.text}</p>
                         <div className="flex justify-between items-center mt-3">
-                            <span className="text-xs text-gray-400">
+                            <span className="text-xs text-gray-600 dark:text-gray-400">
                                 - {comment.author}
                             </span>
                             <span className="text-xs text-gray-500">{comment.timeAgo}</span>

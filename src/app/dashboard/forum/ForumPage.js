@@ -8,30 +8,17 @@ import { useAuth } from "@/lib/AuthContext";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 
-import { forumPosts } from "@/lib/base-data/forums";
-const forumPostsFromFile = forumPosts;
-
 export default function Forum() {
-  const { user, data } = useAuth();
+  const { user, allForumPosts, updateForumPost, addForumPost } = useAuth();
   const filterTabs = ["My Posts", "Directed To Me", "All Posts"];
   const [activeFilterTab, setActiveFilterTab] = useState("All Posts");
   const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    if (forumPostsFromFile) {
-      const postsWithVoteState = forumPostsFromFile.map((p) => ({
-        ...p,
-        userVote: null,
-      }));
-      setPosts(postsWithVoteState);
-    }
-  }, [data]);
-
   const getFilteredPosts = () => {
-    let filtered = [...posts];
+    if (!allForumPosts) return [];
+
+    let filtered = [...allForumPosts];
 
     if (activeFilterTab === "My Posts") {
       filtered = filtered.filter((post) => post.author === user?.email);
@@ -66,7 +53,7 @@ export default function Forum() {
       author: user?.email,
       userVote: null,
     };
-    setPosts([postWithAuthor, ...posts]);
+    addForumPost(postWithAuthor);
   };
 
   useEffect(() => {
@@ -82,73 +69,65 @@ export default function Forum() {
   };
 
   const handleUpvote = (postId) => {
-    setPosts((currentPosts) =>
-      currentPosts.map((post) => {
-        if (post.id !== postId) return post;
+    const post = allForumPosts.find(p => p.id === postId);
+    if (!post) return;
 
-        let newUpvotes = post.upvotes;
-        let newDownvotes = post.downvotes;
-        let newVoteStatus = post.userVote;
+    let newUpvotes = post.upvotes;
+    let newDownvotes = post.downvotes;
+    let newVoteStatus = post.userVote;
 
-        switch (post.userVote) {
-          case null:
-            newVoteStatus = "up";
-            newUpvotes += 1;
-            break;
-          case "up":
-            newVoteStatus = null;
-            newUpvotes -= 1;
-            break;
-          case "down":
-            newVoteStatus = "up";
-            newUpvotes += 1;
-            newDownvotes -= 1;
-            break;
-        }
+    switch (post.userVote) {
+      case null:
+        newVoteStatus = "up";
+        newUpvotes += 1;
+        break;
+      case "up":
+        newVoteStatus = null;
+        newUpvotes -= 1;
+        break;
+      case "down":
+        newVoteStatus = "up";
+        newUpvotes += 1;
+        newDownvotes -= 1;
+        break;
+    }
 
-        return {
-          ...post,
-          upvotes: newUpvotes,
-          downvotes: newDownvotes,
-          userVote: newVoteStatus,
-        };
-      })
-    );
+    updateForumPost(postId, {
+      upvotes: newUpvotes,
+      downvotes: newDownvotes,
+      userVote: newVoteStatus,
+    });
   };
 
   const handleDownvote = (postId) => {
-    setPosts((currentPosts) =>
-      currentPosts.map((post) => {
-        if (post.id !== postId) return post;
+    const post = allForumPosts.find(p => p.id === postId);
+    if (!post) return;
 
-        let newUpvotes = post.upvotes;
-        let newDownvotes = post.downvotes;
-        let newVoteStatus = post.userVote;
+    let newUpvotes = post.upvotes;
+    let newDownvotes = post.downvotes;
+    let newVoteStatus = post.userVote;
 
-        switch (post.userVote) {
-          case null:
-            newVoteStatus = "down";
-            newDownvotes += 1;
-            break;
-          case "down":
-            newVoteStatus = null;
-            newDownvotes -= 1;
-            break;
-          case "up":
-            newVoteStatus = "down";
-            newDownvotes += 1;
-            newUpvotes -= 1;
-            break;
-        }
+    switch (post.userVote) {
+      case null:
+        newVoteStatus = "down";
+        newDownvotes += 1;
+        break;
+      case "down":
+        newVoteStatus = null;
+        newDownvotes -= 1;
+        break;
+      case "up":
+        newVoteStatus = "down";
+        newDownvotes += 1;
+        newUpvotes -= 1;
+        break;
+    }
 
-        return {
-          ...post,
-          upvotes: newUpvotes,
-          downvotes: newDownvotes,
-          userVote: newVoteStatus,
-        };
-      })
-    );
+    updateForumPost(postId, {
+      upvotes: newUpvotes,
+      downvotes: newDownvotes,
+      userVote: newVoteStatus,
+    });
   };
 
   return (
