@@ -43,11 +43,19 @@ export default function MembersPage({members, project, adminPerms}) {
             width: "100%",
           }}
         >
-          {/* Search Bar (centered) */}
-          <div style={{display: "flex", width: "100%"}}>
+          {/* Centered Search Bar */}
+          <div className="flex w-full items-center dark:text-white">
             <SearchBar onSearch={setSearch} />
-            {adminPerms && <Button outerStyle={{height: "47px"}} textStyle={{}} text={"edit"} onClick={() => setShowModal(true)}/>}
+            {adminPerms && (
+              <Button
+                outerStyle={{ height: "47px" }}
+                textStyle={{ color: "inherit" }} // inherits white text in dark mode
+                text={"edit"}
+                onClick={() => setShowModal(true)}
+              />
+            )}
           </div>
+
   
           {/* Filters to the right */}
           <NavBar

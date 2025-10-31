@@ -32,7 +32,7 @@ export default function TaskViewOverview({ task }) {
       <h1 className="text-2xl font-semibold mb-6">{task.title}</h1>
 
       {/* Dates */}
-      <div className="text-gray-800 mb-6">
+      <div className="text-gray-800 dark:text-white mb-6">
         <p className="font-semibold">
           Start: <span className="font-normal">{startDate}</span>
         </p>
@@ -43,7 +43,7 @@ export default function TaskViewOverview({ task }) {
 
       {/* Description */}
       <h2 className="text-xl font-semibold mb-2">Description</h2>
-      <p className="text-gray-700 leading-relaxed">
+      <p className="text-gray-700  dark:text-white leading-relaxed">
         {task.description}
       </p>
     </Card>

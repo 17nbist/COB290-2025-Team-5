@@ -36,10 +36,10 @@ export default function TodayPage({ tasks, events }) {
   };
 
   return (
-    <div className="flex gap-[110px]">
+    <div className="flex gap-[110px] dark:text-white">
       {/* TASKS */}
       <div className="w-[344px] h-[545px]">
-        <h1 className="text-[50px] font-[700] text-center mb-[20px]">Tasks</h1>
+        <h1 className="dark:text-white text-[50px] font-[700] text-center mb-[20px]">Tasks</h1>
         <div className="flex flex-col gap-[18px]">
           {todaysTasks.map((t) => (
             <TaskEventCard
@@ -54,7 +54,7 @@ export default function TodayPage({ tasks, events }) {
 
       {/* EVENTS */}
       <div className="w-[344px] h-[545px]">
-        <h1 className="text-[50px] font-[700] text-center mb-[20px]">Events</h1>
+        <h1 className="text-[50px] dark:text-white font-[700] text-center mb-[20px]">Events</h1>
         <div className="flex flex-col gap-[18px]">
           {todaysEvents.map((e) => (
             <TaskEventCard key={e.id} title={e.title} subTitle={getEventSubTitle(e)} />
