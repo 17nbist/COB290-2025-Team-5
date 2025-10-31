@@ -1,24 +1,19 @@
 "use client";
 
-export default function Member({ member, onClick, project }) {
+export default function Member({ member, onClick }) {
   return (
     <div
       onClick={onClick}
-      style={{
-        border: "1px solid #ccc",
-        borderRadius: "10px",
-        padding: "16px",
-        cursor: "pointer",
-        transition: "all 0.2s ease",
-        backgroundColor: "#fff",
-      }}
-      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f9f9f9")}
-      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#fff")}
+      className="
+        border border-gray-300 rounded-[10px] p-4 cursor-pointer transition-colors duration-200
+        bg-white hover:bg-gray-100 
+        dark:bg-[#767676] dark:hover:bg-[#5c5c5c] dark:border-gray-500
+      "
     >
-      <h3 style={{ margin: 0, fontSize: "18px", fontWeight: "600" }}>
+      <h3 className="m-0 text-[18px] font-semibold dark:text-white">
         {member.name}
       </h3>
-      <p style={{ margin: "4px 0 0 0", color: "#555" }}> {member.role + (member.id == project.leaderId? " (Team Leader)" : "")}</p>
+      <p className="mt-1 text-gray-600 dark:text-gray-300">{member.role}</p>
     </div>
   );
 }

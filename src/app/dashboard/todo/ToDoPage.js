@@ -58,17 +58,17 @@ export default function ToDoPage() {
   }, []);
 
   return (
-    <div className="flex justify-center items-start min-h-screen py-10 text-black bg-transparent">
+    <div className="flex justify-center items-start min-h-screen py-10 dark:text-white text-black bg-transparent">
       <div className="flex gap-10">
         {/* Projects Column */}
         <div className="w-[344px] flex flex-col items-center">
-          <h1 className="text-[50px] font-bold text-center mb-8">Projects</h1>
+          <h1 className="text-[50px] dark:text-white dark:font-bold font-bold text-center mb-8">Projects</h1>
 
           <div className="flex flex-col gap-6 w-full items-center">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-white shadow-lg rounded-xl p-5 w-[344px] border border-gray-300"
+                className="bg-white dark:bg-[#444444] shadow-lg rounded-xl p-5 w-[344px] border border-gray-300"
               >
                 <Card>
                   {/* Project Card Header */}
@@ -89,7 +89,7 @@ export default function ToDoPage() {
                     {project.tasks.map((task) => (
                       <li
                         key={task.id}
-                        className="bg-gray-50 hover:bg-gray-100 px-4 py-2 rounded-lg shadow-sm border border-gray-200 cursor-pointer transition-all"
+                        className="dark:bg-[#444444] bg-gray-50 hover:bg-gray-100 px-4 py-2 rounded-lg shadow-sm border border-gray-200 cursor-pointer transition-all"
                         onClick={() => router.push(`task/${task.id}`)}
                       >
                         {task.text}
@@ -104,9 +104,9 @@ export default function ToDoPage() {
 
         {/* General Column */}
         <div className="w-[344px] flex flex-col items-center">
-          <h1 className="text-[50px] font-bold text-center mb-8">To-Do</h1>
+          <h1 className="text-[50px] dark:text-white dark:font-bold font-bold text-center mb-8">To-Do</h1>
 
-          <div className="bg-white shadow-lg rounded-xl p-5 w-[344px] border border-gray-300">
+          <div className="bg-white dark:bg-[#444444] shadow-lg rounded-xl p-5 w-[344px] border border-gray-300">
             {/* Add Task Input + Button */}
             <div className="flex mb-4 gap-2">
               <input
@@ -121,7 +121,7 @@ export default function ToDoPage() {
               />
               <button
                 onClick={addTask}
-                className="bg-blue-500 hover:bg-blue-600 text-white font-medium px-4 py-2 rounded-md transition-all"
+                className="bg-[#878787] hover:bg-[#a9a9a9] dark:bg-[#333333] dark:hover:bg-[#878787] text-white font-medium px-4 py-2 rounded-md transition-all"
               >
                 Add
               </button>
@@ -133,7 +133,7 @@ export default function ToDoPage() {
                 {generalTasks.map((task, i) => (
                   <li
                     key={i}
-                    className="bg-gray-50 hover:bg-gray-100 px-4 py-2 rounded-lg shadow-sm border border-gray-200 cursor-pointer transition-all"
+                    className="dark:bg-[#444444] bg-gray-50 hover:bg-gray-100 px-4 py-2 rounded-lg shadow-sm border border-gray-200 cursor-pointer transition-all"
                   >
                     {task}
                   </li>
