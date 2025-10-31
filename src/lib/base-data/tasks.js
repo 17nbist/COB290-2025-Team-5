@@ -2,7 +2,7 @@ const baseTasks = [
     {
         id: 0, 
         projectId: 0,
-        members: [0, 1, 2],
+        members: [0, 2, 4, 5, 6],
         title: "Google Auth", 
         description: "abacadaba", 
         from: new Date(2025, 9, 24, 0), 
@@ -15,9 +15,10 @@ const baseTasks = [
     {
         id: 1, 
         projectId: 1, 
-        members: [0, 1, 2],
+        members: [2, 3, 4, 6],
         title: "Main Dashboard", 
-        description: "abacadaba", from: new Date(2025, 9, 31, 0), 
+        description: "abacadaba", 
+        from: new Date(2025, 9, 31, 0), 
         to: new Date(2025, 10, 8, 0),
         todos: [
             {id: 0, title: "Todo 1", checked: false},
@@ -27,7 +28,7 @@ const baseTasks = [
     {
         id: 2, 
         projectId: 0,
-        members: [0, 1, 2],
+        members: [0, 2, 4, 5, 6],
         title: "A Task", 
         description: "abacadaba", 
         from: new Date(2025, 10, 2, 8), 
@@ -40,7 +41,7 @@ const baseTasks = [
     {
         id: 3, 
         projectId: 1,
-        members: [0, 1, 2],
+        members: [2, 3, 4, 6],
         title: "Other Task", 
         description: "abacadaba", 
         from: new Date(2025, 10, 5, 8), 
@@ -53,6 +54,7 @@ const baseTasks = [
     {
         id: 4, 
         projectId: 0, 
+        members: [0, 2, 4, 5, 6],
         title: "Task B", 
         description: "abacadaba", 
         from: new Date(2025, 10, 4, 0), 

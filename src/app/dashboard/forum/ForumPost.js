@@ -1,3 +1,5 @@
+"use client";
+import { useAuth } from "@/lib/AuthContext";
 import { FaRegCommentDots, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import Card from "@/components/Card";
 
