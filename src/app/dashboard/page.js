@@ -100,7 +100,7 @@ export default function Home() {
       </div>
 
       {/* Main Content Area */}
-      <main className="flex justify-center flex-1 min-h-0">
+      <main className="flex justify-center flex-1 min-h-0 overflow-auto">
         {activeTab === "Dashboard" && <DashboardPage events={events} />}
         {activeTab === "Forum" && <ForumPage />}
         {activeTab === "Requests" && <RequestPage />}

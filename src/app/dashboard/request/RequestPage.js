@@ -5,31 +5,15 @@ import RequestPost from "./RequestPosts";
 import CreateRequestModal from "./CreateRequestPost";
 import Button from "@/components/Button";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/lib/AuthContext";
+import { useRouter } from "next/navigation";
 
 export default function RequestPage() {
+  const { user, userRequests, addRequest, updateRequest } = useAuth();
+  const router = useRouter();
   const filterTabs = ["Incoming", "Outgoing"];
   const [activeFilterTab, setActiveFilterTab] = useState("Incoming");
   const [isCreateRequestOpen, setIsCreateRequestOpen] = useState(false);
-
-  const [Request, setRequest] = useState([
-    {
-      id: 1,
-      title: "Need new pens?",
-      preview: "Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah...",
-      timeAgo: "2 hours ago",
-      highPriority: false,
-      type: "Incoming",
-    },
-    {
-      id: 2,
-      title: "Request 2",
-      preview: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit Neque...",
-      timeAgo: "2 hours ago",
-      highPriority: false,
-      type: "Incoming",
-    },
-  ]);
-
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (query) => {
@@ -42,28 +26,26 @@ export default function RequestPage() {
 
   const handleCreateRequest = (newRequest) => {
     const requestwithType = { ...newRequest, type: "Outgoing" };
-    setRequest([requestwithType, ...Request]);
-
+    addRequest(requestwithType, user?.email);
     setActiveFilterTab("Outgoing");
-
     setIsCreateRequestOpen(false);
   };
 
   const handleRequestClick = (requestId) => {
-    console.log("Clicked request:", requestId);
+    router.push(`/dashboard/request/${requestId}`);
   };
 
   const handleTogglePriority = (requestId) => {
-    const updatedRequests = Request.map((request) => {
-      if (request.id === requestId && request.type === "Incoming") {
-        return { ...request, highPriority: !request.highPriority };
-      }
-      return request;
-    });
-    setRequest(updatedRequests);
+    const userReqs = userRequests?.[user?.email] || [];
+    const request = userReqs.find(r => r.id === requestId);
+    if (request && request.type === "Incoming") {
+      updateRequest(requestId, { highPriority: !request.highPriority }, user?.email);
+    }
   };
 
-  const sortedRequests = [...Request].sort((a, b) => {
+  const userReqs = userRequests?.[user?.email] || [];
+
+  const sortedRequests = [...userReqs].sort((a, b) => {
     if (a.highPriority && !b.highPriority) return -1;
     if (!a.highPriority && b.highPriority) return 1;
     return a.title.localeCompare(b.title);
@@ -83,7 +65,7 @@ export default function RequestPage() {
   }, []);
 
   return (
-    <div className="w-6xl mx-auto px-4 py-6">
+    <div className="w-6xl mx-auto px-4 py-6 min-h-full">
       {/* Search Bar */}
       <div className="mb-6 flex">
         <SearchBar onSearch={handleSearch} onAdd={handleAddRequest} />

@@ -3,14 +3,14 @@ import Card from "@/components/Card"
 
 export default function RequestPost({ request, onClick, onTogglePriority }) {
   return (
-    <Card>
+    <Card onClick={onClick}>
       {/* Title */}
       <h2 className="text-xl font-semibold mb-3">
         {request.title}
       </h2>
 
       {/* Preview Text */}
-      <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
         {request.preview}
       </p>
 
