@@ -1310,5 +1310,257 @@ export const forumPosts = [
         ],
         author: "hr1@gmail.com",
         directedTo: null,
+    },
+    {
+        id: 53,
+        title: "Mandatory Anti-Harassment Training",
+        flair: "non-technical",
+        preview:
+            "This is a reminder that all employees must complete the mandatory online anti-harassment training by November 15th. This is...",
+        content:
+            "This is a reminder that all employees must complete the mandatory online anti-harassment training by **November 15th**.\n\nThis is a legal requirement and is essential for maintaining a safe and respectful workplace.\n\nThe training takes approximately 45 minutes. You should have received a direct link via email from our compliance partner, 'ComplianceNow'.\n\nPlease complete this as soon as possible.",
+        timeAgo: "3 days ago",
+        tags: ["hr", "training", "compliance", "mandatory", "policy"],
+        upvotes: 19,
+        downvotes: 2,
+        comments: [
+            {
+                id: 272,
+                author: "employee2@gmail.com",
+                text: "I haven't received a link yet.",
+                timeAgo: "2 days ago",
+            },
+            {
+                id: 273,
+                author: "hr1@gmail.com",
+                text: "@Ben Dover, I'll resend your link right now. Please check your spam folder as well.",
+                timeAgo: "2 days ago",
+            },
+        ],
+        author: "hr1@gmail.com",
+        directedTo: null,
+    },
+    {
+        id: 54,
+        title: "Docker Compose not working on new M2 Macs",
+        flair: "technical",
+        preview:
+            "Is anyone else on a new M2 Mac having issues with Docker Compose? It seems to fail during the 'db' container build...",
+        content:
+            "Is anyone else on a new M2 Mac having issues with Docker Compose? It seems to fail during the 'db' container build with an architecture-related error.\n\nI'm trying to set up the local dev environment.\n\n`Error: platform not supported`\n\nAny workarounds?",
+        timeAgo: "1 day ago",
+        tags: ["docker", "m2", "mac", "dev-env", "help", "technical"],
+        upvotes: 7,
+        downvotes: 0,
+        comments: [
+            {
+                id: 274,
+                author: "manager2@gmail.com",
+                text: "Yes, this is a known issue. You need to explicitly set the platform in your docker-compose.yml for the database service:\n\n`platform: linux/amd64`\n\nWe should update the dev-env docs.",
+                timeAgo: "1 day ago",
+            },
+            {
+                id: 275,
+                author: "employee4@gmail.com",
+                text: "Ah, that worked! Thanks, Sarah.",
+                timeAgo: "22 hours ago",
+            },
+        ],
+        author: "employee4@gmail.com",
+        directedTo: "manager2@gmail.com",
+    },
+    {
+        id: 55,
+        title: "Thanksgiving Holiday Schedule",
+        flair: "non-technical",
+        preview:
+            "A reminder for all US-based employees: The office will be closed next Thursday and Friday (Nov 27th & 28th) for...",
+        content:
+            "A reminder for all US-based employees:\n\nThe office will be closed next **Thursday and Friday (Nov 27th & 28th)** for the Thanksgiving holiday.\n\nWe hope you all have a wonderful and restful break with your loved ones.\n\n- The Exec Team",
+        timeAgo: "1 week ago",
+        tags: ["hr", "holiday", "announcement", "pto"],
+        upvotes: 38,
+        downvotes: 0,
+        comments: [],
+        author: "ceo@gmail.com",
+        directedTo: null,
+    },
+    {
+        id: 56,
+        title: "New NPM Package Security Vulnerability",
+        flair: "technical",
+        preview:
+            "Heads up, a critical vulnerability was just announced in 'left-pad' v2.1. (Just kidding, it's in 'node-http-proxy')...",
+        content:
+            "Heads up, dev team,\n\nA critical vulnerability (CVE-2025-1234) was just announced in 'node-http-proxy', which we use in two of our key services.\n\nA patched version (v1.18.2) is available.\n\nI've created JIRA tickets (TECH-120, TECH-121) to update this dependency, test, and deploy ASAP. This is a high priority.",
+        timeAgo: "2 days ago",
+        tags: ["security", "npm", "vulnerability", "dev", "urgent"],
+        upvotes: 14,
+        downvotes: 0,
+        comments: [
+            {
+                id: 276,
+                author: "employee1@gmail.com",
+                text: "On TECH-120. Starting the update now.",
+                timeAgo: "1 day ago",
+            },
+        ],
+        author: "manager1@gmail.com",
+        directedTo: null,
+    },
+    {
+        id: 57,
+        title: "Organizing a team for the Corporate 5K Run",
+        flair: "non-technical",
+        preview:
+            "Hey everyone, the annual 'City Corporate 5K Challenge' is next month. I'm looking to put together a 'Make-It-All' team...",
+        content:
+            "Hey everyone,\n\nThe annual 'City Corporate 5K Challenge' is next month. I'm looking to put together a 'Make-It-All' team (or multiple teams!).\n\nIt's a fun event for all fitness levels (you can walk!) and benefits a good cause.\n\nIf you're interested in joining, please add your name to this spreadsheet: [link-to-5k-signup]",
+        timeAgo: "4 days ago",
+        tags: ["social", "event", "wellness", "5k"],
+        upvotes: 22,
+        downvotes: 0,
+        comments: [
+            {
+                id: 277,
+                author: "employee2@gmail.com",
+                text: "Signed up!",
+                timeAgo: "3 days ago",
+            },
+            {
+                id: 278,
+                author: "employee3@gmail.com",
+                text: "Me too! Let's do this.",
+                timeAgo: "3 days ago",
+            },
+        ],
+        author: "employee3@gmail.com",
+        directedTo: null,
+    },
+    {
+        id: 58,
+        title: "Client Feedback: Login Page is Confusing",
+        flair: "non-technical",
+        preview:
+            "Sharing some direct feedback from our new client 'BigCorp'. They find the main login page confusing. Specifically, the 'SSO'...",
+        content:
+            "Sharing some direct feedback from our new client 'BigCorp'.\n\nThey find the main login page confusing. Specifically, the 'SSO' button and the 'Standard Login' are not clearly differentiated, and their employees keep trying to use the wrong one.\n\n@manager1@gmail.com - Can your team mock up a clearer design? Let's discuss this in our next sync.",
+        timeAgo: "1 day ago",
+        tags: ["feedback", "client", "ui", "ux", "design"],
+        upvotes: 9,
+        downvotes: 0,
+        comments: [
+            {
+                id: 279,
+                author: "manager1@gmail.com",
+                text: "Noted. We've heard this before. I'll have a designer work on a new layout and we can A/B test it.",
+                timeAgo: "23 hours ago",
+            },
+        ],
+        author: "ceo@gmail.com",
+        directedTo: "manager1@gmail.com",
+    },
+    {
+        id: 59,
+        title: "Expense Reports for October",
+        flair: "non-technical",
+        preview:
+            "This is a reminder for everyone who traveled or had corporate expenses in October. Please submit your expense reports...",
+        content:
+            "This is a reminder for everyone who traveled or had corporate expenses in October.\n\nPlease submit your expense reports through the 'Expensify' portal by EOD today (Oct 31st) to be included in the next payroll run.\n\nManager, please approve your team's reports by EOD Monday.",
+        timeAgo: "8 hours ago",
+        tags: ["finance", "hr", "expenses", "reminder", "payroll"],
+        upvotes: 11,
+        downvotes: 0,
+        comments: [],
+        author: "hr1@gmail.com",
+        directedTo: null,
+    },
+    {
+        id: 60,
+        title: "New Logging Standard (JSON format)",
+        flair: "technical",
+        preview:
+            "To improve our monitoring and observability, all services will be required to output logs in a structured JSON format...",
+        content:
+            "Dev Team,\n\nTo improve our monitoring and observability (and make our lives easier when debugging), all services will be required to output logs in a structured JSON format going forward.\n\nThis will allow us to properly parse and index logs in our logging tool.\n\nPlease see the new logging standard guide on Confluence: [link-to-logging-guide]\n\nAll new services must comply. We will create tickets to update existing services over the next quarter.",
+        timeAgo: "6 days ago",
+        tags: ["devops", "logging", "best-practices", "monitoring", "tech"],
+        upvotes: 16,
+        downvotes: 0,
+        comments: [
+            {
+                id: 280,
+                author: "employee4@gmail.com",
+                text: "Thank goodness. Grepping string logs was a nightmare.",
+                timeAgo: "5 days ago",
+            },
+            {
+                id: 281,
+                author: "manager1@gmail.com",
+                text: "This is a great move. We'll start refactoring our main app in the next sprint.",
+                timeAgo: "5 days ago",
+            },
+        ],
+        author: "manager2@gmail.com",
+        directedTo: null,
+    },
+    {
+        id: 61,
+        title: "Lunch Order - Team 'Apex' Milestone",
+        flair: "non-technical",
+        preview:
+            "To celebrate the 'Apex' team hitting their Q4 milestone early, I'm ordering lunch for the whole team next Wednesday...",
+        content:
+            "To celebrate the 'Project Apex' team hitting their Q4 milestone early, I'm ordering lunch for the whole team next Wednesday!\n\nTeam members (@employee1@gmail.com, @employee4@gmail.com, etc.), please put your order in this spreadsheet from 'The Good Sub Shop' menu.\n\nGreat work, everyone!",
+        timeAgo: "2 days ago",
+        tags: ["social", "food", "kudos", "milestone", "team-apex"],
+        upvotes: 26,
+        downvotes: 0,
+        comments: [
+            {
+                id: 282,
+                author: "employee1@gmail.com",
+                text: "Awesome! Thanks, John!",
+                timeAgo: "1 day ago",
+            },
+            {
+                id: 283,
+                author: "employee4@gmail.com",
+                text: "Wooo! Sub time.",
+                timeAgo: "1 day ago",
+            },
+        ],
+        author: "manager1@gmail.com",
+        directedTo: null,
+    },
+    {
+        id: 62,
+        title: "Halloween Costume Contest Winners!",
+        flair: "non-technical",
+        preview:
+            "Thank you to everyone who participated in our amazing Halloween costume contest today! The competition was fierce, but the...",
+        content:
+            "Thank you to everyone who participated in our amazing Halloween costume contest today! The competition was fierce, but the votes are in:\n\n**1st Place:** Ben Dover (@employee2@gmail.com) as 'Server Rack on Fire'\n**2nd Place:** Anita Bath (@employee3@gmail.com) as 'Rosie the Riveter'\n**3rd Place:** Gabe Itch (@employee1@gmail.com) as 'SQL Injection Query'\n\nWinners, please see HR to claim your prizes! Great job, everyone!",
+        timeAgo: "Just now",
+        tags: ["social", "event", "halloween", "party", "hr"],
+        upvotes: 47,
+        downvotes: 0,
+        comments: [
+            {
+                id: 284,
+                author: "employee2@gmail.com",
+                text: "Honored to have won. The smoke machine was worth it.",
+                timeAgo: "Just now",
+            },
+            {
+                id: 285,
+                author: "employee1@gmail.com",
+                text: "Congrats Ben! That costume was hilarious.",
+                timeAgo: "Just now",
+            },
+        ],
+        author: "hr1@gmail.com",
+        directedTo: null,
     }
 ];
