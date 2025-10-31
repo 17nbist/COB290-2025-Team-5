@@ -48,7 +48,7 @@ export default function RequestDetailPage({ params }) {
                     </p>
 
                     <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
-                        <span>requested {request.timeAgo}</span>
+                        <span>requested {request.timeAgo} by {request.author}</span>
                         <span className="px-2 py-1 bg-gray-200 dark:bg-[#334155] text-gray-700 dark:text-gray-400 rounded-md">
                             {request.type}
                         </span>

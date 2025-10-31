@@ -4,7 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 
-export default function CreateRequestModal({ isOpen, onClose, onSubmit }) {
+export default function CreateRequestModal({ isOpen, onClose, onSubmit, userEmail }) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
@@ -32,6 +32,7 @@ export default function CreateRequestModal({ isOpen, onClose, onSubmit }) {
             content: content.trim(),
             timeAgo: "just now",
             highPriority: false,
+            author: userEmail,
         };
 
         onSubmit(newRequest);

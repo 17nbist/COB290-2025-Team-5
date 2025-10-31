@@ -123,7 +123,7 @@ export default function TopicPage({ params }) {
 
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
-                            <span>posted {post.timeAgo}</span>
+                            <span>posted {post.timeAgo} by {post.author}</span>
                             {post.tags.map((tag, index) => (
                                 <span
                                     key={index}
