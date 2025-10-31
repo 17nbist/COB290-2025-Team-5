@@ -1,13 +1,15 @@
 "use client";
 import { useState } from "react";
-import { FaRegCommentDots, FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { FaRegCommentDots, FaArrowUp, FaArrowDown, FaArrowLeft } from "react-icons/fa";
 import Card from "@/components/Card";
 import { useAuth } from "@/lib/AuthContext";
 import Button from "@/components/Button";
+import { useRouter } from "next/navigation";
 
 export default function TopicPage({ params }) {
     const { topicId } = params;
     const { user, allForumPosts, updateForumPost } = useAuth();
+    const router = useRouter();
 
     const post = allForumPosts?.find((p) => String(p.id) === String(topicId));
 
@@ -94,6 +96,13 @@ export default function TopicPage({ params }) {
     return (
         <>
             <div className="p-6">
+                <button
+                    onClick={() => router.push('/dashboard#forum')}
+                    className="mb-4 flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                >
+                    <FaArrowLeft size={14} />
+                    <span>Back to Forum</span>
+                </button>
                 <Card className="hover:border-gray-600 transition-colors duration-200">
                     <div className="flex space-x-3">
                         <h2 className="text-2xl font-semibold mb-3">{post.title}</h2>

@@ -32,11 +32,12 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
             title: title.trim(),
             flair: flair,
             preview: createPreview(content.trim()),
+            content: content.trim(),
             timeAgo: "just now",
             tags: tags.split(",").map(tag => tag.trim()).filter(tag => tag),
             upvotes: 0,
             downvotes: 0,
-            comments: 0,
+            comments: [],
             author: userEmail,
             directedTo: null
         };
