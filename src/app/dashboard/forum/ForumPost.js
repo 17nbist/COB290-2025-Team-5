@@ -19,23 +19,23 @@ export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
         <span
           className={
             post.flair === "technical"
-              ? "items-center px-2 py-1 h-[32px] bg-emerald-300 text-black rounded-md"
-              : "items-center px-2 py-1 h-[32px] bg-sky-300 text-black rounded-md"
+              ? "items-center px-2 py-1 h-[32px] bg-[#ffca1d] text-black rounded-md font-medium"
+              : "items-center px-2 py-1 h-[32px] bg-black dark:bg-white text-white dark:text-black rounded-md font-medium"
           }
         >
           {post.flair}
         </span>
       </div>
 
-      <p className="text-gray-400 text-sm mb-4 line-clamp-2">{post.preview}</p>
+      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">{post.preview}</p>
 
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3 text-xs text-gray-500">
+        <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
           <span>posted {post.timeAgo}</span>
           {post.tags.map((tag, index) => (
             <span
               key={index}
-              className="px-2 py-1 bg-[#334155] text-gray-400 rounded-md"
+              className="px-2 py-1 bg-gray-200 dark:bg-[#334155] text-gray-700 dark:text-gray-400 rounded-md"
             >
               {tag}
             </span>

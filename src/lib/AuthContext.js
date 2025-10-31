@@ -5,6 +5,7 @@ import baseUsers from "./base-data/users.js"
 import baseProjects from "./base-data/projects.js"
 import baseTasks from "./base-data/tasks.js"
 import baseEvents from "./base-data/events.js"
+import { forumPosts as baseForums } from "./base-data/forums.js"
 
 
 const AuthContext = createContext();
@@ -81,6 +82,7 @@ export function AuthProvider({ children }) {
     const [allTasks, setAllTasks] = useState(null)
     const [allEvents, setAllEvents] = useState(null)
     const [allUsers, setAllUsers] = useState(null);
+    const [allForumPosts, setAllForumPosts] = useState(null);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
@@ -137,6 +139,13 @@ export function AuthProvider({ children }) {
             localStorage.setItem('events', JSON.stringify(baseEvents));
         }
 
+        const localForums = localStorage.getItem('forumPosts');
+        if (localForums) {
+            setAllForumPosts(JSON.parse(localForums));
+        } else {
+            setAllForumPosts(baseForums);
+            localStorage.setItem('forumPosts', JSON.stringify(baseForums));
+        }
 
         setLoading(false);
     }, []);
@@ -237,8 +246,26 @@ export function AuthProvider({ children }) {
         });
     }
 
+    function addForumPost(post) {
+        setAllForumPosts(prev => {
+            const maxId = prev.length > 0 ? Math.max(...prev.map(p => p.id)) : 0;
+            const newPost = { ...post, id: maxId + 1 };
+            const updated = [newPost, ...prev];
+            localStorage.setItem('forumPosts', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
+    function updateForumPost(postId, updates) {
+        setAllForumPosts(prev => {
+            const updated = prev.map(p => p.id === postId ? { ...p, ...updates } : p);
+            localStorage.setItem('forumPosts', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
     return (
-        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, login, logout, loading, addToAllTasks, addToAllEvents, updateTodo, addToAllProjects, editProjectMembers }}>
+        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, allForumPosts, login, logout, loading, addToAllTasks, addToAllEvents, updateTodo, addToAllProjects, editProjectMembers, addForumPost, updateForumPost }}>
             {children}
         </AuthContext.Provider>
     );
