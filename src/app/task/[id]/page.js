@@ -51,7 +51,7 @@ export default function Dashboard() {
 
   if (errText) {
 		return(
-			<div className="flex flex-col w-screen h-screen bg-[#c4daff] dark:bg-[#303640]">
+			<div className="flex flex-col w-screen h-screen bg-[#d2d2d2] dark:bg-[#303640]">
 				<h1>{errText}</h1>
 			</div>
 		)

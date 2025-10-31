@@ -151,7 +151,7 @@ export default function Home() {
 
       {/* RIGHT SIDE */}
       <div
-        style={{ display: "grid", gridTemplateRows: "40% 60%", width: "100%", height: "100%", backgroundColor: "#c4daff", overflow: "hidden", boxSizing: "border-box", padding: "10px", gap: "10px", }}
+        style={{ display: "grid", gridTemplateRows: "40% 60%", width: "100%", height: "100%", backgroundColor: "#d2d2d2", overflow: "hidden", boxSizing: "border-box", padding: "10px", gap: "10px", }}
       >
         {/* PIE CHART SECTION */}
         <Card style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", boxSizing: "border-box", overflow: "hidden", }} >
