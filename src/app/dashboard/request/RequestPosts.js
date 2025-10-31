@@ -18,14 +18,14 @@ export default function RequestPost({ request, onClick, onTogglePriority }) {
       <div className="flex items-center justify-between">
         {/* Left: Metadata */}
         <div className="flex items-center gap-3 text-xs text-gray-500">
-          <span>requested {request.timeAgo}
+          <span>requested {request.timeAgo} by {request.author}
           </span>
         </div>
 
         {/* Right: Engagement Metrics */}
         {request.type === "Incoming" && (
         <div className="flex items-center gap-4 text-gray-400">
-          <button 
+          <button
             onClick={(e) => {
               e.stopPropagation();
               onTogglePriority(request.id);
