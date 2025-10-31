@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegCommentDots, FaArrowUp, FaArrowDown, FaArrowLeft } from "react-icons/fa";
 import Card from "@/components/Card";
 import { useAuth } from "@/lib/AuthContext";
@@ -92,6 +92,10 @@ export default function TopicPage({ params }) {
         updateForumPost(post.id, { comments: updatedComments });
         setNewComment("");
     };
+
+    useEffect(() => {
+      document.title = `${post.title} | Make-It-All`;
+    }, []);
 
     return (
         <>
