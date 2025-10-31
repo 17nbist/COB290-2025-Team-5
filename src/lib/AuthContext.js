@@ -143,8 +143,12 @@ export function AuthProvider({ children }) {
         if (localForums) {
             setAllForumPosts(JSON.parse(localForums));
         } else {
-            setAllForumPosts(baseForums);
-            localStorage.setItem('forumPosts', JSON.stringify(baseForums));
+            const forumsWithVoteState = baseForums.map(post => ({
+                ...post,
+                userVote: null
+            }));
+            setAllForumPosts(forumsWithVoteState);
+            localStorage.setItem('forumPosts', JSON.stringify(forumsWithVoteState));
         }
 
         setLoading(false);
