@@ -34,6 +34,7 @@ export default function Dashboard() {
 
     setTask(currentTask);
 		setErrText(null);
+    document.title = `${currentTask.title} | Make-It-All`;
 	}, [allProjects, allTasks, allEvents, user]);
 
   // Handle hash navigation
