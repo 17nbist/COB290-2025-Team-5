@@ -23,7 +23,7 @@ export default function RequestDetailPage({ params }) {
 
     useEffect(() => {
       document.title = `${request.title} | Make-It-All`;
-    }, []);
+    }, [request]);
 
     return (
         <>
