@@ -59,9 +59,9 @@ export default function LoginForm({
 			{error && <p style={styles.error}>{error}</p>}
 
 			<div style={styles.forgotPasswordWrapper}>
-				<Link href="/login/Forgot" style={styles.forgotPassword}>
+				<Link href="/login/forgot" style={styles.forgotPassword}>
 					Forgot Password?
-				</Link> 
+				</Link>
 			</div>
 
 			<button style={styles.button} type="submit">Sign in</button>
@@ -87,20 +87,19 @@ const styles = {
 		color: "#2563eb",
 		textDecoration: "none",
 		cursor: "pointer",
-		
+
 	},
 	error: {
 		color: "#ef4444",
 		fontSize: 14,
 		textAlign: "center",
 	},
-	showIconButton: { 
-		background: "none", 
-		border: "none", 
-		cursor: "pointer", 
-		position: "absolute", 
+	showIconButton: {
+		background: "none",
+		border: "none",
+		cursor: "pointer",
+		position: "absolute",
 		right: 8 }
 	,
 	showIcon: { color: "#9ca3af", width: 20, height: 20 }
 };
-
