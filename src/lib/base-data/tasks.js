@@ -9,7 +9,7 @@ const baseTasks = [
         to: new Date(2025, 10, 7, 0),
         todos: [
             {id: 0, title: "Todo 1", checked: false},
-            {id: 1, title: "Todo 1", checked: false},
+            {id: 1, title: "Todo 2", checked: false},
         ],
     },
     {
@@ -22,7 +22,7 @@ const baseTasks = [
         to: new Date(2025, 10, 8, 0),
         todos: [
             {id: 0, title: "Todo 1", checked: false},
-            {id: 1, title: "Todo 1", checked: false},
+            {id: 1, title: "Todo 2", checked: false},
         ],
     },
     {
@@ -35,7 +35,7 @@ const baseTasks = [
         to: new Date(2025, 10, 11, 14),
         todos: [
             {id: 0, title: "Todo 1", checked: false},
-            {id: 1, title: "Todo 1", checked: false},
+            {id: 1, title: "Todo 2", checked: false},
         ],
     },
     {
@@ -48,7 +48,7 @@ const baseTasks = [
         to: new Date(2025, 10, 11, 14),
         todos: [
             {id: 0, title: "Todo 1", checked: false},
-            {id: 1, title: "Todo 1", checked: false},
+            {id: 1, title: "Todo 2", checked: false},
         ],
     },
     {
@@ -61,7 +61,7 @@ const baseTasks = [
         to: new Date(2025, 10, 9, 20),
         todos: [
             {id: 0, title: "Todo 1", checked: false},
-            {id: 1, title: "Todo 1", checked: false},
+            {id: 1, title: "Todo 2", checked: false},
         ],
 
     },
