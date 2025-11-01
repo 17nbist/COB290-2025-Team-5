@@ -44,6 +44,7 @@ export default function ProjectPage() {
 			return;
 		}
 
+		document.title = `${currentProject.title} | Make-It-All`;
 		setProject(currentProject);
 		setErrText(null);
 	}, [allProjects, allTasks, allEvents, user]);
