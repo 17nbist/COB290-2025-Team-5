@@ -1,152 +1,205 @@
 "use client";
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MdOutlineEmail, MdLockOutline, MdPersonOutline } from "react-icons/md";
+import { MdVisibility, MdVisibilityOff } from "react-icons/md";
+import Link from "next/link";
 
-import { useState } from "react";
+export default function UrlForm() {
+	const [name, setName] = React.useState("");
+	const [email, setEmail] = React.useState("");
+	const [password, setPassword] = React.useState("");
+	const [confirmPassword, setConfirmPassword] = React.useState("");
+	const [error, setError] = React.useState("");
+	const [success, setSuccess] = React.useState(false);
+	const [showPassword, setShowPassword] = React.useState(false);
+	const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
 
-export default function RegistrationPage() {
-  const [activeTab, setActiveTab] = useState("employee");
+	// 🔍 Live validation logic
+	const validateForm = () => {
+		if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+			setError("Please enter a valid email address.");
+			return false;
+		}
+		if (password.length < 6) {
+			setError("Password must be at least 6 characters long.");
+			return false;
+		}
+		if (password !== confirmPassword) {
+			setError("Passwords do not match.");
+			return false;
+		}
+		setError("");
+		return true;
+	};
 
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-100 via-indigo-100 to-blue-50 p-6">
-      <div className="flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden w-full max-w-5xl">
-        <div className="md:w-1/3 bg-blue-600 text-white flex flex-col items-center justify-center p-8">
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (!validateForm()) return;
 
-          <h3 className="text-2xl font-semibold mb-2">Welcome</h3>
-          <p className="text-center mb-4 text-blue-100">
-            You are 30 seconds away from earning your own money!
-          </p>
-          <button className="bg-white text-blue-600 font-semibold px-5 py-2 rounded-lg hover:bg-blue-50 transition">
-            Login
-          </button>
-        </div>
+		setSuccess(true);
+		setError("");
+		console.log({ name, email, password });
 
-        
-        <div className="md:w-2/3 p-8">
-          <div className="flex justify-center mb-6 border-b border-gray-200">
-            <button
-              onClick={() => setActiveTab("employee")}
-              className={`py-2 px-6 font-semibold ${
-                activeTab === "employee"
-                  ? "text-blue-600 border-b-2 border-blue-600"
-                  : "text-gray-500 hover:text-blue-500"
-              }`}
-            >
-              Employee
-            </button>
-          </div>
+		// Clear form fields after success
+		setName("");
+		setEmail("");
+		setPassword("");
+		setConfirmPassword("");
 
-          {activeTab === "employee" ? (
-            <div>
-              <h3 className="text-xl font-semibold text-center text-blue-600 mb-6">
-                Complete your Registration as an Employee
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="First Name *"
-                  className="input-field"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name *"
-                  className="input-field"
-                />
-                <input
-                  type="password"
-                  placeholder="Password *"
-                  className="input-field"
-                />
-                <input
-                  type="password"
-                  placeholder="Confirm Password *"
-                  className="input-field"
-                />
-                <div className="col-span-2">
-                  <label className="mr-4">
-                    <input type="radio" name="gender" defaultChecked /> Male
-                  </label>
-                  <label className="ml-4">
-                    <input type="radio" name="gender" /> Female
-                  </label>
-                </div>
-                <input
-                  type="email"
-                  placeholder="Your Email *"
-                  className="input-field"
-                />
-                <input
-                  type="text"
-                  placeholder="Your Phone *"
-                  className="input-field"
-                />
-                <select className="input-field">
-                <input
-                  type="text"
-                  placeholder="Enter Your Answer *"
-                  className="input-field"
-                />
-                </select>
-                <button className="col-span-2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-                  Register
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div>
-              <h3 className="text-xl font-semibold text-center text-blue-600 mb-6">
-                Apply as a Hirer
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="First Name *"
-                  className="input-field"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name *"
-                  className="input-field"
-                />
-                <input
-                  type="email"
-                  placeholder="Email *"
-                  className="input-field"
-                />
-                <input
-                  type="text"
-                  placeholder="Phone *"
-                  className="input-field"
-                />
-                <input
-                  type="password"
-                  placeholder="Password *"
-                  className="input-field"
-                />
-                <input
-                  type="password"
-                  placeholder="Confirm Password *"
-                  className="input-field"
-                />
-                <input
-                  type="text"
-                  placeholder="Enter Your Answer *"
-                  className="input-field"
-                />
-                <button className="col-span-2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
-                  Register
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+		// Hide success message after 3 seconds
+		setTimeout(() => setSuccess(false), 3000);
+	};
+
+	return (
+		<div className="w-full flex flex-col items-center">
+			<form
+				onSubmit={handleSubmit}
+				className="bg-white p-6 rounded-2xl shadow-md w-full max-w-md flex flex-col gap-4 mt-8"
+			>
+				{/* Name */}
+				<label className="flex flex-col text-sm text-gray-700">
+					Name
+					<div className="relative flex items-center">
+						<MdPersonOutline className="absolute left-2 text-gray-400 text-lg" />
+						<input
+							type="text"
+							value={name}
+							onChange={(e) => setName(e.target.value)}
+							required
+							className="w-full border border-gray-300 rounded-md pl-8 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						/>
+					</div>
+				</label>
+
+				{/* Email */}
+				<label className="flex flex-col text-sm text-gray-700">
+					Email
+					<div className="relative flex items-center">
+						<MdOutlineEmail className="absolute left-2 text-gray-400 text-lg" />
+						<input
+							type="email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+							className={`w-full border ${
+								error.includes("email") ? "border-red-400" : "border-gray-300"
+							} rounded-md pl-8 pr-3 py-2 focus:outline-none focus:ring-2 ${
+								error.includes("email") ? "focus:ring-red-400" : "focus:ring-blue-500"
+							}`}
+						/>
+					</div>
+				</label>
+
+				{/* Password */}
+				<label className="flex flex-col text-sm text-gray-700">
+					Password
+					<div className="relative flex items-center">
+						<MdLockOutline className="absolute left-2 text-gray-400 text-lg" />
+						<input
+							type={showPassword ? "text" : "password"}
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+							className={`w-full border ${
+								error.includes("Password must") ? "border-red-400" : "border-gray-300"
+							} rounded-md pl-8 pr-10 py-2 focus:outline-none focus:ring-2 ${
+								error.includes("Password must")
+									? "focus:ring-red-400"
+									: "focus:ring-blue-500"
+							}`}
+						/>
+						<button
+							type="button"
+							onClick={() => setShowPassword((s) => !s)}
+							className="absolute right-2 text-gray-400 hover:text-gray-600"
+						>
+							{showPassword ? (
+								<MdVisibilityOff className="w-5 h-5" />
+							) : (
+								<MdVisibility className="w-5 h-5" />
+							)}
+						</button>
+					</div>
+				</label>
+
+				{/* Confirm Password */}
+				<label className="flex flex-col text-sm text-gray-700">
+					Confirm Password
+					<div className="relative flex items-center">
+						<MdLockOutline className="absolute left-2 text-gray-400 text-lg" />
+						<input
+							type={showConfirmPassword ? "text" : "password"}
+							value={confirmPassword}
+							onChange={(e) => setConfirmPassword(e.target.value)}
+							required
+							className={`w-full border ${
+								error.includes("match") ? "border-red-400" : "border-gray-300"
+							} rounded-md pl-8 pr-10 py-2 focus:outline-none focus:ring-2 ${
+								error.includes("match") ? "focus:ring-red-400" : "focus:ring-blue-500"
+							}`}
+						/>
+						<button
+							type="button"
+							onClick={() => setShowConfirmPassword((s) => !s)}
+							className="absolute right-2 text-gray-400 hover:text-gray-600"
+						>
+							{showConfirmPassword ? (
+								<MdVisibilityOff className="w-5 h-5" />
+							) : (
+								<MdVisibility className="w-5 h-5" />
+							)}
+						</button>
+					</div>
+				</label>
+
+				{/* Error */}
+				<AnimatePresence>
+					{error && (
+						<motion.p
+							initial={{ opacity: 0, y: -8 }}
+							animate={{ opacity: 1, y: 0 }}
+							exit={{ opacity: 0, y: -8 }}
+							className="text-red-500 text-sm text-center"
+						>
+							{error}
+						</motion.p>
+					)}
+				</AnimatePresence>
+
+				{/* Already have an account */}
+				<div className="flex justify-end items-center text-xs">
+					<span className="text-gray-600">Already have an account?</span>
+					<Link
+						href="/login"
+						className="ml-1 text-blue-600 hover:underline font-medium"
+					>
+						Sign in
+					</Link>
+				</div>
+
+				{/* Submit */}
+				<button
+					type="submit"
+					className="bg-blue-600 hover:bg-blue-700 text-white rounded-md py-2 mt-2 transition-all"
+				>
+					Create Account
+				</button>
+			</form>
+
+			{/* ✨ Animated success message */}
+			<AnimatePresence>
+				{success && (
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: -20 }}
+						className="mt-6 bg-green-100 text-blue-700 px-4 py-2 rounded-lg shadow-md text-sm font-medium"
+					>
+						Account created successfully! Welcome aboard.
+					</motion.div>
+				)}
+			</AnimatePresence>
+		</div>
+	);
 }
-
-
-const inputFieldClass = `
-border border-gray-300 rounded-lg p-2 w-full 
-focus:outline-none focus:ring-2 focus:ring-blue-400 
-placeholder-gray-400 text-sm
-`;
-
