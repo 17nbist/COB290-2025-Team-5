@@ -3,6 +3,7 @@ import { FaArrowLeft, FaFlag } from "react-icons/fa";
 import Card from "@/components/Card";
 import { useAuth } from "@/lib/AuthContext";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function RequestDetailPage({ params }) {
     const { requestId } = params;
@@ -11,6 +12,10 @@ export default function RequestDetailPage({ params }) {
 
     const userReqs = userRequests?.[user?.email] || [];
     const request = userReqs.find((r) => String(r.id) === String(requestId));
+
+    useEffect(() => {
+      document.title = `${request.title} | Make-It-All`;
+    }, [request]);
 
     if (!request) return <div className="p-6">Request not found</div>;
 

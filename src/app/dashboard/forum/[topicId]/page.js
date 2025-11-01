@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegCommentDots, FaArrowUp, FaArrowDown, FaArrowLeft } from "react-icons/fa";
 import Card from "@/components/Card";
 import { useAuth } from "@/lib/AuthContext";
@@ -14,6 +14,9 @@ export default function TopicPage({ params }) {
     const post = allForumPosts?.find((p) => String(p.id) === String(topicId));
 
     const [newComment, setNewComment] = useState("");
+
+    useEffect(() => {
+      document.title = `${post.title} | Make-It-All`;}, [post]);
 
     if (!post) return <div className="p-6">Post not found</div>;
 
