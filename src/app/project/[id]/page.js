@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, use } from "react";
+import { useEffect, useState, use } from "react";
 import {useRouter} from "next/navigation";
 import NavBar from "@/components/NavBar";
 import TodayPage from "./today/TodayPage";
@@ -21,12 +21,12 @@ export default function ProjectPage() {
 
 	const adminPerms = user?.role == "manager" || user?.id == project?.leaderId;
 
-	const tasks = allTasks?.filter(t => 
-		t.projectId == project?.id && 
+	const tasks = allTasks?.filter(t =>
+		t.projectId == project?.id &&
 		(adminPerms || t.members?.includes(user?.id))) || [];
 
-	const events = allEvents?.filter(e => 
-		e.projectId == project?.id && 
+	const events = allEvents?.filter(e =>
+		e.projectId == project?.id &&
 		(adminPerms || e.members?.includes(user?.id))) || [];
 
 	const projectMembers = allUsers?.filter(u => project?.members?.includes(u?.id));
@@ -38,6 +38,7 @@ export default function ProjectPage() {
 		}
 
 		const currentProject = allProjects.find(p => p.id == projectId);
+		document.title = `${currentProject.title} | Make-It-All`;
 		if (!currentProject || !currentProject.members.includes(user.id)){
 			setErrText("No access or project doesn't exist");
 			return;
@@ -60,10 +61,6 @@ export default function ProjectPage() {
 		window.addEventListener("hashchange", handleHashChange);
 		return () => window.removeEventListener("hashchange", handleHashChange);
 	}, []);
-
-	useEffect(() => {
-		document.title = 'Active Project | Make-It-All';
-  }, []);
 
 	const handleTabClick = (tab) => {
 		if (tab == "All Projects") {
