@@ -60,31 +60,37 @@ export default function Home() {
   return (
     <div className="flex flex-col h-screen bg-[#d2d2d2] dark:bg-[#303030] text-black dark:text-white transition-colors duration-300" style={{ width: "100vw" }} >
       {/* Header with role indicator and logout */}
-      <div className="flex justify-between items-center px-8 pt-4">
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-600 dark:text-white">Welcome, {user.name}</span>
-          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${user.role === 'manager'
-            ? 'bg-purple-100 text-purple-800'
-            : 'bg-blue-100 text-blue-800'
-            }`}>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-8 pt-4 gap-2 sm:gap-0">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+          <span className="text-sm text-gray-600 dark:text-white truncate">
+            Welcome, {user.name}
+          </span>
+          <span className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${
+            user.role === 'manager'
+              ? 'bg-purple-100 text-purple-800'
+              : 'bg-blue-100 text-blue-800'
+          }`}>
             {user.role.toUpperCase()} DASHBOARD
           </span>
         </div>
-        <DarkModeToggle />
-        <button
-          onClick={logout}
-          className="
-            text-sm font-medium 
-            px-4 py-2 
-            rounded-md 
-            bg-gray-100 text-gray-700 
-            hover:bg-red-800 hover:text-white 
-            transition-all duration-500
-          "
-        >
-          Logout
-        </button>
 
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-2 sm:mt-0">
+          <DarkModeToggle />
+          <button
+            onClick={logout}
+            className="
+              text-sm font-medium 
+              px-4 py-2 
+              rounded-md 
+              bg-gray-100 text-gray-700 
+              hover:bg-red-800 hover:text-white 
+              transition-all duration-500
+              whitespace-nowrap
+            "
+          >
+            Logout
+          </button>
+        </div>
       </div>
 
       {/* Main Navigation */}
@@ -93,9 +99,15 @@ export default function Home() {
           activeTab={activeTab}
           items={topNavItems}
           setActiveTab={setActiveTab}
-          pillStyle={{ width: "12vw" }}
+          pillStyle={{
+            width: "clamp(80px, 12vw, 180px)", // responsive width
+            padding: "0.5rem 1rem", 
+          }}
           setHash={true}
-          textStyle={{ fontSize: "1.2vw" }}
+          textStyle={{
+            fontSize: "clamp(0.8rem, 1.2vw, 1.2rem)", // responsive font
+            whiteSpace: "nowrap", // prevent wrapping
+          }}
         />
       </div>
 

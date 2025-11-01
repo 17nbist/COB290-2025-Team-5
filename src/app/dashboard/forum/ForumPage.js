@@ -49,7 +49,8 @@ export default function Forum() {
     } else if (activeSortTab === "Top") {
       // Sort by upvotes - downvotes
       filtered.sort((a, b) => (b.upvotes - b.downvotes) - (a.upvotes - a.downvotes));
-    } else {
+    } 
+    else {
       // Hot: combination of votes and recency (simplified Reddit algorithm)
       filtered.sort((a, b) => {
         const scoreA = a.upvotes - a.downvotes;
@@ -157,7 +158,7 @@ export default function Forum() {
   };
 
   return (
-    <div className="w-6xl mx-auto px-4 py-6 min-h-full">
+    <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-full">
       <div className="mb-6 flex">
         <SearchBar onSearch={handleSearch} onAdd={handleAddPost} />
         <Button
@@ -176,8 +177,16 @@ export default function Forum() {
             setActiveFilterTab(tab);
             setCurrentPage(1);
           }}
+          style={{
+            display: "flex",
+            flexWrap: "wrap",       // allow wrapping on small screens
+            gap: "8px",
+          }}
         />
       </div>
+
+      {/* Thin faint line */}
+      <div className="w-full border-t border-black dark:border-gray-300 my-4"></div>
 
       <div className="mb-6">
         <NavBar
@@ -186,6 +195,11 @@ export default function Forum() {
           setActiveTab={(tab) => {
             setActiveSortTab(tab);
             setCurrentPage(1);
+          }}
+          style={{
+            display: "flex",
+            flexWrap: "wrap",       // allow wrapping on small screens
+            gap: "8px",
           }}
         />
       </div>

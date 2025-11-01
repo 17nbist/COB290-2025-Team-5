@@ -7,8 +7,13 @@ export default function NavBar({style,
   setActiveTab, 
   setHash}){
   const defaultStyle = {
-    display : "flex",
-    gap : "8px"
+    display: "flex",
+    gap: "8px",
+    flexWrap: "nowrap", 
+    overflowX: "auto", 
+    overflowY:"hidden",
+    padding: "0 8px",   
+    scrollbarWidth: "thin", 
   };
 
   const combinedStyle = {...defaultStyle, ...style};
