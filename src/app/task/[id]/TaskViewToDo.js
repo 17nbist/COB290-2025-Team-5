@@ -12,7 +12,7 @@ export default function TaskViewToDo({ task }) {
   const [todoTitle, setTodoTitle] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  const adminPerms = user.role == "manager" || userIsProjectLeader(task.projectId, user.id);
+  const adminPerms = user.role == "manager" || userIsProjectLeader?.(task.projectId, user.id);
 
   function addTodo() {
     if (todoTitle == "") {
@@ -82,7 +82,7 @@ function ToDo({todo, task, updateTodo}) {
     <Card>
       <div className="flex justify-between items-center">
         <h1 style={{textDecorationLine: todo.checked? "line-through" : "none"}}>{todo.title}</h1>
-        <Button text={todo.checked? "undo" : "mark as done"} onClick={() => updateTodo(task.id, todo.id)}/>
+        <Button text={todo.checked? "Undo" : "Mark as done"} onClick={() => updateTodo(task.id, todo.id)}/>
       </div>
     </Card>
   )
