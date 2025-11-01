@@ -24,14 +24,10 @@ export default function RegistrationPage() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="text-3xl font-bold mb-6 text-blue-500 drop-shadow-lg"
+        className="text-3xl font-bold mb-6 text-blue drop-shadow-lg"
       >
         Registration
       </motion.h1>
-
-      <Link href="/" className="mt-4 text-white hover:underline drop-shadow-md">
-        Back to Home
-      </Link>
       <UrlForm/>
     </div>
   );
