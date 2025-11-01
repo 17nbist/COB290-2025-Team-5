@@ -30,6 +30,11 @@ export default function ProjectsPage({projects, employees}) {
 		.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()))
 		.sort(activeFilterTab == "Name"? sortByName : sortByDue);
 
+		useEffect(() => {
+			document.title = "Projects | Make-It-All";
+	  }, []);
+
+
 	return (
 		<div className="flex flex-col w-[1200px] flex-wrap items-center">
 			<div className="flex mb-[30px] items-center justify-between w-full">
@@ -49,7 +54,7 @@ export default function ProjectsPage({projects, employees}) {
 
 			<div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", width: "100%"}}>
 				{
-					filteredProjects.map(p => 
+					filteredProjects.map(p =>
 						<ProjectCard key={p.id} project={p}/>
 					)
 				}
@@ -77,7 +82,7 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 		if (title == "" || endDate <= new Date()) {
 			return
 		}
-		
+
 		addToAllProjects({title, description, creationDate: new Date(), dueDate: endDate, members: [...selectedMembers, user.id], leaderId});
 		setShowModal(false);
 		setTitle("");
@@ -88,7 +93,7 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 
 
 	return (
-		<Modal isOpen={showModal}> 
+		<Modal isOpen={showModal}>
 			<Card style={{width: "40%"}}>
 				<div className="flex flex-col gap-[20px]">
 					<h1 className="text-[30px] font-[600]">Add A Project</h1>
@@ -134,7 +139,7 @@ function AddProjectModal({showModal, setShowModal, employees}) {
             </select>
 
 						<h1>Members ({selectedMembers.length} selected)</h1>
-						<input 
+						<input
 							className="rounded-[3px] outline outline-gray-400"
 							type="text"
 							placeholder="Search"
@@ -153,7 +158,7 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 											if (e.target.checked) {
 												setSelectedMembers(prev => [...prev, member.id]);
 											}
-											
+
 											else {
 												setSelectedMembers(prev => prev.filter(x => x !== member.id));
 											}
