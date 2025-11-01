@@ -3,6 +3,7 @@ import { FaArrowLeft, FaFlag } from "react-icons/fa";
 import Card from "@/components/Card";
 import { useAuth } from "@/lib/AuthContext";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function RequestDetailPage({ params }) {
     const { requestId } = params;
@@ -19,6 +20,10 @@ export default function RequestDetailPage({ params }) {
             updateRequest(request.id, { highPriority: !request.highPriority }, user?.email);
         }
     };
+
+    useEffect(() => {
+      document.title = `${request.title} | Make-It-All`;
+    }, []);
 
     return (
         <>
