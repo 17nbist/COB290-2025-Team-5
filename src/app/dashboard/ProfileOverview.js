@@ -12,13 +12,21 @@ import { useRouter } from "next/navigation"; // import router
 export default function ProfileOverview({ events }) {
   const { user } = useAuth();
   const router = useRouter(); // initialize router
+  //console.log(user?.profilePic);
 
 
 
     return (
-      <div className="grid gap-4 p-8 w-[70%] h-[calc(100vh-4rem)] overflow-auto
-                grid-cols-1 md:grid-cols-6 
-                md:grid-rows-[repeat(8,minmax(0,1fr))] md:overflow-hidden overflow-auto scrollbar-hide">
+      <div
+        className="
+          grid gap-4 p-4 sm:p-6 md:p-8
+          w-full md:w-[70%]
+          min-h-[calc(100vh-4rem)] md:h-[calc(100vh-4rem)]
+          overflow-auto md:overflow-hidden scrollbar-hide
+          grid-cols-1 md:grid-cols-6
+          auto-rows-max md:grid-rows-[repeat(8,minmax(0,1fr))]
+        "
+      >
         <div className="col-span-1 md:col-span-2 md:row-span-4">
           <DashboardProfileCard
             Title={"Profile"}
@@ -26,8 +34,10 @@ export default function ProfileOverview({ events }) {
             Position={user?.position || "N/A"}
             TaskAllocated={user?.taskAllocated || 0}
             ProjectAllocated={user?.projectAllocated || 0}
-            ProfilePicLink={"/defaultPFP.png"}
+            ProfilePicLink={user?.profilePic||"/defaultPFP2.png"}
+            
           />
+
         </div>
         <div className="col-span-1 md:col-span-2 md:row-span-4">
           <DashboardCard
@@ -46,7 +56,7 @@ export default function ProfileOverview({ events }) {
           />
         </div>
         
-        <div className="col-span-1 md:col-span-6 md:row-span-5">
+        <div className="col-span-1 md:col-span-6 md:row-span-4">
           <DashCalendar tasks={events} />
         </div>
       </div>

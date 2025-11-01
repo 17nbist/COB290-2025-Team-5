@@ -8,28 +8,26 @@ export default function DashboardCard({ title, label, result, Icon }) {
     } else if (resultNumb >= 50) {
         gradientClass = "bg-gradient-to-r from-green-300 to-green-300";
     }
-    console.log(gradientClass);
+    //console.log(gradientClass);
     return (
         <>
-        <Card className={`h-full w-full overflow-hidden text-black ${gradientClass}`}>
-            <div className="grid h-full w-full relative gap-4 grid-rows-[auto_auto]">
-                <div className="grid grid-cols-[50%_50%]">
-                    <div className="justify-self-start">
-                        <p>{title}</p>
-                    </div>
-                    <div className="justify-self-end">
-                        {Icon}                       
-                    </div>
+        <Card className={`h-full w-full overflow-hidden text-black p-4 sm:p-6 ${gradientClass}`}>
+            <div className="grid h-full w-full relative gap-4 grid-rows-[auto_1fr]">
+                <div className="flex justify-between items-start flex-wrap gap-2">
+                <p className="text-base sm:text-lg font-semibold">{title}</p>
+                <div className="text-xl sm:text-2xl">{Icon}</div>
                 </div>
-                <div className="grid bottom-left" 
-                style={{ lineHeight: "1", alignItems: "flex-start", bottom: "10px",
-                 left: "15px", display: "flex", flexDirection: "column", 
-                 gridTemplateRows: "auto auto", rowGap: "0px", marginTop: "18%", padding: "0" }}>
-                    <span className={"font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-none"}>{result}</span>
-                    <span>{label}</span>
+
+                {/* Bottom content */}
+                <div className="flex flex-col justify-end mt-auto space-y-1 sm:space-y-2">
+                <span className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-none">
+                    {result}
+                </span>
+                <span className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{label}</span>
                 </div>
             </div>
         </Card>
+
         </>
         /*
             <Card className={`h-full w-full overflow-hidden text-black ${gradientClass}`}>
