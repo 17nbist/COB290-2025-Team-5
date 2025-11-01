@@ -15,6 +15,9 @@ export default function TopicPage({ params }) {
 
     const [newComment, setNewComment] = useState("");
 
+    useEffect(() => {
+      document.title = `${post.title} | Make-It-All`;}, [post]);
+
     if (!post) return <div className="p-6">Post not found</div>;
 
     const handleUpvoteClick = (e) => {
@@ -92,9 +95,6 @@ export default function TopicPage({ params }) {
         updateForumPost(post.id, { comments: updatedComments });
         setNewComment("");
     };
-
-    useEffect(() => {
-      document.title = `${post.title} | Make-It-All`;}, [post]);
 
     return (
         <>

@@ -13,6 +13,10 @@ export default function RequestDetailPage({ params }) {
     const userReqs = userRequests?.[user?.email] || [];
     const request = userReqs.find((r) => String(r.id) === String(requestId));
 
+    useEffect(() => {
+      document.title = `${request.title} | Make-It-All`;
+    }, [request]);
+
     if (!request) return <div className="p-6">Request not found</div>;
 
     const handleTogglePriority = () => {
@@ -20,10 +24,6 @@ export default function RequestDetailPage({ params }) {
             updateRequest(request.id, { highPriority: !request.highPriority }, user?.email);
         }
     };
-
-    useEffect(() => {
-      document.title = `${request.title} | Make-It-All`;
-    }, [request]);
 
     return (
         <>
