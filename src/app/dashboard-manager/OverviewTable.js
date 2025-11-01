@@ -3,29 +3,28 @@ import { motion } from "framer-motion";
 import Card from "@/components/Card";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-export default function OverviewTable({label, data, stats}) {
+export default function OverviewTable({ label, data, stats }) {
     const router = useRouter()
-    function routChange(labelName){
-        
-    
-        if (labelName == "project"){
+
+    function routChange(labelName) {
+
+        if (labelName == "project") {
             router.push("/dashboard#projects");
         }
-        else if (labelName == "task"){
+        else if (labelName == "task") {
             router.push("/dashboard#To-do");
         }
     }
-    
+
     return (
         <Card className="w-full h-full flex flex-col overflow-hidden" style={{ minWidth: 0, minHeight: 0, padding: 0 }}>
 
             <div className="p-4 md:p-6 border-b border-gray-200 dark:border-gray-700 grid grid-cols-2">
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{label} overview</h2>
-          
                 <button
                     onClick={() => routChange(label)}
-                    className={"text-lg bg-green-100 font-semibold p-0 w-40 md: w-30 p-0 ftext-gray-900 dark:text-gray-100"}
-                    style={{justifySelf: "self-end", borderRadius: "20px"}}
+                    className="text-lg bg-blue-100 font-semibold p-2 w-100 md:w-40 text-gray-900 dark:text-gray-100 transition-all duration-300 hover:bg-blue-200 hover:scale-105 hover:shadow-lg active:scale-95"
+                    style={{ justifySelf: "self-end", borderRadius: "20px" }}
                 >
                     See all {label}s
                 </button>
