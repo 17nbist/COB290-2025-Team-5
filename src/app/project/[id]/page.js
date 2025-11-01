@@ -38,12 +38,12 @@ export default function ProjectPage() {
 		}
 
 		const currentProject = allProjects.find(p => p.id == projectId);
-		document.title = `${currentProject.title} | Make-It-All`;
 		if (!currentProject || !currentProject.members.includes(user.id)){
 			setErrText("No access or project doesn't exist");
 			return;
 		}
 
+		document.title = `${currentProject.title} | Make-It-All`;
 		setProject(currentProject);
 		setErrText(null);
 	}, [allProjects, allTasks, allEvents, user]);
