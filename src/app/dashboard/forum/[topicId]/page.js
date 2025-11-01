@@ -94,7 +94,7 @@ export default function TopicPage({ params }) {
     };
 
     useEffect(() => {
-      document.title = `${post.title} | Make-It-All`}, [post]);
+      document.title = `${post.title} | Make-It-All`;}, [post]);
 
     return (
         <>
