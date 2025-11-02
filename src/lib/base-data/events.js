@@ -47,6 +47,30 @@ const baseEvents = [
         from: new Date(2025, 10, 4, 10),
         to: new Date(2025, 10, 4, 12)
     },
+        {
+        id: 6,
+        projectId: 0,
+        members: [0, 2, 4, 5, 6],
+        title: "Discussion on features",
+        from: new Date(2025, 10, 5, 15),
+        to: new Date(2025, 10, 5, 17)
+    },
+        {
+        id: 7,
+        projectId: 0,
+        members: [0, 2, 4, 5, 6],
+        title: "Client Meeting",
+        from: new Date(2025, 10, 6, 9),
+        to: new Date(2025, 10, 6, 11)
+    },
+        {
+        id: 8,
+        projectId: 1,
+        members: [2, 3, 4, 6],
+        title: "Algorithm Audit",
+        from: new Date(2025, 10, 6, 14),
+        to: new Date(2025, 10, 6, 16)
+    },
 ];
 
 export default baseEvents;
