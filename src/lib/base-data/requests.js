@@ -98,7 +98,7 @@ export const requests = {
             preview:
                 "Hi HR, I had a question about the company's pension contribution policy. I couldn't find...",
             content:
-                "Hi HR,\n\nI had a question about the company's pension contribution policy. I couldn't find the details on the intranet. Can you let me know if the compnay offers a favourable percentage above the legal minimum?",
+                "Hi HR,\n\nI had a question about the company's pension contribution policy. I couldn't find the details on the intranet. Can you let me know if the company offers a favourable percentage above the legal minimum?",
             timeAgo: "5 days ago",
             highPriority: false,
             type: "Outgoing",
