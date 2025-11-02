@@ -1,5 +1,5 @@
 export const forumPosts = [
-  {
+    {
         id: 1,
         title: "Dress Code Policy Reminder",
         flair: "non-technical",
