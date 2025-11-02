@@ -1,0 +1,36 @@
+
+> team05@0.1.0 build
+> next build
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of c:\Users\17nbi\package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * c:\Users\17nbi\Documents\Web\package-lock.json
+
+   ▲ Next.js 15.5.4
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 21.6s
+   Linting and checking validity of types ...
+
+./src/app/project/[id]/page.js
+50:5  Warning: React Hook useEffect has missing dependencies: 'allUsers' and 'projectId'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+64:5  Warning: React Hook useEffect has a missing dependency: 'topNavItems'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/app/task/[id]/page.js
+38:5  Warning: React Hook useEffect has a missing dependency: 'taskId'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+51:6  Warning: React Hook useEffect has a missing dependency: 'navItems'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/Calendar/Calendar.js
+39:6  Warning: React Hook useEffect has a missing dependency: 'startDate'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+   Collecting page data ...
+unhandledRejection [Error: Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:
+  - react:      19.2.0
+  - react-dom:  19.1.0
+Learn more: https://react.dev/warnings/version-mismatch] {
+  type: 'Error'
+}
