@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 const InputDataExample = {
   labels: ["Andrew H", "Rose S", "Mohammed K", "Tanaka M", "Ming Y"],
-  dataSetLabel: "Tasks Assigned", 
+  dataSetLabel: "Tasks Assigned",
   data: [7, 13, 40, 3, 14, 34],
   title: "Employee workload",
 };
@@ -202,23 +202,23 @@ export default function Home() {
 
             {/* Chart */}
             <div className="flex justify-center items-center bg-white dark:bg-[#404040] rounded-[10px] p-5 min-h-[300px] w-full transition-colors duration-300">
-<div className="w-full h-[400px] min-h-[300px] max-h-[500px]">
-  <ResponsiveContainer width="100%" height="100%">
-    <LineChart
-      data={chartData}
-      margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" style={{ fontSize: "clamp(0.7rem, 1.5vw, 0.9rem)" }} />
-      <YAxis width={50} style={{ fontSize: "clamp(0.7rem, 1.5vw, 0.9rem)" }} />
-      <Tooltip />
-      <Legend wrapperStyle={{ fontSize: "clamp(0.7rem, 1.5vw, 0.9rem)" }} />
-      <Line type="monotone" dataKey="frontEnd" stroke="#8884d8" activeDot={{ r: 8 }} />
-      <Line type="monotone" dataKey="mobileDev" stroke="#82ca9d" />
-      <Line type="monotone" dataKey="authSystem" stroke="#ca8282ff" />
-      <Line type="monotone" dataKey="databaseOpt" stroke="#caba82ff" />
-    </LineChart>
-  </ResponsiveContainer>
+              <div className="w-full h-[400px] min-h-[300px] max-h-[500px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart
+                    data={chartData}
+                    margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" style={{ fontSize: "clamp(0.7rem, 1.5vw, 0.9rem)" }} />
+                    <YAxis width={50} style={{ fontSize: "clamp(0.7rem, 1.5vw, 0.9rem)" }} />
+                    <Tooltip />
+                    <Legend wrapperStyle={{ fontSize: "clamp(0.7rem, 1.5vw, 0.9rem)" }} />
+                    <Line type="monotone" dataKey="frontEnd" stroke="#8884d8" activeDot={{ r: 8 }} />
+                    <Line type="monotone" dataKey="mobileDev" stroke="#82ca9d" />
+                    <Line type="monotone" dataKey="authSystem" stroke="#ca8282ff" />
+                    <Line type="monotone" dataKey="databaseOpt" stroke="#caba82ff" />
+                  </LineChart>
+                </ResponsiveContainer>
 
               </div>
             </div>
