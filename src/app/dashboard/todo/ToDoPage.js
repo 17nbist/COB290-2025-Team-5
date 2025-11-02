@@ -58,33 +58,37 @@ export default function ToDoPage() {
   }, []);
 
   return (
-    <div className="flex justify-center items-start min-h-screen py-10 dark:text-white text-black bg-transparent">
-      <div className="flex gap-10">
+    <div className="flex justify-center items-start min-h-screen py-10 dark:text-white text-black bg-transparent px-4 sm:px-6 md:px-10">
+      <div className="flex flex-col md:flex-row gap-10 w-full max-w-6xl">
         {/* Projects Column */}
-        <div className="w-[344px] flex flex-col items-center">
-          <h1 className="text-[50px] dark:text-white dark:font-bold font-bold text-center mb-8">Projects</h1>
+        <div className="flex-1 flex flex-col items-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 dark:text-white">Projects</h1>
 
           <div className="flex flex-col gap-6 w-full items-center">
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-white dark:bg-[#444444] shadow-lg rounded-xl p-5 w-[344px] border border-gray-300"
+                className="bg-white dark:bg-[#444444] shadow-lg rounded-xl p-5 w-full max-w-sm border border-gray-300"
               >
                 <Card>
                   {/* Project Card Header */}
                   <button
                     onClick={() => toggleProject(project.name)}
-                    className="w-full text-left text-xl font-semibold mb-3 flex justify-between focus:outline-none"
+                    className="w-full text-left text-lg sm:text-xl font-semibold mb-3 flex justify-between focus:outline-none"
                   >
                     {project.name}
-                    <span className="text-lg">
-                      {openProjects[project.name] ? "▲" : "▼"}
-                    </span>
+                    <span className="text-lg">{openProjects[project.name] ? "▲" : "▼"}</span>
                   </button>
                 </Card>
 
-                {/* Project Tasks */}
-                {openProjects[project.name] && (
+                {/* Animated Project Tasks */}
+                <div
+                  className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                    openProjects[project.name]
+                      ? "max-h-96 opacity-100 mt-2"
+                      : "max-h-0 opacity-0"
+                  }`}
+                >
                   <ul className="space-y-2">
                     {project.tasks.map((task) => (
                       <li
@@ -96,19 +100,19 @@ export default function ToDoPage() {
                       </li>
                     ))}
                   </ul>
-                )}
+                </div>
               </div>
             ))}
           </div>
         </div>
 
         {/* General Column */}
-        <div className="w-[344px] flex flex-col items-center">
-          <h1 className="text-[50px] dark:text-white dark:font-bold font-bold text-center mb-8">To-Do</h1>
+        <div className="flex-1 flex flex-col items-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 dark:text-white">To-Do</h1>
 
-          <div className="bg-white dark:bg-[#444444] shadow-lg rounded-xl p-5 w-[344px] border border-gray-300">
+          <div className="bg-white dark:bg-[#444444] shadow-lg rounded-xl p-5 w-full max-w-sm border border-gray-300">
             {/* Add Task Input + Button */}
-            <div className="flex mb-4 gap-2">
+            <div className="flex flex-col sm:flex-row mb-4 gap-2">
               <input
                 type="text"
                 placeholder="Create to-do..."

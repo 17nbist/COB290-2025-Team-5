@@ -1,3 +1,4 @@
+
 import { FcSearch } from "react-icons/fc";
 
 export default function SearchBar({onSearch}) {

@@ -65,7 +65,7 @@ export default function RequestPage() {
   }, []);
 
   return (
-    <div className="w-6xl mx-auto px-4 py-6 min-h-full">
+    <div className="w-6xl mx-auto px-4 py-6 min-h-full ">
       {/* Search Bar */}
       <div className="mb-6 flex">
         <SearchBar onSearch={handleSearch} onAdd={handleAddRequest} />

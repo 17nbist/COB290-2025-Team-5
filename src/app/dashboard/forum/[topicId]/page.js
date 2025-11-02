@@ -98,6 +98,7 @@ export default function TopicPage({ params }) {
 
     return (
         <>
+        <div className="bg-[#d2d2d2] dark:bg-[#303030]">
             <div className="p-6">
                 <button
                     onClick={() => router.push('/dashboard#forum')}
@@ -201,6 +202,7 @@ export default function TopicPage({ params }) {
                     </Card>
                 ))}
             </div>
+        </div>
         </>
     );
 }
