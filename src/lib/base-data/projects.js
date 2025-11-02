@@ -25,7 +25,7 @@ const baseProjects = [
         leaderId: 1,
         members: [0, 1, 3, 7],
         title: "Hiring project",
-        description: "An overhaul of the current recruitment and onbaording processes",
+        description: "An overhaul of the current recruitment and onboarding processes",
         creationDate: new Date(2025, 10, 2),
         dueDate: new Date(2025, 10, 10)
     }
