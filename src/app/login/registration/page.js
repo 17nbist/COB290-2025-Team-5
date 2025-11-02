@@ -8,6 +8,9 @@ import UrlForm from "./UrlForm";
 export default function RegistrationPage() {
   const [email, setEmail] = useState("");
 
+    useEffect(() => {
+    document.title = "Registration | Make-It-All";
+  }, []);
 
 
   return (
