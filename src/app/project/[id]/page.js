@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, use } from "react";
+import { useEffect, useState, use } from "react";
 import {useRouter} from "next/navigation";
 import NavBar from "@/components/NavBar";
 import TodayPage from "./today/TodayPage";
@@ -21,12 +21,12 @@ export default function ProjectPage() {
 
 	const adminPerms = user?.role == "manager" || user?.id == project?.leaderId;
 
-	const tasks = allTasks?.filter(t => 
-		t.projectId == project?.id && 
+	const tasks = allTasks?.filter(t =>
+		t.projectId == project?.id &&
 		(adminPerms || t.members?.includes(user?.id))) || [];
 
-	const events = allEvents?.filter(e => 
-		e.projectId == project?.id && 
+	const events = allEvents?.filter(e =>
+		e.projectId == project?.id &&
 		(adminPerms || e.members?.includes(user?.id))) || [];
 
 	const projectMembers = allUsers?.filter(u => project?.members?.includes(u?.id));
@@ -38,11 +38,13 @@ export default function ProjectPage() {
 		}
 
 		const currentProject = allProjects.find(p => p.id == projectId);
+		document.title = `${currentProject.title} | Make-It-All`;
 		if (!currentProject || !currentProject.members.includes(user.id)){
 			setErrText("No access or project doesn't exist");
 			return;
 		}
 
+		document.title = `${currentProject.title} | Make-It-All`;
 		setProject(currentProject);
 		setErrText(null);
 	}, [allProjects, allTasks, allEvents, user]);
@@ -61,10 +63,6 @@ export default function ProjectPage() {
 		return () => window.removeEventListener("hashchange", handleHashChange);
 	}, []);
 
-	useEffect(() => {
-		document.title = 'Active Project | Make-It-All';
-  }, []);
-
 	const handleTabClick = (tab) => {
 		if (tab == "All Projects") {
 			router.push("/dashboard#projects");
@@ -75,7 +73,7 @@ export default function ProjectPage() {
 
 	if (errText) {
 		return(
-			<div className="flex flex-col w-screen h-screen bg-[#c4daff] dark:bg-[#303640]">
+			<div className="flex flex-col w-screen h-screen bg-[#d2d2d2] dark:bg-[#303030]">
 				<h1>{errText}</h1>
 			</div>
 		)
@@ -83,7 +81,7 @@ export default function ProjectPage() {
 
 
 	return (
-		<div className="flex flex-col w-screen h-screen bg-[#c4daff] dark:bg-[#303640]">
+		<div className="flex flex-col w-screen h-screen bg-[#7f7fc9] dark:bg-[#484869]">
 			<div className="pt-8 pb-4 flex justify-center">
 				<NavBar
 					activeTab={activeTab}

@@ -1,8 +1,13 @@
 "use client";
-import React from "react";
+import { useEffect } from "react";
 import ForgotForm from "./ForgotForm";
 
 export default function ForgotPassword() {
+
+  useEffect(() => {
+    document.title = "Forgot Password | Make-It-All";
+  }, []);
+
   return (
     <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 overflow-hidden">
       <div
