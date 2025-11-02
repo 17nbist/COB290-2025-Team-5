@@ -14,20 +14,20 @@ export const forumPosts = [
         comments: [
             {
                 id: 238,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "Can we get a more concrete definition of 'Smart Casual'?",
                 timeAgo: "3 months ago",
             },
             {
                 id: 239,
-                author: "hr1@gmail.com",
+                author: "hr1@make-it-all.co.uk",
                 text: "Hi @Ben Dover, a good rule of thumb is 'no " +
                     "jeans with holes, no t-shirts with large graphics, and no " +
                     "open-toed shoes'. The full policy is on the intranet.",
                 timeAgo: "3 months ago",
             },
         ],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -37,7 +37,7 @@ export const forumPosts = [
         preview:
             "Please join me in welcoming the newest member of the tech team, Phil McCracken! Phil joins us with over 10 years of experience...",
         content:
-            "Team,\n\nPlease join me in welcoming the newest member of the tech team, **Phil McCracken**!\n\nPhil (employee4@gmail.com) joins us with over 10 years of experience in full-stack development and will be working on the 'Project Apex' team.\n\nHis desk is on the 4th floor. Please make him feel welcome in the Make-It-All way!",
+            "Team,\n\nPlease join me in welcoming the newest member of the tech team, **Phil McCracken**!\n\nPhil (employee4@make-it-all.co.uk) joins us with over 10 years of experience in full-stack development and will be working on the 'Project Apex' team.\n\nHis desk is on the 4th floor. Please make him feel welcome in the Make-It-All way!",
         timeAgo: "2 months ago",
         tags: ["new-joiner", "welcome", "hr", "dev-team"],
         upvotes: 35,
@@ -45,19 +45,19 @@ export const forumPosts = [
         comments: [
             {
                 id: 218,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Thanks for the warm welcome everyone! Happy to be here.",
                 timeAgo: "2 months ago",
             },
             {
                 id: 219,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Welcome Phil!",
                 timeAgo: "2 months ago",
             },
         ],
-        author: "manager2@gmail.com",
-        directedTo: "employee4@gmail.com",
+        author: "manager2@make-it-all.co.uk",
+        directedTo: "employee4@make-it-all.co.uk",
     },
     {
         id: 3,
@@ -74,12 +74,12 @@ export const forumPosts = [
         comments: [
             {
                 id: 213,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "I got this one, reported it!",
                 timeAgo: "1 month ago",
             },
         ],
-        author: "manager1@gmail.com",
+        author: "manager1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -97,25 +97,25 @@ export const forumPosts = [
         comments: [
             {
                 id: 101,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "This is super helpful, thanks!",
                 timeAgo: "2 weeks ago",
             },
             {
                 id: 102,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "Where can I find the IT portal link?",
                 timeAgo: "2 weeks ago",
             },
             {
                 id: 103,
-                author: "manager2@gmail.com",
+                author: "manager2@make-it-all.co.uk",
                 text: "You can find it on MakeIToday (the intranet).",
                 timeAgo: "2 weeks ago",
             },
         ],
-        author: "manager1@gmail.com",
-        directedTo: "employee1@gmail.com",
+        author: "manager1@make-it-all.co.uk",
+        directedTo: "employee1@make-it-all.co.uk",
     },
     {
         id: 5,
@@ -132,12 +132,12 @@ export const forumPosts = [
         comments: [
             {
                 id: 201,
-                author: "hr1@gmail.com",
+                author: "hr1@make-it-all.co.uk",
                 text: "Great programme!",
                 timeAgo: "1 week ago",
             },
         ],
-        author: "manager1@gmail.com",
+        author: "manager1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -155,12 +155,12 @@ export const forumPosts = [
         comments: [
             {
                 id: 237,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "This is long overdue. Glad we're finally tackling it.",
                 timeAgo: "2 weeks ago",
             },
         ],
-        author: "manager2@gmail.com",
+        author: "manager2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -176,7 +176,7 @@ export const forumPosts = [
         upvotes: 28,
         downvotes: 0,
         comments: [],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -194,18 +194,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 230,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "Please submit a 'Software Request' ticket via the IT portal. It will automatically be routed to your manager (me, in this case) for approval before IT purchases it.",
                 timeAgo: "10 days ago",
             },
             {
                 id: 231,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "Perfect, thank you John!",
                 timeAgo: "10 days ago",
             },
         ],
-        author: "employee2@gmail.com",
+        author: "employee2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -223,12 +223,12 @@ export const forumPosts = [
         comments: [
             {
                 id: 261,
-                author: "employee3@gmail.com",
+                author: "employee3@make-it-all.co.uk",
                 text: "Awesome! I was hoping for a yoga discount.",
                 timeAgo: "8 days ago",
             },
         ],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -246,12 +246,12 @@ export const forumPosts = [
         comments: [
             {
                 id: 228,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Voted for Project Hail Mary!",
                 timeAgo: "8 days ago",
             },
         ],
-        author: "employee3@gmail.com",
+        author: "employee3@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -269,24 +269,24 @@ export const forumPosts = [
         comments: [
             {
                 id: 235,
-                author: "employee3@gmail.com",
+                author: "employee3@make-it-all.co.uk",
                 text: "100% agree. The current stuff is terrible.",
                 timeAgo: "8 days ago",
             },
             {
                 id: 236,
-                author: "hr1@gmail.com",
+                author: "hr1@make-it-all.co.uk",
                 text: "Thanks for the feedback, Gabe. Let me look at the budget with facilities and see what we can do.",
                 timeAgo: "7 days ago",
             },
             {
                 id: 237,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Don't forget the tea and hot chocolate drinkers!",
                 timeAgo: "6 days ago",
             }
         ],
-        author: "employee1@gmail.com",
+        author: "employee1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -304,24 +304,24 @@ export const forumPosts = [
         comments: [
             {
                 id: 206,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "Great news, Mike!",
                 timeAgo: "6 days ago",
             },
             {
                 id: 207,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Awesome! Does this mean bonuses?",
                 timeAgo: "6 days ago",
             },
             {
                 id: 208,
-                author: "hr1@gmail.com",
+                author: "hr1@make-it-all.co.uk",
                 text: "Performance bonus details will be discussed by managers in the coming weeks.",
                 timeAgo: "5 days ago",
             },
         ],
-        author: "ceo@gmail.com",
+        author: "ceo@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -339,18 +339,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 216,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Is there a link to the sign-up sheet?",
                 timeAgo: "6 days ago",
             },
             {
                 id: 217,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "Good question! Here it is: [link-to-signup-sheet]",
                 timeAgo: "6 days ago",
             },
         ],
-        author: "manager1@gmail.com",
+        author: "manager1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -366,7 +366,7 @@ export const forumPosts = [
         upvotes: 14,
         downvotes: 0,
         comments: [],
-        author: "manager1@gmail.com",
+        author: "manager1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -376,7 +376,7 @@ export const forumPosts = [
         preview:
             "Mike Oxlong will be hosting a company-wide 'Ask Me Anything' session next Friday. We are gathering questions in advance...",
         content:
-            "Mike Oxlong (ceo@gmail.com) will be hosting a company-wide 'Ask Me Anything' session next Friday.\n\nWe are gathering questions in advance to help structure the meeting.\n\nPlease submit your questions (anonymously if you prefer) via this form: [link-to-google-form]\n\nWe will try to get to as many as possible.",
+            "Mike Oxlong (ceo@make-it-all.co.uk) will be hosting a company-wide 'Ask Me Anything' session next Friday.\n\nWe are gathering questions in advance to help structure the meeting.\n\nPlease submit your questions (anonymously if you prefer) via this form: [link-to-google-form]\n\nWe will try to get to as many as possible.",
         timeAgo: "1 week ago",
         tags: ["ceo", "full-team", "meeting", "q-a"],
         upvotes: 27,
@@ -384,19 +384,19 @@ export const forumPosts = [
         comments: [
             {
                 id: 259,
-                author: "ceo@gmail.com",
+                author: "ceo@make-it-all.co.uk",
                 text: "Looking forward to it!",
                 timeAgo: "6 days ago",
             },
             {
                 id: 260,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "Submitted a few!",
                 timeAgo: "5 days ago",
             },
         ],
-        author: "hr1@gmail.com",
-        directedTo: "ceo@gmail.com",
+        author: "hr1@make-it-all.co.uk",
+        directedTo: "ceo@make-it-all.co.uk",
     },
     {
         id: 16,
@@ -411,7 +411,7 @@ export const forumPosts = [
         upvotes: 10,
         downvotes: 0,
         comments: [],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -427,7 +427,7 @@ export const forumPosts = [
         upvotes: 38,
         downvotes: 0,
         comments: [],
-        author: "ceo@gmail.com",
+        author: "ceo@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -445,19 +445,19 @@ export const forumPosts = [
         comments: [
             {
                 id: 214,
-                author: "manager2@gmail.com",
+                author: "manager2@make-it-all.co.uk",
                 text: "That would be me. Please send your requests to me directly by the end of Wednesday for the weekly order.",
                 timeAgo: "6 days ago",
             },
             {
                 id: 215,
-                author: "employee3@gmail.com",
+                author: "employee3@make-it-all.co.uk",
                 text: "Thanks Sarah!",
                 timeAgo: "5 days ago",
             },
         ],
-        author: "employee3@gmail.com",
-        directedTo: "manager2@gmail.com",
+        author: "employee3@make-it-all.co.uk",
+        directedTo: "manager2@make-it-all.co.uk",
     },
     {
         id: 19,
@@ -474,18 +474,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 253,
-                author: "manager2@gmail.com",
+                author: "manager2@make-it-all.co.uk",
                 text: "Please use React Query. It handles caching, refetching, and loading/error states for us. Much cleaner. See the 'Project Apex' codebase for examples.",
                 timeAgo: "6 days ago",
             },
             {
                 id: 254,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Will do. Thanks, Sarah.",
                 timeAgo: "6 days ago",
             },
         ],
-        author: "employee4@gmail.com",
+        author: "employee4@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -503,18 +503,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 280,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Thank goodness. Grepping string logs was a nightmare.",
                 timeAgo: "5 days ago",
             },
             {
                 id: 281,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "This is a great move. We'll start refactoring our main app in the next sprint.",
                 timeAgo: "5 days ago",
             },
         ],
-        author: "manager2@gmail.com",
+        author: "manager2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -532,18 +532,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 226,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "Great question. For new features, please default to Zustand for global state and React Query for server state. We are actively phasing out Redux.",
                 timeAgo: "4 days ago",
             },
             {
                 id: 227,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Thanks, John! That simplifies things.",
                 timeAgo: "4 days ago",
             },
         ],
-        author: "employee4@gmail.com",
+        author: "employee4@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -561,12 +561,12 @@ export const forumPosts = [
         comments: [
             {
                 id: 229,
-                author: "employee3@gmail.com",
+                author: "employee3@make-it-all.co.uk",
                 text: "Thanks for the heads-up!",
                 timeAgo: "4 days ago",
             },
         ],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -584,18 +584,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 264,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "This is much needed. I have a long list already.",
                 timeAgo: "4 days ago",
             },
             {
                 id: 265,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "Great idea, Sarah. My team will be ready.",
                 timeAgo: "4 days ago",
             },
         ],
-        author: "manager2@gmail.com",
+        author: "manager2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -613,12 +613,12 @@ export const forumPosts = [
         comments: [
             {
                 id: 209,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Thanks for the clarification.",
                 timeAgo: "3 days ago",
             },
         ],
-        author: "manager2@gmail.com",
+        author: "manager2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -634,7 +634,7 @@ export const forumPosts = [
         upvotes: 7,
         downvotes: 0,
         comments: [],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -650,7 +650,7 @@ export const forumPosts = [
         upvotes: 13,
         downvotes: 0,
         comments: [],
-        author: "employee4@gmail.com",
+        author: "employee4@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -668,18 +668,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 277,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "Signed up!",
                 timeAgo: "3 days ago",
             },
             {
                 id: 278,
-                author: "employee3@gmail.com",
+                author: "employee3@make-it-all.co.uk",
                 text: "Me too! Let's do this.",
                 timeAgo: "3 days ago",
             },
         ],
-        author: "employee3@gmail.com",
+        author: "employee3@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -695,7 +695,7 @@ export const forumPosts = [
         upvotes: 8,
         downvotes: 0,
         comments: [],
-        author: "manager2@gmail.com",
+        author: "manager2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -711,7 +711,7 @@ export const forumPosts = [
         upvotes: 13,
         downvotes: 0,
         comments: [],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -719,9 +719,9 @@ export const forumPosts = [
         title: "Welcome Back, Anita!",
         flair: "non-technical",
         preview:
-            "Please join me in giving a warm welcome back to Anita Bath (employee3@gmail.com), who is returning from maternity leave...",
+            "Please join me in giving a warm welcome back to Anita Bath (employee3@make-it-all.co.uk), who is returning from maternity leave...",
         content:
-            "Please join me in giving a warm welcome back to **Anita Bath** (employee3@gmail.com), who is returning from her maternity leave!\n\nWe are so excited to have you back on the team, Anita! We've missed you.",
+            "Please join me in giving a warm welcome back to **Anita Bath** (employee3@make-it-all.co.uk), who is returning from her maternity leave!\n\nWe are so excited to have you back on the team, Anita! We've missed you.",
         timeAgo: "3 days ago",
         tags: ["hr", "welcome-back", "social"],
         upvotes: 41,
@@ -729,19 +729,19 @@ export const forumPosts = [
         comments: [
             {
                 id: 251,
-                author: "employee3@gmail.com",
+                author: "employee3@make-it-all.co.uk",
                 text: "Thank you all! It's great to be back!",
                 timeAgo: "3 days ago",
             },
             {
                 id: 252,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "Welcome back, Anita!",
                 timeAgo: "2 days ago",
             },
         ],
-        author: "hr1@gmail.com",
-        directedTo: "employee3@gmail.com",
+        author: "hr1@make-it-all.co.uk",
+        directedTo: "employee3@make-it-all.co.uk",
     },
     {
         id: 31,
@@ -758,18 +758,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 262,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Does this apply to internal tools as well?",
                 timeAgo: "2 days ago",
             },
             {
                 id: 263,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "@Gabe Itch - Yes, if they are using a public-facing key. Please check and file a ticket if needed.",
                 timeAgo: "1 day ago",
             },
         ],
-        author: "manager1@gmail.com",
+        author: "manager1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -787,18 +787,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 272,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "I haven't received a link yet.",
                 timeAgo: "2 days ago",
             },
             {
                 id: 273,
-                author: "hr1@gmail.com",
+                author: "hr1@make-it-all.co.uk",
                 text: "@Ben Dover, I'll resend your link right now. Please check your spam folder as well.",
                 timeAgo: "2 days ago",
             },
         ],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -816,24 +816,24 @@ export const forumPosts = [
         comments: [
             {
                 id: 210,
-                author: "employee3@gmail.com",
+                author: "employee3@make-it-all.co.uk",
                 text: "Can't wait!",
                 timeAgo: "1 day ago",
             },
             {
                 id: 211,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "Is there a plus-one?",
                 timeAgo: "22 hours ago",
             },
             {
                 id: 212,
-                author: "hr1@gmail.com",
+                author: "hr1@make-it-all.co.uk",
                 text: "Yes, @Ben Dover, the invitations will confirm that partners (plus-ones) are welcome!",
                 timeAgo: "18 hours ago",
             },
         ],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -841,9 +841,9 @@ export const forumPosts = [
         title: "Congrats to Sarah Connor on 5-year anniversary!",
         flair: "non-technical",
         preview:
-            "I'd like to extend a huge congratulations to our very own Sarah Connor (manager2@gmail.com) on her 5-year work anniversary...",
+            "I'd like to extend a huge congratulations to our very own Sarah Connor (manager2@make-it-all.co.uk) on her 5-year work anniversary...",
         content:
-            "Team,\n\nI'd like to extend a huge congratulations to our very own **Sarah Connor** (manager2@gmail.com) on her 5-year work anniversary with Make-It-All!\n\nSarah has been an instrumental part of our management team, leading multiple high-impact projects and mentoring many of our top developers.\n\nThank you for your dedication and leadership, Sarah! We are lucky to have you.",
+            "Team,\n\nI'd like to extend a huge congratulations to our very own **Sarah Connor** (manager2@make-it-all.co.uk) on her 5-year work anniversary with Make-It-All!\n\nSarah has been an instrumental part of our management team, leading multiple high-impact projects and mentoring many of our top developers.\n\nThank you for your dedication and leadership, Sarah! We are lucky to have you.",
         timeAgo: "2 days ago",
         tags: ["anniversary", "ceo", "kudos", "milestone"],
         upvotes: 52,
@@ -851,25 +851,25 @@ export const forumPosts = [
         comments: [
             {
                 id: 223,
-                author: "manager2@gmail.com",
+                author: "manager2@make-it-all.co.uk",
                 text: "Thank you so much, Mike! It's been a fantastic 5 years.",
                 timeAgo: "2 days ago",
             },
             {
                 id: 224,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Congrats Sarah! You're the best manager I've had.",
                 timeAgo: "1 day ago",
             },
             {
                 id: 225,
-                author: "hr1@gmail.com",
+                author: "hr1@make-it-all.co.uk",
                 text: "Happy anniversary, Sarah!",
                 timeAgo: "1 day ago",
             },
         ],
-        author: "ceo@gmail.com",
-        directedTo: "manager2@gmail.com",
+        author: "ceo@make-it-all.co.uk",
+        directedTo: "manager2@make-it-all.co.uk",
     },
     {
         id: 35,
@@ -878,7 +878,7 @@ export const forumPosts = [
         preview:
             "This is a formal announcement that we will have a full code freeze for the main production branch starting December 1st...",
         content:
-            "Team,\n\nThis is a formal announcement that we will have a full code freeze for the main production branch ('main') starting **December 1st** in preparation for the Q4 release.\n\nOnly critical, P0 hotfixes will be permitted for merge after this date, and must be approved by me and @manager2@gmail.com.\n\nPlease schedule all feature merges and testing accordingly.",
+            "Team,\n\nThis is a formal announcement that we will have a full code freeze for the main production branch ('main') starting **December 1st** in preparation for the Q4 release.\n\nOnly critical, P0 hotfixes will be permitted for merge after this date, and must be approved by me and @manager2@make-it-all.co.uk.\n\nPlease schedule all feature merges and testing accordingly.",
         timeAgo: "2 days ago",
         tags: ["dev", "release", "code-freeze", "ceo", "announcement"],
         upvotes: 25,
@@ -886,12 +886,12 @@ export const forumPosts = [
         comments: [
             {
                 id: 250,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "Understood. My team is on track to have all features merged by then.",
                 timeAgo: "1 day ago",
             },
         ],
-        author: "ceo@gmail.com",
+        author: "ceo@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -909,18 +909,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 255,
-                author: "hr1@gmail.com",
+                author: "hr1@make-it-all.co.uk",
                 text: "This is wonderful, Anita! HR will definitely contribute.",
                 timeAgo: "1 day ago",
             },
             {
                 id: 256,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "I make some mean brownies. Count me in.",
                 timeAgo: "22 hours ago",
             },
         ],
-        author: "employee3@gmail.com",
+        author: "employee3@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -938,12 +938,12 @@ export const forumPosts = [
         comments: [
             {
                 id: 276,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "On TECH-120. Starting the update now.",
                 timeAgo: "1 day ago",
             },
         ],
-        author: "manager1@gmail.com",
+        author: "manager1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -953,7 +953,7 @@ export const forumPosts = [
         preview:
             "To celebrate the 'Apex' team hitting their Q4 milestone early, I'm ordering lunch for the whole team next Wednesday...",
         content:
-            "To celebrate the 'Project Apex' team hitting their Q4 milestone early, I'm ordering lunch for the whole team next Wednesday!\n\nTeam members (@employee1@gmail.com, @employee4@gmail.com, etc.), please put your order in this spreadsheet from 'The Good Sub Shop' menu.\n\nGreat work, everyone!",
+            "To celebrate the 'Project Apex' team hitting their Q4 milestone early, I'm ordering lunch for the whole team next Wednesday!\n\nTeam members (@employee1@make-it-all.co.uk, @employee4@make-it-all.co.uk, etc.), please put your order in this spreadsheet from 'The Good Sub Shop' menu.\n\nGreat work, everyone!",
         timeAgo: "2 days ago",
         tags: ["social", "food", "kudos", "milestone", "team-apex"],
         upvotes: 26,
@@ -961,18 +961,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 282,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Awesome! Thanks, John!",
                 timeAgo: "1 day ago",
             },
             {
                 id: 283,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Wooo! Sub time.",
                 timeAgo: "1 day ago",
             },
         ],
-        author: "manager1@gmail.com",
+        author: "manager1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -990,18 +990,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 202,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "What about the 5-day cap? That's a big change.",
                 timeAgo: "4 hours ago",
             },
             {
                 id: 203,
-                author: "hr1@gmail.com",
+                author: "hr1@make-it-all.co.uk",
                 text: "@Phil McCracken, yes this is a new change to encourage everyone to use their well-deserved time off within the year.",
                 timeAgo: "2 hours ago",
             },
         ],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1019,12 +1019,12 @@ export const forumPosts = [
         comments: [
             {
                 id: 222,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "Not again... someone always throws out my yoghurt before Friday.",
                 timeAgo: "1 day ago",
             },
         ],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1040,7 +1040,7 @@ export const forumPosts = [
         upvotes: 5,
         downvotes: 0,
         comments: [],
-        author: "manager2@gmail.com",
+        author: "manager2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1058,18 +1058,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 240,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Finally! The DatePicker is here!",
                 timeAgo: "22 hours ago",
             },
             {
                 id: 241,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "This looks great. Congrats to the team.",
                 timeAgo: "18 hours ago",
             },
         ],
-        author: "manager1@gmail.com",
+        author: "manager1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1087,18 +1087,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 242,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "Voted Indian!",
                 timeAgo: "1 day ago",
             },
             {
                 id: 243,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Pizza!",
                 timeAgo: "20 hours ago",
             },
         ],
-        author: "employee3@gmail.com",
+        author: "employee3@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1116,18 +1116,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 248,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "YES. It's an oven over here.",
                 timeAgo: "1 day ago",
             },
             {
                 id: 249,
-                author: "hr1@gmail.com",
+                author: "hr1@make-it-all.co.uk",
                 text: "Thanks for flagging. I've contacted facilities. They are sending someone to check the system this afternoon.",
                 timeAgo: "22 hours ago",
             },
         ],
-        author: "employee3@gmail.com",
+        author: "employee3@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1143,7 +1143,7 @@ export const forumPosts = [
         upvotes: 4,
         downvotes: 0,
         comments: [],
-        author: "employee2@gmail.com",
+        author: "employee2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1161,19 +1161,19 @@ export const forumPosts = [
         comments: [
             {
                 id: 274,
-                author: "manager2@gmail.com",
+                author: "manager2@make-it-all.co.uk",
                 text: "Yes, this is a known issue. You need to explicitly set the platform in your docker-compose.yml for the database service:\n\n`platform: linux/amd64`\n\nWe should update the dev-env docs.",
                 timeAgo: "1 day ago",
             },
             {
                 id: 275,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Ah, that worked! Thanks, Sarah.",
                 timeAgo: "22 hours ago",
             },
         ],
-        author: "employee4@gmail.com",
-        directedTo: "manager2@gmail.com",
+        author: "employee4@make-it-all.co.uk",
+        directedTo: "manager2@make-it-all.co.uk",
     },
     {
         id: 47,
@@ -1182,7 +1182,7 @@ export const forumPosts = [
         preview:
             "Sharing some direct feedback from our new client 'BigCorp'. They find the main login page confusing. Specifically, the 'SSO'...",
         content:
-            "Sharing some direct feedback from our new client 'BigCorp'.\n\nThey find the main login page confusing. Specifically, the 'SSO' button and the 'Standard Login' are not clearly differentiated, and their staff members keep trying to use the wrong one.\n\n@manager1@gmail.com - Can your team mock up a clearer design? Let's discuss this in our next sync.",
+            "Sharing some direct feedback from our new client 'BigCorp'.\n\nThey find the main login page confusing. Specifically, the 'SSO' button and the 'Standard Login' are not clearly differentiated, and their staff members keep trying to use the wrong one.\n\n@manager1@make-it-all.co.uk - Can your team mock up a clearer design? Let's discuss this in our next sync.",
         timeAgo: "1 day ago",
         tags: ["feedback", "client", "ui", "ux", "design"],
         upvotes: 9,
@@ -1190,13 +1190,13 @@ export const forumPosts = [
         comments: [
             {
                 id: 279,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "Noted. We've heard this before. I'll have a designer work on a new layout and we can A/B test it.",
                 timeAgo: "23 hours ago",
             },
         ],
-        author: "ceo@gmail.com",
-        directedTo: "manager1@gmail.com",
+        author: "ceo@make-it-all.co.uk",
+        directedTo: "manager1@make-it-all.co.uk",
     },
     {
         id: 48,
@@ -1211,7 +1211,7 @@ export const forumPosts = [
         upvotes: 11,
         downvotes: 0,
         comments: [],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1227,7 +1227,7 @@ export const forumPosts = [
         upvotes: 15,
         downvotes: 1,
         comments: [],
-        author: "manager2@gmail.com",
+        author: "manager2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1243,7 +1243,7 @@ export const forumPosts = [
         upvotes: 3,
         downvotes: 0,
         comments: [],
-        author: "manager1@gmail.com",
+        author: "manager1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1261,18 +1261,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 204,
-                author: "employee3@gmail.com",
+                author: "employee3@make-it-all.co.uk",
                 text: "I think I saw it in the dishwasher on the 4th floor!",
                 timeAgo: "1 hour ago",
             },
             {
                 id: 205,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "Oh! That was yours? Sorry, I'll put it back on your desk.",
                 timeAgo: "30 minutes ago",
             },
         ],
-        author: "employee2@gmail.com",
+        author: "employee2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1290,13 +1290,13 @@ export const forumPosts = [
         comments: [
             {
                 id: 247,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "Approved. I've sent the request to IT to provision your access. Should be done within the hour.",
                 timeAgo: "4 hours ago",
             },
         ],
-        author: "employee1@gmail.com",
-        directedTo: "manager1@gmail.com",
+        author: "employee1@make-it-all.co.uk",
+        directedTo: "manager1@make-it-all.co.uk",
     },
     {
         id: 53,
@@ -1311,7 +1311,7 @@ export const forumPosts = [
         upvotes: 6,
         downvotes: 0,
         comments: [],
-        author: "employee2@gmail.com",
+        author: "employee2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1321,7 +1321,7 @@ export const forumPosts = [
         preview:
             "The automated deployment to the 'staging' environment just failed. The build log shows a 'Module not found' error...",
         content:
-            "The automated deployment to the 'staging' environment just failed.\n\nThe build log shows a 'Module not found' error. This seems to be related to the 'feature/JIRA-456' branch merge from @employee1@gmail.com.\n\nCan you take a look? This is blocking QA.",
+            "The automated deployment to the 'staging' environment just failed.\n\nThe build log shows a 'Module not found' error. This seems to be related to the 'feature/JIRA-456' branch merge from @employee1@make-it-all.co.uk.\n\nCan you take a look? This is blocking QA.",
         timeAgo: "4 hours ago",
         tags: ["devops", "ci-cd", "build-failed", "staging"],
         upvotes: 3,
@@ -1329,26 +1329,26 @@ export const forumPosts = [
         comments: [
             {
                 id: 244,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Oh, shoot. Looks like I forgot to push the package.json " +
                     "lock file. Pushing a fix now.",
                 timeAgo: "3 hours ago",
             },
             {
                 id: 245,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Fix is pushed. Re-running the pipeline.",
                 timeAgo: "3 hours ago",
             },
             {
                 id: 246,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Build passed. Deployment to staging is complete. QA is unblocked. Thanks, Gabe.",
                 timeAgo: "2 hours ago",
             },
         ],
-        author: "employee4@gmail.com",
-        directedTo: "employee1@gmail.com",
+        author: "employee4@make-it-all.co.uk",
+        directedTo: "employee1@make-it-all.co.uk",
     },
     {
         id: 55,
@@ -1365,18 +1365,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 220,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "Yeah, me too. Can't access the staging server.",
                 timeAgo: "2 hours ago",
             },
             {
                 id: 221,
-                author: "manager2@gmail.com",
+                author: "manager2@make-it-all.co.uk",
                 text: "IT is aware of a partial outage with the VPN provider. They are working on it. See status page: [link-to-status-page]",
                 timeAgo: "1 hour ago",
             },
         ],
-        author: "employee1@gmail.com",
+        author: "employee1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1394,24 +1394,24 @@ export const forumPosts = [
         comments: [
             {
                 id: 269,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Nice! On my way.",
                 timeAgo: "2 hours ago",
             },
             {
                 id: 270,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Can you save me an XL? I'm in a meeting.",
                 timeAgo: "1 hour ago",
             },
             {
                 id: 271,
-                author: "hr1@gmail.com",
+                author: "hr1@make-it-all.co.uk",
                 text: "No problem @Phil McCracken, got one for you.",
                 timeAgo: "1 hour ago",
             },
         ],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1427,7 +1427,7 @@ export const forumPosts = [
         upvotes: 10,
         downvotes: 0,
         comments: [],
-        author: "employee1@gmail.com",
+        author: "employee1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1443,7 +1443,7 @@ export const forumPosts = [
         upvotes: 8,
         downvotes: 0,
         comments: [],
-        author: "manager2@gmail.com",
+        author: "manager2@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1461,18 +1461,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 257,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Sorry! I grabbed it for a quick review in the 'Nail' room. Bringing it back right now!",
                 timeAgo: "1 hour ago",
             },
             {
                 id: 258,
-                author: "manager1@gmail.com",
+                author: "manager1@make-it-all.co.uk",
                 text: "Got it. Thanks, Gabe.",
                 timeAgo: "1 hour ago",
             },
         ],
-        author: "manager1@gmail.com",
+        author: "manager1@make-it-all.co.uk",
         directedTo: null,
     },
     {
@@ -1490,25 +1490,25 @@ export const forumPosts = [
         comments: [
             {
                 id: 266,
-                author: "manager2@gmail.com",
+                author: "manager2@make-it-all.co.uk",
                 text: "On it. Looks like the service crashed. Restarting it now.",
                 timeAgo: "40 minutes ago",
             },
             {
                 id: 267,
-                author: "manager2@gmail.com",
+                author: "manager2@make-it-all.co.uk",
                 text: "Service is back up. Please try again.",
                 timeAgo: "35 minutes ago",
             },
             {
                 id: 268,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Connections are working again. Thanks for the quick fix, Sarah!",
                 timeAgo: "30 minutes ago",
             },
         ],
-        author: "employee1@gmail.com",
-        directedTo: "manager2@gmail.com",
+        author: "employee1@make-it-all.co.uk",
+        directedTo: "manager2@make-it-all.co.uk",
     },
     {
         id: 61,
@@ -1517,7 +1517,7 @@ export const forumPosts = [
         preview:
             "URGENT: The production database 'PROD-DB-01' appears to be in a read-only state. All 'INSERT' and 'UPDATE' queries are failing...",
         content:
-            "**URGENT: The production database 'PROD-DB-01' appears to be in a read-only state.**\n\nAll 'INSERT' and 'UPDATE' queries are failing with 'Error: Database is read-only'.\n\nThis is affecting all new user signups and data submissions.\n\nPaging IT and @manager2@gmail.com.",
+            "**URGENT: The production database 'PROD-DB-01' appears to be in a read-only state.**\n\nAll 'INSERT' and 'UPDATE' queries are failing with 'Error: Database is read-only'.\n\nThis is affecting all new user signups and data submissions.\n\nPaging IT and @manager2@make-it-all.co.uk.",
         timeAgo: "25 minutes ago",
         tags: ["urgent", "db", "outage", "production", "it"],
         upvotes: 16,
@@ -1525,25 +1525,25 @@ export const forumPosts = [
         comments: [
             {
                 id: 232,
-                author: "manager2@gmail.com",
+                author: "manager2@make-it-all.co.uk",
                 text: "Looking into it now. Disk space might be full.",
                 timeAgo: "20 minutes ago",
             },
             {
                 id: 233,
-                author: "manager2@gmail.com",
+                author: "manager2@make-it-all.co.uk",
                 text: "FIXED. Disk was full. I've cleared the logs and expanded the volume. Write-access is restored. We need to set up better monitoring for this.",
                 timeAgo: "5 minutes ago",
             },
             {
                 id: 234,
-                author: "employee4@gmail.com",
+                author: "employee4@make-it-all.co.uk",
                 text: "Confirmed, writes are working again. Thanks Sarah!",
                 timeAgo: "2 minutes ago",
             },
         ],
-        author: "employee4@gmail.com",
-        directedTo: "manager2@gmail.com",
+        author: "employee4@make-it-all.co.uk",
+        directedTo: "manager2@make-it-all.co.uk",
     },
     {
         id: 62,
@@ -1552,7 +1552,7 @@ export const forumPosts = [
         preview:
             "Thank you to everyone who participated in our amazing Halloween costume contest today! The competition was fierce, but the...",
         content:
-            "Thank you to everyone who participated in our amazing Halloween costume contest today! The competition was fierce, but the votes are in:\n\n**1st Place:** Ben Dover (@employee2@gmail.com) as 'Server Rack on Fire'\n**2nd Place:** Anita Bath (@employee3@gmail.com) as 'Rosie the Riveter'\n**3rd Place:** Gabe Itch (@employee1@gmail.com) as 'SQL Injection Query'\n\nWinners, please see HR to claim your prizes! Great job, everyone!",
+            "Thank you to everyone who participated in our amazing Halloween costume contest today! The competition was fierce, but the votes are in:\n\n**1st Place:** Ben Dover (@employee2@make-it-all.co.uk) as 'Server Rack on Fire'\n**2nd Place:** Anita Bath (@employee3@make-it-all.co.uk) as 'Rosie the Riveter'\n**3rd Place:** Gabe Itch (@employee1@make-it-all.co.uk) as 'SQL Injection Query'\n\nWinners, please see HR to claim your prizes! Great job, everyone!",
         timeAgo: "Just now",
         tags: ["social", "event", "halloween", "party", "hr"],
         upvotes: 47,
@@ -1560,18 +1560,18 @@ export const forumPosts = [
         comments: [
             {
                 id: 284,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "Honoured to have won. The smoke machine was worth it.",
                 timeAgo: "Just now",
             },
             {
                 id: 285,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "Congrats Ben! That costume was hilarious.",
                 timeAgo: "Just now",
             },
         ],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
 
@@ -1590,24 +1590,24 @@ export const forumPosts = [
         comments: [
             {
                 id: 311,
-                author: "employee2@gmail.com",
+                author: "employee2@make-it-all.co.uk",
                 text: "This is just ridiculous.",
                 timeAgo: "1 hour ago",
             },
             {
                 id: 312,
-                author: "employee1@gmail.com",
+                author: "employee1@make-it-all.co.uk",
                 text: "So we’re being ‘rewarded’ for three years of good work with longer commutes and higher costs. Brilliant.",
                 timeAgo: "49 minutes ago",
             },
             {
                 id: 313,
-                author: "employee3@gmail.com",
+                author: "employee3@make-it-all.co.uk",
                 text: "I can't wait to spend more time with you guys in the office! Management have our best interests at heart.",
                 timeAgo: "12 minutes ago",
             },
         ],
-        author: "hr1@gmail.com",
+        author: "hr1@make-it-all.co.uk",
         directedTo: null
     }
 ];
