@@ -76,81 +76,87 @@ export default function Calendar({tasks, color="#2e815fff",startRangeType="Week"
   }
 
   function getTasksInRange() {
-  let endDate = new Date(startDate);
+    let endDate = new Date(startDate);
 
-  if (rangeType === "Week") {
-    endDate.setDate(startDate.getDate() + 7);
-  } else if (rangeType === "Day") {
-    endDate.setDate(startDate.getDate() + 1);
-  } else if (rangeType === "Month") {
-    endDate.setMonth(startDate.getMonth() + 1);
-    endDate.setDate(0);
-  } else if (rangeType === "Year") {
-    endDate.setFullYear(startDate.getFullYear() + 1, 0, 1);
-  } else if (rangeType === "8h") {
-    endDate.setHours(endDate.getHours() + 8, 0, 0, 0);
-  }
-
-  let tracked_tasks = [...sortedTasks].filter(t => {
-    let fromIndex = 0;
-    let toIndex = 0;
-    const divisions = getNumberOfDivisions();
-
-    if (rangeType === "Week" || rangeType === "Month") {
-      fromIndex = (t.from - startDate) / (1000 * 60 * 60 * 24);
-      toIndex = (t.to - startDate) / (1000 * 60 * 60 * 24);
-    } else if (rangeType === "Day" || rangeType === "8h") {
-      fromIndex = (t.from - startDate) / (1000 * 60 * 60);
-      toIndex = (t.to - startDate) / (1000 * 60 * 60);
+    if (rangeType === "Week") {
+      endDate.setDate(startDate.getDate() + 7);
+    } else if (rangeType === "Day") {
+      endDate.setDate(startDate.getDate() + 1);
+    } else if (rangeType === "Month") {
+      endDate.setMonth(startDate.getMonth() + 1);
+      endDate.setDate(0);
     } else if (rangeType === "Year") {
-      fromIndex = monthsBetween(startDate, t.from);
-      toIndex = monthsBetween(startDate, t.to);
+      endDate.setFullYear(startDate.getFullYear() + 1, 0, 1);
+    } else if (rangeType === "8h") {
+      endDate.setHours(endDate.getHours() + 8, 0, 0, 0);
     }
 
-    const widthFraction = (toIndex - fromIndex) / divisions;
+    const cloned_tasks = sortedTasks.map((t) => (
+      {...t, from: (new Date(t.from)),  to: (new Date(t.to))}
+    ));
 
-    // if in week view and task < 1 day wide, round to full day
-    if (rangeType === "Week" && (toIndex - fromIndex) < 1) {
-      const startOfDay = new Date(t.from);
-      startOfDay.setHours(0, 0, 0, 0);
+    const tracked_tasks = cloned_tasks.filter(t => {
+      let fromIndex = 0;
+      let toIndex = 0;
+      const divisions = getNumberOfDivisions();
 
-      const endOfDay = new Date(t.from);
-      endOfDay.setHours(23, 59, 59);
+      // if in week view and task < 1 day wide, round to full day
+      if (rangeType === "Week" && (toIndex - fromIndex) < 1) {
+        const startOfDay = new Date(t.from);
+        startOfDay.setHours(0, 0, 0, 0);
 
-      t.from = startOfDay;
-      t.to = endOfDay;
-    }
+        const endOfDay = new Date(t.from);
+        endOfDay.setHours(23, 59, 59);
 
-    return widthFraction >= 1 / 30;
-  });
+        t.from = startOfDay;
+        t.to = endOfDay;
+      }
 
-  let tracks = [];
+      if (rangeType === "Week" || rangeType === "Month") {
+        fromIndex = (t.from - startDate) / (1000 * 60 * 60 * 24);
+        toIndex = (t.to - startDate) / (1000 * 60 * 60 * 24);
+      } else if (rangeType === "Day" || rangeType === "8h") {
+        fromIndex = (t.from - startDate) / (1000 * 60 * 60);
+        toIndex = (t.to - startDate) / (1000 * 60 * 60);
+      } else if (rangeType === "Year") {
+        fromIndex = monthsBetween(startDate, t.from);
+        toIndex = monthsBetween(startDate, t.to);
+      }
 
-  for (let i = 0; i < tracked_tasks.length; i++) {
-    if (i === 0) {
-      tracks.push({ end: tracked_tasks[i].to });
-      tracked_tasks[i].track = 0;
-    } else {
-      let foundTrack = false;
-      for (let j = 0; j < tracks.length; j++) {
-        if (tracked_tasks[i].from >= tracks[j].end) {
-          foundTrack = true;
-          tracks[j].end = tracked_tasks[i].to;
-          tracked_tasks[i].track = j;
-          break;
+
+      const widthFraction = (toIndex - fromIndex) / divisions;
+
+      return widthFraction >= 1 / 30;
+    });
+
+    let tracks = [];
+
+    for (let i = 0; i < tracked_tasks.length; i++) {
+      if (i === 0) {
+        tracks.push({ end: tracked_tasks[i].to });
+        tracked_tasks[i].track = 0;
+      } else {
+        let foundTrack = false;
+        for (let j = 0; j < tracks.length; j++) {
+          if (tracked_tasks[i].from >= tracks[j].end) {
+            foundTrack = true;
+            tracks[j].end = tracked_tasks[i].to;
+            tracked_tasks[i].track = j;
+            break;
+          }
+        }
+        if (!foundTrack) {
+          tracks.push({ end: tracked_tasks[i].to });
+          tracked_tasks[i].track = tracks.length - 1;
         }
       }
-      if (!foundTrack) {
-        tracks.push({ end: tracked_tasks[i].to });
-        tracked_tasks[i].track = tracks.length - 1;
-      }
     }
+
+
+    const fTasks = tracked_tasks.filter(t => t.from < endDate && t.to > startDate);
+
+    return fTasks;
   }
-
-  const fTasks = tracked_tasks.filter(t => t.from < endDate && t.to > startDate);
-
-  return fTasks;
-}
 
   function getNumberOfDivisions() {
     if (rangeType == "Week") {
