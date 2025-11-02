@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/AuthContext";
 import { useRouter } from "next/navigation";
 import DashboardPage from "./DashboardPage";
+import ManagerDashboard from "../dashboard-manager/page";
 import ForumPage from "./forum/ForumPage";
 import RequestPage from "./request/RequestPage";
 import NavBar from "@/components/NavBar";
@@ -23,7 +24,7 @@ export default function Home() {
 
   const projects = allProjects?.filter(p => p.members?.includes(user?.id));
   const events = allEvents?.filter(e => e.members?.includes(user?.id));
-  const employees = allUsers?.filter(u => u?.role != "manager");
+  const employees = allUsers?.filter(u => u?.isManager == false);
 
 
   // Redirect to login if not authenticated
@@ -65,12 +66,11 @@ export default function Home() {
           <span className="text-sm text-gray-600 dark:text-white truncate">
             Welcome, {user.name}
           </span>
-          <span className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${
-            user.role === 'manager'
-              ? 'bg-purple-100 text-purple-800'
-              : 'bg-blue-100 text-blue-800'
-          }`}>
-            {user.role.toUpperCase()} DASHBOARD
+          <span className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${user.isManager == true
+            ? 'bg-purple-100 text-purple-800'
+            : 'bg-blue-100 text-blue-800'
+            }`}>
+            {user.isManager ? 'MANAGER DASHBOARD' : 'EMPLOYEE DASHBOARD'}
           </span>
         </div>
 
@@ -101,7 +101,7 @@ export default function Home() {
           setActiveTab={setActiveTab}
           pillStyle={{
             width: "clamp(80px, 12vw, 180px)", // responsive width
-            padding: "0.5rem 1rem", 
+            padding: "0.5rem 1rem",
           }}
           setHash={true}
           textStyle={{
@@ -113,7 +113,7 @@ export default function Home() {
 
       {/* Main Content Area */}
       <main className="flex justify-center flex-1 min-h-0 overflow-auto">
-        {activeTab === "Dashboard" && <DashboardPage events={events} />}
+        {activeTab === "Dashboard" && (user.isManager ? <ManagerDashboard /> : <DashboardPage events={events} />)}
         {activeTab === "Forum" && <ForumPage />}
         {activeTab === "Requests" && <RequestPage />}
         {activeTab === "Calendar" && <CalendarPage events={events} />}

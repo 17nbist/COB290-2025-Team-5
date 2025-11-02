@@ -8,12 +8,12 @@ import Button from "@/components/Button";
 import NavBar from "@/components/NavBar";
 import { useAuth } from "@/lib/AuthContext";
 
-export default function ProjectsPage({projects, employees}) {
+export default function ProjectsPage({ projects, employees }) {
 	const { user, allProjects } = useAuth();
 	const [searchVal, setSearchVal] = useState("");
 
 	const filterTabs = ["Name", "Due Date"];
-    const [activeFilterTab, setActiveFilterTab] = useState("Name");
+	const [activeFilterTab, setActiveFilterTab] = useState("Name");
 
 	const [showModal, setShowModal] = useState(false);
 
@@ -28,11 +28,11 @@ export default function ProjectsPage({projects, employees}) {
 
 	const filteredProjects = projects
 		.filter(p => searchVal == "" || p.title.toLowerCase().includes(searchVal.toLowerCase()))
-		.sort(activeFilterTab == "Name"? sortByName : sortByDue);
+		.sort(activeFilterTab == "Name" ? sortByName : sortByDue);
 
-		useEffect(() => {
-			document.title = "Projects | Make-It-All";
-	  }, []);
+	useEffect(() => {
+		document.title = "Projects | Make-It-All";
+	}, []);
 
 
 	return (
@@ -40,32 +40,32 @@ export default function ProjectsPage({projects, employees}) {
 			<div className="flex mb-[30px] items-center justify-between w-full">
 				<div className="w-6xl mx-auto px-4 py-6">
 					<div className="mb-6 flex">
-						<SearchBar onSearch={(e) => setSearchVal(e)}/>
-						{user?.role == "manager" && <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"} onClick={() => setShowModal(true)}/>}
+						<SearchBar onSearch={(e) => setSearchVal(e)} />
+						{user?.isManager == true && <Button outerStyle={{ width: "47px", height: "47px" }} textStyle={{ fontSize: "30px" }} text={"+"} onClick={() => setShowModal(true)} />}
 					</div>
 					<NavBar
-					items={filterTabs}
-					activeTab={activeFilterTab}
-					setActiveTab={setActiveFilterTab}
+						items={filterTabs}
+						activeTab={activeFilterTab}
+						setActiveTab={setActiveFilterTab}
 					/>
 				</div>
 			</div>
 
 
-			<div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", width: "100%"}}>
+			<div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem", width: "100%" }}>
 				{
 					filteredProjects.map(p =>
-						<ProjectCard key={p.id} project={p}/>
+						<ProjectCard key={p.id} project={p} />
 					)
 				}
 			</div>
 
-			<AddProjectModal showModal={showModal} setShowModal={setShowModal} employees={employees}/>
+			<AddProjectModal showModal={showModal} setShowModal={setShowModal} employees={employees} />
 		</div>
 	)
 }
 
-function AddProjectModal({showModal, setShowModal, employees}) {
+function AddProjectModal({ showModal, setShowModal, employees }) {
 	const { user, addToAllProjects } = useAuth();
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
@@ -83,7 +83,7 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 			return
 		}
 
-		addToAllProjects({title, description, creationDate: new Date(), dueDate: endDate, members: [...selectedMembers, user.id], leaderId});
+		addToAllProjects({ title, description, creationDate: new Date(), dueDate: endDate, members: [...selectedMembers, user.id], leaderId });
 		setShowModal(false);
 		setTitle("");
 		setDescription("");
@@ -94,12 +94,12 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 
 	return (
 		<Modal isOpen={showModal}>
-			<Card style={{width: "40%"}}>
+			<Card style={{ width: "40%" }}>
 				<div className="flex flex-col gap-[20px]">
 					<h1 className="text-[30px] font-[600]">Add A Project</h1>
 					<div className="flex flex-col">
 						<h1>Title:</h1>
-						<input className="rounded-[3px] outline outline-gray-400" value={title} onChange={(e) => setTitle(e.target.value)} type="text"/>
+						<input className="rounded-[3px] outline outline-gray-400" value={title} onChange={(e) => setTitle(e.target.value)} type="text" />
 					</div>
 					<div className="flex flex-col">
 						<h1>Description:</h1>
@@ -118,25 +118,25 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 					<div className="flex flex-col gap-1">
 						<h1>Team Leader (optional)</h1>
 
-            <select
-              className="rounded-[3px] outline outline-gray-400 p-1"
-              value={leaderId ?? ""}
-              onChange={e => {
-                const id = e.target.value ? parseInt(e.target.value) : null;
-                setLeaderId(id);
+						<select
+							className="rounded-[3px] outline outline-gray-400 p-1"
+							value={leaderId ?? ""}
+							onChange={e => {
+								const id = e.target.value ? parseInt(e.target.value) : null;
+								setLeaderId(id);
 
-                if (id && !selectedMembers.includes(id)) {
-                  setSelectedMembers(prev => [...prev, id]);
-                }
-              }}
-            >
-              <option value="">None</option>
-              {employees.map(member => (
-                <option key={member.id} value={member.id}>
-                  {member.name}
-                </option>
-              ))}
-            </select>
+								if (id && !selectedMembers.includes(id)) {
+									setSelectedMembers(prev => [...prev, id]);
+								}
+							}}
+						>
+							<option value="">None</option>
+							{employees.map(member => (
+								<option key={member.id} value={member.id}>
+									{member.name}
+								</option>
+							))}
+						</select>
 
 						<h1>Members ({selectedMembers.length} selected)</h1>
 						<input
@@ -151,18 +151,18 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 								filteredEmployees.map(member => (
 									<label key={member.id} className="flex items-center gap-2">
 										<input
-										type="checkbox"
-										checked={selectedMembers.includes(member.id)}
-										disabled={member.id == leaderId}
-										onChange={e => {
-											if (e.target.checked) {
-												setSelectedMembers(prev => [...prev, member.id]);
-											}
+											type="checkbox"
+											checked={selectedMembers.includes(member.id)}
+											disabled={member.id == leaderId}
+											onChange={e => {
+												if (e.target.checked) {
+													setSelectedMembers(prev => [...prev, member.id]);
+												}
 
-											else {
-												setSelectedMembers(prev => prev.filter(x => x !== member.id));
-											}
-										}}
+												else {
+													setSelectedMembers(prev => prev.filter(x => x !== member.id));
+												}
+											}}
 										/>
 										{member?.name || `User ${id}`}
 									</label>
@@ -173,8 +173,8 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 					</div>
 					<div className="flex w-full justify-end">
 						<div className="flex gap-2">
-							<Button onClick={() => setShowModal(false)} text={"Cancel"}/>
-							<Button onClick={addProject} text={"Add"}/>
+							<Button onClick={() => setShowModal(false)} text={"Cancel"} />
+							<Button onClick={addProject} text={"Add"} />
 						</div>
 					</div>
 				</div>
@@ -183,7 +183,7 @@ function AddProjectModal({showModal, setShowModal, employees}) {
 	)
 }
 
-function ProjectCard({project}) {
+function ProjectCard({ project }) {
 	const router = useRouter();
 
 	function handleClick() {
@@ -191,7 +191,7 @@ function ProjectCard({project}) {
 	}
 
 	return (
-		<Card style={{width: "100%", height: "100%", cursor: "pointer", overflow:"hidden"}} onClick={handleClick}>
+		<Card style={{ width: "100%", height: "100%", cursor: "pointer", overflow: "hidden" }} onClick={handleClick}>
 			<h1 className="text-[24px] font-[700] mb-[5px]">{project.title}</h1>
 			<h1 className="text-[16px] font-[500] text-ellipsis">{project.description}</h1>
 			{/* <h1 className="text-[12px] font-[400]  ">Created on {project.creationDate.toDateString()}</h1> */}

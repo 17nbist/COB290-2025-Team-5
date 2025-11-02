@@ -43,7 +43,8 @@ const baseUsers = [
         email: "employee3@make-it-all.co.uk",
         name: "Anita Bath",
         role: "Employee",
-        password: "password123"
+        password: "password123",
+        isManager: false
     },
     {
         id: 6,

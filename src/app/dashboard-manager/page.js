@@ -147,16 +147,7 @@ export default function Home() {
   }, [standardVal]);
 
   return (
-    <div style={{
-      display: "grid",
-      gridTemplateColumns: "1fr",
-      minHeight: "100vh",
-      width: "100%",
-      margin: 0,
-      padding: 0,
-      overflow: "auto",
-      boxSizing: "border-box",
-    }}>
+    <div className="grid grid-cols-1 min-h-screen w-full m-0 p-0 overflow-auto box-border">
       <style jsx>{`
         @media (min-width: 1024px) {
           .main-container {
@@ -178,56 +169,24 @@ export default function Home() {
         }
       `}</style>
 
-      <div className="main-container" style={{ display: "grid", gridTemplateColumns: "1fr", width: "100%" }}>
+      <div className="main-container grid grid-cols-1 w-full">
         {/* LEFT SIDE */}
-        <div className="left-side" style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-          minHeight: "100vh",
-          backgroundColor: "#ffffffff",
-          boxSizing: "border-box",
-          padding: "10px",
-          gap: "10px",
-        }}>
+        <div className="left-side flex flex-col w-full min-h-screen bg-[#d2d2d2] dark:bg-[#303030] box-border p-2.5 gap-2.5 transition-colors duration-300">
           {/* Project overview */}
-          <div className="overview-grid" style={{
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            gap: "10px"
-          }}>
+          <div className="overview-grid grid grid-cols-1 gap-2.5">
             <OverviewTable label={"project"} data={dataProject} stats={statsProject} />
             <OverviewTable label={"task"} data={dataTasks} stats={statsTasks} />
           </div>
 
           {/* Analytics of manager */}
-          <div style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            padding: "10px",
-            flex: 1
-          }}>
+          <div className="flex flex-col gap-5 p-2.5 flex-1">
             {/* Header and Input */}
-            <div style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "#ffffffff",
-              borderRadius: "10px",
-              padding: "20px",
-              gap: "15px"
-            }}>
-              <h1 style={{
-                textAlign: "center",
-                fontSize: "clamp(1rem, 2.5vw, 1.5rem)",
-                margin: 0
-              }}>
+            <div className="flex flex-col justify-center items-center bg-white dark:bg-[#404040] rounded-[10px] p-5 gap-[15px] transition-colors duration-300">
+              <h1 className="text-center text-[clamp(1rem,2.5vw,1.5rem)] m-0 dark:text-white transition-colors duration-300">
                 Here is an overview of all the projects you are currently enrolled in!
               </h1>
-              <div style={{ display: "flex", gap: "10px", alignItems: "center", justifyContent: "center", flexWrap: "wrap" }}>
-                <label htmlFor="tentacles" style={{ fontSize: "0.9rem", fontWeight: "500" }}>Benchmark:</label>
+              <div className="flex gap-2.5 items-center justify-center flex-wrap">
+                <label htmlFor="tentacles" className="text-[0.9rem] font-medium dark:text-white transition-colors duration-300">Benchmark:</label>
                 <input
                   type="number"
                   id="tentacles"
@@ -236,34 +195,14 @@ export default function Home() {
                   name="tentacles"
                   min="0"
                   max="100"
-                  style={{
-                    padding: "8px 12px",
-                    borderRadius: "5px",
-                    border: "1px solid #ccc",
-                    fontSize: "1rem",
-                    width: "100px"
-                  }}
+                  className="px-3 py-2 rounded-[5px] border border-gray-300 dark:border-gray-600 text-base w-[100px] dark:bg-[#505050] dark:text-white transition-colors duration-300"
                 />
               </div>
             </div>
 
             {/* Chart */}
-            <div style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "#ffffffff",
-              borderRadius: "10px",
-              padding: "20px",
-              minHeight: "300px",
-              width: "100%"
-            }}>
-<div style={{ 
-  width: "100%", 
-  height: "400px",
-  minHeight: "300px",
-  maxHeight: "500px"
-}}>
+            <div className="flex justify-center items-center bg-white dark:bg-[#404040] rounded-[10px] p-5 min-h-[300px] w-full transition-colors duration-300">
+<div className="w-full h-[400px] min-h-[300px] max-h-[500px]">
   <ResponsiveContainer width="100%" height="100%">
     <LineChart
       data={chartData}
@@ -285,23 +224,15 @@ export default function Home() {
             </div>
 
             {/* Info Card */}
-            <div style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "#ffffffff",
-              borderRadius: "10px",
-              padding: "20px"
-            }}>
+            <div className="flex justify-center items-center bg-white dark:bg-[#404040] rounded-[10px] p-5 transition-colors duration-300">
               <Card style={{
                 padding: "15px",
                 textAlign: "center",
                 fontSize: "clamp(0.8rem, 1.8vw, 0.9rem)",
-                color: "#555",
                 width: "100%",
                 maxWidth: "600px"
               }}>
-                <p style={{ margin: 0, lineHeight: 1.6 }}>
+                <p className="m-0 leading-[1.6] text-gray-600 dark:text-gray-300 transition-colors duration-300">
                   Each line shows weekly task progress vs your set benchmark.
                   Values below zero mean the project is <strong>behind</strong>, above zero means <strong>ahead</strong>.
                 </p>
@@ -311,16 +242,7 @@ export default function Home() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div style={{
-          display: "grid",
-          gridTemplateRows: "auto auto",
-          width: "100%",
-          backgroundColor: "#c4daff",
-          boxSizing: "border-box",
-          padding: "10px",
-          gap: "10px",
-          minHeight: "100vh"
-        }}>
+        <div className="grid grid-rows-[auto_auto] w-full bg-[#c4daff] dark:bg-[#404040] box-border p-2.5 gap-2.5 min-h-screen transition-colors duration-300">
           {/* PIE CHART SECTION */}
           <Card style={{
             width: "100%",
@@ -331,29 +253,14 @@ export default function Home() {
             boxSizing: "border-box",
             padding: "20px"
           }}>
-            <div style={{
-              width: "100%",
-              height: "100%",
-              maxWidth: "350px",
-              maxHeight: "350px",
-              minHeight: "250px"
-            }}>
+            <div className="w-full h-full max-w-[350px] max-h-[350px] min-h-[250px]">
               <PieChart inputData={InputDataExample} />
             </div>
           </Card>
 
           {/* TASK FORM SECTION */}
-          <div style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-start",
-            borderRadius: "10px",
-            width: "100%",
-            boxSizing: "border-box",
-            padding: "10px",
-            minHeight: "400px"
-          }}>
-            <div style={{ width: "100%", maxWidth: "600px" }}>
+          <div className="flex justify-center items-start rounded-[10px] w-full box-border p-2.5 min-h-[400px]">
+            <div className="w-full max-w-[600px]">
               <TasksForm />
             </div>
           </div>
