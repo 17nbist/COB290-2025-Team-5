@@ -133,7 +133,7 @@ export const forumPosts = [
             {
                 id: 201,
                 author: "hr1@gmail.com",
-                text: "Great programmeme!",
+                text: "Great programme!",
                 timeAgo: "1 week ago",
             },
         ],
