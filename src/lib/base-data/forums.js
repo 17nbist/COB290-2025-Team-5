@@ -147,7 +147,7 @@ export const forumPosts = [
         preview:
             "Dear Development team, As you all know, Python 2.7 has been out of support for a while. We still have several legacy services running on it. I'm putting...",
         content:
-            "Dear Development team, \n\nAs you all know, Python 2.7 has bbeen out of support for a while. We still have several legacy services (looking at you, 'Legacy-Reporting-Tool') running on it.\n\nI'm putting together a formal plan to migrate these services to Python 3.10+ by the end of Q1 2026.\n\nI've created a tracking ticket on JIRA (TECH-101) and will be assigning tasks to relevant team members. Please add any dependencies or services I might have missed to the JIRA ticket.",
+            "Dear Development team, \n\nAs you all know, Python 2.7 has been out of support for a while. We still have several legacy services (looking at you, 'Legacy-Reporting-Tool') running on it.\n\nI'm putting together a formal plan to migrate these services to Python 3.10+ by the end of Q1 2026.\n\nI've created a tracking ticket on JIRA (TECH-101) and will be assigning tasks to relevant team members. Please add any dependencies or services I might have missed to the JIRA ticket.",
         timeAgo: "2 weeks ago",
         tags: ["python", "deprecation", "dev", "legacy", "planning"],
         upvotes: 10,
