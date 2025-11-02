@@ -161,9 +161,11 @@ export default function Chatbot() {
                   {message.role === "user" ? (
                     <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                   ) : (
-                    <ReactMarkdown className="text-sm prose dark:prose-invert">
-                      {message.content}
-                    </ReactMarkdown>
+                    <div className="text-sm prose dark:prose-invert">
+                      <ReactMarkdown>
+                        {message.content}
+                      </ReactMarkdown>
+                    </div>
                   )}
                 </div>
               </div>
