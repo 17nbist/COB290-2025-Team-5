@@ -5,38 +5,43 @@ const baseUsers = [
         email: "manager1@make-it-all.co.uk",
         name: "John Doe",
         role: "Manager",
-        profilePic:"/images/pexels-blitzboy-1040880.jpg",
-        password: "password123"
+        profilePic: "/images/pexels-blitzboy-1040880.jpg",
+        password: "password123",
+        isManager: true
     },
     {
         id: 1,
         email: "ceo@make-it-all.co.uk",
         name: "Ben Krupp",
         role: "CEO",
-        profilePic:"/images/pexels-moh-adbelghaffar-771742.jpg",
-        password: "password123"
+        profilePic: "/images/pexels-moh-adbelghaffar-771742.jpg",
+        password: "password123",
+        isManager: true
     },
     {
         id: 2,
         email: "employee1@make-it-all.co.uk",
         name: "Holly Day",
         role: "Employee",
-        profilePic:"/images/pexels-rfera-432059.jpg",
-        password: "password123"
+        profilePic: "/images/pexels-rfera-432059.jpg",
+        password: "password123",
+        isManager: false
     },
     {
         id: 3,
         email: "manager2@make-it-all.co.uk",
         name: "Sarah Connor",
         role: "Manager",
-        password: "password123"
+        password: "password123",
+        isManager: true
     },
     {
         id: 4,
         email: "employee2@make-it-all.co.uk",
         name: "Luke Warm",
         role: "Employee",
-        password: "password123"
+        password: "password123",
+        isManager: false
     },
     {
         id: 5,
@@ -51,14 +56,16 @@ const baseUsers = [
         email: "employee4@make-it-all.co.uk",
         name: "Phil McCan",
         role: "Employee",
-        password: "password123"
+        password: "password123",
+        isManager: false
     },
     {
         id: 7,
         email: "hr1@make-it-all.co.uk",
         name: "Karen Price",
         role: "HR",
-        password: "password123"
+        password: "password123",
+        isManager: false
     }
 ]
 
