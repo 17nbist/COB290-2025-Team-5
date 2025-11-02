@@ -1,12 +1,12 @@
 export const forumPosts = [
-    {
+  {
         id: 1,
         title: "Dress Code Policy Reminder",
         flair: "non-technical",
         preview:
-            "Hi everyone, just a friendly reminder about our company dress code. As the weather gets warmer, please remember that...",
+            "Good morning everyone, Just a friendly reminder about our company dress code. As the weather gets warmer, please remember that...",
         content:
-            "Hi everyone,\n\nJust a friendly reminder about our company dress code, which is 'Smart Casual'.\n\nAs the weather gets warmer, please remember that items like flip-flops, shorts, and tank tops are not considered appropriate for the office.\n\nWe appreciate your co-operation in maintaining a professional environment.\n\n- Karen",
+            "Good morning everyone,\n\nJust a friendly reminder about our company dress code, which is 'Smart Casual'.\n\nAs the weather gets warmer, please remember that items like flip-flops, shorts, and tank tops are not considered appropriate for the office.\n\nWe appreciate your co-operation in maintaining a professional environment.\n\n- Karen",
         timeAgo: "3 months ago",
         tags: ["hr", "policy", "dress-code"],
         upvotes: 5,
@@ -37,16 +37,16 @@ export const forumPosts = [
         preview:
             "Please join me in welcoming the newest member of the tech team, Phil McCracken! Phil joins us with over 10 years of experience...",
         content:
-            "Team,\n\nPlease join me in welcoming the newest member of the tech team, **Phil McCracken**!\n\nPhil (employee4@gmail.com) joins us with over 10 years of experience in full-stack development and will be working on the 'Project Apex' team.\n\nHis desk is on the 4th floor. Feel free to stop by and say hello!",
+            "Team,\n\nPlease join me in welcoming the newest member of the tech team, **Phil McCracken**!\n\nPhil (employee4@gmail.com) joins us with over 10 years of experience in full-stack development and will be working on the 'Project Apex' team.\n\nHis desk is on the 4th floor. Please make him feel welcome in the Make-It-All way!",
         timeAgo: "2 months ago",
-        tags: ["new-hire", "welcome", "hr", "dev-team"],
+        tags: ["new-joiner", "welcome", "hr", "dev-team"],
         upvotes: 35,
         downvotes: 0,
         comments: [
             {
                 id: 218,
                 author: "employee4@gmail.com",
-                text: "Thanks for the warm welcome! Happy to be here.",
+                text: "Thanks for the warm welcome everyone! Happy to be here.",
                 timeAgo: "2 months ago",
             },
             {
@@ -66,7 +66,7 @@ export const forumPosts = [
         preview:
             "Several employees have reported receiving a phishing email disguised as an 'Urgent Password Reset' notification. DO NOT...",
         content:
-            "Team, \n\nSeveral employees have reported receiving a phishing email disguised as an 'Urgent Password Reset' notification.\n\n**DO NOT CLICK ANY LINKS IN THIS EMAIL.**\n\nIt appears to come from 'IT-Support' but is an external, malicious address. Our IT department will *never* ask for your password over email.\n\nIf you receive this email, please use the 'Report Phishing' button in Outlook immediately and then delete it.\n\nStay vigilant!",
+            "Dear all, \n\nSeveral employees have reported receiving a phishing email disguised as an 'Urgent Password Reset' notification.\n\n**DO NOT CLICK ANY LINKS IN THIS EMAIL.**\n\nIt appears to come from 'IT-Support' but is an external, malicious address. Our IT department will *never* ask for your password over email.\n\nIf you receive this email, please use the 'Report Phishing' button in Outlook immediately and then delete it.\n\nIf you have any queries about this, please email IT. Stay vigilant!",
         timeAgo: "1 month ago",
         tags: ["security", "phishing", "it", "alert"],
         upvotes: 18,
@@ -89,9 +89,9 @@ export const forumPosts = [
         preview:
             "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently...",
         content:
-            "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently authorised to view and use these keys.\n\nIf you require access for a new project, please follow these steps:\n1. Submit a request ticket through the IT portal.\n2. Specify the project name and the exact API you need to access.\n3. Your manager must approve the request.\n\nREMINDER: Do not share API keys over email or in public repositories. They must be stored in environment variables.",
+            "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently authorised to view and use these keys.\n\nIf you require access for a new project, please follow these steps:\n1. Submit a request ticket through the IT portal on MakeIToday.\n2. Specify the project name and the exact API you need to access.\n3. Your manager must approve the request.\n\nREMINDER: Do not share API keys over email or in public repositories. They must be stored in environment variables. Any breaches may mean your employement is terminated.",
         timeAgo: "3 weeks ago",
-        tags: ["api", "help"],
+        tags: ["api", "help", "keys"],
         upvotes: 15,
         downvotes: 0,
         comments: [
@@ -107,6 +107,12 @@ export const forumPosts = [
                 text: "Where can I find the IT portal link?",
                 timeAgo: "2 weeks ago",
             },
+            {
+                id: 103,
+                author: "manager2@gmail.com",
+                text: "You can find it on MakeIToday (the intranet).",
+                timeAgo: "2 weeks ago",
+            },
         ],
         author: "manager1@gmail.com",
         directedTo: "employee1@gmail.com",
@@ -118,7 +124,7 @@ export const forumPosts = [
         preview:
             "Here at Make-It-All, we value the insights that our staff members have on the job market. For this reason, we have an attractive...",
         content:
-            "Here at Make-It-All, we value the insights that our staff members have on the job market. For this reason, we have an attractive referral programme.\n\nHow to make a referral:\n1. Find the job posting on our internal careers page.\n2. Send an email to hr@make-it-all.com with the subject line 'Job Referral: [Job Title] - [Candidate Name]'.\n3. Attach the candidate's resume and a brief note on why you are recommending them.\n\nIf your referral is hired, you are eligible for a £1,000 bonus after their 3-month probation period!",
+            "Here at Make-It-All, we value the insights that our staff members have on the job market. For this reason, we have an attractive referral programme.\n\nHow to make a referral:\n1. Find the job posting on our internal careers page, accessible from MakeIToday.\n2. Send an email to hr@make-it-all.com with the subject line 'Job Referral: [Job Title] - [Candidate Name]'.\n3. Attach the candidate's CV and a brief note on why you are recommending them.\n\nIf your referral is hired, you are eligible for a £1,000 (tax-free) bonus after their 3-month probation period! Everyone wins!",
         timeAgo: "2 weeks ago",
         tags: ["hr", "referral", "recruitment", "selection"],
         upvotes: 10,
@@ -127,7 +133,7 @@ export const forumPosts = [
             {
                 id: 201,
                 author: "hr1@gmail.com",
-                text: "Great programme!",
+                text: "Great programmeme!",
                 timeAgo: "1 week ago",
             },
         ],
@@ -139,9 +145,9 @@ export const forumPosts = [
         title: "Python 2.7 Deprecation Plan",
         flair: "technical",
         preview:
-            "As you all know, Python 2.7 has been end-of-life for a while. We still have several legacy services running on it. I'm putting...",
+            "Dear Development team, As you all know, Python 2.7 has been out of support for a while. We still have several legacy services running on it. I'm putting...",
         content:
-            "Hi dev team,\n\nAs you all know, Python 2.7 has been end-of-life for a while. We still have several legacy services (looking at you, 'Legacy-Reporting-Tool') running on it.\n\nI'm putting together a formal plan to migrate these services to Python 3.10+ by the end of Q1 2026.\n\nI've created a tracking ticket on JIRA (TECH-101) and will be assigning tasks to relevant team members. Please add any dependencies or services I might have missed to the JIRA ticket.",
+            "Dear Development team, \n\nAs you all know, Python 2.7 has bbeen out of support for a while. We still have several legacy services (looking at you, 'Legacy-Reporting-Tool') running on it.\n\nI'm putting together a formal plan to migrate these services to Python 3.10+ by the end of Q1 2026.\n\nI've created a tracking ticket on JIRA (TECH-101) and will be assigning tasks to relevant team members. Please add any dependencies or services I might have missed to the JIRA ticket.",
         timeAgo: "2 weeks ago",
         tags: ["python", "deprecation", "dev", "legacy", "planning"],
         upvotes: 10,
@@ -159,14 +165,14 @@ export const forumPosts = [
     },
     {
         id: 7,
-        title: "Volunteer Day Sign-ups",
+        title: "Sign up for Volunteer day!",
         flair: "non-technical",
         preview:
-            "As announced by Mike, we are having our annual company-wide volunteer day! This year, we'll be helping at the 'City Food Bank'...",
+            "Hi team, As announced by Mike, we are having our annual company-wide volunteer day! This year, we'll be helping at the 'Town Food Bank'...",
         content:
-            "Hi team,\n\nAs announced by Mike, we are having our annual company-wide volunteer day on **Friday, November 14th**.\n\nThis year, we'll be helping at the 'City Food Bank' to sort and pack donations.\n\nThis is a paid volunteer day (you'll get your regular salary). Please sign up on the sheet below so we can give the food bank a headcount.\n\nSign-up link: [link-to-volunteer-sheet]",
+            "Hi team,\n\nAs announced by Mike, we are having our annual company-wide volunteer day on **Friday, November 14th**.\n\nThis year, we'll be helping at the 'Town Food Bank' to sort and pack donations.\n\nThis is a paid volunteer day (you'll get your regular salary). Please sign up on the e-sheet below so we can give the food bank a headcount.\n\nSign-up link: [link-to-volunteer-sheet]",
         timeAgo: "12 days ago",
-        tags: ["hr", "volunteer", "event", "social-impact"],
+        tags: ["hr", "volunteer", "event", "social-impact", "giving"],
         upvotes: 28,
         downvotes: 0,
         comments: [],
@@ -207,9 +213,9 @@ export const forumPosts = [
         title: "Gym Membership Corporate Discount Update",
         flair: "non-technical",
         preview:
-            "Good news! We have successfully renewed our corporate partnership with 'City Fitness'. All employees are eligible for a 25% discount...",
+            "Good news! We have successfully renewed our corporate partnership with 'Town Fitness'. All employees are eligible for a 25% discount...",
         content:
-            "Good news!\n\nWe have successfully renewed our corporate partnership with 'City Fitness'. All employees are eligible for a 25% discount on monthly memberships.\n\nAdditionally, we have added 'YogaWorks' to our programme, with a 15% discount.\n\nFind details and sign-up links on the intranet: HR > Benefits > Wellness.",
+            "Good news!\n\nWe have successfully renewed our corporate partnership with 'Town Fitness'. All employees are eligible for a 25% discount on monthly memberships.\n\nAdditionally, we have added 'YogaWorks' to our programme, with a 15% discount.\n\nFind details and sign-up links on the intranet (MakeIToday): HR > Benefits > Wellness.",
         timeAgo: "9 days ago",
         tags: ["hr", "benefits", "wellness", "gym"],
         upvotes: 23,
@@ -232,7 +238,7 @@ export const forumPosts = [
         preview:
             "Hi book lovers! We just finished 'The Phoenix Project' and it's time to pick our next read. Any suggestions?",
         content:
-            "Hi book lovers!\n\nWe just finished 'The Phoenix Project' and it's time to pick our next read.\n\nI've set up a poll with a few suggestions. Please vote by EOD Friday!\n\n- 'Atomic Habits' by James Clear\n- 'Project Hail Mary' by Andy Weir\n- 'Thinking, Fast and Slow' by Daniel Kahneman\n\nLink to poll: [link-to-book-poll]",
+            "Hi book lovers!\n\nWe just finished 'The Phoenix Project' and it's time to pick our next read.\n\nI've set up a poll with a few suggestions. Please vote by the end of Friday!\n\n- 'Atomic Habits' by James Clear\n- 'Project Hail Mary' by Andy Weir\n- 'Thinking, Fast and Slow' by Daniel Kahneman\n\nLink to poll: [link-to-book-poll]",
         timeAgo: "9 days ago",
         tags: ["social", "book-club", "general"],
         upvotes: 6,
@@ -273,6 +279,12 @@ export const forumPosts = [
                 text: "Thanks for the feedback, Gabe. Let me look at the budget with facilities and see what we can do.",
                 timeAgo: "7 days ago",
             },
+            {
+                id: 237,
+                author: "employee4@gmail.com",
+                text: "Don't forget the tea and hot chocolate drinkers!",
+                timeAgo: "6 days ago",
+            }
         ],
         author: "employee1@gmail.com",
         directedTo: null,
@@ -314,14 +326,14 @@ export const forumPosts = [
     },
     {
         id: 13,
-        title: "New Software Rollout: 'Momentum' Project Manager",
+        title: "New Software Rollout: 'Momentum' Training Manager",
         flair: "technical",
         preview:
-            "Starting next Monday, all teams will be migrating from our old project tracker to 'Momentum'. Training sessions are mandatory...",
+            "Starting next Monday, all teams will be migrating from our old training tracker to 'Momentum'. A reminder that booked in training...",
         content:
-            "Hi all,\n\nStarting next Monday, all teams will be migrating from our old project tracker to 'Momentum'.\n\n**Training sessions are mandatory.** Please sign up for a slot that works for your team:\n- Session 1: Monday, 10:00 AM\n- Session 2: Monday, 2:00 PM\n- Session 3: Tuesday, 10:00 AM\n\n'Momentum' will help us better track deliverables and manage cross-team dependencies. All old projects will be archived by EOD Friday.",
+            "Hi all,\n\nStarting next Monday, all teams will be migrating from our old project tracker to 'Momentum'.\n\n**T reminder that booked in training sessions are mandatory** Please sign up for a slot that works for your team:\n- Session 1: Monday, 10:00 AM\n- Session 2: Monday, 2:00 PM\n- Session 3: Tuesday, 10:00 AM\n\n'Momentum' will help us better track deliverables and manage cross-team dependencies. All old projects will be archived by the end of Friday.",
         timeAgo: "1 week ago",
-        tags: ["software", "rollout", "training", "project-management"],
+        tags: ["software", "rollout", "training", "OD"],
         upvotes: 19,
         downvotes: 1,
         comments: [
@@ -343,14 +355,14 @@ export const forumPosts = [
     },
     {
         id: 14,
-        title: "Quarterly All-Hands Meeting Deck",
+        title: "Quarterly Full Team Meeting Deck",
         flair: "non-technical",
         preview:
-            "For those who missed yesterday's all-hands meeting, or for anyone who wants to review the slides, I've uploaded the deck...",
+            "For those who missed yesterday's full team meeting, or for anyone who wants to review the slides, I've uploaded the slides...",
         content:
-            "For those who missed yesterday's all-hands meeting, or for anyone who wants to review the slides, I've uploaded the deck to the intranet.\n\nYou can find it here: [link-to-all-hands-deck-Q3]\n\nIt covers Q3 performance, Q4 goals, and the new HR initiatives.",
+            "For those who missed yesterday's full team meeting, or for anyone who wants to review the slides, I've uploaded the slides to the intranet.\n\nYou can find it here: [link-to-all-hands-deck-Q3]\n\nIt covers Q3 performance, Q4 goals, and the new HR initiatives.",
         timeAgo: "1 week ago",
-        tags: ["all-hands", "meeting", "deck", "finance"],
+        tags: ["full-team", "meeting", "deck", "finance"],
         upvotes: 14,
         downvotes: 0,
         comments: [],
@@ -366,7 +378,7 @@ export const forumPosts = [
         content:
             "Mike Oxlong (ceo@gmail.com) will be hosting a company-wide 'Ask Me Anything' session next Friday.\n\nWe are gathering questions in advance to help structure the meeting.\n\nPlease submit your questions (anonymously if you prefer) via this form: [link-to-google-form]\n\nWe will try to get to as many as possible.",
         timeAgo: "1 week ago",
-        tags: ["ceo", "all-hands", "meeting", "q-a"],
+        tags: ["ceo", "full-team", "meeting", "q-a"],
         upvotes: 27,
         downvotes: 0,
         comments: [
@@ -393,9 +405,9 @@ export const forumPosts = [
         preview:
             "Hi team, we've noticed a lot of variation in email signatures. To maintain brand consistency, please use the official...",
         content:
-            "Hi team,\n\nWe've noticed a lot of variation in email signatures. To maintain brand consistency, please use the official generator here: [link-to-signature-generator]\n\nThis will create the correct HTML with your name, title, and the company logo.\n\nPlease update your signature in Outlook/Gmail by EOD Friday.",
+            "Hi team,\n\nWe've noticed a lot of variation in email signatures. To maintain brand consistency, please use the official generator here: [link-to-signature-generator]\n\nThis will create the correct HTML with your name, title, and the company logo.\n\nPlease update your signature in our email client by the end of Friday.",
         timeAgo: "1 week ago",
-        tags: ["hr", "it", "branding", "policy"],
+        tags: ["hr", "it", "branding", "policy", "email"],
         upvotes: 10,
         downvotes: 0,
         comments: [],
@@ -404,14 +416,14 @@ export const forumPosts = [
     },
     {
         id: 17,
-        title: "Bank Holiday Schedule (US-Based Staff)",
+        title: "Bank Holiday Schedule",
         flair: "non-technical",
         preview:
-            "A reminder for all US-based employees: The office will be closed next Thursday and Friday (Nov 27th & 28th) for...",
+            "A reminder for all staff members: The office will be closed next Thursday and Friday (Nov 27th & 28th) for...",
         content:
-            "A reminder for all US-based employees:\n\nThe office will be closed next **Thursday and Friday (Nov 27th & 28th)** for the Thanksgiving holiday.\n\nWe hope you all have a wonderful and restful break with your loved ones.\n\n- The Exec Team",
+            "A reminder for all staff members:\n\nThe office will be closed next **Thursday and Friday (Nov 27th & 28th)** for the autumn holiday.\n\nWe hope you all have a wonderful and restful break with your loved ones.\n\n- Management",
         timeAgo: "1 week ago",
-        tags: ["hr", "holiday", "announcement", "pto"],
+        tags: ["hr", "holiday", "announcement", "annual leave"],
         upvotes: 38,
         downvotes: 0,
         comments: [],
@@ -434,7 +446,7 @@ export const forumPosts = [
             {
                 id: 214,
                 author: "manager2@gmail.com",
-                text: "That would be me. Please send your requests to me directly by EOD Wednesday for the weekly order.",
+                text: "That would be me. Please send your requests to me directly by the end of Wednesday for the weekly order.",
                 timeAgo: "6 days ago",
             },
             {
@@ -536,12 +548,12 @@ export const forumPosts = [
     },
     {
         id: 22,
-        title: "Fire Drill Scheduled for Next Tuesday",
+        title: "Fire Alarm Test Scheduled for Next Tuesday",
         flair: "non-technical",
         preview:
             "This is an advance notice that we will be conducting a mandatory, building-wide fire drill next Tuesday, October 28th...",
         content:
-            "Hi everyone,\n\nThis is an advance notice that we will be conducting a mandatory, building-wide fire drill next **Tuesday, 28th October.**\n\nThe alarm will sound at approximately **10:30 AM**.\n\nPlease familiarise yourself with the evacuation routes posted near your desk and in the hallways. The muster point is in the main car park (Section C).\n\nYour safety is our priority. Thank you for your co-operation.",
+            "Hi everyone,\n\nThis is an advance notice that we will be conducting a mandatory, building-wide fire drill next **Tuesday, 28th October.**\n\nThe alarm will sound at approximately **10:30 AM**.\n\nPlease familiarise yourself with the evacuation routes posted near your desk and in the hallways. The assembly point is in the main car park (Section C).\n\nYour safety is our priority. Thank you for your co-operation.",
         timeAgo: "5 days ago",
         tags: ["safety", "fire-drill", "facilities", "hr"],
         upvotes: 17,
@@ -646,9 +658,9 @@ export const forumPosts = [
         title: "Organising a team for the Corporate 5K Run",
         flair: "non-technical",
         preview:
-            "Hey everyone, the annual 'City Corporate 5K Challenge' is next month. I'm looking to put together a 'Make-It-All' team...",
+            "Hey everyone, the annual 'Town Corporate 5K Challenge' is next month. I'm looking to put together a 'Make-It-All' team...",
         content:
-            "Hey everyone,\n\nThe annual 'City Corporate 5K Challenge' is next month. I'm looking to put together a 'Make-It-All' team (or multiple teams!).\n\nIt's a fun event for all fitness levels (you can walk!) and benefits a good cause.\n\nIf you're interested in joining, please add your name to this spreadsheet: [link-to-5k-signup]",
+            "Hey everyone,\n\nThe annual 'Town Corporate 5K Challenge' is next month. I'm looking to put together a 'Make-It-All' team (or multiple teams!).\n\nIt's a fun event for all fitness levels (you can walk!) and benefits a good cause.\n\nIf you're interested in joining, please add your name to this spreadsheet: [link-to-5k-signup]",
         timeAgo: "4 days ago",
         tags: ["social", "event", "wellness", "5k"],
         upvotes: 22,
@@ -693,7 +705,7 @@ export const forumPosts = [
         preview:
             "Hi all, open enrolment is next month. We've just received the updated 2026 benefits guide from our provider. Please review...",
         content:
-            "Hi all,\n\nOpen enrolment is next month. We've just received the updated 2026 benefits guide from our provider.\n\nPlease review the changes, as there are slight modifications to the PPO plan deductibles and co-pays.\n\nThe full guide is now available on the intranet: HR > Benefits > 2026 Health Guide.\n\nWe will also host a Q&A session with our provider rep next Wednesday.",
+            "Hi all,\n\nEnrolment is next month. We've just received the updated 2026 benefits guide from our provider.\n\nPlease review the changes, as there are slight modifications to the Private Healthcare plans and the services we offer via salary sacrifice.\n\nThe full guide is now available on the intranet (MakeIToday): HR > Benefits > 2026 Health Guide.\n\nWe will also host a Q&A session with our provider representative next Wednesday.",
         timeAgo: "3 days ago",
         tags: ["hr", "benefits", "health", "insurance", "open-enrolment"],
         upvotes: 13,
@@ -707,9 +719,9 @@ export const forumPosts = [
         title: "Welcome Back, Anita!",
         flair: "non-technical",
         preview:
-            "Please join me in giving a warm welcome back to Anita Bath (employee3@gmail.com), who is returning from her parental leave...",
+            "Please join me in giving a warm welcome back to Anita Bath (employee3@gmail.com), who is returning from maternity leave...",
         content:
-            "Please join me in giving a warm welcome back to **Anita Bath** (employee3@gmail.com), who is returning from her parental leave today!\n\nWe are so excited to have you back on the team, Anita! We've missed you.",
+            "Please join me in giving a warm welcome back to **Anita Bath** (employee3@gmail.com), who is returning from her maternity leave!\n\nWe are so excited to have you back on the team, Anita! We've missed you.",
         timeAgo: "3 days ago",
         tags: ["hr", "welcome-back", "social"],
         upvotes: 41,
@@ -765,9 +777,9 @@ export const forumPosts = [
         title: "Mandatory Anti-Harassment Training",
         flair: "non-technical",
         preview:
-            "This is a reminder that all employees must complete the mandatory online anti-harassment training by November 15th. This is...",
+            "This is a reminder that all staff members must complete the mandatory online anti-harassment training by November 15th. This is...",
         content:
-            "This is a reminder that all employees must complete the mandatory online anti-harassment training by **November 15th**.\n\nThis is a legal requirement and is essential for maintaining a safe and respectful workplace.\n\nThe training takes approximately 45 minutes. You should have received a direct link via email from our compliance partner, 'ComplianceNow'.\n\nPlease complete this as soon as possible.",
+            "This is a reminder that all staff members must complete the mandatory online anti-harassment training by **November 15th**.\n\nThis is a legal requirement and is essential for maintaining a safe and respectful workplace.\n\nThe training takes approximately 45 minutes. You should have received a direct link via email from our compliance partner, 'ComplianceNow'.\n\nPlease complete this as soon as possible.",
         timeAgo: "3 days ago",
         tags: ["hr", "training", "compliance", "mandatory", "policy"],
         upvotes: 19,
@@ -791,12 +803,12 @@ export const forumPosts = [
     },
     {
         id: 33,
-        title: "Annual Holiday Party - Save the Date!",
+        title: "Annual Christmas party - Save the Date!",
         flair: "non-technical",
         preview:
-            "Get ready to celebrate! The annual Make-It-All holiday party is officially scheduled for Friday, December 13th...",
+            "Get ready to celebrate! The annual Make-It-All Christmas party is officially scheduled for Friday, December 13th...",
         content:
-            "Get ready to celebrate!\n\nThe annual Make-It-All holiday party is officially scheduled for **Friday, December 13th** at The Grand Ballroom.\n\nTheme: 'Winter Wonderland'\n\nFormal invitations with an RSVP link will be sent out next week. Partners are welcome!\n\nWe can't wait to celebrate another successful year with all of you.",
+            "Get ready to celebrate!\n\nThe annual Make-It-All Christmas party is officially scheduled for **Friday, December 13th** at Hotel Function Suite.\n\nTheme: 'Winter Wonderland'\n\nFormal invitations with an RSVP link will be sent out next week. Partners are welcome!\n\nWe can't wait to celebrate another successful year with all of you.",
         timeAgo: "2 days ago",
         tags: ["event", "party", "hr", "social"],
         upvotes: 31,
@@ -887,9 +899,9 @@ export const forumPosts = [
         title: "Charity Bake Sale - Next Thursday",
         flair: "non-technical",
         preview:
-            "Hi all! I'm organising a charity bake sale to support the City Food Bank. It will be next Thursday in the 3rd floor breakroom...",
+            "Hi all! I'm organising a charity bake sale to support the Town Food Bank. It will be next Thursday in the 3rd floor breakroom...",
         content:
-            "Hi all!\n\nI'm organising a charity bake sale to support the City Food Bank. It will be next Thursday (Nov 6th) in the 3rd floor breakroom from 10 AM - 2 PM.\n\nAll proceeds will be matched by Make-It-All!\n\nPlease message me if you'd like to contribute by baking something. And don't forget to bring cash!",
+            "Hi all!\n\nI'm organising a charity bake sale to support the Town Food Bank. It will be next Thursday (Nov 6th) in the 3rd floor breakroom from 10 AM - 2 PM.\n\nAll proceeds will be matched by Make-It-All!\n\nPlease message me if you'd like to contribute by baking something. And don't forget to bring cash!",
         timeAgo: "2 days ago",
         tags: ["social", "charity", "event", "food"],
         upvotes: 29,
@@ -916,9 +928,9 @@ export const forumPosts = [
         title: "New NPM Package Security Vulnerability",
         flair: "technical",
         preview:
-            "Heads up, a critical vulnerability was just announced in 'left-pad' v2.1. (Just kidding, it's in 'node-http-proxy')...",
+            "A critical vulnerability was just announced in 'left-pad' v2.1. (Just kidding, it's in 'node-http-proxy')...",
         content:
-            "Heads up, dev team,\n\nA critical vulnerability (CVE-2025-1234) was just announced in 'node-http-proxy', which we use in two of our key services.\n\nA patched version (v1.18.2) is available.\n\nI've created JIRA tickets (TECH-120, TECH-121) to update this dependency, test, and deploy ASAP. This is a high priority.",
+            "Hi Dev Team,\n\nA critical vulnerability (CVE-2025-1234) was just announced in 'node-http-proxy', which we use in two of our key services.\n\nA patched version (v1.18.2) is available.\n\nI've created JIRA tickets (TECH-120, TECH-121) to update this dependency, test, and deploy ASAP. This is a high priority.",
         timeAgo: "2 days ago",
         tags: ["security", "npm", "vulnerability", "dev", "urgent"],
         upvotes: 14,
@@ -970,9 +982,9 @@ export const forumPosts = [
         preview:
             "Hi team, HR has reviewed and updated the holiday request policy, effective January 1st. Please review the key changes...",
         content:
-            "Hi team,\n\nHR has reviewed and updated the holiday request policy, effective January 1st.\n\nKey Changes:\n1. All holiday requests must be submitted at least 2 weeks in advance.\n2. Requests during peak holiday season (Dec 20 - Jan 2) must be submitted by November 1st.\n3. Rollover days are now capped at 5 days, down from 10.\n\nPlease find the full policy document on the intranet under HR > Policies.\n\n- Karen",
+            "Hi team,\n\nHR has reviewed and updated the holiday request policy, effective January 1st.\n\nKey Changes:\n1. All holiday requests must be submitted at least 2 weeks in advance.\n2. Requests during peak holiday season (Dec 20 - Jan 2) must be submitted by November 1st.\n3. Rollover days are now capped at 5 days, down from 10.\n\nPlease find the full policy document on the intranet (MakeIToday) under HR > Policies.\n\n- Karen",
         timeAgo: "1 day ago",
-        tags: ["hr", "policy", "holiday", "pto"],
+        tags: ["hr", "policy", "holiday", "annual leave"],
         upvotes: 22,
         downvotes: 3,
         comments: [
@@ -1111,7 +1123,7 @@ export const forumPosts = [
             {
                 id: 249,
                 author: "hr1@gmail.com",
-                text: "Thanks for flagging. I've contacted building management. They are sending someone to check the HVAC system this afternoon.",
+                text: "Thanks for flagging. I've contacted facilities. They are sending someone to check the system this afternoon.",
                 timeAgo: "22 hours ago",
             },
         ],
@@ -1123,9 +1135,9 @@ export const forumPosts = [
         title: "Looking for a car share from Northside",
         flair: "non-technical",
         preview:
-            "My car is in the shop for the next two weeks. Is anyone driving in from the Northside area who would be willing to car share?...",
+            "My car is in the garage for the next two weeks. Is anyone driving in from the Northside area who would be willing to car share?...",
         content:
-            "My car is in the shop for the next two weeks. Is anyone driving in from the Northside area who would be willing to car share?\n\nI'm happy to pitch in for petrol! My hours are generally 9 AM to 5 PM.",
+            "My car is in the garage for the next two weeks. Is anyone driving in from the Northside area who would be willing to car share?\n\nI'm happy to pitch in for fuel! My hours are generally 9 AM to 5 PM.",
         timeAgo: "1 day ago",
         tags: ["social", "car-share", "help"],
         upvotes: 4,
@@ -1170,7 +1182,7 @@ export const forumPosts = [
         preview:
             "Sharing some direct feedback from our new client 'BigCorp'. They find the main login page confusing. Specifically, the 'SSO'...",
         content:
-            "Sharing some direct feedback from our new client 'BigCorp'.\n\nThey find the main login page confusing. Specifically, the 'SSO' button and the 'Standard Login' are not clearly differentiated, and their employees keep trying to use the wrong one.\n\n@manager1@gmail.com - Can your team mock up a clearer design? Let's discuss this in our next sync.",
+            "Sharing some direct feedback from our new client 'BigCorp'.\n\nThey find the main login page confusing. Specifically, the 'SSO' button and the 'Standard Login' are not clearly differentiated, and their staff members keep trying to use the wrong one.\n\n@manager1@gmail.com - Can your team mock up a clearer design? Let's discuss this in our next sync.",
         timeAgo: "1 day ago",
         tags: ["feedback", "client", "ui", "ux", "design"],
         upvotes: 9,
@@ -1193,7 +1205,7 @@ export const forumPosts = [
         preview:
             "This is a reminder for everyone who travelled or had corporate expenses in October. Please submit your expense reports...",
         content:
-            "This is a reminder for everyone who travelled or had corporate expenses in October.\n\nPlease submit your expense reports through the 'Expensify' portal by EOD today (Oct 31st) to be included in the next payroll run.\n\nManagers, please approve your team's reports by EOD Monday.",
+            "This is a reminder for everyone who travelled or had corporate expenses in October.\n\nPlease submit your expense reports through the 'Expense Portal on MakeIToday' portal by the end of today (Oct 31st) to be included in the next payroll run.\n\nManagers, please approve your team's reports by the end of Monday.",
         timeAgo: "8 hours ago",
         tags: ["finance", "hr", "expenses", "reminder", "payroll"],
         upvotes: 11,
@@ -1204,7 +1216,7 @@ export const forumPosts = [
     },
     {
         id: 49,
-        title: "Security Patch Required for all workstations - EOD",
+        title: "Security Patch Required for all workstations",
         flair: "technical",
         preview:
             "IT has pushed a critical security patch to all corporate workstations (Windows and Mac). This patch addresses a zero-day...",
@@ -1220,7 +1232,7 @@ export const forumPosts = [
     },
     {
         id: 50,
-        title: "Reminder: Submit Timesheets by EOD",
+        title: "Reminder: Submit Timesheets by the end of",
         flair: "non-technical",
         preview:
             "This is a reminder for all direct reports to please submit your weekly timesheets by 5 PM today so I can approve them...",
@@ -1372,11 +1384,11 @@ export const forumPosts = [
         title: "Company Swag - New T-shirts are in!",
         flair: "non-technical",
         preview:
-            "They're here! The new company t-shirts (with the updated logo) have arrived. Please come by the HR desk on the 3rd floor...",
+            "They're here! The new company t-shirts (with the updated logo) have arrived. Please come by the HR office on the 3rd floor...",
         content:
-            "They're here!\n\nThe new company t-shirts (with the updated logo) have arrived.\n\nPlease come by the HR desk on the 3rd floor to pick yours up. We have sizes S-XXL.\n\nCome grab one while they're hot!",
+            "They're here!\n\nThe new company t-shirts (with the updated logo) have arrived.\n\nPlease come by the HR office on the 3rd floor to pick yours up. We have sizes S-XXL.",
         timeAgo: "3 hours ago",
-        tags: ["hr", "swag", "social", "announcement"],
+        tags: ["hr", "merch", "social", "announcement"],
         upvotes: 33,
         downvotes: 0,
         comments: [
@@ -1409,7 +1421,7 @@ export const forumPosts = [
         preview:
             "For security reasons, we have a separate WiFi code for visitors. This code is updated weekly, ensuring that only genuine...",
         content:
-            "For security reasons, we have a separate WiFi code for visitors. This code is updated weekly, ensuring that only genuine visitors have access to our guest network.\n\nThis network is for guest use only and is firewalled from our internal systems.\n\nGuest WiFi Network: Make-It-All_Guest\nPassword for Week 45: visitorWk45!nda",
+            "For security reasons, we have a separate WiFi code for visitors. This code is updated weekly, ensuring that only genuine visitors have access to our guest network.\n\nThis network is for guest use only and is firewalled from our internal systems.\n\nGuest WiFi Network: Make-It-All_Guest\nCode for Week 45: 6932",
         timeAgo: "2 hours ago",
         tags: ["wifi", "tech", "visitors"],
         upvotes: 10,
@@ -1425,9 +1437,9 @@ export const forumPosts = [
         preview:
             "Here is the guest WiFi password for Week 46. Please use this for all visitors and non-corporate devices...",
         content:
-            "Here is the guest WiFi password for Week 46.\n\nPlease use this for all visitors and non-corporate devices.\n\nGuest WiFi Network: Make-It-All_Guest\nPassword for Week 46: guestPass!Wk46",
+            "Here is the guest WiFi password for Week 46.\n\nPlease use this for all visitors and non-corporate devices.\n\nGuest WiFi Network: Make-It-All_Guest\nCode for Week 46: 3295",
         timeAgo: "2 hours ago",
-        tags: ["wifi", "tech", "visitors", "facilities"],
+        tags: ["wifi", "tech", "visitors"],
         upvotes: 8,
         downvotes: 0,
         comments: [],
@@ -1562,4 +1574,40 @@ export const forumPosts = [
         author: "hr1@gmail.com",
         directedTo: null,
     },
+
+    {
+      id: 63,
+      title: "Mandatory Return to Office – Full-Time On-Site Requirement",
+      flair: "non-technical",
+      preview:
+        "Following a management decision, all staff members will be required to work on-site...",
+      content:
+        "Dear all,\n\nFollowing a recent review and a decision by Management, we will be moving to a **full-time on-site working model** with effect from **Monday 1 December 2025**.\n\nFrom that date, all staff members are required to be on-site **five days per week**. Remote working will no longer be the default arrangement except where a formal reasonable adjustment or other exceptional business need has been agreed in advance with your line manager and HR.\n\nPlease note:\n- Normal office hours should be adhered to unless otherwise agreed with your manager.\n- Desk booking is available via MakeIToday > Facilities > Desk Booking.\n- If you believe you require a reasonable adjustment or have exceptional circumstances, speak to your line manager and HR immediately so this can be considered.\n\nNon-compliance with this requirement will be treated seriously and may result in disciplinary action up to and including termination of your employement in accordance with our disciplinary procedure.\n\nWe appreciate everyone’s co-operation during this change. If you have any questions, please contact HR.\n\nKind regards,\nKaren (HR Office)",
+      timeAgo: "2 hours ago",
+      tags: ["hr", "policy", "rto", "dismissal", "mandatory"],
+      upvotes: 11,
+      downvotes: 80,
+      comments: [
+          {
+              id: 311,
+              author: "employee2@gmail.com",
+              text: "This is just ridiculous.",
+              timeAgo: "1 hour ago",
+          },
+          {
+              id: 312,
+              author: "employee1@gmail.com",
+              text: "So we’re being ‘rewarded’ for three years of good work with longer commutes and higher costs. Brilliant.",
+              timeAgo: "49 minutes ago",
+          },
+          {
+              id: 313,
+              author: "employee3@gmail.com",
+              text: "I can't wait to spend more time with you guys in the office! Management have our best interests at heart.",
+              timeAgo: "12 minutes ago",
+          },
+      ],
+      author: "hr1@gmail.com",
+      directedTo: null
+    }
 ];
