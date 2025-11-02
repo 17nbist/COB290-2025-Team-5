@@ -1232,7 +1232,7 @@ export const forumPosts = [
     },
     {
         id: 50,
-        title: "Reminder: Submit Timesheets by the end of",
+        title: "Reminder: Submit Timesheets by the end of today",
         flair: "non-technical",
         preview:
             "This is a reminder for all direct reports to please submit your weekly timesheets by 5 PM today so I can approve them...",
