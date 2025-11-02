@@ -21,7 +21,7 @@ export const forumPosts = [
             {
                 id: 239,
                 author: "hr1@make-it-all.co.uk",
-                text: "Hi @Ben Dover, a good rule of thumb is 'no " +
+                text: "Hi @Luke Warm, a good rule of thumb is 'no " +
                     "jeans with holes, no t-shirts with large graphics, and no " +
                     "open-toed shoes'. The full policy is on the intranet.",
                 timeAgo: "3 months ago",
@@ -37,7 +37,7 @@ export const forumPosts = [
         preview:
             "Please join me in welcoming the newest member of the tech team, Phil McCracken! Phil joins us with over 10 years of experience...",
         content:
-            "Team,\n\nPlease join me in welcoming the newest member of the tech team, **Phil McCracken**!\n\nPhil (employee4@make-it-all.co.uk) joins us with over 10 years of experience in full-stack development and will be working on the 'Project Apex' team.\n\nHis desk is on the 4th floor. Please make him feel welcome in the Make-It-All way!",
+            "Team,\n\nPlease join me in welcoming the newest member of the tech team, **Phil McCan**!\n\nPhil (employee4@make-it-all.co.uk) joins us with over 10 years of experience in full-stack development and will be working on the 'Project Apex' team.\n\nHis desk is on the 4th floor. Please make him feel welcome in the Make-It-All way!",
         timeAgo: "2 months ago",
         tags: ["new-joiner", "welcome", "hr", "dev-team"],
         upvotes: 35,
@@ -374,9 +374,9 @@ export const forumPosts = [
         title: "Q&A with the CEO - Submit your questions",
         flair: "non-technical",
         preview:
-            "Mike Oxlong will be hosting a company-wide 'Ask Me Anything' session next Friday. We are gathering questions in advance...",
+            "Ben Krupp will be hosting a company-wide 'Ask Me Anything' session next Friday. We are gathering questions in advance...",
         content:
-            "Mike Oxlong (ceo@make-it-all.co.uk) will be hosting a company-wide 'Ask Me Anything' session next Friday.\n\nWe are gathering questions in advance to help structure the meeting.\n\nPlease submit your questions (anonymously if you prefer) via this form: [link-to-google-form]\n\nWe will try to get to as many as possible.",
+            "Ben Krupp (ceo@make-it-all.co.uk) will be hosting a company-wide 'Ask Me Anything' session next Friday.\n\nWe are gathering questions in advance to help structure the meeting.\n\nPlease submit your questions (anonymously if you prefer) via this form: [link-to-google-form]\n\nWe will try to get to as many as possible.",
         timeAgo: "1 week ago",
         tags: ["ceo", "full-team", "meeting", "q-a"],
         upvotes: 27,
@@ -765,7 +765,7 @@ export const forumPosts = [
             {
                 id: 263,
                 author: "manager1@make-it-all.co.uk",
-                text: "@Gabe Itch - Yes, if they are using a public-facing key. Please check and file a ticket if needed.",
+                text: "@Holly Day - Yes, if they are using a public-facing key. Please check and file a ticket if needed.",
                 timeAgo: "1 day ago",
             },
         ],
@@ -794,7 +794,7 @@ export const forumPosts = [
             {
                 id: 273,
                 author: "hr1@make-it-all.co.uk",
-                text: "@Ben Dover, I'll resend your link right now. Please check your spam folder as well.",
+                text: "@Luke Warm, I'll resend your link right now. Please check your spam folder as well.",
                 timeAgo: "2 days ago",
             },
         ],
@@ -829,7 +829,7 @@ export const forumPosts = [
             {
                 id: 212,
                 author: "hr1@make-it-all.co.uk",
-                text: "Yes, @Ben Dover, the invitations will confirm that partners (plus-ones) are welcome!",
+                text: "Yes, @Luke Warm, the invitations will confirm that partners (plus-ones) are welcome!",
                 timeAgo: "18 hours ago",
             },
         ],
@@ -997,7 +997,7 @@ export const forumPosts = [
             {
                 id: 203,
                 author: "hr1@make-it-all.co.uk",
-                text: "@Phil McCracken, yes this is a new change to encourage everyone to use their well-deserved time off within the year.",
+                text: "@Phil McCan, yes this is a new change to encourage everyone to use their well-deserved time off within the year.",
                 timeAgo: "2 hours ago",
             },
         ],
@@ -1321,7 +1321,7 @@ export const forumPosts = [
         preview:
             "The automated deployment to the 'staging' environment just failed. The build log shows a 'Module not found' error...",
         content:
-            "The automated deployment to the 'staging' environment just failed.\n\nThe build log shows a 'Module not found' error. This seems to be related to the 'feature/JIRA-456' branch merge from @employee1@make-it-all.co.uk.\n\nCan you take a look? This is blocking QA.",
+            "The automated deployment to the 'staging' environment just failed.\n\nThe build log shows a 'Module not found' error. This seems to be related to the 'feature/JIRA-456' branch merge from employee1@make-it-all.co.uk.\n\nCan you take a look? This is blocking QA.",
         timeAgo: "4 hours ago",
         tags: ["devops", "ci-cd", "build-failed", "staging"],
         upvotes: 3,
@@ -1407,7 +1407,7 @@ export const forumPosts = [
             {
                 id: 271,
                 author: "hr1@make-it-all.co.uk",
-                text: "No problem @Phil McCracken, got one for you.",
+                text: "No problem @Phil McCan, got one for you.",
                 timeAgo: "1 hour ago",
             },
         ],
@@ -1468,7 +1468,7 @@ export const forumPosts = [
             {
                 id: 258,
                 author: "manager1@make-it-all.co.uk",
-                text: "Got it. Thanks, Gabe.",
+                text: "Got it. Thanks, Ben.",
                 timeAgo: "1 hour ago",
             },
         ],
@@ -1517,7 +1517,7 @@ export const forumPosts = [
         preview:
             "URGENT: The production database 'PROD-DB-01' appears to be in a read-only state. All 'INSERT' and 'UPDATE' queries are failing...",
         content:
-            "**URGENT: The production database 'PROD-DB-01' appears to be in a read-only state.**\n\nAll 'INSERT' and 'UPDATE' queries are failing with 'Error: Database is read-only'.\n\nThis is affecting all new user signups and data submissions.\n\nPaging IT and @manager2@make-it-all.co.uk.",
+            "**URGENT: The production database 'PROD-DB-01' appears to be in a read-only state.**\n\nAll 'INSERT' and 'UPDATE' queries are failing with 'Error: Database is read-only'.\n\nThis is affecting all new user signups and data submissions.\n\nPaging IT and manager2@make-it-all.co.uk.",
         timeAgo: "25 minutes ago",
         tags: ["urgent", "db", "outage", "production", "it"],
         upvotes: 16,
@@ -1552,7 +1552,7 @@ export const forumPosts = [
         preview:
             "Thank you to everyone who participated in our amazing Halloween costume contest today! The competition was fierce, but the...",
         content:
-            "Thank you to everyone who participated in our amazing Halloween costume contest today! The competition was fierce, but the votes are in:\n\n**1st Place:** Ben Dover (@employee2@make-it-all.co.uk) as 'Server Rack on Fire'\n**2nd Place:** Anita Bath (@employee3@make-it-all.co.uk) as 'Rosie the Riveter'\n**3rd Place:** Gabe Itch (@employee1@make-it-all.co.uk) as 'SQL Injection Query'\n\nWinners, please see HR to claim your prizes! Great job, everyone!",
+            "Thank you to everyone who participated in our amazing Halloween costume contest today! The competition was fierce, but the votes are in:\n\n**1st Place:** Luke Warm (@employee2@make-it-all.co.uk) as 'Server Rack on Fire'\n**2nd Place:** Anita Bath (@employee3@make-it-all.co.uk) as 'Rosie the Riveter'\n**3rd Place:** Holly Day (@employee1@make-it-all.co.uk) as 'SQL Injection Query'\n\nWinners, please see HR to claim your prizes! Great job, everyone!",
         timeAgo: "Just now",
         tags: ["social", "event", "halloween", "party", "hr"],
         upvotes: 47,
@@ -1567,7 +1567,7 @@ export const forumPosts = [
             {
                 id: 285,
                 author: "employee1@make-it-all.co.uk",
-                text: "Congrats Ben! That costume was hilarious.",
+                text: "Congrats Holly! That costume was hilarious.",
                 timeAgo: "Just now",
             },
         ],
