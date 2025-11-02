@@ -7,7 +7,6 @@ import Link from "next/link";
 
 export default function UrlForm() {
 	const [name, setName] = React.useState("");
-	const [gender, setGender] = React.useState("");
 	const [email, setEmail] = React.useState("");
 	const [password, setPassword] = React.useState("");
 	const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -16,15 +15,8 @@ export default function UrlForm() {
 	const [showPassword, setShowPassword] = React.useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
 
+	// 🔍 Live validation logic
 	const validateForm = () => {
-		if (!name.trim()) {
-			setError("Please enter your name.");
-			return false;
-		}
-		if (!gender) {
-			setError("Please select your gender.");
-			return false;
-		}
 		if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
 			setError("Please enter a valid email address.");
 			return false;
@@ -47,31 +39,25 @@ export default function UrlForm() {
 
 		setSuccess(true);
 		setError("");
-		console.log({ name, gender, email, password });
+		console.log({ name, email, password });
 
+		// Clear form fields after success
 		setName("");
-		setGender("");
 		setEmail("");
 		setPassword("");
 		setConfirmPassword("");
 
+		// Hide success message after 3 seconds
 		setTimeout(() => setSuccess(false), 3000);
 	};
 
 	return (
 		<div className="w-full flex flex-col items-center">
-			
-			<motion.form
-				initial={{ opacity: 0, rotate: -5 }}
-				animate={{ opacity: 1, rotate: 0 }}
-				transition={{
-					duration: 0.8,
-					ease: "easeOut",
-				}}
-				className="bg-white p-6 rounded-2xl shadow-md w-full max-w-md flex flex-col gap-4 mt-8"
+			<form
 				onSubmit={handleSubmit}
+				className="bg-white p-6 rounded-2xl shadow-md w-full max-w-md flex flex-col gap-4 mt-8"
 			>
-				
+				{/* Name */}
 				<label className="flex flex-col text-sm text-gray-700">
 					Name
 					<div className="relative flex items-center">
@@ -86,47 +72,7 @@ export default function UrlForm() {
 					</div>
 				</label>
 
-				
-				<label className="flex flex-col text-sm text-gray-700">
-					Gender
-					<div className="flex items-center gap-6 mt-1">
-						<label className="flex items-center gap-2">
-							<input
-								type="radio"
-								name="gender"
-								value="male"
-								checked={gender === "male"}
-								onChange={(e) => setGender(e.target.value)}
-								className="text-blue-600 focus:ring-blue-500"
-							/>
-							<span>Male</span>
-						</label>
-						<label className="flex items-center gap-2">
-							<input
-								type="radio"
-								name="gender"
-								value="female"
-								checked={gender === "female"}
-								onChange={(e) => setGender(e.target.value)}
-								className="text-blue-600 focus:ring-blue-500"
-							/>
-							<span>Female</span>
-						</label>
-						<label className="flex items-center gap-2">
-							<input
-								type="radio"
-								name="gender"
-								value="prefer_not_to_say"
-								checked={gender === "prefer_not_to_say"}
-								onChange={(e) => setGender(e.target.value)}
-								className="text-blue-600 focus:ring-blue-500"
-							/>
-							<span>Prefer not to say</span>
-						</label>
-					</div>
-				</label>
-
-				
+				{/* Email */}
 				<label className="flex flex-col text-sm text-gray-700">
 					Email
 					<div className="relative flex items-center">
@@ -145,7 +91,7 @@ export default function UrlForm() {
 					</div>
 				</label>
 
-				
+				{/* Password */}
 				<label className="flex flex-col text-sm text-gray-700">
 					Password
 					<div className="relative flex items-center">
@@ -177,7 +123,7 @@ export default function UrlForm() {
 					</div>
 				</label>
 
-				
+				{/* Confirm Password */}
 				<label className="flex flex-col text-sm text-gray-700">
 					Confirm Password
 					<div className="relative flex items-center">
@@ -207,7 +153,7 @@ export default function UrlForm() {
 					</div>
 				</label>
 
-				
+				{/* Error */}
 				<AnimatePresence>
 					{error && (
 						<motion.p
@@ -221,7 +167,7 @@ export default function UrlForm() {
 					)}
 				</AnimatePresence>
 
-				
+				{/* Already have an account */}
 				<div className="flex justify-end items-center text-xs">
 					<span className="text-gray-600">Already have an account?</span>
 					<Link
@@ -232,16 +178,16 @@ export default function UrlForm() {
 					</Link>
 				</div>
 
-				
+				{/* Submit */}
 				<button
 					type="submit"
 					className="bg-blue-600 hover:bg-blue-700 text-white rounded-md py-2 mt-2 transition-all"
 				>
 					Create Account
 				</button>
-			</motion.form>
+			</form>
 
-			
+			{/* ✨ Animated success message */}
 			<AnimatePresence>
 				{success && (
 					<motion.div
