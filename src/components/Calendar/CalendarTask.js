@@ -17,7 +17,12 @@ export default function CalendarTask({task, startDate, divisions, rangeType, tas
     toIndex = monthsBetween(startDate, task.to);
   }
 
-  toIndex = Math.min(toIndex, divisions);
+  let goesOff = false;
+
+  if (toIndex > divisions) {
+    toIndex = divisions;
+    goesOff = true;
+  }
 
   let left = fromIndex / divisions * 100;
   let width = (toIndex - fromIndex) / divisions * 100;
@@ -37,7 +42,7 @@ export default function CalendarTask({task, startDate, divisions, rangeType, tas
   });
   //bg-gradient-to-r from-green-300 to-green-300
   return (
-    <Card className ={`bg-gradient-to-r from-green-300 to-green-300`} style={{width: width + "%", height: taskWidth, position: "absolute", left: left + "%", top, cursor: "pointer", padding: "5px"}} onClick={taskOnClick? () => taskOnClick(task): ()=>{}}>
+    <Card className ={`bg-gradient-to-r from-green-300 to-green-300`} style={{width: width + "%", height: taskWidth, position: "absolute", left: left + "%", top, cursor: "pointer", padding: "5px", borderRadius: goesOff ? `20px 0px 0px 20px` : `20px 20px 20px 20px`}} onClick={taskOnClick? () => taskOnClick(task): ()=>{}}>
       <h1
         className="truncate dark:text-white"
         style={{

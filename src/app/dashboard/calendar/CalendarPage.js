@@ -9,7 +9,6 @@ export default function CalendarPage({events}) {
     document.title = "Calendar | Make-It-All";
   }, []);
 
-  // Define your color palette
   const colorPalette = [
     "#FFB3BA",
     "#BAE1FF",
@@ -23,7 +22,10 @@ export default function CalendarPage({events}) {
     ...event,
     color: colorPalette[index % colorPalette.length],
   }));
-
+  
+  console.log("hey pls");
+  console.log(events);
+  
   return (
     <div
       style={{
