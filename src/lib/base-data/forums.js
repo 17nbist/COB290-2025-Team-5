@@ -89,7 +89,7 @@ export const forumPosts = [
         preview:
             "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently...",
         content:
-            "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently authorised to view and use these keys.\n\nIf you require access for a new project, please follow these steps:\n1. Submit a request ticket through the IT portal on MakeIToday.\n2. Specify the project name and the exact API you need to access.\n3. Your manager must approve the request.\n\nREMINDER: Do not share API keys over email or in public repositories. They must be stored in environment variables. Any breaches may mean your employement is terminated.",
+            "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently authorised to view and use these keys.\n\nIf you require access for a new project, please follow these steps:\n1. Submit a request ticket through the IT portal on MakeIToday.\n2. Specify the project name and the exact API you need to access.\n3. Your manager must approve the request.\n\nREMINDER: Do not share API keys over email or in public repositories. They must be stored in environment variables. Any breaches may mean your employment is terminated.",
         timeAgo: "3 weeks ago",
         tags: ["api", "help", "keys"],
         upvotes: 15,
@@ -133,7 +133,7 @@ export const forumPosts = [
             {
                 id: 201,
                 author: "hr1@gmail.com",
-                text: "Great programmeme!",
+                text: "Great programme!",
                 timeAgo: "1 week ago",
             },
         ],
@@ -147,7 +147,7 @@ export const forumPosts = [
         preview:
             "Dear Development team, As you all know, Python 2.7 has been out of support for a while. We still have several legacy services running on it. I'm putting...",
         content:
-            "Dear Development team, \n\nAs you all know, Python 2.7 has bbeen out of support for a while. We still have several legacy services (looking at you, 'Legacy-Reporting-Tool') running on it.\n\nI'm putting together a formal plan to migrate these services to Python 3.10+ by the end of Q1 2026.\n\nI've created a tracking ticket on JIRA (TECH-101) and will be assigning tasks to relevant team members. Please add any dependencies or services I might have missed to the JIRA ticket.",
+            "Dear Development team, \n\nAs you all know, Python 2.7 has been out of support for a while. We still have several legacy services (looking at you, 'Legacy-Reporting-Tool') running on it.\n\nI'm putting together a formal plan to migrate these services to Python 3.10+ by the end of Q1 2026.\n\nI've created a tracking ticket on JIRA (TECH-101) and will be assigning tasks to relevant team members. Please add any dependencies or services I might have missed to the JIRA ticket.",
         timeAgo: "2 weeks ago",
         tags: ["python", "deprecation", "dev", "legacy", "planning"],
         upvotes: 10,
@@ -331,7 +331,7 @@ export const forumPosts = [
         preview:
             "Starting next Monday, all teams will be migrating from our old training tracker to 'Momentum'. A reminder that booked in training...",
         content:
-            "Hi all,\n\nStarting next Monday, all teams will be migrating from our old project tracker to 'Momentum'.\n\n**T reminder that booked in training sessions are mandatory** Please sign up for a slot that works for your team:\n- Session 1: Monday, 10:00 AM\n- Session 2: Monday, 2:00 PM\n- Session 3: Tuesday, 10:00 AM\n\n'Momentum' will help us better track deliverables and manage cross-team dependencies. All old projects will be archived by the end of Friday.",
+            "Hi all,\n\nStarting next Monday, all teams will be migrating from our old project tracker to 'Momentum'.\n\n**A reminder that booked in training sessions are mandatory** Please sign up for a slot that works for your team:\n- Session 1: Monday, 10:00 AM\n- Session 2: Monday, 2:00 PM\n- Session 3: Tuesday, 10:00 AM\n\n'Momentum' will help us better track deliverables and manage cross-team dependencies. All old projects will be archived by the end of Friday.",
         timeAgo: "1 week ago",
         tags: ["software", "rollout", "training", "OD"],
         upvotes: 19,
@@ -1232,7 +1232,7 @@ export const forumPosts = [
     },
     {
         id: 50,
-        title: "Reminder: Submit Timesheets by the end of",
+        title: "Reminder: Submit Timesheets by the end of today",
         flair: "non-technical",
         preview:
             "This is a reminder for all direct reports to please submit your weekly timesheets by 5 PM today so I can approve them...",
@@ -1582,7 +1582,7 @@ export const forumPosts = [
       preview:
         "Following a management decision, all staff members will be required to work on-site...",
       content:
-        "Dear all,\n\nFollowing a recent review and a decision by Management, we will be moving to a **full-time on-site working model** with effect from **Monday 1 December 2025**.\n\nFrom that date, all staff members are required to be on-site **five days per week**. Remote working will no longer be the default arrangement except where a formal reasonable adjustment or other exceptional business need has been agreed in advance with your line manager and HR.\n\nPlease note:\n- Normal office hours should be adhered to unless otherwise agreed with your manager.\n- Desk booking is available via MakeIToday > Facilities > Desk Booking.\n- If you believe you require a reasonable adjustment or have exceptional circumstances, speak to your line manager and HR immediately so this can be considered.\n\nNon-compliance with this requirement will be treated seriously and may result in disciplinary action up to and including termination of your employement in accordance with our disciplinary procedure.\n\nWe appreciate everyone’s co-operation during this change. If you have any questions, please contact HR.\n\nKind regards,\nKaren (HR Office)",
+        "Dear all,\n\nFollowing a recent review and a decision by Management, we will be moving to a **full-time on-site working model** with effect from **Monday 1 December 2025**.\n\nFrom that date, all staff members are required to be on-site **five days per week**. Remote working will no longer be the default arrangement except where a formal reasonable adjustment or other exceptional business need has been agreed in advance with your line manager and HR.\n\nPlease note:\n- Normal office hours should be adhered to unless otherwise agreed with your manager.\n- Desk booking is available via MakeIToday > Facilities > Desk Booking.\n- If you believe you require a reasonable adjustment or have exceptional circumstances, speak to your line manager and HR immediately so this can be considered.\n\nNon-compliance with this requirement will be treated seriously and may result in disciplinary action up to and including termination of your employment in accordance with our disciplinary procedure.\n\nWe appreciate everyone’s co-operation during this change. If you have any questions, please contact HR.\n\nKind regards,\nKaren (HR Office)",
       timeAgo: "2 hours ago",
       tags: ["hr", "policy", "rto", "dismissal", "mandatory"],
       upvotes: 11,
