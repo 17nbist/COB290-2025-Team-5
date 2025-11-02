@@ -181,7 +181,7 @@ export const requests = {
             preview:
                 "Hi HR, I would like to add my newborn to my private health insurance plan. What documentation...",
             content:
-                "Hi HR,\n\nI would like to add my newborn to my private ealth insurance plan. What documentation do I need to provide? This is a qualifying life event.\n\nThanks,\nAnita",
+                "Hi HR,\n\nI would like to add my newborn to my private health insurance plan. What documentation do I need to provide? This is a qualifying life event.\n\nThanks,\nAnita",
             timeAgo: "3 days ago",
             highPriority: true,
             type: "Outgoing",
