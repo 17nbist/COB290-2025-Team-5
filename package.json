@@ -16,6 +16,7 @@
     "@mui/material": "^7.3.4",
     "@mui/x-charts": "^8.14.1",
     "chart.js": "^4.5.1",
+    "critters": "^0.0.23",
     "framer-motion": "^12.23.24",
     "genai": "^0.0.18",
     "lightningcss": "^1.30.2",
