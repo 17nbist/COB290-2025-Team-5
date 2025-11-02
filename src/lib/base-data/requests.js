@@ -10,7 +10,7 @@ export const requests = {
             timeAgo: "2 hours ago",
             highPriority: true,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "employee1@gmail.com",
         },
         {
             id: 2,
@@ -22,7 +22,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Outgoing",
-            author: "admin@gmail.com",
+            author: "manager1@gmail.com",
         },
         {
             id: 3,
@@ -34,7 +34,7 @@ export const requests = {
             timeAgo: "3 days ago",
             highPriority: false,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "hr1@gmail.com",
         },
     ],
     "ceo@gmail.com": [
@@ -48,7 +48,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: true,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "manager1@gmail.com",
         },
         {
             id: 5,
@@ -60,7 +60,7 @@ export const requests = {
             timeAgo: "2 days ago",
             highPriority: false,
             type: "Draft",
-            author: "admin@gmail.com",
+            author: "ceo@gmail.com",
         },
         {
             id: 6,
@@ -72,7 +72,7 @@ export const requests = {
             timeAgo: "4 days ago",
             highPriority: false,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "hr1@gmail.com",
         },
     ],
     "employee1@gmail.com": [
@@ -86,7 +86,7 @@ export const requests = {
             timeAgo: "3 hours ago",
             highPriority: false,
             type: "Outgoing",
-            author: "admin@gmail.com",
+            author: "employee1@gmail.com",
         },
         {
             id: 8,
@@ -98,7 +98,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "manager2@gmail.com",
         },
         {
             id: 9,
@@ -110,7 +110,7 @@ export const requests = {
             timeAgo: "5 days ago",
             highPriority: false,
             type: "Outgoing",
-            author: "admin@gmail.com",
+            author: "employee1@gmail.com",
         },
     ],
     "manager2@gmail.com": [
@@ -136,7 +136,7 @@ export const requests = {
             timeAgo: "2 days ago",
             highPriority: false,
             type: "Outgoing",
-            author: "admin@gmail.com",
+            author: "manager2@gmail.com",
         },
         {
             id: 12,
@@ -148,7 +148,7 @@ export const requests = {
             timeAgo: "6 days ago",
             highPriority: false,
             type: "Draft",
-            author: "admin@gmail.com",
+            author: "manager2@gmail.com",
         },
     ],
     "employee2@gmail.com": [
@@ -162,7 +162,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Outgoing",
-            author: "admin@gmail.com",
+            author: "employee2@gmail.com",
         },
         {
             id: 14,
@@ -174,7 +174,7 @@ export const requests = {
             timeAgo: "Just now",
             highPriority: false,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "manager2@gmail.com",
         },
         {
             id: 15,
@@ -186,7 +186,7 @@ export const requests = {
             timeAgo: "4 days ago",
             highPriority: false,
             type: "Outgoing",
-            author: "admin@gmail.com",
+            author: "employee2@gmail.com",
         },
     ],
     "employee3@gmail.com": [
@@ -200,7 +200,7 @@ export const requests = {
             timeAgo: "3 days ago",
             highPriority: true,
             type: "Outgoing",
-            author: "admin@gmail.com",
+            author: "employee3@gmail.com",
         },
         {
             id: 17,
@@ -212,7 +212,7 @@ export const requests = {
             timeAgo: "2 days ago",
             highPriority: false,
             type: "Outgoing",
-            author: "admin@gmail.com",
+            author: "employee3@gmail.com",
         },
         {
             id: 18,
@@ -224,7 +224,7 @@ export const requests = {
             timeAgo: "3 days ago",
             highPriority: false,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "manager1@gmail.com",
         },
     ],
     "employee4@gmail.com": [
@@ -238,7 +238,7 @@ export const requests = {
             timeAgo: "46 minutes ago",
             highPriority: true,
             type: "Outgoing",
-            author: "admin@gmail.com",
+            author: "employee4@gmail.com",
         },
         {
             id: 20,
@@ -250,7 +250,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "it@gmail.com",
         },
         {
             id: 21,
@@ -262,7 +262,7 @@ export const requests = {
             timeAgo: "1 month ago",
             highPriority: true,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "hr1@gmail.com",
         },
     ],
     "hr1@gmail.com": [
@@ -276,7 +276,7 @@ export const requests = {
             timeAgo: "5 days ago",
             highPriority: false,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "employee3@gmail.com",
         },
         {
             id: 23,
@@ -288,7 +288,7 @@ export const requests = {
             timeAgo: "2 days ago",
             highPriority: false,
             type: "Outgoing",
-            author: "admin@gmail.com",
+            author: "hr1@gmail.com",
         },
         {
             id: 24,
@@ -300,7 +300,7 @@ export const requests = {
             timeAgo: "3 days ago",
             highPriority: true,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "employee3@gmail.com",
         },
         {
             id: 25,
@@ -312,7 +312,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Draft",
-            author: "admin@gmail.com",
+            author: "hr1@gmail.com",
         },
     ],
 };
