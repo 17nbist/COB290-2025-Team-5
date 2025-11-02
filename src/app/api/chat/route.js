@@ -73,11 +73,8 @@ export async function POST(request) {
 
     // Initialize the Gemini API
     console.log("[ROUTE] Initializing Gemini API");
-    const genAI = new GoogleGenerativeAI(apiKey);
-    console.log("[ROUTE] GoogleGenerativeAI instance created");
-
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    console.log("[ROUTE] Model obtained: gemini-pro");
+    const genAI = new GoogleGenAI({ apiKey });
+    console.log("[ROUTE] GoogleGenAI instance created");
 
     // Find relevant posts instead of sending all posts
     console.log("[ROUTE] Searching for relevant forum posts");
@@ -111,7 +108,7 @@ export async function POST(request) {
     console.log("[ROUTE] Forum context prepared with", forumContext.length, "posts");
 
     // Create a strict system context that only answers questions about forum data
-    const systemContext = `You are a forum assistant AI for Make-It-All company forum.
+    const systemInstruction = `You are a forum assistant AI for Make-It-All company forum.
 
 IMPORTANT RULES:
 1. You can ONLY answer questions based on the forum data provided below.
@@ -123,21 +120,22 @@ IMPORTANT RULES:
 RELEVANT FORUM POSTS (from ${forumPosts.length} total posts):
 ${JSON.stringify(forumContext, null, 2)}
 
-User question: ${message}
-
 Please provide a helpful response based ONLY on the forum data above. If the question cannot be answered from the forum data, politely explain that you can only answer questions about the Make-It-All forum content.`;
 
-    console.log("[ROUTE] System context created, character count:", systemContext.length);
+    console.log("[ROUTE] System instruction created, character count:", systemInstruction.length);
 
     // Generate response
     console.log("[ROUTE] Calling Gemini API generateContent");
-    const result = await model.generateContent(systemContext);
+    const result = await genAI.models.generateContent({
+      model: "gemini-pro",
+      contents: message,
+      config: {
+        systemInstruction: systemInstruction,
+      }
+    });
     console.log("[ROUTE] Gemini API call completed successfully");
 
-    const response = await result.response;
-    console.log("[ROUTE] Response object retrieved");
-
-    const text = response.text();
+    const text = result.text;
     console.log("[ROUTE] Text extracted, character count:", text.length);
     console.log("[ROUTE] Response preview:", text.substring(0, 100));
 
