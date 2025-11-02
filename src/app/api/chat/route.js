@@ -2,14 +2,14 @@ import { GoogleGenAI } from "@google/genai";
 import { NextResponse } from "next/server";
 import { forumPosts } from "@/lib/base-data/forums";
 
-console.log("🔵 [ROUTE] Module loaded");
+console.log("[ROUTE] Module loaded successfully");
 
 // Helper function to find relevant posts based on user query
 function findRelevantPosts(query, posts, maxPosts = 10) {
-  console.log("🔍 [FIND_POSTS] Starting search for query:", query);
+  console.log("[FIND_POSTS] Starting search for query:", query);
   const queryLower = query.toLowerCase();
   const keywords = queryLower.split(/\s+/).filter(word => word.length > 2);
-  console.log("🔍 [FIND_POSTS] Keywords extracted:", keywords);
+  console.log("[FIND_POSTS] Extracted keywords:", keywords);
 
   // Score each post based on keyword matches
   const scoredPosts = posts.map(post => {
@@ -36,20 +36,20 @@ function findRelevantPosts(query, posts, maxPosts = 10) {
     .slice(0, maxPosts)
     .map(item => item.post);
 
-  console.log("🔍 [FIND_POSTS] Found", results.length, "relevant posts");
+  console.log("[FIND_POSTS] Found", results.length, "relevant posts");
   return results;
 }
 
 export async function POST(request) {
-  console.log("🟢 [ROUTE] POST request received");
+  console.log("[ROUTE] POST request received");
 
   try {
-    console.log("📥 [ROUTE] Parsing request body...");
+    console.log("[ROUTE] Parsing request body");
     const { message } = await request.json();
-    console.log("📥 [ROUTE] Message received:", message);
+    console.log("[ROUTE] Message received:", message);
 
     if (!message) {
-      console.log("❌ [ROUTE] No message provided");
+      console.log("[ROUTE] ERROR: No message provided");
       return NextResponse.json(
         { error: "Message is required" },
         { status: 400 }
@@ -57,14 +57,14 @@ export async function POST(request) {
     }
 
     // Check if API key is configured
-    console.log("🔑 [ROUTE] Checking API key...");
+    console.log("[ROUTE] Checking API key configuration");
     const apiKey = process.env.GEMINI_API_KEY;
-    console.log("🔑 [ROUTE] API key exists:", !!apiKey);
-    console.log("🔑 [ROUTE] API key length:", apiKey?.length);
-    console.log("🔑 [ROUTE] API key first 10 chars:", apiKey?.substring(0, 10));
+    console.log("[ROUTE] API key exists:", !!apiKey);
+    console.log("[ROUTE] API key length:", apiKey?.length);
+    console.log("[ROUTE] API key prefix:", apiKey?.substring(0, 10));
 
     if (!apiKey) {
-      console.log("❌ [ROUTE] API key not configured");
+      console.log("[ROUTE] ERROR: API key not configured");
       return NextResponse.json(
         { error: "Gemini API key not configured. Please add GEMINI_API_KEY to your .env.local file." },
         { status: 500 }
@@ -72,20 +72,20 @@ export async function POST(request) {
     }
 
     // Initialize the Gemini API
-    console.log("🤖 [ROUTE] Initializing Gemini API...");
+    console.log("[ROUTE] Initializing Gemini API");
     const genAI = new GoogleGenerativeAI(apiKey);
-    console.log("🤖 [ROUTE] GoogleGenerativeAI instance created");
+    console.log("[ROUTE] GoogleGenerativeAI instance created");
 
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    console.log("🤖 [ROUTE] Model obtained: gemini-pro");
+    console.log("[ROUTE] Model obtained: gemini-pro");
 
     // Find relevant posts instead of sending all posts
-    console.log("📚 [ROUTE] Finding relevant posts...");
+    console.log("[ROUTE] Searching for relevant forum posts");
     const relevantPosts = findRelevantPosts(message, forumPosts, 15);
-    console.log("📚 [ROUTE] Relevant posts count:", relevantPosts.length);
+    console.log("[ROUTE] Relevant posts count:", relevantPosts.length);
 
     // Prepare forum data for context - only relevant posts
-    console.log("📦 [ROUTE] Preparing forum context...");
+    console.log("[ROUTE] Preparing forum context");
     const forumContext = relevantPosts.length > 0
       ? relevantPosts.map(post => ({
         id: post.id,
@@ -108,7 +108,7 @@ export async function POST(request) {
         comments: post.comments.slice(0, 5).map(c => ({ author: c.author, text: c.text }))
       }));
 
-    console.log("📦 [ROUTE] Forum context prepared with", forumContext.length, "posts");
+    console.log("[ROUTE] Forum context prepared with", forumContext.length, "posts");
 
     // Create a strict system context that only answers questions about forum data
     const systemContext = `You are a forum assistant AI for Make-It-All company forum.
@@ -127,28 +127,28 @@ User question: ${message}
 
 Please provide a helpful response based ONLY on the forum data above. If the question cannot be answered from the forum data, politely explain that you can only answer questions about the Make-It-All forum content.`;
 
-    console.log("📝 [ROUTE] System context created, length:", systemContext.length);
+    console.log("[ROUTE] System context created, character count:", systemContext.length);
 
     // Generate response
-    console.log("🚀 [ROUTE] Calling Gemini API...");
+    console.log("[ROUTE] Calling Gemini API generateContent");
     const result = await model.generateContent(systemContext);
-    console.log("✅ [ROUTE] Gemini API call successful");
+    console.log("[ROUTE] Gemini API call completed successfully");
 
     const response = await result.response;
-    console.log("✅ [ROUTE] Response received");
+    console.log("[ROUTE] Response object retrieved");
 
     const text = response.text();
-    console.log("✅ [ROUTE] Text extracted, length:", text.length);
-    console.log("📤 [ROUTE] Response preview:", text.substring(0, 100));
+    console.log("[ROUTE] Text extracted, character count:", text.length);
+    console.log("[ROUTE] Response preview:", text.substring(0, 100));
 
-    console.log("🎉 [ROUTE] Sending successful response");
+    console.log("[ROUTE] Sending successful response to client");
     return NextResponse.json({ message: text });
   } catch (error) {
-    console.error("❌❌❌ [ROUTE] ERROR CAUGHT ❌❌❌");
-    console.error("❌ [ROUTE] Error type:", error.constructor.name);
-    console.error("❌ [ROUTE] Error message:", error.message);
-    console.error("❌ [ROUTE] Error stack:", error.stack);
-    console.error("❌ [ROUTE] Full error object:", JSON.stringify(error, null, 2));
+    console.error("[ROUTE] CRITICAL ERROR CAUGHT");
+    console.error("[ROUTE] Error type:", error.constructor.name);
+    console.error("[ROUTE] Error message:", error.message);
+    console.error("[ROUTE] Error stack:", error.stack);
+    console.error("[ROUTE] Full error object:", JSON.stringify(error, null, 2));
 
     return NextResponse.json(
       { error: "Failed to generate response. Please try again." },

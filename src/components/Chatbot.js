@@ -2,10 +2,10 @@
 import { useState, useRef, useEffect } from "react";
 import { FaRobot, FaTimes, FaPaperPlane } from "react-icons/fa";
 
-console.log("🔵 [CHATBOT] Component loaded");
+console.log("[CHATBOT] Component module loaded");
 
 export default function Chatbot() {
-  console.log("🟢 [CHATBOT] Component rendering");
+  console.log("[CHATBOT] Component rendering");
 
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -20,39 +20,39 @@ export default function Chatbot() {
   };
 
   useEffect(() => {
-    console.log("📜 [CHATBOT] Messages updated, count:", messages.length);
+    console.log("[CHATBOT] Messages state updated, total count:", messages.length);
     scrollToBottom();
   }, [messages]);
 
   const handleSend = async () => {
-    console.log("🚀 [CHATBOT] handleSend called");
-    console.log("🚀 [CHATBOT] Input value:", input);
-    console.log("🚀 [CHATBOT] isLoading:", isLoading);
+    console.log("[CHATBOT] handleSend function called");
+    console.log("[CHATBOT] Current input value:", input);
+    console.log("[CHATBOT] Current loading state:", isLoading);
 
     if (!input.trim() || isLoading) {
-      console.log("⚠️ [CHATBOT] Skipping send - empty input or already loading");
+      console.log("[CHATBOT] Send operation skipped - empty input or already loading");
       return;
     }
 
     const userMessage = input.trim();
-    console.log("📤 [CHATBOT] Sending message:", userMessage);
+    console.log("[CHATBOT] Preparing to send message:", userMessage);
 
     setInput("");
-    console.log("🧹 [CHATBOT] Input cleared");
+    console.log("[CHATBOT] Input field cleared");
 
     setMessages(prev => {
       const newMessages = [...prev, { role: "user", content: userMessage }];
-      console.log("📝 [CHATBOT] User message added to state");
+      console.log("[CHATBOT] User message added to messages array");
       return newMessages;
     });
 
     setIsLoading(true);
-    console.log("⏳ [CHATBOT] Loading state set to true");
+    console.log("[CHATBOT] Loading state set to true");
 
     try {
-      console.log("🌐 [CHATBOT] Starting fetch to /api/chat");
+      console.log("[CHATBOT] Initiating HTTP fetch to /api/chat");
       const fetchPayload = { message: userMessage };
-      console.log("📦 [CHATBOT] Fetch payload:", JSON.stringify(fetchPayload));
+      console.log("[CHATBOT] Request payload:", JSON.stringify(fetchPayload));
 
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -62,52 +62,52 @@ export default function Chatbot() {
         body: JSON.stringify(fetchPayload),
       });
 
-      console.log("📡 [CHATBOT] Response received");
-      console.log("📡 [CHATBOT] Response status:", response.status);
-      console.log("📡 [CHATBOT] Response statusText:", response.statusText);
-      console.log("📡 [CHATBOT] Response ok:", response.ok);
-      console.log("📡 [CHATBOT] Response headers:", Object.fromEntries(response.headers.entries()));
+      console.log("[CHATBOT] HTTP response received");
+      console.log("[CHATBOT] Response status code:", response.status);
+      console.log("[CHATBOT] Response status text:", response.statusText);
+      console.log("[CHATBOT] Response ok flag:", response.ok);
+      console.log("[CHATBOT] Response headers:", Object.fromEntries(response.headers.entries()));
 
       if (!response.ok) {
-        console.error("❌ [CHATBOT] Response not OK");
+        console.error("[CHATBOT] ERROR: Response status not OK");
         const errorText = await response.text();
-        console.error("❌ [CHATBOT] Error response body:", errorText);
+        console.error("[CHATBOT] Error response body:", errorText);
         throw new Error(`Failed to get response: ${response.status} ${response.statusText}`);
       }
 
-      console.log("📥 [CHATBOT] Parsing JSON response...");
+      console.log("[CHATBOT] Parsing response JSON");
       const data = await response.json();
-      console.log("📥 [CHATBOT] Response data:", data);
-      console.log("📥 [CHATBOT] Response message length:", data.message?.length);
+      console.log("[CHATBOT] Parsed response data:", data);
+      console.log("[CHATBOT] Response message character count:", data.message?.length);
 
       setMessages(prev => {
         const newMessages = [...prev, { role: "assistant", content: data.message }];
-        console.log("✅ [CHATBOT] Assistant message added to state");
+        console.log("[CHATBOT] Assistant message added to messages array");
         return newMessages;
       });
 
-      console.log("🎉 [CHATBOT] Message successfully processed");
+      console.log("[CHATBOT] Message processing completed successfully");
     } catch (error) {
-      console.error("❌❌❌ [CHATBOT] ERROR CAUGHT ❌❌❌");
-      console.error("❌ [CHATBOT] Error type:", error.constructor.name);
-      console.error("❌ [CHATBOT] Error message:", error.message);
-      console.error("❌ [CHATBOT] Error stack:", error.stack);
+      console.error("[CHATBOT] CRITICAL ERROR CAUGHT IN handleSend");
+      console.error("[CHATBOT] Error constructor name:", error.constructor.name);
+      console.error("[CHATBOT] Error message:", error.message);
+      console.error("[CHATBOT] Error stack trace:", error.stack);
 
       setMessages(prev => {
         const errorMessage = { role: "assistant", content: "Sorry, I encountered an error. Please try again." };
-        console.log("⚠️ [CHATBOT] Error message added to state");
+        console.log("[CHATBOT] Error message added to messages array");
         return [...prev, errorMessage];
       });
     } finally {
       setIsLoading(false);
-      console.log("✅ [CHATBOT] Loading state set to false");
+      console.log("[CHATBOT] Loading state set to false");
     }
   };
 
   const handleKeyPress = (e) => {
-    console.log("⌨️ [CHATBOT] Key pressed:", e.key, "shiftKey:", e.shiftKey);
+    console.log("[CHATBOT] Keyboard event detected - key:", e.key, "shiftKey:", e.shiftKey);
     if (e.key === "Enter" && !e.shiftKey) {
-      console.log("⌨️ [CHATBOT] Enter key detected, calling handleSend");
+      console.log("[CHATBOT] Enter key pressed without shift - calling handleSend");
       e.preventDefault();
       handleSend();
     }
