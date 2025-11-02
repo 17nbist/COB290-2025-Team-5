@@ -1435,9 +1435,9 @@ export const forumPosts = [
         title: "Weekly Guest WiFi Code - Week 46",
         flair: "technical",
         preview:
-            "Here is the guest WiFi password for Week 46. Please use this for all visitors and non-corporate devices...",
+            "Here is the guest WiFi code for Week 46. Please use this for all visitors and non-corporate devices...",
         content:
-            "Here is the guest WiFi password for Week 46.\n\nPlease use this for all visitors and non-corporate devices.\n\nGuest WiFi Network: Make-It-All_Guest\nCode for Week 46: 3295",
+            "Here is the guest WiFi code for Week 46.\n\nPlease use this for all visitors and non-corporate devices.\n\nGuest WiFi Network: Make-It-All_Guest\nCode for Week 46: 3295",
         timeAgo: "2 hours ago",
         tags: ["wifi", "tech", "visitors"],
         upvotes: 8,
