@@ -4,9 +4,9 @@ export const requests = {
             id: 1,
             title: "Vacation Approval: Gabe Itch (Nov 10-14)",
             preview:
-                "Gabe Itch has submitted a request for 5 days of PTO from November 10th to November 14th...",
+                "Gabe Itch has submitted a request for 5 days of annual leave from November 10th to November 14th...",
             content:
-                "Gabe Itch has submitted a request for 5 days of PTO from November 10th to November 14th.\n\nReason: Personal time\n\nTeam coverage is already arranged. Please approve by EOD.",
+                "Gabe Itch has submitted a request for 5 days of annual leave from November 10th to November 14th.\n\nReason: Personal time\n\nTeam coverage is already arranged. Please approve by the end of the day.",
             timeAgo: "2 hours ago",
             highPriority: true,
             type: "Incoming",
@@ -28,9 +28,9 @@ export const requests = {
             id: 3,
             title: "Performance Review: Anita Bath",
             preview:
-                "Reminder: The 90-day performance review for Anita Bath is due by EOD Friday. Please complete...",
+                "Reminder: The 90-day performance review for Anita Bath is due by the end of Friday. Please complete...",
             content:
-                "Reminder: The 90-day performance review for Anita Bath is due by EOD Friday. Please complete the review in the HR portal.",
+                "Reminder: The 90-day performance review for Anita Bath is due by the end of Friday. Please complete the review in the HR portal.",
             timeAgo: "3 days ago",
             highPriority: false,
             type: "Incoming",
@@ -52,7 +52,7 @@ export const requests = {
         },
         {
             id: 5,
-            title: "Board Meeting Prep - Q3 Deck",
+            title: "Board Meeting Prep - Q3 Slides",
             preview:
                 "Drafting the presentation for the quarterly board meeting. Need final sales numbers...",
             content:
@@ -80,9 +80,9 @@ export const requests = {
             id: 7,
             title: "Vacation Request: Nov 10-14",
             preview:
-                "Submitting a PTO request for 5 days in November. I will coordinate with the team...",
+                "Submitting an annual leave request for 5 days in November. I will coordinate with the team...",
             content:
-                "Submitting a PTO request for 5 days in November (10th-14th).\n\nI will coordinate with the team to ensure all my duties are covered during my absence. Thanks!",
+                "Submitting an annual leave request for 5 days in November (10th-14th).\n\nI will coordinate with the team to ensure all my duties are covered during my absence. Thanks!",
             timeAgo: "3 hours ago",
             highPriority: false,
             type: "Outgoing",
@@ -102,11 +102,11 @@ export const requests = {
         },
         {
             id: 9,
-            title: "Question about 401k matching",
+            title: "Question about pension contributions",
             preview:
-                "Hi HR, I had a question about the company's 401k matching policy. I couldn't find...",
+                "Hi HR, I had a question about the company's pension contribution policy. I couldn't find...",
             content:
-                "Hi HR,\n\nI had a question about the company's 401k matching policy. I couldn't find the details on the intranet. Can you let me know what the current match percentage is?",
+                "Hi HR,\n\nI had a question about the company's pension contribution policy. I couldn't find the details on the intranet. Can you let me know if the company offers a favourable percentage above the legal minimum?",
             timeAgo: "5 days ago",
             highPriority: false,
             type: "Outgoing",
@@ -132,7 +132,7 @@ export const requests = {
             preview:
                 "Requesting 5 Pro licenses for 'Code-Analyzer' for the senior dev team. This will help us...",
             content:
-                "Requesting 5 Pro licenses for 'Code-Analyzer' for the senior dev team.\n\nThis will help us enforce new logging standards and reduce tech debt.\n\nCost: $99/user/year.\n\nSubmitted to IT for processing.",
+                "Requesting 5 Pro licenses for 'Code-Analyzer' for the senior dev team.\n\nThis will help us enforce new logging standards and reduce tech debt.\n\nCost: £89/user/year.\n\nSubmitted to IT for processing.",
             timeAgo: "2 days ago",
             highPriority: false,
             type: "Outgoing",
@@ -154,7 +154,7 @@ export const requests = {
     "employee2@gmail.com": [
         {
             id: 13,
-            title: "My laptop is running slow",
+            title: "My Macbook Pro is running slow",
             preview:
                 "Hi, my MacBook Pro has been extremely slow all week. The fan is always on, even when...",
             content:
@@ -170,7 +170,7 @@ export const requests = {
             preview:
                 "Congratulations on winning 1st Place! Please stop by the HR desk to claim your prize...",
             content:
-                "Congratulations on winning 1st Place for your 'Server Rack on Fire' costume! Please stop by the HR desk to claim your prize (a $100 gift card).",
+                "Congratulations on winning 1st Place for your 'Server Rack on Fire' costume! Please stop by the HR desk to claim your prize (a £100 high street card).",
             timeAgo: "Just now",
             highPriority: false,
             type: "Incoming",
@@ -182,7 +182,7 @@ export const requests = {
             preview:
                 "Submitting a request to work from home next Wednesday (Nov 5th) for a dentist appointment...",
             content:
-                "Submitting a request to work from home next Wednesday (Nov 5th) for a dentist appointment in the morning. I will be online by 11 AM.",
+                "Hello, I would like to request to work from home next Wednesday (Nov 5th) for a dentist appointment in the morning. I will be online by 11 AM.",
             timeAgo: "4 days ago",
             highPriority: false,
             type: "Outgoing",
@@ -194,9 +194,9 @@ export const requests = {
             id: 16,
             title: "Benefits update - new dependent",
             preview:
-                "Hi HR, I need to add my newborn to my health insurance plan. What documentation...",
+                "Hi HR, I would like to add my newborn to my private health insurance plan. What documentation...",
             content:
-                "Hi HR,\n\nI need to add my newborn to my health insurance plan. What documentation do I need to provide? This is a qualifying life event.\n\nThanks,\nAnita",
+                "Hi HR,\n\nI would like to add my newborn to my private health insurance plan. What documentation do I need to provide? This is a qualifying life event.\n\nThanks,\nAnita",
             timeAgo: "3 days ago",
             highPriority: true,
             type: "Outgoing",
@@ -246,7 +246,7 @@ export const requests = {
             preview:
                 "Your new M2 MacBook Pro is ready for pickup. We've installed the standard dev toolkit...",
             content:
-                "Your new M2 MacBook Pro is ready for pickup. We've installed the standard dev toolkit, Docker, and VPN client. Please see IT on the 4th floor to grab it.",
+                "Your new M2 MacBook Pro is ready for pickup. We've installed the standard dev toolkit, Docker, and VPN client. Please see IT on the 4th floor to collect it.",
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Incoming",
@@ -258,7 +258,7 @@ export const requests = {
             preview:
                 "Hi Phil, welcome to the team! This is a reminder to complete your I-9 and benefits enrollment...",
             content:
-                "Hi Phil, welcome to the team!\n\nThis is a reminder to complete your I-9 verification and benefits enrollment by EOD Friday. Please see Karen in HR.",
+                "Hi Phil, welcome to the team!\n\nThis is a reminder to complete your I-9 verification and benefits enrollment by the end of Friday. Please see Karen in HR.",
             timeAgo: "1 month ago",
             highPriority: true,
             type: "Incoming",
@@ -268,11 +268,11 @@ export const requests = {
     "hr1@gmail.com": [
         {
             id: 22,
-            title: "Question about 401k matching",
+            title: "Question about pension contributions",
             preview:
-                "Hi HR, I had a question about the company's 401k matching policy. I couldn't find...",
+                "Hi HR, I had a question about the company's pension contribution policy. I couldn't find...",
             content:
-                "Hi HR,\n\nI had a question about the company's 401k matching policy. I couldn't find the details on the intranet. Can you let me know what the current match percentage is?",
+                "Hi HR,\n\nI had a question about the company's pension contribution policy. I couldn't find the details on the intranet. Can you let me know if the company offers a favourable percentage above the legal minimum?",
             timeAgo: "5 days ago",
             highPriority: false,
             type: "Incoming",
@@ -294,9 +294,9 @@ export const requests = {
             id: 24,
             title: "Benefits update - new dependent",
             preview:
-                "Hi HR, I need to add my newborn to my health insurance plan. What documentation...",
+                "Hi HR, I would like to add my newborn to my private health insurance plan. What documentation...",
             content:
-                "Hi HR,\n\nI need to add my newborn to my health insurance plan. What documentation do I need to provide? This is a qualifying life event.\n\nThanks,\nAnita",
+                "Hi HR,\n\nI would like to add my newborn to my private health insurance plan. What documentation do I need to provide? This is a qualifying life event.\n\nThanks,\nAnita",
             timeAgo: "3 days ago",
             highPriority: true,
             type: "Incoming",
@@ -304,11 +304,11 @@ export const requests = {
         },
         {
             id: 25,
-            title: "Draft: Updated 2026 PTO Policy",
+            title: "Draft: Updated 2026 annual leave Policy",
             preview:
-                "Drafting the new 2026 PTO policy. Key changes: Capped rollover at 5 days. Added...",
+                "Drafting the new 2026 annual leave policy. Key changes: Capped rollover at 5 days. Added...",
             content:
-                "Drafting the new 2026 PTO policy.\n\nKey changes:\n- Capped rollover at 5 days (down from 10).\n- Added 2 'wellness days' for all employees.\n- New 2-week advance notice requirement for requests.\n\nNeed to send to CEO for approval.",
+                "Drafting the new 2026 annual leave policy.\n\nKey changes:\n- Capped rollover at 5 days (down from 10).\n- Added 2 'wellness days' for all employees.\n- New 2-week advance notice requirement for requests.\n\nNeed to send to CEO for approval.",
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Draft",
