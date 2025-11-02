@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { FaRobot, FaTimes, FaPaperPlane } from "react-icons/fa";
+import ReactMarkdown from "react-markdown";
 
 console.log("[CHATBOT] Component module loaded");
 
@@ -152,13 +153,18 @@ export default function Chatbot() {
                 className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[80%] rounded-lg p-3 ${
-                    message.role === "user"
+                  className={`max-w-[80%] rounded-lg p-3 ${message.role === "user"
                       ? "bg-blue-600 text-white"
                       : "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-                  }`}
+                    }`}
                 >
-                  <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  {message.role === "user" ? (
+                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                  ) : (
+                    <ReactMarkdown className="text-sm prose dark:prose-invert">
+                      {message.content}
+                    </ReactMarkdown>
+                  )}
                 </div>
               </div>
             ))}
