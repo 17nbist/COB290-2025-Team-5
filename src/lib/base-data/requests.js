@@ -48,7 +48,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: true,
             type: "Incoming",
-            author: "maanger1@gmail.com",
+            author: "manager1@gmail.com",
         },
         {
             id: 5,
