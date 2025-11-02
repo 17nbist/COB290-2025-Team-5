@@ -1468,7 +1468,7 @@ export const forumPosts = [
             {
                 id: 258,
                 author: "manager1@make-it-all.co.uk",
-                text: "Got it. Thanks, Ben.",
+                text: "Got it. Thanks, Holly.",
                 timeAgo: "1 hour ago",
             },
         ],
