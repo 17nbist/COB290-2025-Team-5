@@ -76,7 +76,7 @@ export const requests = {
             preview:
                 "Submitting a annual leave request for 5 days in November. I will coordinate with the team...",
             content:
-                "Submitting a annual leave request for 5 days in November (10th-14th).\n\nI will coordinate with the team to ensure all my duties are covered during my absence. Thanks!",
+                "Submitting an annual leave request for 5 days in November (10th-14th).\n\nI will coordinate with the team to ensure all my duties are covered during my absence. Thanks!",
             timeAgo: "3 hours ago",
             highPriority: false,
             type: "Outgoing",
