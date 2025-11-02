@@ -1205,7 +1205,7 @@ export const forumPosts = [
         preview:
             "This is a reminder for everyone who travelled or had corporate expenses in October. Please submit your expense reports...",
         content:
-            "This is a reminder for everyone who travelled or had corporate expenses in October.\n\nPlease submit your expense reports through the 'Expense Portal on MakeIToday' portal by the end of today (Oct 31st) to be included in the next payroll run.\n\nManagers, please approve your team's reports by the end of Monday.",
+            "This is a reminder for everyone who travelled or had corporate expenses in October.\n\nPlease submit your expense reports through the 'Expense Portal on MakeIToday' by the end of today (Oct 31st) to be included in the next payroll run.\n\nManagers, please approve your team's reports by the end of Monday.",
         timeAgo: "8 hours ago",
         tags: ["finance", "hr", "expenses", "reminder", "payroll"],
         upvotes: 11,
