@@ -127,7 +127,7 @@ Please provide a helpful response based ONLY on the forum data above. If the que
     // Generate response
     console.log("[ROUTE] Calling Gemini API generateContent");
     const result = await genAI.models.generateContent({
-      model: "gemini-pro",
+      model: "gemini-1.0-pro",
       contents: message,
       config: {
         systemInstruction: systemInstruction,
