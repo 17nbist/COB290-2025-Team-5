@@ -220,7 +220,7 @@ function getRangeText() {
       endDate.setHours(startDate.getHours() + 8);
     }
 
-    if (rangeType === "8h") {
+    if (rangeType == "8h") {
       const dateOpts = {
         weekday: "short",
         month: "short",
@@ -232,6 +232,8 @@ function getRangeText() {
       };
 
       return `${startDate.toLocaleDateString(undefined, dateOpts)} ${startDate.toLocaleTimeString(undefined, timeOpts)} - ${endDate.toLocaleDateString(undefined, dateOpts)} ${endDate.toLocaleTimeString(undefined, timeOpts)}`;
+    } else if (rangeType == "Day") {
+      return startDate.toDateString();
     } else {
       return `${startDate.toDateString()} - ${endDate.toDateString()}`;
     }
