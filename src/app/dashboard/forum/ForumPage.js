@@ -3,6 +3,7 @@ import NavBar from "@/components/NavBar";
 import SearchBar from "@/components/SearchBar";
 import ForumPost from "./ForumPost";
 import CreatePostModal from "./CreatePostModal";
+import Chatbot from "@/components/Chatbot";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/lib/AuthContext";
 import Button from "@/components/Button";
@@ -158,16 +159,17 @@ export default function Forum() {
   };
 
   return (
-    <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-full">
-      <div className="mb-6 flex">
-        <SearchBar onSearch={handleSearch} onAdd={handleAddPost} />
-        <Button
-          outerStyle={{ width: "47px", height: "47px" }}
-          textStyle={{ fontSize: "30px" }}
-          text={"+"}
-          onClick={handleAddPost}
-        />
-      </div>
+    <>
+      <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-full">
+        <div className="mb-6 flex">
+          <SearchBar onSearch={handleSearch} onAdd={handleAddPost} />
+          <Button
+            outerStyle={{ width: "47px", height: "47px" }}
+            textStyle={{ fontSize: "30px" }}
+            text={"+"}
+            onClick={handleAddPost}
+          />
+        </div>
 
       <div className="mb-6">
         <NavBar
@@ -246,6 +248,10 @@ export default function Forum() {
         onSubmit={handleCreatePost}
         userEmail={user?.email}
       />
-    </div>
+      </div>
+
+      {/* AI Chatbot */}
+      <Chatbot />
+    </>
   );
 }
