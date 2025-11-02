@@ -8,9 +8,6 @@ import UrlForm from "./UrlForm";
 export default function RegistrationPage() {
   const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    document.title = "Registration | Make-It-All";
-  }, []);
 
 
   return (
@@ -26,8 +23,16 @@ export default function RegistrationPage() {
         transition={{ duration: 0.4 }}
         className="text-3xl font-bold mb-6 text-blue drop-shadow-lg"
       >
-        Registration
+        Welcome to Make-It-All!
       </motion.h1>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
+        className="mb-4 text-center text-gray-700 drop-shadow-md"
+      >
+        Let's finish setting up your account.
+      </motion.div>
       <UrlForm/>
     </div>
   );
