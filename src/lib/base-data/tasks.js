@@ -56,7 +56,7 @@ const baseTasks = [
         projectId: 0,
         members: [0, 2, 4, 5, 6],
         title: "Lunch vouchers",
-        description: "Order lunch voucher codes from HR", 
+        description: "Order lunch voucher codes from HR",
         from: new Date(2025, 10, 4, 0),
         to: new Date(2025, 10, 9, 20),
         todos: [
