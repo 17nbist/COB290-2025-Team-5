@@ -4,7 +4,7 @@ import { useState } from "react";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 
-export default function TasksPage({ tasks, setTasks }) {
+export default function TasksForm({ tasks, setTasks }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [employeeName, setEmployeeName] = useState([]);
