@@ -17,6 +17,8 @@ export default function CalendarTask({task, startDate, divisions, rangeType, tas
     toIndex = monthsBetween(startDate, task.to);
   }
 
+  toIndex = Math.min(toIndex, divisions);
+
   let left = fromIndex / divisions * 100;
   let width = (toIndex - fromIndex) / divisions * 100;
   

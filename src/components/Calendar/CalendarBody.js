@@ -28,7 +28,7 @@ export default function CalendarBody({tasks, divisions, divisionTitles, rangeTyp
 				))}
 
 				{/* Tasks */}
-				<div style={{ position: "absolute", top: "40px", left: 0, width: `${1*200}px` }}>
+				<div style={{ position: "absolute", top: "40px", left: 0, width: `${divisions*200}px` }}>
 				{tasks.map((t) => (
 					<CalendarTask
 					key={t.id}
