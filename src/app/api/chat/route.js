@@ -87,6 +87,7 @@ export async function POST(request) {
       ? relevantPosts.map(post => ({
         id: post.id,
         title: post.title,
+        url: `/dashboard/forum/${post.id}`,
         content: post.content,
         author: post.author,
         tags: post.tags,
@@ -97,6 +98,7 @@ export async function POST(request) {
       : forumPosts.slice(0, 10).map(post => ({
         id: post.id,
         title: post.title,
+        url: `/dashboard/forum/${post.id}`,
         content: post.content,
         author: post.author,
         tags: post.tags,
@@ -115,19 +117,25 @@ IMPORTANT RULES:
 2. If a question is not related to the forum posts or their content, politely decline and explain you can only help with forum-related questions.
 3. Do not make up information or answer questions about topics not covered in the forum posts.
 4. Keep responses concise and friendly.
-5. When referencing posts, mention the post title or relevant details.
+5. When referencing posts, ALWAYS include a clickable markdown link using the format: [Post Title](url)
+   - Each post in the data below has an "id", "title", and "url" field
+   - Example: "There is a problem in the [Security Alert: Phishing Emails Detected](/dashboard/forum/3) post."
+   - ALWAYS use the exact URL provided in the post data
+6. Use markdown formatting for better readability (bold, lists, etc.)
 
 RELEVANT FORUM POSTS (from ${forumPosts.length} total posts):
 ${JSON.stringify(forumContext, null, 2)}
 
-Please provide a helpful response based ONLY on the forum data above. If the question cannot be answered from the forum data, politely explain that you can only answer questions about the Make-It-All forum content.`;
+Please provide a helpful response based ONLY on the forum data above. If the question cannot be answered from the forum data, politely explain that you can only answer questions about the Make-It-All forum content.
+
+REMEMBER: Whenever you mention or reference a specific post, you MUST include a markdown link to that post using the URL provided in the data.`;
 
     console.log("[ROUTE] System instruction created, character count:", systemInstruction.length);
 
     // Generate response
     console.log("[ROUTE] Calling Gemini API generateContent");
     const result = await genAI.models.generateContent({
-      model: "gemini-2.5-pro",
+      model: "gemini-2.5-flash",
       contents: message,
       config: {
         systemInstruction: systemInstruction,

@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { FaRobot, FaTimes, FaPaperPlane } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
+import Link from "next/link";
 
 console.log("[CHATBOT] Component module loaded");
 
@@ -161,8 +162,27 @@ export default function Chatbot() {
                   {message.role === "user" ? (
                     <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                   ) : (
-                    <div className="text-sm prose dark:prose-invert">
-                      <ReactMarkdown>
+                    <div className="text-sm prose dark:prose-invert prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:underline">
+                      <ReactMarkdown
+                        components={{
+                          a: ({ node, children, href, ...props }) => {
+                            // Check if it's an internal link
+                            if (href && href.startsWith('/')) {
+                              return (
+                                <Link href={href} className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300">
+                                  {children}
+                                </Link>
+                              );
+                            }
+                            // External links
+                            return (
+                              <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+                                {children}
+                              </a>
+                            );
+                          }
+                        }}
+                      >
                         {message.content}
                       </ReactMarkdown>
                     </div>
