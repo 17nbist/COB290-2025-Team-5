@@ -19,7 +19,7 @@ const baseEvents = [
         id: 2,
         projectId: 0,
         members: [0, 2, 4, 5, 6],
-        title: "Make-it-all awards initial planning meeting",
+        title: "Make-Tt-All awards initial planning meeting",
         from: new Date(2025, 10, 4, 9),
         to: new Date(2025, 10, 4, 11)
     },
@@ -27,7 +27,7 @@ const baseEvents = [
         id: 3,
         projectId: 1,
         members: [2, 3, 4, 6],
-        title: "Working practices review meeting", 
+        title: "Working practices review meeting",
         from: new Date(2025, 10, 5, 11),
         to: new Date(2025, 10, 5, 13)
     },
