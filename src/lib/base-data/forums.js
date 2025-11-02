@@ -331,7 +331,7 @@ export const forumPosts = [
         preview:
             "Starting next Monday, all teams will be migrating from our old training tracker to 'Momentum'. A reminder that booked in training...",
         content:
-            "Hi all,\n\nStarting next Monday, all teams will be migrating from our old project tracker to 'Momentum'.\n\n**T reminder that booked in training sessions are mandatory** Please sign up for a slot that works for your team:\n- Session 1: Monday, 10:00 AM\n- Session 2: Monday, 2:00 PM\n- Session 3: Tuesday, 10:00 AM\n\n'Momentum' will help us better track deliverables and manage cross-team dependencies. All old projects will be archived by the end of Friday.",
+            "Hi all,\n\nStarting next Monday, all teams will be migrating from our old project tracker to 'Momentum'.\n\n**A reminder that booked in training sessions are mandatory** Please sign up for a slot that works for your team:\n- Session 1: Monday, 10:00 AM\n- Session 2: Monday, 2:00 PM\n- Session 3: Tuesday, 10:00 AM\n\n'Momentum' will help us better track deliverables and manage cross-team dependencies. All old projects will be archived by the end of Friday.",
         timeAgo: "1 week ago",
         tags: ["software", "rollout", "training", "OD"],
         upvotes: 19,
