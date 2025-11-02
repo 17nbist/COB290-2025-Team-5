@@ -89,7 +89,7 @@ export const forumPosts = [
         preview:
             "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently...",
         content:
-            "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently authorised to view and use these keys.\n\nIf you require access for a new project, please follow these steps:\n1. Submit a request ticket through the IT portal on MakeIToday.\n2. Specify the project name and the exact API you need to access.\n3. Your manager must approve the request.\n\nREMINDER: Do not share API keys over email or in public repositories. They must be stored in environment variables. Any breaches may mean your employement is terminated.",
+            "API Keys are for all clients accessible on the staff intranet MakeIToday under the CTO function. Only certain staff are currently authorised to view and use these keys.\n\nIf you require access for a new project, please follow these steps:\n1. Submit a request ticket through the IT portal on MakeIToday.\n2. Specify the project name and the exact API you need to access.\n3. Your manager must approve the request.\n\nREMINDER: Do not share API keys over email or in public repositories. They must be stored in environment variables. Any breaches may mean your employment is terminated.",
         timeAgo: "3 weeks ago",
         tags: ["api", "help", "keys"],
         upvotes: 15,
