@@ -11,7 +11,7 @@ const baseUsers = [
     {
         id: 1,
         email: "ceo@make-it-all.co.uk",
-        name: "Mike Oxlong", 
+        name: "Ben Krupp",
         role: "CEO",
         profilePic:"/images/pexels-moh-adbelghaffar-771742.jpg",
         password: "password123"
@@ -19,7 +19,7 @@ const baseUsers = [
     {
         id: 2,
         email: "employee1@make-it-all.co.uk",
-        name: "Gabe Itch",
+        name: "Holly Day",
         role: "Employee",
         profilePic:"/images/pexels-rfera-432059.jpg",
         password: "password123"
@@ -34,7 +34,7 @@ const baseUsers = [
     {
         id: 4,
         email: "employee2@make-it-all.co.uk",
-        name: "Ben Dover",
+        name: "Luke Warm",
         role: "Employee",
         password: "password123"
     },
@@ -48,7 +48,7 @@ const baseUsers = [
     {
         id: 6,
         email: "employee4@make-it-all.co.uk",
-        name: "Phil McCracken",
+        name: "Phil McCan",
         role: "Employee",
         password: "password123"
     },
