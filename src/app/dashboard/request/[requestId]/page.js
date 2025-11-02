@@ -27,7 +27,8 @@ export default function RequestDetailPage({ params }) {
 
     return (
         <>
-            <div className="p-6">
+        <div className="min-h-screen w-full bg-[#d2d2d2] dark:bg-[#303030] ">
+            <div className="p-6 ">
                 <button
                     onClick={() => router.push('/dashboard#requests')}
                     className="mb-4 flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
@@ -37,7 +38,7 @@ export default function RequestDetailPage({ params }) {
                 </button>
                 <Card>
                     <div className="flex justify-between items-start mb-4">
-                        <h2 className="text-2xl font-semibold">{request.title}</h2>
+                        <h2 className="text-2xl font-semibold dark:text-white">{request.title}</h2>
                         {request.type === "Incoming" && (
                             <button
                                 onClick={handleTogglePriority}
@@ -60,6 +61,7 @@ export default function RequestDetailPage({ params }) {
                     </div>
                 </Card>
             </div>
+        </div>
         </>
     );
 }

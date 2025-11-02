@@ -17,7 +17,7 @@ export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
   return (
     <Card onClick={() => onClick(post.id)}>
       <div className="flex space-x-3">
-        <h2 className="text-xl font-semibold mb-3">{post.title}</h2>
+        <h2 className="dark:text-white text-xl font-semibold mb-3">{post.title}</h2>
         <span
           className={
             post.flair === "technical"

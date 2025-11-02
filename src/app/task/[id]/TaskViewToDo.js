@@ -26,9 +26,8 @@ export default function TaskViewToDo({ task }) {
   return (
     <div className="w-full flex justify-center">
       <Card
-        className="border border-black hover:bg-gray-100 transition-colors duration-200"
+        className="bg-black dakr:bg-white border border-black hover:bg-gray-100 transition-colors duration-200"
         style={{
-          color: "black",
           padding: "24px",
           width: "100%",
           maxWidth: "800px",
