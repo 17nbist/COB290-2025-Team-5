@@ -1,5 +1,5 @@
 export const requests = {
-    "manager1@gmail.com": [
+    "manager1@make-it-all.co.uk": [
         {
             id: 1,
             title: "Vacation Approval: Gabe Itch (Nov 10-14)",
@@ -10,7 +10,7 @@ export const requests = {
             timeAgo: "2 hours ago",
             highPriority: true,
             type: "Incoming",
-            author: "employee1@gmail.com",
+            author: "employee1@make-it-all.co.uk",
         },
         {
             id: 2,
@@ -22,7 +22,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Outgoing",
-            author: "manager1@gmail.com",
+            author: "manager1@make-it-all.co.uk",
         },
         {
             id: 3,
@@ -34,10 +34,10 @@ export const requests = {
             timeAgo: "3 days ago",
             highPriority: false,
             type: "Incoming",
-            author: "hr1@gmail.com",
+            author: "hr1@make-it-all.co.uk",
         },
     ],
-    "ceo@gmail.com": [
+    "ceo@make-it-all.co.uk": [
         {
             id: 4,
             title: "FWD: Q4 Budget Submission",
@@ -48,7 +48,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: true,
             type: "Incoming",
-            author: "manager1@gmail.com",
+            author: "maanger1@make-it-all.co.uk",
         },
         {
             id: 5,
@@ -60,7 +60,7 @@ export const requests = {
             timeAgo: "2 days ago",
             highPriority: false,
             type: "Draft",
-            author: "ceo@gmail.com",
+            author: "ceo@make-it-all.co.uk",
         },
         {
             id: 6,
@@ -72,10 +72,10 @@ export const requests = {
             timeAgo: "4 days ago",
             highPriority: false,
             type: "Incoming",
-            author: "hr1@gmail.com",
+            author: "hr1@make-it-all.co.uk",
         },
     ],
-    "employee1@gmail.com": [
+    "employee1@make-it-all.co.uk": [
         {
             id: 7,
             title: "Vacation Request: Nov 10-14",
@@ -86,7 +86,7 @@ export const requests = {
             timeAgo: "3 hours ago",
             highPriority: false,
             type: "Outgoing",
-            author: "employee1@gmail.com",
+            author: "employee1@make-it-all.co.uk",
         },
         {
             id: 8,
@@ -98,7 +98,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Incoming",
-            author: "manager2@gmail.com",
+            author: "manager2@make-it-all.co.uk",
         },
         {
             id: 9,
@@ -110,10 +110,10 @@ export const requests = {
             timeAgo: "5 days ago",
             highPriority: false,
             type: "Outgoing",
-            author: "employee1@gmail.com",
+            author: "employee1@make-it-all.co.uk",
         },
     ],
-    "manager2@gmail.com": [
+    "manager2@make-it-all.co.uk": [
         {
             id: 10,
             title: "Staging server is down",
@@ -124,7 +124,7 @@ export const requests = {
             timeAgo: "45 minutes ago",
             highPriority: true,
             type: "Incoming",
-            author: "admin@gmail.com",
+            author: "admin@make-it-all.co.uk",
         },
         {
             id: 11,
@@ -136,7 +136,7 @@ export const requests = {
             timeAgo: "2 days ago",
             highPriority: false,
             type: "Outgoing",
-            author: "manager2@gmail.com",
+            author: "manager2@make-it-all.co.uk",
         },
         {
             id: 12,
@@ -148,10 +148,10 @@ export const requests = {
             timeAgo: "6 days ago",
             highPriority: false,
             type: "Draft",
-            author: "manager2@gmail.com",
+            author: "manager2@make-it-all.co.uk",
         },
     ],
-    "employee2@gmail.com": [
+    "employee2@make-it-all.co.uk": [
         {
             id: 13,
             title: "My Macbook Pro is running slow",
@@ -162,7 +162,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Outgoing",
-            author: "employee2@gmail.com",
+            author: "employee2@make-it-all.co.uk",
         },
         {
             id: 14,
@@ -174,7 +174,7 @@ export const requests = {
             timeAgo: "Just now",
             highPriority: false,
             type: "Incoming",
-            author: "manager2@gmail.com",
+            author: "manager2@make-it-all.co.uk",
         },
         {
             id: 15,
@@ -186,10 +186,10 @@ export const requests = {
             timeAgo: "4 days ago",
             highPriority: false,
             type: "Outgoing",
-            author: "employee2@gmail.com",
+            author: "employee2@make-it-all.co.uk",
         },
     ],
-    "employee3@gmail.com": [
+    "employee3@make-it-all.co.uk": [
         {
             id: 16,
             title: "Benefits update - new dependent",
@@ -200,7 +200,7 @@ export const requests = {
             timeAgo: "3 days ago",
             highPriority: true,
             type: "Outgoing",
-            author: "employee3@gmail.com",
+            author: "employee3@make-it-all.co.uk",
         },
         {
             id: 17,
@@ -212,7 +212,7 @@ export const requests = {
             timeAgo: "2 days ago",
             highPriority: false,
             type: "Outgoing",
-            author: "employee3@gmail.com",
+            author: "employee3@make-it-all.co.uk",
         },
         {
             id: 18,
@@ -224,10 +224,10 @@ export const requests = {
             timeAgo: "3 days ago",
             highPriority: false,
             type: "Incoming",
-            author: "manager1@gmail.com",
+            author: "manager@make-it-all.co.uk",
         },
     ],
-    "employee4@gmail.com": [
+    "employee4@make-it-all.co.uk": [
         {
             id: 19,
             title: "Staging server is down",
@@ -238,7 +238,7 @@ export const requests = {
             timeAgo: "46 minutes ago",
             highPriority: true,
             type: "Outgoing",
-            author: "employee4@gmail.com",
+            author: "employee4@make-it-all.co.uk",
         },
         {
             id: 20,
@@ -250,7 +250,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Incoming",
-            author: "it@gmail.com",
+            author: "it@make-it-all.co.uk",
         },
         {
             id: 21,
@@ -262,10 +262,10 @@ export const requests = {
             timeAgo: "1 month ago",
             highPriority: true,
             type: "Incoming",
-            author: "hr1@gmail.com",
+            author: "hr1@make-it-all.co.uk",
         },
     ],
-    "hr1@gmail.com": [
+    "hr1@make-it-all.co.uk": [
         {
             id: 22,
             title: "Question about pension contributions",
@@ -276,7 +276,7 @@ export const requests = {
             timeAgo: "5 days ago",
             highPriority: false,
             type: "Incoming",
-            author: "employee3@gmail.com",
+            author: "employee3@make-it-all.co.uk",
         },
         {
             id: 23,
@@ -288,7 +288,7 @@ export const requests = {
             timeAgo: "2 days ago",
             highPriority: false,
             type: "Outgoing",
-            author: "hr1@gmail.com",
+            author: "hr1@make-it-all.co.uk",
         },
         {
             id: 24,
@@ -300,7 +300,7 @@ export const requests = {
             timeAgo: "3 days ago",
             highPriority: true,
             type: "Incoming",
-            author: "employee3@gmail.com",
+            author: "employee3@make-it-all.co.uk",
         },
         {
             id: 25,
@@ -312,7 +312,7 @@ export const requests = {
             timeAgo: "1 day ago",
             highPriority: false,
             type: "Draft",
-            author: "hr1@gmail.com",
+            author: "hr1@make-it-all.co.uk",
         },
     ],
 };
