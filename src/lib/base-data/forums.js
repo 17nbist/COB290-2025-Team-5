@@ -1576,38 +1576,38 @@ export const forumPosts = [
     },
 
     {
-      id: 63,
-      title: "Mandatory Return to Office – Full-Time On-Site Requirement",
-      flair: "non-technical",
-      preview:
-        "Following a management decision, all staff members will be required to work on-site...",
-      content:
-        "Dear all,\n\nFollowing a recent review and a decision by Management, we will be moving to a **full-time on-site working model** with effect from **Monday 1 December 2025**.\n\nFrom that date, all staff members are required to be on-site **five days per week**. Remote working will no longer be the default arrangement except where a formal reasonable adjustment or other exceptional business need has been agreed in advance with your line manager and HR.\n\nPlease note:\n- Normal office hours should be adhered to unless otherwise agreed with your manager.\n- Desk booking is available via MakeIToday > Facilities > Desk Booking.\n- If you believe you require a reasonable adjustment or have exceptional circumstances, speak to your line manager and HR immediately so this can be considered.\n\nNon-compliance with this requirement will be treated seriously and may result in disciplinary action up to and including termination of your employment in accordance with our disciplinary procedure.\n\nWe appreciate everyone’s co-operation during this change. If you have any questions, please contact HR.\n\nKind regards,\nKaren (HR Office)",
-      timeAgo: "2 hours ago",
-      tags: ["hr", "policy", "rto", "dismissal", "mandatory"],
-      upvotes: 11,
-      downvotes: 80,
-      comments: [
-          {
-              id: 311,
-              author: "employee2@gmail.com",
-              text: "This is just ridiculous.",
-              timeAgo: "1 hour ago",
-          },
-          {
-              id: 312,
-              author: "employee1@gmail.com",
-              text: "So we’re being ‘rewarded’ for three years of good work with longer commutes and higher costs. Brilliant.",
-              timeAgo: "49 minutes ago",
-          },
-          {
-              id: 313,
-              author: "employee3@gmail.com",
-              text: "I can't wait to spend more time with you guys in the office! Management have our best interests at heart.",
-              timeAgo: "12 minutes ago",
-          },
-      ],
-      author: "hr1@gmail.com",
-      directedTo: null
+        id: 63,
+        title: "Mandatory Return to Office – Full-Time On-Site Requirement",
+        flair: "non-technical",
+        preview:
+            "Following a management decision, all staff members will be required to work on-site...",
+        content:
+            "Dear all,\n\nFollowing a recent review and a decision by Management, we will be moving to a **full-time on-site working model** with effect from **Monday 1 December 2025**.\n\nFrom that date, all staff members are required to be on-site **five days per week**. Remote working will no longer be the default arrangement except where a formal reasonable adjustment or other exceptional business need has been agreed in advance with your line manager and HR.\n\nPlease note:\n- Normal office hours should be adhered to unless otherwise agreed with your manager.\n- Desk booking is available via MakeIToday > Facilities > Desk Booking.\n- If you believe you require a reasonable adjustment or have exceptional circumstances, speak to your line manager and HR immediately so this can be considered.\n\nNon-compliance with this requirement will be treated seriously and may result in disciplinary action up to and including termination of your employment in accordance with our disciplinary procedure.\n\nWe appreciate everyone’s co-operation during this change. If you have any questions, please contact HR.\n\nKind regards,\nKaren (HR Office)",
+        timeAgo: "2 hours ago",
+        tags: ["hr", "policy", "rto", "dismissal", "mandatory"],
+        upvotes: 11,
+        downvotes: 80,
+        comments: [
+            {
+                id: 311,
+                author: "employee2@gmail.com",
+                text: "This is just ridiculous.",
+                timeAgo: "1 hour ago",
+            },
+            {
+                id: 312,
+                author: "employee1@gmail.com",
+                text: "So we’re being ‘rewarded’ for three years of good work with longer commutes and higher costs. Brilliant.",
+                timeAgo: "49 minutes ago",
+            },
+            {
+                id: 313,
+                author: "employee3@gmail.com",
+                text: "I can't wait to spend more time with you guys in the office! Management have our best interests at heart.",
+                timeAgo: "12 minutes ago",
+            },
+        ],
+        author: "hr1@gmail.com",
+        directedTo: null
     }
 ];
