@@ -224,7 +224,7 @@ export const requests = {
             timeAgo: "3 days ago",
             highPriority: false,
             type: "Incoming",
-            author: "maanger1@gmail.com",
+            author: "manager1@gmail.com",
         },
     ],
     "employee4@gmail.com": [
