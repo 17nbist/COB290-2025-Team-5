@@ -88,9 +88,9 @@ const initialChartData = [
 ];
 
 const dataProject = [
-  { name: "Website Design", progress: 0.6, status: "On Track" },
+  { name: "Website Design", progress: 0.6, status: "Almost Completed" },
   { name: "Mobile App", progress: 0.2, status: "Behind" },
-  { name: "Internal Dashboard", progress: 0.9, status: "Almost Completed" },
+  { name: "Internal Dashboard", progress: 0.9, status: "On Track" },
 ];
 
 const statsProject = [
@@ -102,8 +102,8 @@ const statsProject = [
 
 const dataTasks = [
   { name: "Add Overview to Dashboard", progress: 0.2, status: "Behind" },
-  { name: "Fix hallucination rate", progress: 0.7, status: "On Track" },
-  { name: "fix data breach", progress: 0.8, status: "Almost Completed" },
+  { name: "Fix hallucination rate", progress: 0.7, status: "Almost Completed" },
+  { name: "fix data breach", progress: 0.8, status: "On Track"},
 ];
 
 const statsTasks = [
