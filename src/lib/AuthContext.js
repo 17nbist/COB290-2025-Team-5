@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import baseUsers from "./base-data/users.js"
 import baseProjects from "./base-data/projects.js"
@@ -10,6 +10,10 @@ import { requests as baseRequests } from "./base-data/requests.js"
 
 
 const AuthContext = createContext();
+
+// Session timeout constants (configurable)
+const INACTIVITY_TIMEOUT = 0.1 * 60 * 1000; // 13 minutes before warning
+const WARNING_TIMEOUT = 0.1* 60 * 1000;     // 2 minutes to respond to warning
 
 // user data. everyone in the team should add more data here for the demo as needed.
 
@@ -89,6 +93,11 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
     const router = useRouter();
 
+    // Session timeout state
+    const [showInactivityWarning, setShowInactivityWarning] = useState(false);
+    const inactivityTimerRef = useRef(null);
+    const warningTimerRef = useRef(null);
+
     // Load user and data from localStorage on mount
     useEffect(() => {
         const localUser = localStorage.getItem('user')
@@ -164,6 +173,67 @@ export function AuthProvider({ children }) {
         setLoading(false);
     }, []);
 
+    // Reset inactivity timer
+    const resetInactivityTimer = () => {
+        // Don't reset if warning is already showing
+        if (showInactivityWarning) return;
+
+        // Clear existing timers
+        clearTimeout(inactivityTimerRef.current);
+        clearTimeout(warningTimerRef.current);
+
+        // Only set timer if user is logged in
+        if (user) {
+            inactivityTimerRef.current = setTimeout(() => {
+                setShowInactivityWarning(true);
+
+                // Start warning countdown timer
+                warningTimerRef.current = setTimeout(() => {
+                    logout();
+                }, WARNING_TIMEOUT);
+            }, INACTIVITY_TIMEOUT);
+        }
+    };
+
+    // Handle user continuing session
+    const continueSession = () => {
+        setShowInactivityWarning(false);
+        clearTimeout(warningTimerRef.current);
+        resetInactivityTimer();
+    };
+
+    // Track user activity
+    useEffect(() => {
+        if (!user) return;
+
+        const handleActivity = () => {
+            if (!showInactivityWarning) {
+                resetInactivityTimer();
+            }
+        };
+
+        // Add event listeners for user activity
+        window.addEventListener('mousemove', handleActivity);
+        window.addEventListener('keydown', handleActivity);
+        window.addEventListener('click', handleActivity);
+        window.addEventListener('scroll', handleActivity);
+        window.addEventListener('touchstart', handleActivity);
+
+        // Start the initial timer
+        resetInactivityTimer();
+
+        // Cleanup
+        return () => {
+            window.removeEventListener('mousemove', handleActivity);
+            window.removeEventListener('keydown', handleActivity);
+            window.removeEventListener('click', handleActivity);
+            window.removeEventListener('scroll', handleActivity);
+            window.removeEventListener('touchstart', handleActivity);
+            clearTimeout(inactivityTimerRef.current);
+            clearTimeout(warningTimerRef.current);
+        };
+    }, [user, showInactivityWarning]);
+
     const login = (inputEmail, inputPassword) => {
         const validPassword = 'password123';
 
@@ -183,6 +253,12 @@ export function AuthProvider({ children }) {
     };
 
     const logout = () => {
+        // Clear all timers
+        clearTimeout(inactivityTimerRef.current);
+        clearTimeout(warningTimerRef.current);
+        setShowInactivityWarning(false);
+
+        // Clear user data
         setUser(null);
         localStorage.removeItem('user');
         router.push('/login');
@@ -302,8 +378,36 @@ export function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, allForumPosts, userRequests, login, logout, loading, addToAllTasks, addToAllEvents, updateTodo, addToAllProjects, editProjectMembers, addForumPost, updateForumPost, addRequest, updateRequest }}>
+        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, allForumPosts, userRequests, login, logout, loading, addToAllTasks, addToAllEvents, updateTodo, addToAllProjects, editProjectMembers, addForumPost, updateForumPost, addRequest, updateRequest, showInactivityWarning, continueSession }}>
             {children}
+
+            {/* Inactivity Warning Modal */}
+            {showInactivityWarning && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md mx-4 shadow-xl">
+                        <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+                            Session Timeout Warning
+                        </h2>
+                        <p className="mb-6 text-gray-700 dark:text-gray-300">
+                            You will be logged out soon due to inactivity. Click &apos;Continue&apos; to stay logged in.
+                        </p>
+                        <div className="flex gap-3 justify-end">
+                            <button
+                                onClick={logout}
+                                className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+                            >
+                                Logout
+                            </button>
+                            <button
+                                onClick={continueSession}
+                                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                            >
+                                Continue
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </AuthContext.Provider>
     );
 }
