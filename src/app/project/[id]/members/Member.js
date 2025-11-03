@@ -1,6 +1,14 @@
 "use client";
 
-export default function Member({ member, onClick }) {
+export default function Member({ member, onClick, project }) {
+  let textColor = "gray";
+  if (member.isManager) {
+    textColor = "green";
+  }
+  if (project.leaderId == member.id) {
+    textColor = "#BA8E23";
+  }
+
   return (
     <div
       onClick={onClick}
@@ -13,7 +21,8 @@ export default function Member({ member, onClick }) {
       <h3 className="m-0 text-[18px] font-semibold dark:text-white">
         {member.name}
       </h3>
-      <p className="mt-1 text-gray-600 dark:text-gray-300">{member.role}</p>
+      <p className="mt-1 dark:text-gray-300" style={{color: textColor}}>{member.role}</p>
+      <p className="mt-1 text-slate-600 dark:text-gray-300" >{member.email}</p>
     </div>
   );
 }
