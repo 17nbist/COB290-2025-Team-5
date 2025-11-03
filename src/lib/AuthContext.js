@@ -100,6 +100,9 @@ export function AuthProvider({ children }) {
     const [showInactivityWarning, setShowInactivityWarning] = useState(false);
     const inactivityTimerRef = useRef(null);
     const warningTimerRef = useRef(null);
+    const userRef = useRef(user);
+
+    useEffect(() => { userRef.current = user; }, [user]);
 
     // Load user and data from localStorage on mount
     useEffect(() => {
@@ -176,27 +179,24 @@ export function AuthProvider({ children }) {
         setLoading(false);
     }, []);
 
-    // Reset inactivity timer
-    const resetInactivityTimer = () => {
-        // Don't reset if warning is already showing
-        if (showInactivityWarning) return;
+const resetInactivityTimer = () => {
+    
+    clearTimeout(inactivityTimerRef.current);
+    clearTimeout(warningTimerRef.current);
 
-        // Clear existing timers
-        clearTimeout(inactivityTimerRef.current);
-        clearTimeout(warningTimerRef.current);
+    if (user) {
+        
+        inactivityTimerRef.current = setTimeout(() => {
+            setShowInactivityWarning(true);
 
-        // Only set timer if user is logged in
-        if (user) {
-            inactivityTimerRef.current = setTimeout(() => {
-                setShowInactivityWarning(true);
+            
+            warningTimerRef.current = setTimeout(() => {
+                logout(); 
+            }, WARNING_TIMEOUT);
+        }, INACTIVITY_TIMEOUT);
+    }
+};
 
-                // Start warning countdown timer
-                warningTimerRef.current = setTimeout(() => {
-                    logout();
-                }, WARNING_TIMEOUT);
-            }, INACTIVITY_TIMEOUT);
-        }
-    };
 
     // Handle user continuing session
     const continueSession = () => {
@@ -207,35 +207,32 @@ export function AuthProvider({ children }) {
 
     // Track user activity
     useEffect(() => {
-        if (!user) return;
+    if (!user) return;
 
-        const handleActivity = () => {
-            if (!showInactivityWarning) {
-                resetInactivityTimer();
-            }
-        };
+    const handleActivity = () => {
+        resetInactivityTimer(); // reset timer on any activity
+        if (showInactivityWarning) setShowInactivityWarning(false);
+    };
 
-        // Add event listeners for user activity
-        window.addEventListener('mousemove', handleActivity);
-        window.addEventListener('keydown', handleActivity);
-        window.addEventListener('click', handleActivity);
-        window.addEventListener('scroll', handleActivity);
-        window.addEventListener('touchstart', handleActivity);
+    window.addEventListener('mousemove', handleActivity);
+    window.addEventListener('keydown', handleActivity);
+    window.addEventListener('click', handleActivity);
+    window.addEventListener('scroll', handleActivity);
+    window.addEventListener('touchstart', handleActivity);
 
-        // Start the initial timer
-        resetInactivityTimer();
+    resetInactivityTimer();
 
-        // Cleanup
-        return () => {
-            window.removeEventListener('mousemove', handleActivity);
-            window.removeEventListener('keydown', handleActivity);
-            window.removeEventListener('click', handleActivity);
-            window.removeEventListener('scroll', handleActivity);
-            window.removeEventListener('touchstart', handleActivity);
-            clearTimeout(inactivityTimerRef.current);
-            clearTimeout(warningTimerRef.current);
-        };
-    }, [user, showInactivityWarning]);
+    return () => {
+        window.removeEventListener('mousemove', handleActivity);
+        window.removeEventListener('keydown', handleActivity);
+        window.removeEventListener('click', handleActivity);
+        window.removeEventListener('scroll', handleActivity);
+        window.removeEventListener('touchstart', handleActivity);
+        clearTimeout(inactivityTimerRef.current);
+        clearTimeout(warningTimerRef.current);
+    };
+}, [user]);
+
 
     const login = (inputEmail, inputPassword) => {
         const validPassword = 'password123';
