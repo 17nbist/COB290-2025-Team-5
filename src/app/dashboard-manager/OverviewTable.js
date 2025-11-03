@@ -46,6 +46,7 @@ export default function OverviewTable({ label, data, stats }) {
     hover:bg-gray-100 dark:hover:bg-[#2a2a2a] transition-colors duration-300
   `}
                 >
+
                     <div className="p-3 font-medium">{item.name}</div>
                     <div className="p-3 flex justify-center">
                         <div className="w-3/4 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
