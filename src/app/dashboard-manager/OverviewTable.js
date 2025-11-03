@@ -39,7 +39,13 @@ export default function OverviewTable({ label, data, stats }) {
 
             {/* Data Rows */}
             {data.map((item, index) => (
-                <motion.div key={index} className={`grid grid-cols-1 sm:grid-cols-3 items-center text-center text-gray-800 dark:text-gray-200 text-sm ${index % 2 === 0 ? "bg-white dark:bg-[#242424]" : "bg-gray-50 dark:bg-[#1e1e1e]"}`} whileHover={{ backgroundColor: "rgba(0,0,0,0.03)" }}>
+                <motion.div
+                    key={index}
+                    className={`grid grid-cols-1 sm:grid-cols-3 items-center text-center text-gray-800 dark:text-gray-200 text-sm
+    ${index % 2 === 0 ? "bg-white dark:bg-[#242424]" : "bg-gray-50 dark:bg-[#1e1e1e]"}
+    hover:bg-gray-100 dark:hover:bg-[#2a2a2a] transition-colors duration-300
+  `}
+                >
                     <div className="p-3 font-medium">{item.name}</div>
                     <div className="p-3 flex justify-center">
                         <div className="w-3/4 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
