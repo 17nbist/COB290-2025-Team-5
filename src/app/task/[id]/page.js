@@ -37,7 +37,6 @@ export default function Dashboard() {
     document.title = `${currentTask.title} | Make-It-All`;
 	}, [allProjects, allTasks, allEvents, user]);
 
-  // Handle hash navigation
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace("#", "");

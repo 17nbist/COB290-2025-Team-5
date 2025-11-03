@@ -35,7 +35,6 @@ export default function DashboardTodoCard() {
     setStarred((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  // Helper function to navigate
   const goToTodo = () => {
     router.push("/task-view#to-do");
   };

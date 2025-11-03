@@ -210,10 +210,10 @@ export default function NetworkGraph({ tasks, projects, users }) {
 
         const ctx = canvas.getContext('2d');
 
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const draw = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.strokeStyle = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+            ctx.strokeStyle = isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
             ctx.lineWidth = 1;
             edges.forEach(edge => {
                 const source = nodes.find(n => n.id === edge.source);
@@ -223,16 +223,16 @@ export default function NetworkGraph({ tasks, projects, users }) {
                 ctx.beginPath();
                 ctx.moveTo(source.x, source.y);
                 ctx.lineTo(target.x, target.y);
-        ctx.stroke();
-      });
+                ctx.stroke();
+            });
 
-      nodes.forEach(node => {
+            nodes.forEach(node => {
                 const isHovered = hoveredNode?.id === node.id;
                 const isSelected = selectedNode?.id === node.id;
 
-        ctx.save();
+                ctx.save();
 
-        if (isSelected) {
+                if (isSelected) {
                     const connectedEdges = edges.filter(e => e.source === node.id || e.target === node.id);
                     connectedEdges.forEach(edge => {
                         const other = nodes.find(n => n.id === (edge.source === node.id ? edge.target : edge.source));
@@ -244,27 +244,27 @@ export default function NetworkGraph({ tasks, projects, users }) {
                             ctx.lineTo(other.x, other.y);
                             ctx.stroke();
                         }
-          });
-        }
+                    });
+                }
 
-        let fillColor;
+                let fillColor;
                 if (node.type === 'project') {
                     fillColor = isDarkMode ? '#8b5cf6' : '#7c3aed';
                 } else if (node.type === 'user') {
                     fillColor = isDarkMode ? '#3b82f6' : '#2563eb';
                 } else {
-          fillColor = isDarkMode ? '#10b981' : '#059669';
-        }
+                    fillColor = isDarkMode ? '#10b981' : '#059669';
+                }
 
-        ctx.fillStyle = fillColor;
+                ctx.fillStyle = fillColor;
                 ctx.strokeStyle = isHovered || isSelected ? '#fff' : fillColor;
-        ctx.lineWidth = isHovered || isSelected ? 3 : 1;
+                ctx.lineWidth = isHovered || isSelected ? 3 : 1;
 
-        if (node.type === 'project') {
-          ctx.fillRect(node.x - node.size / 2, node.y - node.size / 2, node.size, node.size);
-          ctx.strokeRect(node.x - node.size / 2, node.y - node.size / 2, node.size, node.size);
-        } else if (node.type === 'user') {
-          ctx.beginPath();
+                if (node.type === 'project') {
+                    ctx.fillRect(node.x - node.size / 2, node.y - node.size / 2, node.size, node.size);
+                    ctx.strokeRect(node.x - node.size / 2, node.y - node.size / 2, node.size, node.size);
+                } else if (node.type === 'user') {
+                    ctx.beginPath();
                     for (let i = 0; i < 6; i++) {
                         const angle = (Math.PI / 3) * i;
                         const x = node.x + node.size * Math.cos(angle);
@@ -273,10 +273,10 @@ export default function NetworkGraph({ tasks, projects, users }) {
                         else ctx.lineTo(x, y);
                     }
                     ctx.closePath();
-          ctx.fill();
-          ctx.stroke();
-        } else {
-          ctx.beginPath();
+                    ctx.fill();
+                    ctx.stroke();
+                } else {
+                    ctx.beginPath();
                     ctx.arc(node.x, node.y, node.size, 0, 2 * Math.PI);
                     ctx.fill();
                     ctx.stroke();
@@ -288,10 +288,10 @@ export default function NetworkGraph({ tasks, projects, users }) {
             requestAnimationFrame(draw);
         };
 
-    draw();
-  }, [nodes, edges, hoveredNode, selectedNode, isDarkMode]);
+        draw();
+    }, [nodes, edges, hoveredNode, selectedNode, isDarkMode]);
 
-  const handleMouseDown = (e) => {
+    const handleMouseDown = (e) => {
         const canvas = canvasRef.current;
         const rect = canvas.getBoundingClientRect();
         const x = e.clientX - rect.left;

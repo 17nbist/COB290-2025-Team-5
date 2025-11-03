@@ -7,12 +7,11 @@ import DashCalendar from "@/components/Calendar/DashCalendar";
 import DashboardProfileCard from "./DashboardProfileCard";
 import DashboardCard from "./DashboardCard";
 import DashboardToDoCard from "./DashboardToDoCard";
-import { useRouter } from "next/navigation"; // import router
+import { useRouter } from "next/navigation";
 
 export default function ProfileOverview({ events }) {
   const { user } = useAuth();
-  const router = useRouter(); // initialize router
-  //console.log(user?.profilePic);
+  const router = useRouter();
 
 
 
