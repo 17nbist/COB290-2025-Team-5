@@ -3325,4 +3325,61 @@ export const forumPosts = [
     author: "employee1@make-it-all.co.uk",
     directedTo: "manager2@make-it-all.co.uk",
   },
+  {
+    id: 150,
+    title: "New software deployment schedule",
+    flair: "technical",
+    preview: "Next update on Wednesday morning.",
+    content:
+      `# **Upcoming Software Deployment**
+
+**Date:** _Wednesday morning_
+
+---
+
+**Action required from all staff:**
+
+1. **Save** your work.
+2. _**Fully shut down**_ all systems.
+3. Double-check devices before leaving.
+
+> **Note:** Updates cannot proceed if any device is left on.
+
+---
+
+## What’s New?
+
+- Latest security patches
+-  Performance improvements
+- Minor usability fixes
+
+---
+
+**Questions?**  
+Visit our [project portal](https://cob-290-2025-team-5.vercel.app/project/0) for details, changelog, and support.
+
+---
+
+\`\`\`bash
+# Example: Shut down (Windows)
+shutdown /s /f /t 0
+\`\`\`
+
+Thank you for your cooperation!
+
+*— IT Department*
+`,
+    timeAgo: "1 hour ago",
+    tags: ["software", "updates"],
+    upvotes: 29,
+    downvotes: 0,
+    comments: [
+      {
+        id: 400,
+        author: "hrake-it-all.co.uk",
+        text: "Thanks for the heads-up — I’ll make sure to shut down my system.",
+        timeAgo: "1 hour ago",
+      },
+    ],
+  },
 ];
