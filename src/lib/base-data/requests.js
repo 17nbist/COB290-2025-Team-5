@@ -2,11 +2,11 @@ export const requests = {
     "manager1@make-it-all.co.uk": [
         {
             id: 1,
-            title: "Vacation Approval: Gabe Itch (Nov 10-14)",
+            title: "Vacation Approval: Gabriel Torres (Nov 10-14)",
             preview:
-                "Gabe Itch has submitted a request for 5 days of annual leave from November 10th to November 14th...",
+                "Gabriel Torres has submitted a request for 5 days of annual leave from November 10th to November 14th...",
             content:
-                "Gabe Itch has submitted a request for 5 days of annual leave from November 10th to November 14th.\n\nReason: Personal time\n\nTeam coverage is already arranged. Please approve by the end of the day.",
+                "Gabriel Torres has submitted a request for 5 days of annual leave from November 10th to November 14th.\n\nReason: Personal time\n\nTeam coverage is already arranged. Please approve by the end of the day.",
             timeAgo: "2 hours ago",
             highPriority: true,
             type: "Incoming",
@@ -258,7 +258,7 @@ export const requests = {
             preview:
                 "Hi Phil, welcome to the team! This is a reminder to complete your I-9 and benefits enrollment...",
             content:
-                "Hi Phil, welcome to the team!\n\nThis is a reminder to complete your I-9 verification and benefits enrollment by the end of Friday. Please see Karen in HR.",
+                "Hi Phil, welcome to the team!\n\nThis is a reminder to complete your I-9 verification and benefits enrollment by the end of Friday. Please see Sarah in HR.",
             timeAgo: "1 month ago",
             highPriority: true,
             type: "Incoming",
@@ -280,11 +280,11 @@ export const requests = {
         },
         {
             id: 23,
-            title: "Action Required: Performance Review for Gabe Itch",
+            title: "Action Required: Performance Review for Gabriel Torres",
             preview:
-                "Hi John, this is a reminder that Gabe Itch's 1-year performance review is due...",
+                "Hi John, this is a reminder that Gabriel Torres's 1-year performance review is due...",
             content:
-                "Hi John,\n\nThis is a reminder that Gabe Itch's 1-year performance review is due next week. Please schedule the review and submit the final paperwork by Nov 8th.",
+                "Hi John,\n\nThis is a reminder that Gabriel Torres's 1-year performance review is due next week. Please schedule the review and submit the final paperwork by Nov 8th.",
             timeAgo: "2 days ago",
             highPriority: false,
             type: "Outgoing",

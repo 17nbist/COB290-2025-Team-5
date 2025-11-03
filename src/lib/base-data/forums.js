@@ -22,7 +22,7 @@ export const forumPosts = [
         id: 239,
         author: "hr1@make-it-all.co.uk",
         text:
-          "Hi @Luke Warm, a good rule of thumb is 'no jeans with holes, no t-shirts with large graphics, and no open-toed shoes'. The full policy is on the intranet.",
+          "Hi @Luke Thompson, a good rule of thumb is 'no jeans with holes, no t-shirts with large graphics, and no open-toed shoes'. The full policy is on the intranet.",
         timeAgo: "2 months ago",
       },
     ],
@@ -31,12 +31,12 @@ export const forumPosts = [
   },
   {
     id: 2,
-    title: "Welcome our new Senior Developer, Phil McCracken!",
+    title: "Welcome our new Senior Developer, Phil Anderson!",
     flair: "non-technical",
     preview:
-      "Please join me in welcoming the newest member of the tech team, Phil McCracken! Phil joins us with over 10 years of experience...",
+      "Please join me in welcoming the newest member of the tech team, Phil Anderson! Phil joins us with over 10 years of experience...",
     content:
-      "Team,\n\nPlease join me in welcoming the newest member of the tech team, **Phil McCan**!\n\nPhil (employee4@make-it-all.co.uk) joins us with over 10 years of experience in full-stack development...",
+      "Team,\n\nPlease join me in welcoming the newest member of the tech team, **Phil Anderson**!\n\nPhil (employee4@make-it-all.co.uk) joins us with over 10 years of experience in full-stack development...",
     timeAgo: "5 months ago",
     tags: ["new-joiner", "welcome", "hr", "dev-team"],
     upvotes: 35,
@@ -277,7 +277,7 @@ export const forumPosts = [
         id: 236,
         author: "hr1@make-it-all.co.uk",
         text:
-          "Thanks for the feedback, Gabe. Let me look at the budget with facilities and see what we can do.",
+          "Thanks for the feedback, Gabriel. Let me look at the budget with facilities and see what we can do.",
         timeAgo: "1 month ago",
       },
       {
@@ -376,9 +376,9 @@ export const forumPosts = [
     title: "Q&A with the CEO - Submit your questions",
     flair: "non-technical",
     preview:
-      "Ben Krupp will be hosting a company-wide 'Ask Me Anything' session next Friday. We are gathering questions in advance...",
+      "Ben Smith will be hosting a company-wide 'Ask Me Anything' session next Friday. We are gathering questions in advance...",
     content:
-      "Ben Krupp (ceo@make-it-all.co.uk) will be hosting a company-wide 'Ask Me Anything' session next Friday.\n\nWe are gathering questions in advance to help structure the meeting.\n\nPlease s...",
+      "Ben Smith (ceo@make-it-all.co.uk) will be hosting a company-wide 'Ask Me Anything' session next Friday.\n\nWe are gathering questions in advance to help structure the meeting.\n\nPlease s...",
     timeAgo: "2 months ago",
     tags: ["ceo", "full-team", "meeting", "q-a"],
     upvotes: 27,
@@ -721,9 +721,9 @@ export const forumPosts = [
     title: "Welcome Back, Anita!",
     flair: "non-technical",
     preview:
-      "Please join me in giving a warm welcome back to Anita Bath (employee3@make-it-all.co.uk), who is returning from maternity leave...",
+      "Please join me in giving a warm welcome back to Anita Patel (employee3@make-it-all.co.uk), who is returning from maternity leave...",
     content:
-      "Please join me in giving a warm welcome back to **Anita Bath** (employee3@make-it-all.co.uk), who is returning from her maternity leave!\n\nWe are so excited to have you back on the team...",
+      "Please join me in giving a warm welcome back to **Anita Patel** (employee3@make-it-all.co.uk), who is returning from her maternity leave!\n\nWe are so excited to have you back on the team...",
     timeAgo: "3 weeks ago",
     tags: ["hr", "welcome-back", "social"],
     upvotes: 41,
@@ -767,7 +767,7 @@ export const forumPosts = [
       {
         id: 263,
         author: "manager1@make-it-all.co.uk",
-        text: "@Holly Day - Yes, if they are using a public-facing key. Please check and file a ticket if needed.",
+        text: "@Holly Williams - Yes, if they are using a public-facing key. Please check and file a ticket if needed.",
         timeAgo: "3 weeks ago",
       },
     ],
@@ -796,7 +796,7 @@ export const forumPosts = [
       {
         id: 273,
         author: "hr1@make-it-all.co.uk",
-        text: "@Luke Warm, I'll resend your link right now. Please check your spam folder as well.",
+        text: "@Luke Thompson, I'll resend your link right now. Please check your spam folder as well.",
         timeAgo: "3 weeks ago",
       },
     ],
@@ -831,7 +831,7 @@ export const forumPosts = [
       {
         id: 212,
         author: "hr1@make-it-all.co.uk",
-        text: "Yes, @Luke Warm, the invitations will confirm that partners (plus-ones) are welcome!",
+        text: "Yes, @Luke Thompson, the invitations will confirm that partners (plus-ones) are welcome!",
         timeAgo: "2 weeks ago",
       },
     ],
@@ -1000,7 +1000,7 @@ export const forumPosts = [
         id: 203,
         author: "hr1@make-it-all.co.uk",
         text:
-          "@Phil McCan, yes this is a new change to encourage everyone to use their well-deserved time off within the year.",
+          "@Phil Anderson, yes this is a new change to encourage everyone to use their well-deserved time off within the year.",
         timeAgo: "2 weeks ago",
       },
     ],
@@ -1285,7 +1285,7 @@ export const forumPosts = [
     preview:
       "Hi, I'm working on the Q4 report and I can't seem to access the 'Metrics' dashboard on the BI tool. It says my account...",
     content:
-      "Hi,\n\nI'm working on the Q4 report and I can't seem to access the 'Metrics' dashboard on the BI tool. It says my account does not have permission.\n\nCan you grant me read-access for this project?\n\nThanks,\nGabe",
+      "Hi,\n\nI'm working on the Q4 report and I can't seem to access the 'Metrics' dashboard on the BI tool. It says my account does not have permission.\n\nCan you grant me read-access for this project?\n\nThanks,\nGabriel",
     timeAgo: "3 weeks ago",
     tags: ["help", "bi", "dashboard", "access-request"],
     upvotes: 2,
@@ -1347,7 +1347,7 @@ export const forumPosts = [
       {
         id: 246,
         author: "employee4@make-it-all.co.uk",
-        text: "Build passed. Deployment to staging is complete. QA is unblocked. Thanks, Gabe.",
+        text: "Build passed. Deployment to staging is complete. QA is unblocked. Thanks, Gabriel.",
         timeAgo: "1 week ago",
       },
     ],
@@ -1411,7 +1411,7 @@ export const forumPosts = [
       {
         id: 271,
         author: "hr1@make-it-all.co.uk",
-        text: "No problem @Phil McCan, got one for you.",
+        text: "No problem @Phil Anderson, got one for you.",
         timeAgo: "1 week ago",
       },
     ],
@@ -1556,7 +1556,7 @@ export const forumPosts = [
     preview:
       "Thank you to everyone who participated in our amazing Halloween costume contest today! The competition was fierce, but the...",
     content:
-      "Thank you to everyone who participated in our amazing Halloween costume contest today! The competition was fierce, but the votes are in:\n\n**1st Place:** Luke Warm (@employee2@make-it-all.co.uk) as 'Server Rack on Fire'\n**2nd Place:** Anita Bath (@employee3@make-it-all.co.uk) as 'Rosie the Riveter'\n**3rd Place:** Holly Day (@employee1@make-it-all.co.uk) as 'SQL Injection Query'\n\nWinners, please see HR to claim your prizes! Great job, everyone!",
+      "Thank you to everyone who participated in our amazing Halloween costume contest today! The competition was fierce, but the votes are in:\n\n**1st Place:** Luke Thompson (@employee2@make-it-all.co.uk) as 'Server Rack on Fire'\n**2nd Place:** Anita Patel (@employee3@make-it-all.co.uk) as 'Rosie the Riveter'\n**3rd Place:** Holly Williams (@employee1@make-it-all.co.uk) as 'SQL Injection Query'\n\nWinners, please see HR to claim your prizes! Great job, everyone!",
     timeAgo: "2 weeks ago",
     tags: ["social", "event", "halloween", "party", "hr"],
     upvotes: 47,
@@ -1656,7 +1656,7 @@ export const forumPosts = [
       {
         id: 324,
         author: "employee3@make-it-all.co.uk",
-        text: "Thanks for the heads-up, Karen!",
+        text: "Thanks for the heads-up, Sarah!",
         timeAgo: "1 week ago",
       },
     ],
