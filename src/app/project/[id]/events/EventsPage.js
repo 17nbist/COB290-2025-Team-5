@@ -33,7 +33,7 @@ export default function EventsPage({events, project, projectMembers, adminPerms}
 	return (
 		<div style={{width: "80%", height: "80%"}}>
 			<Calendar tasks={events} startRangeType={"Day"} addOnClick={adminPerms && (() => setShowModal(true))} excludeNav={["Year", "Month"]}/>
-			<Modal isOpen={showModal}> 
+			<Modal isOpen={showModal} onClose={() => setShowModal(false)}> 
 				<Card style={{width: "40%"}}>
 					<div className="flex flex-col gap-[20px]">
 						<h1 className="text-[30px] font-[600]">Add An Event</h1>

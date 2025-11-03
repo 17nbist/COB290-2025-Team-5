@@ -12,6 +12,7 @@ import ProjectsPage from "./projects/ProjectsPage";
 import ToDoPage from "./todo/ToDoPage";
 
 import DarkModeToggle from "@/components/DarkModeToggle";
+import PageSkeleton from "@/components/SkeletonLoader";
 
 const topNavItems = ["Dashboard", "Forum", "Projects", "Requests", "Calendar", "To-do"];
 
@@ -55,7 +56,7 @@ export default function Home() {
   };
 
   if (loading || !user) {
-    return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
+    return <PageSkeleton />;
   }
 
   return (

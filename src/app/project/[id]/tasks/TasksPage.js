@@ -43,7 +43,7 @@ export default function TasksPage({tasks, projectId, projectMembers, adminPerms,
 	return (
 		<div style={{width: "80%", height: "80%"}}>
 			<Calendar tasks={tasks} addOnClick={adminPerms && (() => setShowModal(true))} taskOnClick={handleTaskClick} excludeNav={["8h"]}/>
-			<Modal isOpen={showModal}> 
+			<Modal isOpen={showModal} onClose={() => setShowModal(false)}> 
 				<Card style={{width: "40%"}}>
 					<div className="flex flex-col gap-[20px]">
 						<h1 className="text-[30px] font-[600]">Add A Task</h1>

@@ -7,9 +7,10 @@ import Button from "@/components/Button";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/lib/AuthContext";
 import { useRouter } from "next/navigation";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function RequestPage() {
-  const { user, userRequests, addRequest, updateRequest } = useAuth();
+  const { user, userRequests, addRequest, updateRequest, loading } = useAuth();
   const router = useRouter();
   const filterTabs = ["Incoming", "Outgoing"];
   const [activeFilterTab, setActiveFilterTab] = useState("Incoming");
@@ -63,6 +64,14 @@ export default function RequestPage() {
   useEffect(() => {
     document.title = 'Requests | Make-It-All';
   }, []);
+
+  if (loading || !userRequests) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <LoadingSpinner size="large" />
+      </div>
+    );
+  }
 
   return (
     <div className="w-6xl mx-auto px-4 py-6 min-h-full ">

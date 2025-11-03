@@ -9,9 +9,10 @@ import TaskViewToDo from "./TaskViewToDo";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/AuthContext";
 import { useParams } from "next/navigation";
+import PageSkeleton from "@/components/SkeletonLoader";
 
 export default function Dashboard() {
-  const { user, allProjects, allTasks, allEvents, allUsers } = useAuth();
+  const { user, allProjects, allTasks, allEvents, allUsers, loading } = useAuth();
   const navItems = ["Overview", "To-Do", "Members"];
   const [activeTab, setActiveTab] = useState(navItems[0]);
   const [errText, setErrText] = useState("");
@@ -48,6 +49,10 @@ export default function Dashboard() {
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
+
+  if (loading || !user || !allTasks || !allEvents) {
+    return <PageSkeleton />;
+  }
 
   if (errText) {
 		return(

@@ -99,7 +99,7 @@ function AddProjectModal({ showModal, setShowModal, employees }) {
 
 
 	return (
-		<Modal isOpen={showModal}>
+		<Modal isOpen={showModal} onClose={() => setShowModal(false)}>
 			<Card style={{ width: "40%" }}>
 				<div className="flex flex-col gap-[20px]">
 					<h1 className="text-[30px] font-[600]">Add A Project</h1>

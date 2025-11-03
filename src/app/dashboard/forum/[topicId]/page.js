@@ -5,10 +5,11 @@ import Card from "@/components/Card";
 import { useAuth } from "@/lib/AuthContext";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function TopicPage({ params }) {
     const { topicId } = params;
-    const { user, allForumPosts, updateForumPost } = useAuth();
+    const { user, allForumPosts, updateForumPost, loading } = useAuth();
     const router = useRouter();
 
     const post = allForumPosts?.find((p) => String(p.id) === String(topicId));
@@ -16,7 +17,16 @@ export default function TopicPage({ params }) {
     const [newComment, setNewComment] = useState("");
 
     useEffect(() => {
-      document.title = `${post.title} | Make-It-All`;}, [post]);
+      document.title = `${post?.title || 'Post'} | Make-It-All`;
+    }, [post]);
+
+    if (loading || !allForumPosts) {
+      return (
+        <div className="flex items-center justify-center min-h-screen">
+          <LoadingSpinner size="large" />
+        </div>
+      );
+    }
 
     if (!post) return <div className="p-6">Post not found</div>;
 
