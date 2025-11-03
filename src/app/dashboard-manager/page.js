@@ -157,10 +157,20 @@ export default function Home() {
           }
           .left-side {
             overflow-y: auto !important;
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
+          }
+          .left-side::-webkit-scrollbar {
+            display: none !important;
           }
           .right-side {
             overflow-y: auto !important;
             max-height: 100vh !important;
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
+          }
+          .right-side::-webkit-scrollbar {
+            display: none !important;
           }
           .overview-grid {
             grid-template-columns: 1fr 1fr !important;
@@ -196,6 +206,13 @@ export default function Home() {
           max-width: 100% !important;
           max-height: 100% !important;
           height: auto !important;
+        }
+        .task-form-container {
+          scrollbar-width: none !important;
+          -ms-overflow-style: none !important;
+        }
+        .task-form-container::-webkit-scrollbar {
+          display: none !important;
         }
       `}</style>
 
