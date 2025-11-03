@@ -9,7 +9,7 @@ export default function TaskViewOverview({ task }) {
     return <>No task selected (404)</>;
   }
 
-  // Format the date and time to match your ProjectPage style
+  // Format date and time
   const formatDate = (date) => {
     if (!(date instanceof Date)) {
       date = new Date(date);
@@ -22,14 +22,18 @@ export default function TaskViewOverview({ task }) {
     return `${hours}:${minutes} ${day}/${month}/${year}`;
   };
 
-  // Match the same from/to structure as in ProjectPage
   const startDate = formatDate(task.from);
   const dueDate = formatDate(task.to);
 
   return (
-    <Card style={{width: "50%"}}>
+    <Card
+      className="bg-white dark:bg-[#555555] rounded-xl shadow-md p-6 transition-colors duration-300"
+      style={{ width: "50%" }}
+    >
       {/* Title */}
-      <h1 className="text-2xl font-semibold mb-6">{task.title}</h1>
+      <h1 className="text-2xl font-semibold mb-6 dark:text-white">
+        {task.title}
+      </h1>
 
       {/* Dates */}
       <div className="text-gray-800 dark:text-white mb-6">
@@ -42,8 +46,10 @@ export default function TaskViewOverview({ task }) {
       </div>
 
       {/* Description */}
-      <h2 className="text-xl font-semibold mb-2">Description</h2>
-      <p className="text-gray-700  dark:text-white leading-relaxed">
+      <h2 className="text-xl font-semibold mb-2 dark:text-white">
+        Description
+      </h2>
+      <p className="text-gray-700 dark:text-white leading-relaxed">
         {task.description}
       </p>
     </Card>
