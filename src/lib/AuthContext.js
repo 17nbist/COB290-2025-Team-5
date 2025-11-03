@@ -1,12 +1,13 @@
 "use client";
 import { createContext, useContext, useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import baseUsers from "./base-data/users.js"
 import baseProjects from "./base-data/projects.js"
 import baseTasks from "./base-data/tasks.js"
 import baseEvents from "./base-data/events.js"
 import { forumPosts as baseForums } from "./base-data/forums.js"
 import { requests as baseRequests } from "./base-data/requests.js"
+
 
 
 const AuthContext = createContext();
@@ -92,6 +93,8 @@ export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
+    const pathname = usePathname();
+    const isAuthPage = ['/login', '/login/registration', '/login/forgot'].includes(pathname);
 
     // Session timeout state
     const [showInactivityWarning, setShowInactivityWarning] = useState(false);
@@ -377,39 +380,94 @@ export function AuthProvider({ children }) {
         });
     }
 
-    return (
-        <AuthContext.Provider value={{ allUsers, user, allProjects, allTasks, allEvents, allForumPosts, userRequests, login, logout, loading, addToAllTasks, addToAllEvents, updateTodo, addToAllProjects, editProjectMembers, addForumPost, updateForumPost, addRequest, updateRequest, showInactivityWarning, continueSession }}>
-            {children}
+    // If on login/register/forgot pages, skip timers + inactivity modal
+if (isAuthPage) {
+  return (
+    <AuthContext.Provider
+      value={{
+        allUsers,
+        user,
+        allProjects,
+        allTasks,
+        allEvents,
+        allForumPosts,
+        userRequests,
+        login,
+        logout,
+        loading,
+        addToAllTasks,
+        addToAllEvents,
+        updateTodo,
+        addToAllProjects,
+        editProjectMembers,
+        addForumPost,
+        updateForumPost,
+        addRequest,
+        updateRequest,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+}
 
-            {/* Inactivity Warning Modal */}
-            {showInactivityWarning && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md mx-4 shadow-xl">
-                        <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
-                            Session Timeout Warning
-                        </h2>
-                        <p className="mb-6 text-gray-700 dark:text-gray-300">
-                            You will be logged out soon due to inactivity. Click &apos;Continue&apos; to stay logged in.
-                        </p>
-                        <div className="flex gap-3 justify-end">
-                            <button
-                                onClick={logout}
-                                className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition"
-                            >
-                                Logout
-                            </button>
-                            <button
-                                onClick={continueSession}
-                                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-                            >
-                                Continue
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
-        </AuthContext.Provider>
-    );
+return (
+  <AuthContext.Provider
+    value={{
+      allUsers,
+      user,
+      allProjects,
+      allTasks,
+      allEvents,
+      allForumPosts,
+      userRequests,
+      login,
+      logout,
+      loading,
+      addToAllTasks,
+      addToAllEvents,
+      updateTodo,
+      addToAllProjects,
+      editProjectMembers,
+      addForumPost,
+      updateForumPost,
+      addRequest,
+      updateRequest,
+      showInactivityWarning,
+      continueSession,
+    }}
+  >
+    {children}
+
+    {/* Inactivity Warning Modal */}
+    {showInactivityWarning && (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md mx-4 shadow-xl">
+          <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+            Session Timeout Warning
+          </h2>
+          <p className="mb-6 text-gray-700 dark:text-gray-300">
+            You will be logged out soon due to inactivity. Click &apos;Continue&apos; to stay logged in.
+          </p>
+          <div className="flex gap-3 justify-end">
+            <button
+              onClick={logout}
+              className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+            >
+              Logout
+            </button>
+            <button
+              onClick={continueSession}
+              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+  </AuthContext.Provider>
+);
 }
 
 export function useAuth() {

@@ -28,7 +28,7 @@ export default function AuthCard({ children }) {
 						</h1>
 			</div>
 						<div style={styles.footer}>
-							Have a set up URL?{" "}
+							Haven't finished registering?{" "}
 							<Link href="/login/registration" style={styles.link}>
 								Click Here
 							</Link>

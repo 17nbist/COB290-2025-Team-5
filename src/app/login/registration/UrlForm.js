@@ -15,9 +15,8 @@ export default function UrlForm() {
 	const [showPassword, setShowPassword] = React.useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
 
-	// 🔍 Live validation logic
 	const validateForm = () => {
-		if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+		if (!/^[^\s@]+@make-it-all\.co\.uk$/i.test(email)) {
 			setError("Please enter a valid email address.");
 			return false;
 		}
@@ -25,6 +24,19 @@ export default function UrlForm() {
 			setError("Password must be at least 6 characters long.");
 			return false;
 		}
+       if (!/[A-Z]/.test(password)) {
+        setError("Password must contain at least one uppercase letter.");
+        return false;
+    }
+    if (!/[0-9]/.test(password)) {
+        setError("Password must contain at least one number.");
+        return false;
+    }
+
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        setError("Password must contain at least one special character.");
+        return false;
+    }
 		if (password !== confirmPassword) {
 			setError("Passwords do not match.");
 			return false;
@@ -187,7 +199,7 @@ export default function UrlForm() {
 				</button>
 			</form>
 
-			{/* ✨ Animated success message */}
+			{/*Animated success message */}
 			<AnimatePresence>
 				{success && (
 					<motion.div
