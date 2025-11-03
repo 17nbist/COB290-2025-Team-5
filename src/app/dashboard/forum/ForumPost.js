@@ -19,6 +19,7 @@ export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
       <div className="flex space-x-3">
         <h2 className="dark:text-white text-xl font-semibold mb-3">{post.title}</h2>
         <span
+        style={{ borderRadius: "10px" }}
           className={
             post.flair === "technical"
               ? "items-center px-2 py-1 h-[32px] bg-[#ffca1d] text-black rounded-md font-medium"
@@ -30,7 +31,6 @@ export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
       </div>
 
       <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">{post.preview}</p>
-
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
           <span>posted {post.timeAgo} by {post.author}</span>
@@ -38,6 +38,7 @@ export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
             <span
               key={index}
               className="px-2 py-1 bg-gray-200 dark:bg-[#334155] text-gray-700 dark:text-gray-400 rounded-md"
+              style={{ borderRadius: "5px" }}
             >
               {tag}
             </span>
@@ -48,8 +49,8 @@ export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
           <button
             onClick={handleUpvoteClick}
             className={`flex items-center gap-1.5 transition-colors ${post.userVote === "up"
-                ? "text-green-500"
-                : "hover:text-green-400"
+              ? "text-green-500"
+              : "hover:text-green-400"
               }`}
           >
             <FaArrowUp size={14} />
@@ -59,8 +60,8 @@ export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
           <button
             onClick={handleDownvoteClick}
             className={`flex items-center gap-1.5 transition-colors ${post.userVote === "down"
-                ? "text-red-500"
-                : "hover:text-red-400"
+              ? "text-red-500"
+              : "hover:text-red-400"
               }`}
           >
             <FaArrowDown size={14} />

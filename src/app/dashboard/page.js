@@ -80,14 +80,17 @@ export default function Home() {
           <button
             onClick={logout}
             className="
-              text-sm font-medium 
-              px-4 py-2 
-              rounded-md 
-              bg-gray-100 text-gray-700 
-              hover:bg-red-800 hover:text-white 
-              transition-all duration-500
-              whitespace-nowrap
-            "
+                text-sm font-medium 
+                px-4 py-2 
+                rounded-md 
+                bg-white dark:bg-gray-800 
+                text-gray-700 dark:text-gray-200
+                border border-gray-300 dark:border-gray-600
+                transition-all duration-300 hover:bg-gray-200 hover:scale-105 hover:shadow-lg active:scale-95
+                whitespace-nowrap
+              "
+            style={{ borderRadius: "20px" }}
+
           >
             Logout
           </button>
