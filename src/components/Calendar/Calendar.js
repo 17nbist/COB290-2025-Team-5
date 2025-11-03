@@ -100,6 +100,17 @@ export default function Calendar({tasks, color="#2e815fff",startRangeType="Week"
       let toIndex = 0;
       const divisions = getNumberOfDivisions();
 
+      if (rangeType === "Week" || rangeType === "Month") {
+        fromIndex = (t.from - startDate) / (1000 * 60 * 60 * 24);
+        toIndex = (t.to - startDate) / (1000 * 60 * 60 * 24);
+      } else if (rangeType === "Day" || rangeType === "8h") {
+        fromIndex = (t.from - startDate) / (1000 * 60 * 60);
+        toIndex = (t.to - startDate) / (1000 * 60 * 60);
+      } else if (rangeType === "Year") {
+        fromIndex = monthsBetween(startDate, t.from);
+        toIndex = monthsBetween(startDate, t.to);
+      }
+
       // if in week view and task < 1 day wide, round to full day
       if (rangeType === "Week" && (toIndex - fromIndex) < 1) {
         const startOfDay = new Date(t.from);
@@ -110,17 +121,8 @@ export default function Calendar({tasks, color="#2e815fff",startRangeType="Week"
 
         t.from = startOfDay;
         t.to = endOfDay;
-      }
-
-      if (rangeType === "Week" || rangeType === "Month") {
         fromIndex = (t.from - startDate) / (1000 * 60 * 60 * 24);
         toIndex = (t.to - startDate) / (1000 * 60 * 60 * 24);
-      } else if (rangeType === "Day" || rangeType === "8h") {
-        fromIndex = (t.from - startDate) / (1000 * 60 * 60);
-        toIndex = (t.to - startDate) / (1000 * 60 * 60);
-      } else if (rangeType === "Year") {
-        fromIndex = monthsBetween(startDate, t.from);
-        toIndex = monthsBetween(startDate, t.to);
       }
 
 
