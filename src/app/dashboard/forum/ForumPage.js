@@ -8,9 +8,10 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@/lib/AuthContext";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function Forum() {
-  const { user, allForumPosts, updateForumPost, addForumPost } = useAuth();
+  const { user, allForumPosts, updateForumPost, addForumPost, loading } = useAuth();
   const filterTabs = ["My Posts", "Directed To Me", "All Posts"];
   const sortTabs = ["Hot", "New", "Top"];
   const [activeFilterTab, setActiveFilterTab] = useState("All Posts");
@@ -208,6 +209,14 @@ export default function Forum() {
       userVote: newVoteStatus,
     });
   };
+
+  if (loading || !allForumPosts) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <LoadingSpinner size="large" />
+      </div>
+    );
+  }
 
   return (
     <>

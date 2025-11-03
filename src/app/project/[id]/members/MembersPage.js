@@ -115,7 +115,7 @@ function EditMembersModal({ showModal, setShowModal, members, project }) {
 
 
   return (
-    <Modal isOpen={showModal}>
+    <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
       <Card style={{ width: "40%" }}>
         <div className="flex flex-col gap-[20px]">
           <div className="flex flex-col gap-1">

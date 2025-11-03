@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
@@ -42,7 +42,6 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
 
         onSubmit(newPost);
 
-        // Reset form
         setTitle("");
         setContent("");
         setTags("");
@@ -50,10 +49,46 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
         onClose();
     };
 
+    useEffect(() => {
+        if (!isOpen || !onClose) return;
+
+        const handleEscape = (e) => {
+            if (e.key === "Escape") {
+                onClose();
+            }
+        };
+
+        document.addEventListener("keydown", handleEscape);
+        return () => {
+            document.removeEventListener("keydown", handleEscape);
+        };
+    }, [isOpen, onClose]);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isOpen]);
+
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-[#0000007d] bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div
+            className="fixed inset-0 bg-[#0000007d] bg-opacity-50 flex items-center justify-center z-50 p-4"
+            onClick={(e) => {
+                if (e.target === e.currentTarget && onClose) {
+                    onClose();
+                }
+            }}
+            role="dialog"
+            aria-modal="true"
+        >
             <Card style={{ maxWidth: "600px", width: "100%" }}>
                 {/* Header */}
                 <div className="flex justify-between items-center mb-6">

@@ -60,7 +60,7 @@ export default function TaskViewToDo({ task }) {
         </div>
       </Card>
 
-      <Modal isOpen={showModal}>
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
         <Card className="dark:bg-[#767676] dark:border-gray-500" style={{ width: "40%" }}>
           <div className="flex flex-col gap-[20px]">
             <h1 className="text-[30px] font-[600] dark:text-white">Add A Todo</h1>

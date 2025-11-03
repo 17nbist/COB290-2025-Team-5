@@ -1,11 +1,21 @@
 "use client";
 import React from "react";
+import SimpleCaptcha from "@/components/SimpleCaptcha";
 
 export default function ForgotForm() {
   const [email, setEmail] = React.useState("");
+  const [isCaptchaVerified, setIsCaptchaVerified] = React.useState(false);
+  const [captchaError, setCaptchaError] = React.useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
+    
+    if (!isCaptchaVerified) {
+      setCaptchaError("Please verify you are human by solving the captcha.");
+      return;
+    }
+    
+    setCaptchaError("");
     console.log("Forgot password for:", email);
     // Eventually I need to add logic to deal with the fogot password request
   };
@@ -41,6 +51,13 @@ export default function ForgotForm() {
         onChange={(e) => setEmail(e.target.value)}
         required
         className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all text-black placeholder-gray-400"
+        />
+      </div>
+
+      <div>
+        <SimpleCaptcha 
+          onVerify={(verified) => setIsCaptchaVerified(verified)} 
+          error={captchaError}
         />
       </div>
 

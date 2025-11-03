@@ -8,10 +8,11 @@ import EventsPage from "./events/EventsPage";
 import MembersPage from "./members/MembersPage";
 import { useAuth } from "@/lib/AuthContext";
 import { useParams } from "next/navigation";
+import PageSkeleton from "@/components/SkeletonLoader";
 
 
 export default function ProjectPage() {
-	const { user, allProjects, allTasks, allEvents, allUsers } = useAuth();
+	const { user, allProjects, allTasks, allEvents, allUsers, loading } = useAuth();
 	const router = useRouter();
 	const topNavItems = ["All Projects", "Today", "Tasks", "Events", "Members"];
 	const [activeTab, setActiveTab] = useState("Today");
@@ -70,6 +71,10 @@ export default function ProjectPage() {
 		}
 		setActiveTab(tab);
 	};
+
+	if (loading || !user || !allProjects || !allTasks || !allEvents || !allUsers) {
+		return <PageSkeleton />;
+	}
 
 	if (errText) {
 		return (
