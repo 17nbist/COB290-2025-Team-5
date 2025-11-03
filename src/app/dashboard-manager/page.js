@@ -158,6 +158,10 @@ export default function Home() {
           .left-side {
             overflow-y: auto !important;
           }
+          .right-side {
+            overflow-y: auto !important;
+            max-height: 100vh !important;
+          }
           .overview-grid {
             grid-template-columns: 1fr 1fr !important;
           }
@@ -166,6 +170,32 @@ export default function Home() {
           .overview-grid {
             grid-template-columns: 1fr !important;
           }
+          .right-side {
+            max-height: none !important;
+          }
+        }
+        @media (max-width: 767px) {
+          .right-side {
+            max-height: none !important;
+          }
+          .pie-chart-container {
+            max-height: min(350px, 50vh) !important;
+          }
+          .task-form-container {
+            max-height: none !important;
+          }
+        }
+        .chart-container {
+          width: 100% !important;
+          height: 100% !important;
+          max-width: 100% !important;
+          max-height: 100% !important;
+          position: relative !important;
+        }
+        .chart-container canvas {
+          max-width: 100% !important;
+          max-height: 100% !important;
+          height: auto !important;
         }
       `}</style>
 
@@ -242,25 +272,40 @@ export default function Home() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div style={{borderRadius: "15px"}} className="grid grid-rows-[auto_auto] w-full bg-[#c4daff] dark:bg-[#404040] box-border p-2.5 gap-2.5 min-h-screen transition-colors duration-300 ">
+        <div style={{borderRadius: "15px"}} className="right-side flex flex-col w-full bg-[#c4daff] dark:bg-[#404040] box-border p-2.5 gap-2.5 transition-colors duration-300 overflow-hidden">
           {/* PIE CHART SECTION */}
-          <Card style={{
+          <Card className="pie-chart-container" style={{
             width: "100%",
-            minHeight: "300px",
+            minHeight: "250px",
+            maxHeight: "400px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             boxSizing: "border-box",
-            padding: "20px"
+            padding: "clamp(10px, 2vw, 20px)",
+            overflow: "hidden",
+            flexShrink: 0
           }}>
-            <div className="w-full h-full max-w-[350px] max-h-[350px] min-h-[250px]">
-              <PieChart inputData={InputDataExample} />
+            <div className="w-full h-full flex items-center justify-center" style={{
+              maxWidth: "100%",
+              maxHeight: "100%",
+              aspectRatio: "1 / 1"
+            }}>
+              <div className="w-full h-full max-w-full max-h-full" style={{
+                maxWidth: "min(350px, 100%, calc(100vw - 40px))",
+                maxHeight: "min(350px, 100%, calc(100vh - 500px))"
+              }}>
+                <PieChart inputData={InputDataExample} />
+              </div>
             </div>
           </Card>
 
           {/* TASK FORM SECTION */}
-          <div className="flex justify-center items-start rounded-[10px] w-full box-border p-2.5 min-h-[400px]">
-            <div className="w-full max-w-[600px]">
+          <div className="task-form-container flex justify-center items-start rounded-[10px] w-full box-border p-2.5 min-h-[400px] flex-1 overflow-y-auto" style={{
+            minHeight: "400px",
+            maxHeight: "calc(100vh - 450px)"
+          }}>
+            <div className="w-full max-w-[600px] pb-4">
               <TasksForm />
             </div>
           </div>

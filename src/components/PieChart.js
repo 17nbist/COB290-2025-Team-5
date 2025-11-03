@@ -90,7 +90,16 @@ export default function PieChart({ inputData }) {
     }
 
     return (
-        <div className="chart-container">
+        <div className="chart-container" style={{
+            width: "100%",
+            height: "100%",
+            maxWidth: "100%",
+            maxHeight: "100%",
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+        }}>
             <Pie data={{
                 labels: inputData.labels,
                 datasets: [{
@@ -101,10 +110,26 @@ export default function PieChart({ inputData }) {
                 }]
             }}
                 options={{
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 1,
                     plugins: {
                         title: {
                             display: true,
-                            text: inputData.title
+                            text: inputData.title,
+                            font: {
+                                size: 14
+                            }
+                        },
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 8,
+                                font: {
+                                    size: 10
+                                }
+                            }
                         }
                     }
                 }}
