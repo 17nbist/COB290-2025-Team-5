@@ -158,11 +158,18 @@ export function AuthProvider({ children }) {
 
         const localForums = localStorage.getItem('forumPosts');
         if (localForums) {
-            setAllForumPosts(JSON.parse(localForums));
+            const parsedForums = JSON.parse(localForums);
+            const forumsWithUserVotes = parsedForums.map(post => {
+                if (!post.userVotes) {
+                    post.userVotes = {};
+                }
+                return post;
+            });
+            setAllForumPosts(forumsWithUserVotes);
         } else {
             const forumsWithVoteState = baseForums.map(post => ({
                 ...post,
-                userVote: null
+                userVotes: {}
             }));
             setAllForumPosts(forumsWithVoteState);
             localStorage.setItem('forumPosts', JSON.stringify(forumsWithVoteState));

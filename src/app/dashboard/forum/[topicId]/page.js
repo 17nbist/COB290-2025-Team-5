@@ -30,24 +30,30 @@ export default function TopicPage({ params }) {
 
     if (!post) return <div className="p-6">Post not found</div>;
 
+    const userVote = (post.userVotes || {})[user?.email] || null;
+
     const handleUpvoteClick = (e) => {
         e.stopPropagation();
+        if (!user) return;
+
+        const userVotes = post.userVotes || {};
+        const currentUserVote = userVotes[user.email] || null;
 
         let newUpvotes = post.upvotes;
         let newDownvotes = post.downvotes;
-        let newVoteStatus = post.userVote;
+        const newUserVotes = { ...userVotes };
 
-        switch (post.userVote) {
+        switch (currentUserVote) {
             case null:
-                newVoteStatus = "up";
+                newUserVotes[user.email] = "up";
                 newUpvotes += 1;
                 break;
             case "up":
-                newVoteStatus = null;
+                delete newUserVotes[user.email];
                 newUpvotes -= 1;
                 break;
             case "down":
-                newVoteStatus = "up";
+                newUserVotes[user.email] = "up";
                 newUpvotes += 1;
                 newDownvotes -= 1;
                 break;
@@ -56,28 +62,32 @@ export default function TopicPage({ params }) {
         updateForumPost(post.id, {
             upvotes: newUpvotes,
             downvotes: newDownvotes,
-            userVote: newVoteStatus,
+            userVotes: newUserVotes,
         });
     };
 
     const handleDownvoteClick = (e) => {
         e.stopPropagation();
+        if (!user) return;
+
+        const userVotes = post.userVotes || {};
+        const currentUserVote = userVotes[user.email] || null;
 
         let newUpvotes = post.upvotes;
         let newDownvotes = post.downvotes;
-        let newVoteStatus = post.userVote;
+        const newUserVotes = { ...userVotes };
 
-        switch (post.userVote) {
+        switch (currentUserVote) {
             case null:
-                newVoteStatus = "down";
+                newUserVotes[user.email] = "down";
                 newDownvotes += 1;
                 break;
             case "down":
-                newVoteStatus = null;
+                delete newUserVotes[user.email];
                 newDownvotes -= 1;
                 break;
             case "up":
-                newVoteStatus = "down";
+                newUserVotes[user.email] = "down";
                 newDownvotes += 1;
                 newUpvotes -= 1;
                 break;
@@ -86,7 +96,7 @@ export default function TopicPage({ params }) {
         updateForumPost(post.id, {
             upvotes: newUpvotes,
             downvotes: newDownvotes,
-            userVote: newVoteStatus,
+            userVotes: newUserVotes,
         });
     };
 
@@ -151,7 +161,7 @@ export default function TopicPage({ params }) {
                         <div className="flex items-center gap-4 text-gray-400">
                             <button
                                 onClick={handleUpvoteClick}
-                                className={`flex items-center gap-1.5 transition-colors ${post.userVote === "up"
+                                className={`flex items-center gap-1.5 transition-colors ${userVote === "up"
                                         ? "text-green-500"
                                         : "hover:text-green-400"
                                     }`}
@@ -162,7 +172,7 @@ export default function TopicPage({ params }) {
 
                             <button
                                 onClick={handleDownvoteClick}
-                                className={`flex items-center gap-1.5 transition-colors ${post.userVote === "down"
+                                className={`flex items-center gap-1.5 transition-colors ${userVote === "down"
                                         ? "text-red-500"
                                         : "hover:text-red-400"
                                     }`}

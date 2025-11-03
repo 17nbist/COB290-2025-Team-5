@@ -133,7 +133,7 @@ export default function Forum() {
     const postWithAuthor = {
       ...newPost,
       author: user?.email,
-      userVote: null,
+      userVotes: {},
     };
     addForumPost(postWithAuthor);
   };
@@ -150,23 +150,26 @@ export default function Forum() {
 
   const handleUpvote = (postId) => {
     const post = allForumPosts.find(p => p.id === postId);
-    if (!post) return;
+    if (!post || !user) return;
+
+    const userVotes = post.userVotes || {};
+    const currentUserVote = userVotes[user.email] || null;
 
     let newUpvotes = post.upvotes;
     let newDownvotes = post.downvotes;
-    let newVoteStatus = post.userVote;
+    const newUserVotes = { ...userVotes };
 
-    switch (post.userVote) {
+    switch (currentUserVote) {
       case null:
-        newVoteStatus = "up";
+        newUserVotes[user.email] = "up";
         newUpvotes += 1;
         break;
       case "up":
-        newVoteStatus = null;
+        delete newUserVotes[user.email];
         newUpvotes -= 1;
         break;
       case "down":
-        newVoteStatus = "up";
+        newUserVotes[user.email] = "up";
         newUpvotes += 1;
         newDownvotes -= 1;
         break;
@@ -175,29 +178,32 @@ export default function Forum() {
     updateForumPost(postId, {
       upvotes: newUpvotes,
       downvotes: newDownvotes,
-      userVote: newVoteStatus,
+      userVotes: newUserVotes,
     });
   };
 
   const handleDownvote = (postId) => {
     const post = allForumPosts.find(p => p.id === postId);
-    if (!post) return;
+    if (!post || !user) return;
+
+    const userVotes = post.userVotes || {};
+    const currentUserVote = userVotes[user.email] || null;
 
     let newUpvotes = post.upvotes;
     let newDownvotes = post.downvotes;
-    let newVoteStatus = post.userVote;
+    const newUserVotes = { ...userVotes };
 
-    switch (post.userVote) {
+    switch (currentUserVote) {
       case null:
-        newVoteStatus = "down";
+        newUserVotes[user.email] = "down";
         newDownvotes += 1;
         break;
       case "down":
-        newVoteStatus = null;
+        delete newUserVotes[user.email];
         newDownvotes -= 1;
         break;
       case "up":
-        newVoteStatus = "down";
+        newUserVotes[user.email] = "down";
         newDownvotes += 1;
         newUpvotes -= 1;
         break;
@@ -206,7 +212,7 @@ export default function Forum() {
     updateForumPost(postId, {
       upvotes: newUpvotes,
       downvotes: newDownvotes,
-      userVote: newVoteStatus,
+      userVotes: newUserVotes,
     });
   };
 
@@ -323,15 +329,18 @@ export default function Forum() {
             No posts found
           </div>
         ) : (
-          paginatedPosts.map((post) => (
-            <ForumPost
-              key={post.id}
-              post={post}
-              onClick={handlePostClick}
-              onUpvote={handleUpvote}
-              onDownvote={handleDownvote}
-            />
-          ))
+          paginatedPosts.map((post) => {
+            const userVote = (post.userVotes || {})[user?.email] || null;
+            return (
+              <ForumPost
+                key={post.id}
+                post={{ ...post, userVote }}
+                onClick={handlePostClick}
+                onUpvote={handleUpvote}
+                onDownvote={handleDownvote}
+              />
+            );
+          })
         )}
       </div>
 
