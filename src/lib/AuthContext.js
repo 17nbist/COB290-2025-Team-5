@@ -160,12 +160,20 @@ export function AuthProvider({ children }) {
         if (localForums) {
             const parsedForums = JSON.parse(localForums);
             const forumsWithUserVotes = parsedForums.map(post => {
-                if (!post.userVotes) {
-                    post.userVotes = {};
+                const migratedPost = { ...post };
+                
+                if (!migratedPost.userVotes) {
+                    migratedPost.userVotes = {};
                 }
-                return post;
+                
+                if (migratedPost.userVote !== undefined) {
+                    delete migratedPost.userVote;
+                }
+                
+                return migratedPost;
             });
             setAllForumPosts(forumsWithUserVotes);
+            localStorage.setItem('forumPosts', JSON.stringify(forumsWithUserVotes));
         } else {
             const forumsWithVoteState = baseForums.map(post => ({
                 ...post,
@@ -359,7 +367,14 @@ export function AuthProvider({ children }) {
     function addForumPost(post) {
         setAllForumPosts(prev => {
             const maxId = prev.length > 0 ? Math.max(...prev.map(p => p.id)) : 0;
-            const newPost = { ...post, id: maxId + 1 };
+            const newPost = { 
+                ...post, 
+                id: maxId + 1,
+                userVotes: post.userVotes || {}
+            };
+            if (newPost.userVote !== undefined) {
+                delete newPost.userVote;
+            }
             const updated = [newPost, ...prev];
             localStorage.setItem('forumPosts', JSON.stringify(updated));
             return updated;
@@ -368,7 +383,19 @@ export function AuthProvider({ children }) {
 
     function updateForumPost(postId, updates) {
         setAllForumPosts(prev => {
-            const updated = prev.map(p => p.id === postId ? { ...p, ...updates } : p);
+            const updated = prev.map(p => {
+                if (p.id === postId) {
+                    const updatedPost = { ...p, ...updates };
+                    if (updatedPost.userVote !== undefined && !updatedPost.userVotes) {
+                        delete updatedPost.userVote;
+                    }
+                    if (!updatedPost.userVotes) {
+                        updatedPost.userVotes = {};
+                    }
+                    return updatedPost;
+                }
+                return p;
+            });
             localStorage.setItem('forumPosts', JSON.stringify(updated));
             return updated;
         });
