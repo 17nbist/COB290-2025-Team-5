@@ -28,7 +28,7 @@ export default function AuthCard({ children }) {
 						</h1>
 			</div>
 						<div style={styles.footer}>
-							Haven't finished registering?{" "}
+							Haven&apos;t  finished registering?{" "}
 							<Link href="/login/registration" style={styles.link}>
 								Click Here
 							</Link>
