@@ -7,15 +7,18 @@ import { useEffect, useState } from "react";
 import Button from "@/components/Button";
 import NavBar from "@/components/NavBar";
 import { useAuth } from "@/lib/AuthContext";
+import NetworkGraph from "@/components/NetworkGraph";
+import { HiOutlineShare } from "react-icons/hi";
 
 export default function ProjectsPage({ projects, employees }) {
-	const { user, allProjects } = useAuth();
+	const { user, allProjects, allEvents, allUsers, allTasks } = useAuth();
 	const [searchVal, setSearchVal] = useState("");
 
 	const filterTabs = ["Name", "Due Date"];
 	const [activeFilterTab, setActiveFilterTab] = useState("Name");
 
 	const [showModal, setShowModal] = useState(false);
+	const [showNetworkGraph, setShowNetworkGraph] = useState(false);
 
 
 	function sortByName(a, b) {
@@ -36,7 +39,7 @@ export default function ProjectsPage({ projects, employees }) {
 
 
 	return (
-		<div className="flex flex-col w-[1200px] flex-wrap items-center">
+		<div className="flex flex-col w-[1200px] flex-wrap items-center relative">
 			<div className="flex mb-[30px] items-center justify-between w-full">
 				<div className="w-6xl mx-auto px-4 py-6">
 					<div className="mb-6 flex">
@@ -61,6 +64,42 @@ export default function ProjectsPage({ projects, employees }) {
 			</div>
 
 			<AddProjectModal showModal={showModal} setShowModal={setShowModal} employees={employees} />
+			
+			{/* Floating Network Graph Button */}
+			<button
+				onClick={() => setShowNetworkGraph(true)}
+				className="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group z-40"
+				title="View Network Graph"
+			>
+				<HiOutlineShare className="text-2xl group-hover:scale-110 transition-transform" />
+			</button>
+
+			{/* Network Graph Modal */}
+			{showNetworkGraph && (
+				<Modal isOpen={showNetworkGraph}>
+					<div className="relative w-[90vw] h-[85vh] max-w-[1400px] bg-white dark:bg-gray-900 rounded-lg shadow-2xl overflow-hidden">
+						{/* Header */}
+						<div className="absolute top-0 left-0 right-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex justify-between items-center z-10">
+							<h2 className="text-xl font-semibold text-gray-900 dark:text-white">Network Graph</h2>
+							<button
+								onClick={() => setShowNetworkGraph(false)}
+								className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl leading-none transition-colors"
+							>
+								×
+							</button>
+						</div>
+						
+						{/* Graph Container */}
+						<div className="absolute top-16 left-0 right-0 bottom-0 bg-gray-50 dark:bg-gray-900">
+							<NetworkGraph 
+								tasks={[...(allTasks || []), ...(allEvents || [])]} 
+								projects={allProjects || []} 
+								users={allUsers || []} 
+							/>
+						</div>
+					</div>
+				</Modal>
+			)}
 		</div>
 	)
 }
