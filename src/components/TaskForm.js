@@ -17,16 +17,36 @@ export default function TasksForm({ tasks, setTasks, setShowModal }) {
             return;
         }
 
-        setTasks(prev => [
-            ...prev,
-            { id: prev.length, title, description, employeeName, from, to }
-        ]);
-        setShowModal(false);
+        if (setTasks) {
+            setTasks(prev => [
+                ...prev,
+                { id: prev.length, title, description, employeeName, from, to }
+            ]);
+        }
+        
+        if (setShowModal) {
+            setShowModal(false);
+        }
+        
         setTitle("");
         setDescription("");
         setEmployeeName("");
+        setProjectName("");
         setFrom(new Date());
         setTo(new Date());
+    }
+
+    function handleCancel() {
+        if (setShowModal) {
+            setShowModal(false);
+        } else {
+            setTitle("");
+            setDescription("");
+            setEmployeeName("");
+            setProjectName("");
+            setFrom(new Date());
+            setTo(new Date());
+        }
     }
 
     return (
@@ -130,7 +150,9 @@ export default function TasksForm({ tasks, setTasks, setShowModal }) {
                 {/* Buttons */}
                 <div className="flex w-full justify-end">
                     <div className="flex gap-2">
-                        <Button onClick={() => setShowModal(false)} text={"Cancel"} />
+                        {setShowModal && (
+                            <Button onClick={handleCancel} text={"Cancel"} />
+                        )}
                         <Button onClick={addTask} text={"Add"} />
                     </div>
                 </div>

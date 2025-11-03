@@ -7,11 +7,11 @@ export default function OverviewTable({ label, data, stats }) {
     const router = useRouter()
 
     function routChange(labelName) {
-
-        if (labelName == "project") {
+        const lowerLabel = labelName.toLowerCase();
+        if (lowerLabel == "project") {
             router.push("/dashboard#projects");
         }
-        else if (labelName == "task") {
+        else if (lowerLabel == "task") {
             router.push("/dashboard#To-do");
         }
     }
