@@ -174,8 +174,8 @@ export default function Home() {
         <div className="left-side flex flex-col w-full min-h-screen bg-[#d2d2d2] dark:bg-[#303030] box-border p-2.5 gap-2.5 transition-colors duration-300">
           {/* Project overview */}
           <div className="overview-grid grid grid-cols-1 gap-2.5">
-            <OverviewTable label={"project"} data={dataProject} stats={statsProject} />
-            <OverviewTable label={"task"} data={dataTasks} stats={statsTasks} />
+            <OverviewTable label={"Project"} data={dataProject} stats={statsProject} />
+            <OverviewTable label={"Task"} data={dataTasks} stats={statsTasks} />
           </div>
 
           {/* Analytics of manager */}
