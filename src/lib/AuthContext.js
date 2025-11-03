@@ -389,7 +389,7 @@ export function AuthProvider({ children }) {
                             Session Timeout Warning
                         </h2>
                         <p className="mb-6 text-gray-700 dark:text-gray-300">
-                            You will be logged out soon due to inactivity. Click 'Continue' to stay logged in.
+                            You will be logged out soon due to inactivity. Click &apos;Continue&apos; to stay logged in.
                         </p>
                         <div className="flex gap-3 justify-end">
                             <button
