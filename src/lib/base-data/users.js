@@ -24,7 +24,9 @@ const baseUsers = [
         role: "Employee",
         profilePic: "/images/pexels-rfera-432059.jpg",
         password: "password123",
-        isManager: false
+        isManager: false,
+        taskAllocated: 40,
+        projectAllocated: 10,
     },
     {
         id: 3,
