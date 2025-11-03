@@ -12,16 +12,13 @@ export default function NetworkGraph({ tasks, projects, users }) {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const animationFrameRef = useRef(null);
 
-    // Track dark mode changes
     useEffect(() => {
         const checkDarkMode = () => {
             setIsDarkMode(document.documentElement.classList.contains('dark'));
         };
 
-        // Check initial state
         checkDarkMode();
 
-        // Create observer to watch for class changes on html element
         const observer = new MutationObserver(checkDarkMode);
         observer.observe(document.documentElement, {
             attributes: true,
@@ -31,7 +28,6 @@ export default function NetworkGraph({ tasks, projects, users }) {
         return () => observer.disconnect();
     }, []);
 
-    // Initialize graph data
     useEffect(() => {
         if (!tasks || !projects || !users) return;
 
@@ -45,7 +41,6 @@ export default function NetworkGraph({ tasks, projects, users }) {
         const centerX = width / 2;
         const centerY = height / 2;
 
-        // Add project nodes
         projects.forEach((project, index) => {
             const angle = (index / projects.length) * 2 * Math.PI;
             const radius = Math.min(width, height) * 0.3;
@@ -179,10 +174,10 @@ export default function NetworkGraph({ tasks, projects, users }) {
 
                     node.vx *= 0.8;
                     node.vy *= 0.8;
-          node.x += node.vx * alpha;
-          node.y += node.vy * alpha;
+                    node.x += node.vx * alpha;
+                    node.y += node.vy * alpha;
 
-          const margin = 50;
+                    const margin = 50;
                     node.x = Math.max(margin, Math.min(canvas.width - margin, node.x));
                     node.y = Math.max(margin, Math.min(canvas.height - margin, node.y));
                 });
@@ -190,10 +185,10 @@ export default function NetworkGraph({ tasks, projects, users }) {
                 return newNodes;
             });
 
-      animationFrameRef.current = requestAnimationFrame(simulate);
-    };
+            animationFrameRef.current = requestAnimationFrame(simulate);
+        };
 
-    const timeoutId = setTimeout(() => {
+        const timeoutId = setTimeout(() => {
             if (animationFrameRef.current) {
                 cancelAnimationFrame(animationFrameRef.current);
             }
@@ -206,10 +201,10 @@ export default function NetworkGraph({ tasks, projects, users }) {
                 cancelAnimationFrame(animationFrameRef.current);
             }
             clearTimeout(timeoutId);
-    };
-  }, [nodes.length, edges, draggedNode]);
+        };
+    }, [nodes.length, edges, draggedNode]);
 
-  useEffect(() => {
+    useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas || nodes.length === 0) return;
 
@@ -267,10 +262,9 @@ export default function NetworkGraph({ tasks, projects, users }) {
 
         if (node.type === 'project') {
           ctx.fillRect(node.x - node.size / 2, node.y - node.size / 2, node.size, node.size);
-                    ctx.strokeRect(node.x - node.size / 2, node.y - node.size / 2, node.size, node.size);
-                } else if (node.type === 'user') {
-                    // Hexagon for users
-                    ctx.beginPath();
+          ctx.strokeRect(node.x - node.size / 2, node.y - node.size / 2, node.size, node.size);
+        } else if (node.type === 'user') {
+          ctx.beginPath();
                     for (let i = 0; i < 6; i++) {
                         const angle = (Math.PI / 3) * i;
                         const x = node.x + node.size * Math.cos(angle);
@@ -279,11 +273,10 @@ export default function NetworkGraph({ tasks, projects, users }) {
                         else ctx.lineTo(x, y);
                     }
                     ctx.closePath();
-                    ctx.fill();
-                    ctx.stroke();
-                } else {
-                    // Circle for tasks
-                    ctx.beginPath();
+          ctx.fill();
+          ctx.stroke();
+        } else {
+          ctx.beginPath();
                     ctx.arc(node.x, node.y, node.size, 0, 2 * Math.PI);
                     ctx.fill();
                     ctx.stroke();
@@ -295,11 +288,10 @@ export default function NetworkGraph({ tasks, projects, users }) {
             requestAnimationFrame(draw);
         };
 
-        draw();
-    }, [nodes, edges, hoveredNode, selectedNode, isDarkMode]);
+    draw();
+  }, [nodes, edges, hoveredNode, selectedNode, isDarkMode]);
 
-    // Mouse handlers
-    const handleMouseDown = (e) => {
+  const handleMouseDown = (e) => {
         const canvas = canvasRef.current;
         const rect = canvas.getBoundingClientRect();
         const x = e.clientX - rect.left;
