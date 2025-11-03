@@ -30,7 +30,7 @@ export default function ProfileOverview({ events }) {
           <DashboardProfileCard
             Title={"Profile"}
             Name={user?.name || "User"}
-            Position={user?.position || "N/A"}
+            Position={user?.role || "N/A"}
             TaskAllocated={user?.taskAllocated || 0}
             ProjectAllocated={user?.projectAllocated || 0}
             ProfilePicLink={user?.profilePic||"/defaultPFP2.png"}
