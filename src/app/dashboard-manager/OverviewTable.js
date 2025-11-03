@@ -23,7 +23,7 @@ export default function OverviewTable({ label, data, stats }) {
                 <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{label} overview</h2>
                 <button
                     onClick={() => routChange(label)}
-                    className="text-sm sm:text-base md:text-lg bg-blue-100 font-semibold p-2 sm:p-3 w-full sm:w-auto px-4 text-gray-900 dark:text-gray-100 transition-all duration-300 hover:bg-blue-200 hover:scale-105 hover:shadow-lg active:scale-95 rounded-[20px]"
+                    className="text-sm sm:text-base md:text-lg bg-blue-100 dark:bg-blue-800 font-semibold p-2 sm:p-3 w-full sm:w-auto px-4 text-gray-900 dark:text-gray-100 transition-all duration-300 hover:bg-blue-200 hover:scale-105 hover:shadow-lg active:scale-95 rounded-[20px]"
                     style={{ justifySelf: "self-end" }}
                 >
                     See all {label}s
