@@ -13,8 +13,8 @@ import { requests as baseRequests } from "./base-data/requests.js"
 const AuthContext = createContext();
 
 // Session timeout constants (configurable)
-const INACTIVITY_TIMEOUT = 0.1 * 60 * 1000; // 13 minutes before warning
-const WARNING_TIMEOUT = 0.1* 60 * 1000;     // 2 minutes to respond to warning
+const INACTIVITY_TIMEOUT = 5 * 60 * 1000; // 5 minutes before warning
+const WARNING_TIMEOUT = 5 * 60 * 1000;     // 5 minutes to respond to warning
 
 // user data. everyone in the team should add more data here for the demo as needed.
 
@@ -179,23 +179,23 @@ export function AuthProvider({ children }) {
         setLoading(false);
     }, []);
 
-const resetInactivityTimer = () => {
-    
-    clearTimeout(inactivityTimerRef.current);
-    clearTimeout(warningTimerRef.current);
+    const resetInactivityTimer = () => {
 
-    if (user) {
-        
-        inactivityTimerRef.current = setTimeout(() => {
-            setShowInactivityWarning(true);
+        clearTimeout(inactivityTimerRef.current);
+        clearTimeout(warningTimerRef.current);
 
-            
-            warningTimerRef.current = setTimeout(() => {
-                logout(); 
-            }, WARNING_TIMEOUT);
-        }, INACTIVITY_TIMEOUT);
-    }
-};
+        if (user) {
+
+            inactivityTimerRef.current = setTimeout(() => {
+                setShowInactivityWarning(true);
+
+
+                warningTimerRef.current = setTimeout(() => {
+                    logout();
+                }, WARNING_TIMEOUT);
+            }, INACTIVITY_TIMEOUT);
+        }
+    };
 
 
     // Handle user continuing session
@@ -207,31 +207,31 @@ const resetInactivityTimer = () => {
 
     // Track user activity
     useEffect(() => {
-    if (!user) return;
+        if (!user) return;
 
-    const handleActivity = () => {
-        resetInactivityTimer(); // reset timer on any activity
-        if (showInactivityWarning) setShowInactivityWarning(false);
-    };
+        const handleActivity = () => {
+            resetInactivityTimer(); // reset timer on any activity
+            if (showInactivityWarning) setShowInactivityWarning(false);
+        };
 
-    window.addEventListener('mousemove', handleActivity);
-    window.addEventListener('keydown', handleActivity);
-    window.addEventListener('click', handleActivity);
-    window.addEventListener('scroll', handleActivity);
-    window.addEventListener('touchstart', handleActivity);
+        window.addEventListener('mousemove', handleActivity);
+        window.addEventListener('keydown', handleActivity);
+        window.addEventListener('click', handleActivity);
+        window.addEventListener('scroll', handleActivity);
+        window.addEventListener('touchstart', handleActivity);
 
-    resetInactivityTimer();
+        resetInactivityTimer();
 
-    return () => {
-        window.removeEventListener('mousemove', handleActivity);
-        window.removeEventListener('keydown', handleActivity);
-        window.removeEventListener('click', handleActivity);
-        window.removeEventListener('scroll', handleActivity);
-        window.removeEventListener('touchstart', handleActivity);
-        clearTimeout(inactivityTimerRef.current);
-        clearTimeout(warningTimerRef.current);
-    };
-}, [user]);
+        return () => {
+            window.removeEventListener('mousemove', handleActivity);
+            window.removeEventListener('keydown', handleActivity);
+            window.removeEventListener('click', handleActivity);
+            window.removeEventListener('scroll', handleActivity);
+            window.removeEventListener('touchstart', handleActivity);
+            clearTimeout(inactivityTimerRef.current);
+            clearTimeout(warningTimerRef.current);
+        };
+    }, [user]);
 
 
     const login = (inputEmail, inputPassword) => {
@@ -378,93 +378,93 @@ const resetInactivityTimer = () => {
     }
 
     // If on login/register/forgot pages, skip timers + inactivity modal
-if (isAuthPage) {
-  return (
-    <AuthContext.Provider
-      value={{
-        allUsers,
-        user,
-        allProjects,
-        allTasks,
-        allEvents,
-        allForumPosts,
-        userRequests,
-        login,
-        logout,
-        loading,
-        addToAllTasks,
-        addToAllEvents,
-        updateTodo,
-        addToAllProjects,
-        editProjectMembers,
-        addForumPost,
-        updateForumPost,
-        addRequest,
-        updateRequest,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
-}
-
-return (
-  <AuthContext.Provider
-    value={{
-      allUsers,
-      user,
-      allProjects,
-      allTasks,
-      allEvents,
-      allForumPosts,
-      userRequests,
-      login,
-      logout,
-      loading,
-      addToAllTasks,
-      addToAllEvents,
-      updateTodo,
-      addToAllProjects,
-      editProjectMembers,
-      addForumPost,
-      updateForumPost,
-      addRequest,
-      updateRequest,
-      showInactivityWarning,
-      continueSession,
-    }}
-  >
-    {children}
-
-    {/* Inactivity Warning Modal */}
-    {showInactivityWarning && (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md mx-4 shadow-xl">
-          <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
-            Session Timeout Warning
-          </h2>
-          <p className="mb-6 text-gray-700 dark:text-gray-300">
-            You will be logged out soon due to inactivity. Click &apos;Continue&apos; to stay logged in.
-          </p>
-          <div className="flex gap-3 justify-end">
-            <button
-              onClick={logout}
-              className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+    if (isAuthPage) {
+        return (
+            <AuthContext.Provider
+                value={{
+                    allUsers,
+                    user,
+                    allProjects,
+                    allTasks,
+                    allEvents,
+                    allForumPosts,
+                    userRequests,
+                    login,
+                    logout,
+                    loading,
+                    addToAllTasks,
+                    addToAllEvents,
+                    updateTodo,
+                    addToAllProjects,
+                    editProjectMembers,
+                    addForumPost,
+                    updateForumPost,
+                    addRequest,
+                    updateRequest,
+                }}
             >
-              Logout
-            </button>
-            <button
-              onClick={continueSession}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-            >
-              Continue
-            </button>
-          </div>
-        </div>
-      </div>
-    )}
-  </AuthContext.Provider>
-);
+                {children}
+            </AuthContext.Provider>
+        );
+    }
+
+    return (
+        <AuthContext.Provider
+            value={{
+                allUsers,
+                user,
+                allProjects,
+                allTasks,
+                allEvents,
+                allForumPosts,
+                userRequests,
+                login,
+                logout,
+                loading,
+                addToAllTasks,
+                addToAllEvents,
+                updateTodo,
+                addToAllProjects,
+                editProjectMembers,
+                addForumPost,
+                updateForumPost,
+                addRequest,
+                updateRequest,
+                showInactivityWarning,
+                continueSession,
+            }}
+        >
+            {children}
+
+            {/* Inactivity Warning Modal */}
+            {showInactivityWarning && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md mx-4 shadow-xl">
+                        <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+                            Session Timeout Warning
+                        </h2>
+                        <p className="mb-6 text-gray-700 dark:text-gray-300">
+                            You will be logged out soon due to inactivity. Click &apos;Continue&apos; to stay logged in.
+                        </p>
+                        <div className="flex gap-3 justify-end">
+                            <button
+                                onClick={logout}
+                                className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+                            >
+                                Logout
+                            </button>
+                            <button
+                                onClick={continueSession}
+                                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                            >
+                                Continue
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </AuthContext.Provider>
+    );
 }
 
 export function useAuth() {
