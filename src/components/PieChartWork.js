@@ -71,7 +71,6 @@ const classSubmissionData = classes.flatMap((pClass) => {
     }));
 });
 
-// Create a simplified dataset that groups all classes together for Yes/No
 const SubmissionData = [
   {
     id: 'Yes',
@@ -103,7 +102,6 @@ const SubmissionData = [
   },
 ];
 
-// Create dataset for class distribution by survival status (Yes first, then No)
 const submittedClassData = [...testData]
   .sort((a) => (a.Submitted === 'Yes' ? -1 : 1))
   .map((item) => {

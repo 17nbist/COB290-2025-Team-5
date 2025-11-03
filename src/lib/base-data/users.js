@@ -1,4 +1,3 @@
-//In the next phrase, we need to remove the profilPic and passwords or have hashes of them.
 const baseUsers = [
     {
         id: 0,
