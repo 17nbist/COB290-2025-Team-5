@@ -2,6 +2,7 @@
 import { useAuth } from "@/lib/AuthContext";
 import { FaRegCommentDots, FaArrowUp, FaArrowDown } from "react-icons/fa";
 import Card from "@/components/Card";
+import ReactMarkdown from "react-markdown";
 
 export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
   const handleUpvoteClick = (e) => {
@@ -30,7 +31,9 @@ export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
         </span>
       </div>
 
-      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">{post.preview}</p>
+      <div className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2 markdown-content">
+        <ReactMarkdown>{post.preview}</ReactMarkdown>
+      </div>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
           <span>posted {post.timeAgo} by {post.author}</span>

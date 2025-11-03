@@ -6,6 +6,7 @@ import { useAuth } from "@/lib/AuthContext";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import ReactMarkdown from "react-markdown";
 
 export default function TopicPage({ params }) {
     const { topicId } = params;
@@ -141,9 +142,9 @@ export default function TopicPage({ params }) {
                         </span>
                     </div>
 
-                    <p className="text-gray-800 dark:text-gray-100 text-base mb-4 whitespace-pre-wrap">
-                        {post.content}
-                    </p>
+                    <div className="text-gray-800 dark:text-gray-100 text-base mb-4 markdown-content">
+                        <ReactMarkdown>{post.content}</ReactMarkdown>
+                    </div>
 
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
@@ -212,7 +213,9 @@ export default function TopicPage({ params }) {
             <div className="px-6 pb-6 space-y-4">
                 {(post.comments || []).map((comment) => (
                     <Card key={comment.id}>
-                        <p className="text-gray-800 dark:text-gray-100">{comment.text}</p>
+                        <div className="text-gray-800 dark:text-gray-100 markdown-content">
+                            <ReactMarkdown>{comment.text}</ReactMarkdown>
+                        </div>
                         <div className="flex justify-between items-center mt-3">
                             <span className="text-xs text-gray-600 dark:text-gray-400">
                                 - {comment.author}
