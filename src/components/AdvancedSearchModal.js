@@ -55,8 +55,8 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  return ( 
+    <div className="fixed inset-0 bg-[#0000007d] bg-opacity-50 flex items-center justify-center z-50 p-4">
       <Card style={{ maxWidth: "700px", width: "100%", maxHeight: "90vh", overflow: "auto" }}>
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
