@@ -16,7 +16,6 @@ export default function SkeletonLoader({ lines = 3, className = "" }) {
 	);
 }
 
-// Card skeleton loader for forum posts, projects, etc.
 export function CardSkeleton({ count = 1 }) {
 	return (
 		<div className="space-y-4">
@@ -43,7 +42,6 @@ export function CardSkeleton({ count = 1 }) {
 	);
 }
 
-// Page skeleton loader
 export function PageSkeleton() {
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen p-4">

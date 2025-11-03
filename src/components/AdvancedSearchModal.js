@@ -16,7 +16,6 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
     hasComments: false,
   });
 
-  // Extract unique values from posts
   const uniqueAuthors = [...new Set(allPosts?.map(post => post.author) || [])].sort();
   const uniqueFlairs = [...new Set(allPosts?.map(post => post.flair) || [])].sort();
   const allTags = [...new Set(allPosts?.flatMap(post => post.tags) || [])].sort();
@@ -53,7 +52,6 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
     onSearch({});
   };
 
-  // Handle ESC key press to close modal
   useEffect(() => {
     if (!isOpen || !onClose) return;
 
@@ -69,7 +67,6 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
     };
   }, [isOpen, onClose]);
 
-  // Prevent body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -88,7 +85,6 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
     <div 
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
       onClick={(e) => {
-        // Close modal when clicking backdrop (but not when clicking content)
         if (e.target === e.currentTarget && onClose) {
           onClose();
         }

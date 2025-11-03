@@ -198,19 +198,32 @@ export function AuthProvider({ children }) {
     };
 
 
-    // Handle user continuing session
-    const continueSession = () => {
+    const continueSession = useCallback(() => {
         setShowInactivityWarning(false);
         clearTimeout(warningTimerRef.current);
         resetInactivityTimer();
-    };
+    }, []);
 
-    // Track user activity
+    useEffect(() => {
+        if (!showInactivityWarning) return;
+
+        const handleEscape = (e) => {
+            if (e.key === "Escape") {
+                continueSession();
+            }
+        };
+
+        document.addEventListener("keydown", handleEscape);
+        return () => {
+            document.removeEventListener("keydown", handleEscape);
+        };
+    }, [showInactivityWarning, continueSession]);
+
     useEffect(() => {
         if (!user) return;
 
         const handleActivity = () => {
-            resetInactivityTimer(); // reset timer on any activity
+            resetInactivityTimer();
             if (showInactivityWarning) setShowInactivityWarning(false);
         };
 
@@ -436,7 +449,6 @@ export function AuthProvider({ children }) {
         >
             {children}
 
-            {/* Inactivity Warning Modal */}
             {showInactivityWarning && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md mx-4 shadow-xl">

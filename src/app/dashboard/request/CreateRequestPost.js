@@ -35,13 +35,11 @@ export default function CreateRequestModal({ isOpen, onClose, onSubmit, userEmai
 
         onSubmit(newRequest);
 
-        // Reset form
         setTitle("");
         setContent("");
         onClose();
     };
 
-    // Handle ESC key press to close modal
     useEffect(() => {
         if (!isOpen || !onClose) return;
 
@@ -57,7 +55,6 @@ export default function CreateRequestModal({ isOpen, onClose, onSubmit, userEmai
         };
     }, [isOpen, onClose]);
 
-    // Prevent body scroll when modal is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = "hidden";
@@ -76,7 +73,6 @@ export default function CreateRequestModal({ isOpen, onClose, onSubmit, userEmai
         <div 
             className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
             onClick={(e) => {
-                // Close modal when clicking backdrop (but not when clicking content)
                 if (e.target === e.currentTarget && onClose) {
                     onClose();
                 }
