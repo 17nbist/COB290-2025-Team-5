@@ -242,7 +242,7 @@ export default function Home() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="grid grid-rows-[auto_auto] w-full bg-[#c4daff] dark:bg-[#404040] box-border p-2.5 gap-2.5 min-h-screen transition-colors duration-300">
+        <div style={{borderRadius: "15px"}} className="grid grid-rows-[auto_auto] w-full bg-[#c4daff] dark:bg-[#404040] box-border p-2.5 gap-2.5 min-h-screen transition-colors duration-300 ">
           {/* PIE CHART SECTION */}
           <Card style={{
             width: "100%",
