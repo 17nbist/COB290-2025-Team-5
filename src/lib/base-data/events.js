@@ -82,7 +82,7 @@ const baseEvents = [
     {
         id: 10,
         projectId: 0,
-        members: [0, 2, 4, 5],
+        members: [0, 2, 4, 5, 6],
         title: "Design Review Session",
         from: new Date(2025, 10, 3, 11, 15),
         to: new Date(2025, 10, 3, 12, 10)
@@ -90,7 +90,7 @@ const baseEvents = [
     {
         id: 11,
         projectId: 1,
-        members: [2, 3, 6],
+        members: [2, 3, 4, 6],
         title: "HR Policy Update",
         from: new Date(2025, 10, 3, 12, 25),
         to: new Date(2025, 10, 3, 13, 5)
@@ -98,7 +98,7 @@ const baseEvents = [
     {
         id: 12,
         projectId: 2,
-        members: [1, 3, 7],
+        members: [0, 1, 3, 7],
         title: "Cross-Team Planning Call",
         from: new Date(2025, 10, 3, 14, 40),
         to: new Date(2025, 10, 3, 15, 25)
@@ -114,7 +114,7 @@ const baseEvents = [
     {
         id: 14,
         projectId: 0,
-        members: [0, 2, 4],
+        members: [0, 2, 4, 5, 6],
         title: "Prototype Feedback",
         from: new Date(2025, 10, 4, 11, 25),
         to: new Date(2025, 10, 4, 12, 10)
@@ -122,7 +122,7 @@ const baseEvents = [
     {
         id: 15,
         projectId: 0,
-        members: [0, 2, 5, 6],
+        members: [0, 2, 4, 5, 6],
         title: "Afternoon Development Huddle",
         from: new Date(2025, 10, 4, 16, 10),
         to: new Date(2025, 10, 4, 17, 0)
@@ -130,7 +130,7 @@ const baseEvents = [
     {
         id: 16,
         projectId: 1,
-        members: [2, 3, 6],
+        members: [2, 3, 4, 6],
         title: "Team Progress Checkpoint",
         from: new Date(2025, 10, 5, 9, 20),
         to: new Date(2025, 10, 5, 10, 10)
@@ -138,7 +138,7 @@ const baseEvents = [
     {
         id: 17,
         projectId: 2,
-        members: [1, 3, 7],
+        members: [0, 1, 3, 7],
         title: "Executive Sync",
         from: new Date(2025, 10, 5, 13, 30),
         to: new Date(2025, 10, 5, 14, 10)
@@ -146,7 +146,7 @@ const baseEvents = [
     {
         id: 18,
         projectId: 0,
-        members: [0, 2, 4, 5],
+        members: [0, 2, 4, 5, 6],
         title: "Post-Mortem: Previous Sprint",
         from: new Date(2025, 10, 5, 14, 15),
         to: new Date(2025, 10, 5, 15, 30)
@@ -162,7 +162,7 @@ const baseEvents = [
     {
         id: 20,
         projectId: 0,
-        members: [0, 2, 4, 5],
+        members: [0, 2, 4, 5, 6],
         title: "UI Review Board",
         from: new Date(2025, 10, 6, 11, 40),
         to: new Date(2025, 10, 6, 12, 55)
@@ -170,7 +170,7 @@ const baseEvents = [
     {
         id: 21,
         projectId: 2,
-        members: [1, 3, 7],
+        members: [0, 1, 3, 7],
         title: "Product Integration Call",
         from: new Date(2025, 10, 6, 15, 20),
         to: new Date(2025, 10, 6, 16, 15)
@@ -186,7 +186,7 @@ const baseEvents = [
     {
         id: 23,
         projectId: 1,
-        members: [2, 3, 4],
+        members: [2, 3, 4, 6],
         title: "KPI Review",
         from: new Date(2025, 10, 7, 10, 15),
         to: new Date(2025, 10, 7, 11, 5)
@@ -202,7 +202,7 @@ const baseEvents = [
     {
         id: 25,
         projectId: 0,
-        members: [0, 2, 4, 5],
+        members: [0, 2, 4, 5, 6],
         title: "Sprint Retrospective",
         from: new Date(2025, 10, 7, 14, 5),
         to: new Date(2025, 10, 7, 15, 55)
@@ -210,7 +210,7 @@ const baseEvents = [
     {
         id: 26,
         projectId: 2,
-        members: [1, 3, 7],
+        members: [0, 1, 3, 7],
         title: "Budget Review",
         from: new Date(2025, 10, 10, 9, 45),
         to: new Date(2025, 10, 10, 11, 25)
@@ -218,7 +218,7 @@ const baseEvents = [
     {
         id: 27,
         projectId: 0,
-        members: [0, 2, 5],
+        members: [0, 2, 4, 5, 6],
         title: "Design Sync",
         from: new Date(2025, 10, 10, 13, 5),
         to: new Date(2025, 10, 10, 13, 50)
@@ -226,7 +226,7 @@ const baseEvents = [
     {
         id: 28,
         projectId: 1,
-        members: [2, 3, 4],
+        members: [2, 3, 4, 6],
         title: "Marketing Strategy Review",
         from: new Date(2025, 10, 11, 9, 10),
         to: new Date(2025, 10, 11, 10, 55)
@@ -242,7 +242,7 @@ const baseEvents = [
     {
         id: 30,
         projectId: 0,
-        members: [0, 2, 4, 5],
+        members: [0, 2, 4, 5, 6],
         title: "Team Stand-Up",
         from: new Date(2025, 10, 12, 9, 20),
         to: new Date(2025, 10, 12, 9, 55)
@@ -250,7 +250,7 @@ const baseEvents = [
     {
         id: 31,
         projectId: 1,
-        members: [2, 3, 6],
+        members: [2, 3, 4, 6],
         title: "Sales Pipeline Meeting",
         from: new Date(2025, 10, 12, 11, 5),
         to: new Date(2025, 10, 12, 12, 35)
@@ -258,7 +258,7 @@ const baseEvents = [
     {
         id: 32,
         projectId: 2,
-        members: [1, 3, 7],
+        members: [0, 1, 3, 7],
         title: "Leadership Check-In",
         from: new Date(2025, 10, 13, 15, 0),
         to: new Date(2025, 10, 13, 15, 45)
@@ -274,7 +274,7 @@ const baseEvents = [
     {
         id: 34,
         projectId: 1,
-        members: [3, 4, 6],
+        members: [2, 3, 4, 6],
         title: "UX Workshop",
         from: new Date(2025, 10, 17, 9, 40),
         to: new Date(2025, 10, 17, 11, 15)
@@ -282,7 +282,7 @@ const baseEvents = [
     {
         id: 35,
         projectId: 0,
-        members: [0, 2, 4, 5],
+        members: [0, 2, 4, 5, 6],
         title: "Feature Brainstorm",
         from: new Date(2025, 10, 17, 13, 10),
         to: new Date(2025, 10, 17, 14, 55)
@@ -306,7 +306,7 @@ const baseEvents = [
     {
         id: 38,
         projectId: 0,
-        members: [0, 2, 4, 5],
+        members: [0, 2, 4, 5, 6],
         title: "Client Feedback Debrief",
         from: new Date(2025, 10, 20, 9, 15),
         to: new Date(2025, 10, 20, 9, 50)
@@ -314,7 +314,7 @@ const baseEvents = [
     {
         id: 39,
         projectId: 1,
-        members: [2, 3, 6],
+        members: [2, 3, 4, 6],
         title: "Project Status Update",
         from: new Date(2025, 10, 20, 11, 10),
         to: new Date(2025, 10, 20, 12, 0)
@@ -322,7 +322,7 @@ const baseEvents = [
     {
         id: 40,
         projectId: 2,
-        members: [1, 3, 7],
+        members: [0, 1, 3, 7],
         title: "Finance Alignment Call",
         from: new Date(2025, 10, 21, 15, 25),
         to: new Date(2025, 10, 21, 16, 10)
@@ -338,7 +338,7 @@ const baseEvents = [
     {
         id: 42,
         projectId: 1,
-        members: [2, 3, 4],
+        members: [2, 3, 4, 6],
         title: "Performance Review Session",
         from: new Date(2025, 11, 1, 14, 15),
         to: new Date(2025, 11, 1, 15, 25)
@@ -346,7 +346,7 @@ const baseEvents = [
     {
         id: 43,
         projectId: 0,
-        members: [0, 2, 5],
+        members: [0, 2, 4, 5, 6],
         title: "UI Refinement Meeting",
         from: new Date(2025, 11, 2, 11, 10),
         to: new Date(2025, 11, 2, 12, 0)
@@ -354,7 +354,7 @@ const baseEvents = [
     {
         id: 44,
         projectId: 1,
-        members: [2, 3, 6],
+        members: [2, 3, 4, 6],
         title: "Product Demo Prep",
         from: new Date(2025, 11, 2, 14, 20),
         to: new Date(2025, 11, 2, 15, 50)
@@ -370,7 +370,7 @@ const baseEvents = [
     {
         id: 46,
         projectId: 0,
-        members: [0, 2, 4, 5],
+        members: [0, 2, 4, 5, 6],
         title: "QA Bug Triage",
         from: new Date(2025, 11, 3, 13, 25),
         to: new Date(2025, 11, 3, 14, 50)
@@ -394,7 +394,7 @@ const baseEvents = [
     {
         id: 49,
         projectId: 2,
-        members: [1, 3, 7],
+        members: [0, 1, 3, 7],
         title: "Budget Alignment",
         from: new Date(2025, 11, 9, 13, 10),
         to: new Date(2025, 11, 9, 14, 35)
@@ -402,7 +402,7 @@ const baseEvents = [
     {
     id: 50,
     projectId: 1,
-    members: [2, 3, 4],
+    members: [2, 3, 4, 6],
     title: "Marketing Plan Finalization",
     from: new Date(2025, 11, 10, 14, 25),
     to: new Date(2025, 11, 10, 15, 55)
