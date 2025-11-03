@@ -52,7 +52,7 @@ span {
   @media (prefers-color-scheme: dark) {
     :root {
       --background: #222222;
-      --foreground: #c2c2c2;
+      --foreground: #d2d2d2;
     }
   }
 
@@ -247,9 +247,10 @@ span {
   }
 
 
-.textInput-group {
- position: relative;
-}
+  .textInput-group {
+    position: relative;
+  }
+
   .dark {
     --background: oklch(0.145 0 0);
     --foreground: oklch(0.985 0 0);
@@ -305,8 +306,8 @@ span {
 }
 
 .scrollbar-hide {
-  -ms-overflow-style: none; 
-  scrollbar-width: none;    
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Modern Scrollbar Styles - Sitewide */
