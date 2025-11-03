@@ -1574,7 +1574,6 @@ export const forumPosts = [
         author: "hr1@make-it-all.co.uk",
         directedTo: null,
     },
-
     {
         id: 63,
         title: "Mandatory Return to Office – Full-Time On-Site Requirement",
@@ -1609,5 +1608,1793 @@ export const forumPosts = [
         ],
         author: "hr1@make-it-all.co.uk",
         directedTo: null
-    }
+    },
+    {
+      id: 63,
+      title: "Welcome to MakeIToday",
+      flair: "non-technical",
+      preview:
+        "A new space for staff to share ideas, ask questions, and keep up with company updates.",
+      content:
+        "Hello everyone,\n\nWelcome to **MakeIToday**, our new internal forum for staff collaboration. Feel free to post questions, share tips, or raise suggestions about anything across the company.\n\nPlease keep discussions polite and professional.\n\n– Ben",
+      timeAgo: "2 months ago",
+      tags: ["announcement", "staff"],
+      upvotes: 118,
+      downvotes: 3,
+      comments: [
+        {
+          id: 320,
+          author: "employee1@make-it-all.co.uk",
+          text: "Love this! Looking forward to seeing what people share.",
+          timeAgo: "2 months ago",
+        },
+        {
+          id: 321,
+          author: "manager1@make-it-all.co.uk",
+          text: "A much-needed space for cross-team discussion.",
+          timeAgo: "2 months ago",
+        },
+      ],
+      author: "ceo@make-it-all.co.uk",
+      directedTo: null,
+    },
+    {
+      id: 64,
+      title: "VPN dropping every few minutes",
+      flair: "technical",
+      preview: "VPN disconnects regularly when working remotely.",
+      content:
+        "Has anyone else noticed the VPN disconnecting every few minutes? I’ve tried switching networks and reinstalling the client. Still no joy.",
+      timeAgo: "3 weeks ago",
+      tags: ["vpn", "remote-work"],
+      upvotes: 37,
+      downvotes: 1,
+      comments: [
+        {
+          id: 322,
+          author: "manager1@make-it-all.co.uk",
+          text: "Try changing your VPN region to UK-South; that’s fixed it for a few staff members.",
+          timeAgo: "3 weeks ago",
+        },
+        {
+          id: 323,
+          author: "hr1@make-it-all.co.uk",
+          text: "IT’s already aware of this and is rolling out a patch tonight.",
+          timeAgo: "3 weeks ago",
+        },
+      ],
+      author: "employee1@make-it-all.co.uk",
+      directedTo: "manager1@make-it-all.co.uk",
+    },
+    {
+      id: 65,
+      title: "Annual Leave Carry-Over Reminder",
+      flair: "non-technical",
+      preview: "Don’t forget to record any unused holiday before year-end.",
+      content:
+        "A quick reminder that staff can carry over up to **five days** of annual leave into 2026, subject to manager approval. Submit requests via the HR portal before **31 December 2025**.",
+      timeAgo: "2 weeks ago",
+      tags: ["hr", "annual-leave"],
+      upvotes: 63,
+      downvotes: 2,
+      comments: [
+        {
+          id: 324,
+          author: "employee3@make-it-all.co.uk",
+          text: "Thanks for the heads-up, Karen!",
+          timeAgo: "2 weeks ago",
+        },
+      ],
+      author: "hr1@make-it-all.co.uk",
+      directedTo: null,
+    },
+    {
+      id: 66,
+      title: "Wi-Fi issues on Floor 2",
+      flair: "technical",
+      preview:
+        "Signal keeps dropping in the meeting rooms near 2B.",
+      content:
+        "Every time I start a Teams call near Room 2B the Wi-Fi cuts out. Could IT check if one of the access points has gone down?",
+      timeAgo: "1 week ago",
+      tags: ["wifi", "network"],
+      upvotes: 44,
+      downvotes: 0,
+      comments: [
+        {
+          id: 325,
+          author: "manager1@make-it-all.co.uk",
+          text: "We’ll send someone to test signal strength tomorrow morning.",
+          timeAgo: "6 days ago",
+        },
+      ],
+      author: "employee2@make-it-all.co.uk",
+      directedTo: "manager1@make-it-all.co.uk",
+    },
+    {
+      id: 67,
+      title: "Canteen waiting times",
+      flair: "non-technical",
+      preview:
+        "Queues are back to being massive again around midday.",
+      content:
+        "The lunch queue has been getting ridiculous lately. Any chance of bringing back staggered lunch slots or pre-order options?",
+      timeAgo: "5 days ago",
+      tags: ["canteen", "facilities"],
+      upvotes: 92,
+      downvotes: 6,
+      comments: [
+        {
+          id: 326,
+          author: "employee4@make-it-all.co.uk",
+          text: "Would love an online order option via MakeIToday.",
+          timeAgo: "4 days ago",
+        },
+      ],
+      author: "employee3@make-it-all.co.uk",
+      directedTo: null,
+    },
+    {
+      id: 68,
+      title: "Mandatory Cybersecurity Refresher",
+      flair: "technical",
+      preview: "All staff must complete the annual refresher by 30 November.",
+      content:
+        "Please complete your **Cybersecurity Refresher** on the Learning Hub by **30 November 2025**. It only takes about 20 minutes and is required for ISO 27001 compliance.",
+      timeAgo: "2 weeks ago",
+      tags: ["training", "security"],
+      upvotes: 41,
+      downvotes: 2,
+      comments: [
+        {
+          id: 327,
+          author: "employee1@make-it-all.co.uk",
+          text: "Just finished mine — surprisingly engaging this year!",
+          timeAgo: "2 weeks ago",
+        },
+      ],
+      author: "manager1@make-it-all.co.uk",
+      directedTo: null,
+    },
+    {
+      id: 69,
+      title: "Coffee quality in the staff kitchen",
+      flair: "non-technical",
+      preview: "Would anyone else like better coffee in the kitchen?",
+      content:
+        "The instant stuff is starting to taste like brown water. Could Facilities consider getting a small filter machine?",
+      timeAgo: "1 week ago",
+      tags: ["staff-room", "coffee"],
+      upvotes: 121,
+      downvotes: 4,
+      comments: [
+        {
+          id: 328,
+          author: "hr1@make-it-all.co.uk",
+          text: "We’ll review options at the next wellbeing meeting ☕",
+          timeAgo: "6 days ago",
+        },
+      ],
+      author: "employee3@make-it-all.co.uk",
+      directedTo: "hr1@make-it-all.co.uk",
+    },
+    {
+      id: 70,
+      title: "Dark Mode for MakeIToday?",
+      flair: "technical",
+      preview: "Would make late-night reading easier on the eyes.",
+      content:
+        "Any chance we can have a dark-mode option on MakeIToday? The white background is blinding at night.",
+      timeAgo: "3 weeks ago",
+      tags: ["feature-request", "ui"],
+      upvotes: 134,
+      downvotes: 5,
+      comments: [
+        {
+          id: 329,
+          author: "manager2@make-it-all.co.uk",
+          text: "Good suggestion! The web team’s testing themes now for early 2026.",
+          timeAgo: "2 weeks ago",
+        },
+      ],
+      author: "employee4@make-it-all.co.uk",
+      directedTo: null,
+    },
+    {
+      id: 71,
+      title: "December Payroll Schedule",
+      flair: "non-technical",
+      preview:
+        "Payroll will run earlier this month due to Christmas.",
+      content:
+        "December’s payroll will be processed on **20 December 2025** instead of the 28th. Please submit any overtime or expenses by **15 December**.",
+      timeAgo: "1 week ago",
+      tags: ["hr", "payroll"],
+      upvotes: 88,
+      downvotes: 1,
+      comments: [
+        {
+          id: 330,
+          author: "employee2@make-it-all.co.uk",
+          text: "Early pay — best news all month!",
+          timeAgo: "6 days ago",
+        },
+      ],
+      author: "hr1@make-it-all.co.uk",
+      directedTo: null,
+    },
+    {
+      id: 72,
+      title: "Teams app keeps freezing",
+      flair: "technical",
+      preview: "Teams stuck on ‘Connecting…’ since this morning.",
+      content:
+        "Anyone else stuck on the connecting screen in Teams? Tried rebooting and clearing cache but no luck.",
+      timeAgo: "3 days ago",
+      tags: ["teams", "connectivity"],
+      upvotes: 22,
+      downvotes: 0,
+      comments: [
+        {
+          id: 331,
+          author: "manager1@make-it-all.co.uk",
+          text: "Microsoft confirmed an outage — should stabilise by this afternoon.",
+          timeAgo: "3 days ago",
+        },
+      ],
+      author: "employee1@make-it-all.co.uk",
+      directedTo: "manager1@make-it-all.co.uk",
+    },
+    {
+      id: 73,
+      title: "Office temperature battles",
+      flair: "non-technical",
+      preview:
+        "Half of us freezing, half boiling — can Facilities adjust it?",
+      content:
+        "The heating seems to be all over the place again. Could we please get zone controls so HR isn’t melting while IT’s wearing coats?",
+      timeAgo: "5 days ago",
+      tags: ["facilities", "comfort"],
+      upvotes: 81,
+      downvotes: 4,
+      comments: [
+        {
+          id: 332,
+          author: "employee3@make-it-all.co.uk",
+          text: "A fan for every desk might be cheaper!",
+          timeAgo: "4 days ago",
+        },
+      ],
+      author: "employee4@make-it-all.co.uk",
+      directedTo: "manager2@make-it-all.co.uk",
+    },
+    {
+      id: 74,
+      title: "Dress Code Policy Reminder",
+      flair: "non-technical",
+      preview:
+        "As the weather warms up, remember our ‘Smart Casual’ dress code.",
+      content:
+        "Just a friendly reminder about our company dress code — ‘Smart Casual’.\n\nItems like flip-flops, shorts, and tank tops aren’t appropriate for the office.\n\nThanks for keeping things professional!",
+      timeAgo: "3 months ago",
+      tags: ["hr", "policy", "dress-code"],
+      upvotes: 5,
+      downvotes: 4,
+      comments: [
+        {
+          id: 333,
+          author: "employee2@make-it-all.co.uk",
+          text: "Can we get a clearer definition of ‘Smart Casual’?",
+          timeAgo: "3 months ago",
+        },
+        {
+          id: 334,
+          author: "hr1@make-it-all.co.uk",
+          text: "Hi Luke — no jeans with holes, no large graphics, no open-toed shoes. Full policy’s on the intranet.",
+          timeAgo: "3 months ago",
+        },
+      ],
+      author: "hr1@make-it-all.co.uk",
+      directedTo: null,
+    },
+    {
+      id: 75,
+      title: "Printer jam in Finance corridor",
+      flair: "technical",
+      preview: "Keeps jamming even after paper’s cleared.",
+      content:
+        "The large printer near Finance has jammed again. Can IT or Facilities take a look?",
+      timeAgo: "2 days ago",
+      tags: ["printer", "maintenance"],
+      upvotes: 64,
+      downvotes: 1,
+      comments: [
+        {
+          id: 335,
+          author: "manager1@make-it-all.co.uk",
+          text: "We’ve logged this with Facilities — engineer expected tomorrow.",
+          timeAgo: "1 day ago",
+        },
+      ],
+      author: "employee4@make-it-all.co.uk",
+      directedTo: "manager1@make-it-all.co.uk",
+    },
+    {
+      id: 76,
+      title: "End-of-Year Budget Review",
+      flair: "non-technical",
+      preview:
+        "Managers, please submit department summaries by 10 December.",
+      content:
+        "Reminder: Budget review templates have been shared on MakeIToday. Managers should submit their summaries by **10 December**.",
+      timeAgo: "1 week ago",
+      tags: ["finance", "managers"],
+      upvotes: 44,
+      downvotes: 0,
+      comments: [],
+      author: "manager2@make-it-all.co.uk",
+      directedTo: null,
+    },
+    {
+      id: 77,
+      title: "Broken lift near Reception",
+      flair: "technical",
+      preview: "Lift A stuck between floors 1 and 2 again.",
+      content:
+        "Lift A’s been out of order since yesterday afternoon. Facilities — any update on repairs?",
+      timeAgo: "2 days ago",
+      tags: ["facilities", "maintenance"],
+      upvotes: 51,
+      downvotes: 0,
+      comments: [
+        {
+          id: 336,
+          author: "manager1@make-it-all.co.uk",
+          text: "Engineer due this morning — lift should be back by 3 pm.",
+          timeAgo: "2 days ago",
+        },
+      ],
+      author: "employee2@make-it-all.co.uk",
+      directedTo: "manager1@make-it-all.co.uk",
+    },
+    {
+      id: 78,
+      title: "New expense claim process",
+      flair: "non-technical",
+      preview: "All claims now submitted through MakeIToday.",
+      content:
+        "Finance has moved expense claims to the new portal on MakeIToday. Email submissions won’t be accepted after **1 December**.",
+      timeAgo: "1 week ago",
+      tags: ["finance", "policy"],
+      upvotes: 63,
+      downvotes: 2,
+      comments: [
+        {
+          id: 337,
+          author: "employee3@make-it-all.co.uk",
+          text: "So much easier — no more lost forms!",
+          timeAgo: "6 days ago",
+        },
+      ],
+      author: "manager1@make-it-all.co.uk",
+      directedTo: null,
+    },
+    {
+      id: 79,
+      title: "Return-to-Office Policy Reminder",
+      flair: "non-technical",
+      preview:
+        "All staff expected on-site five days a week from 1 December.",
+      content:
+        "Following an executive decision, Make-It-All will shift to a full-time office model from **1 December 2025**. Remote work will only be allowed in exceptional cases.",
+      timeAgo: "1 week ago",
+      tags: ["policy", "hr"],
+      upvotes: 11,
+      downvotes: 603,
+      comments: [
+        {
+          id: 338,
+          author: "employee1@make-it-all.co.uk",
+          text: "That’s rough — hybrid was working fine for most of us.",
+          timeAgo: "6 days ago",
+        },
+        {
+          id: 339,
+          author: "employee2@make-it-all.co.uk",
+          text: "Commutes are going to be a nightmare again.",
+          timeAgo: "6 days ago",
+        },
+      ],
+      author: "manager2@make-it-all.co.uk",
+      directedTo: null,
+    },
+    {
+      id: 88,
+      title: "Outlook calendar permissions",
+      flair: "technical",
+      preview: "Can’t view my manager’s shared calendar anymore.",
+      content:
+        "Since yesterday I’ve lost access to view my manager’s Outlook calendar. It says I don’t have permission even though I did last week. Anyone else having this problem?",
+      timeAgo: "2 days ago",
+      tags: ["outlook", "calendar"],
+      upvotes: 27,
+      downvotes: 1,
+      comments: [
+    {
+      id: 340,
+      author: "manager1@make-it-all.co.uk",
+      text: "There was a Microsoft 365 update that reset some permissions. I’ll re-share mine now.",
+      timeAgo: "1 day ago",
+    },
+  ],
+  author: "employee1@make-it-all.co.uk",
+  directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 89,
+    title: "Recycling bins missing from kitchen area",
+    flair: "non-technical",
+    preview: "They’ve vanished again — please return them!",
+    content:
+      "The recycling bins have disappeared from the kitchen on Floor 3. Could whoever moved them please pop them back?",
+    timeAgo: "3 days ago",
+    tags: ["facilities", "sustainability"],
+    upvotes: 46,
+    downvotes: 2,
+    comments: [
+      {
+        id: 341,
+        author: "employee3@make-it-all.co.uk",
+        text: "I think Facilities borrowed them during the clear-out.",
+        timeAgo: "2 days ago",
+      },
+    ],
+    author: "manager1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 90,
+    title: "Password manager recommendation",
+    flair: "technical",
+    preview:
+      "Any advice on secure company-approved password managers?",
+    content:
+      "I’ve been using my browser’s built-in password saving but heard IT wants us to switch. Which manager is approved for staff use?",
+    timeAgo: "1 week ago",
+    tags: ["security", "passwords"],
+    upvotes: 38,
+    downvotes: 0,
+    comments: [
+      {
+        id: 342,
+        author: "manager2@make-it-all.co.uk",
+        text: "Please use Bitwarden — it’s our approved enterprise option.",
+        timeAgo: "6 days ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 91,
+    title: "Broken keyboard in meeting room 4B",
+    flair: "technical",
+    preview: "Spacebar completely unresponsive.",
+    content:
+      "Keyboard in room 4B seems dead. Tried replacing batteries, no luck. Could IT bring a replacement?",
+    timeAgo: "1 day ago",
+    tags: ["hardware", "it"],
+    upvotes: 19,
+    downvotes: 0,
+    comments: [
+      {
+        id: 343,
+        author: "manager1@make-it-all.co.uk",
+        text: "We’ve ordered a spare — should be swapped this afternoon.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "employee4@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 92,
+    title: "Volunteering day sign-ups open!",
+    flair: "non-technical",
+    preview:
+      "Join the annual community volunteering event on 15 December.",
+    content:
+      "Staff volunteering day returns this year! We’ll be supporting local food banks on **15 December 2025**. Sign-up sheet on MakeIToday under *Community > Events*.",
+    timeAgo: "5 days ago",
+    tags: ["csr", "events"],
+    upvotes: 97,
+    downvotes: 1,
+    comments: [
+      {
+        id: 344,
+        author: "employee1@make-it-all.co.uk",
+        text: "Count me in — loved doing this last year.",
+        timeAgo: "4 days ago",
+      },
+    ],
+    author: "hr1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 93,
+    title: "Laptop fans running loudly",
+    flair: "technical",
+    preview:
+      "Sounds like a jet taking off whenever Teams opens.",
+    content:
+      "My Dell laptop fan’s constantly whirring even with one tab open. Anyone else noticing overheating?",
+    timeAgo: "4 days ago",
+    tags: ["hardware", "performance"],
+    upvotes: 33,
+    downvotes: 0,
+    comments: [
+      {
+        id: 345,
+        author: "manager2@make-it-all.co.uk",
+        text: "We’re rolling out BIOS updates this week that should calm that down.",
+        timeAgo: "3 days ago",
+      },
+    ],
+    author: "employee3@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 94,
+    title: "Company Christmas party details",
+    flair: "non-technical",
+    preview:
+      "Join us at The Crown & Thistle on 20 December!",
+    content:
+      "The annual staff Christmas do is confirmed for **20 December 2025** at **The Crown & Thistle**, starting 6 pm. RSVP via MakeIToday by **10 December**.",
+    timeAgo: "6 days ago",
+    tags: ["events", "social"],
+    upvotes: 124,
+    downvotes: 5,
+    comments: [
+      {
+        id: 346,
+        author: "employee4@make-it-all.co.uk",
+        text: "Can’t wait — last year’s was brilliant!",
+        timeAgo: "5 days ago",
+      },
+    ],
+    author: "hr1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 95,
+    title: "Slow loading on the intranet dashboard",
+    flair: "technical",
+    preview:
+      "Dashboard taking 30 seconds to load figures.",
+    content:
+      "The main dashboard on MakeIToday is taking ages to load this morning. Is this linked to the new analytics module?",
+    timeAgo: "1 day ago",
+    tags: ["intranet", "performance"],
+    upvotes: 18,
+    downvotes: 0,
+    comments: [
+      {
+        id: 347,
+        author: "manager2@make-it-all.co.uk",
+        text: "Yes, analytics refresh is running hourly today — speeds will normalise tomorrow.",
+        timeAgo: "22 hours ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 96,
+    title: "New first-aid kit locations",
+    flair: "non-technical",
+    preview:
+      "Additional kits installed on each floor this week.",
+    content:
+      "Facilities have placed new first-aid kits near every lift lobby. Please familiarise yourself with the nearest location to your workspace.",
+    timeAgo: "3 days ago",
+    tags: ["health-and-safety", "facilities"],
+    upvotes: 58,
+    downvotes: 0,
+    comments: [
+      {
+        id: 348,
+        author: "employee3@make-it-all.co.uk",
+        text: "Great addition — thank you!",
+        timeAgo: "2 days ago",
+      },
+    ],
+    author: "manager1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 97,
+    title: "Request for ergonomic chairs",
+    flair: "non-technical",
+    preview:
+      "Old chairs causing back pain in the Design area.",
+    content:
+      "Could we look at replacing the worn-out chairs in Design? The backs don’t adjust properly anymore.",
+    timeAgo: "1 week ago",
+    tags: ["facilities", "wellbeing"],
+    upvotes: 77,
+    downvotes: 1,
+    comments: [
+      {
+        id: 349,
+        author: "manager2@make-it-all.co.uk",
+        text: "We’ve already ordered replacements arriving next Friday.",
+        timeAgo: "6 days ago",
+      },
+    ],
+    author: "employee4@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 98,
+    title: "Two-factor authentication rollout",
+    flair: "technical",
+    preview:
+      "New MFA policy goes live on 8 November.",
+    content:
+      "All staff will be prompted to enable two-factor authentication (2FA) from **8 November 2025**. Setup guides are on MakeIToday > IT Help.",
+    timeAgo: "2 weeks ago",
+    tags: ["security", "authentication"],
+    upvotes: 65,
+    downvotes: 2,
+    comments: [
+      {
+        id: 350,
+        author: "employee1@make-it-all.co.uk",
+        text: "Worked smoothly on my phone — very straightforward.",
+        timeAgo: "1 week ago",
+      },
+    ],
+    author: "manager1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 99,
+    title: "Feedback on new canteen menu",
+    flair: "non-technical",
+    preview:
+      "Loving the jacket potatoes but missing the soups.",
+    content:
+      "The new winter menu’s great overall but could we bring back the soup station? It was popular and healthy.",
+    timeAgo: "4 days ago",
+    tags: ["canteen", "staff-feedback"],
+    upvotes: 101,
+    downvotes: 3,
+    comments: [
+      {
+        id: 351,
+        author: "hr1@make-it-all.co.uk",
+        text: "We’ll pass that to Catering — soups may return after Christmas!",
+        timeAgo: "3 days ago",
+      },
+    ],
+    author: "employee3@make-it-all.co.uk",
+    directedTo: "hr1@make-it-all.co.uk",
+  },
+  {
+  id: 100,
+  title: "SharePoint document permissions",
+  flair: "technical",
+  preview: "Some folders have gone read-only after last update.",
+  content:
+    "I’ve lost edit access to a few shared folders on SharePoint since Monday’s update. Is this a known issue or intentional?",
+  timeAgo: "3 days ago",
+  tags: ["sharepoint", "permissions"],
+  upvotes: 23,
+  downvotes: 0,
+  comments: [
+    {
+      id: 352,
+      author: "manager1@make-it-all.co.uk",
+      text: "We’re aware — permissions are being re-applied after a policy refresh.",
+      timeAgo: "2 days ago",
+    },
+  ],
+  author: "employee2@make-it-all.co.uk",
+  directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 101,
+    title: "Fire drill confusion",
+    flair: "non-technical",
+    preview: "Half the staff went to the wrong assembly point.",
+    content:
+      "Yesterday’s fire drill was a bit chaotic — some people headed to the car park instead of the main assembly point by Gate B. Could we get clearer signage?",
+    timeAgo: "2 days ago",
+    tags: ["health-and-safety", "assembly-point"],
+    upvotes: 61,
+    downvotes: 1,
+    comments: [
+      {
+        id: 353,
+        author: "manager2@make-it-all.co.uk",
+        text: "Agreed — Facilities will add clearer labels by the exits.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "employee3@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 102,
+    title: "New company laptops arriving soon",
+    flair: "technical",
+    preview: "Dell Latitude replacements being rolled out next week.",
+    content:
+      "IT will begin distributing new **Dell Latitude 7450** laptops to staff from **Monday 10 November**. Please back up local files before collection.",
+    timeAgo: "1 week ago",
+    tags: ["hardware", "upgrade"],
+    upvotes: 72,
+    downvotes: 2,
+    comments: [
+      {
+        id: 354,
+        author: "employee4@make-it-all.co.uk",
+        text: "Looking forward to better battery life — mine barely lasts two hours!",
+        timeAgo: "6 days ago",
+      },
+    ],
+    author: "manager1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 103,
+    title: "Casual Fridays returning?",
+    flair: "non-technical",
+    preview: "Any chance we’re bringing back casual Fridays this winter?",
+    content:
+      "Just wondering if we’ll have casual dress Fridays again over the winter months. Always nice to finish the week feeling relaxed!",
+    timeAgo: "1 week ago",
+    tags: ["hr", "culture"],
+    upvotes: 55,
+    downvotes: 3,
+    comments: [
+      {
+        id: 355,
+        author: "hr1@make-it-all.co.uk",
+        text: "Good suggestion! We’ll confirm in next week’s internal bulletin.",
+        timeAgo: "6 days ago",
+      },
+    ],
+    author: "employee1@make-it-all.co.uk",
+    directedTo: "hr1@make-it-all.co.uk",
+  },
+  {
+    id: 104,
+    title: "Teams meeting audio crackling",
+    flair: "technical",
+    preview:
+      "Audio glitching during calls since yesterday’s update.",
+    content:
+      "Anyone else hearing static noises in Teams meetings? Started happening after the latest app update on Tuesday.",
+    timeAgo: "2 days ago",
+    tags: ["teams", "audio"],
+    upvotes: 25,
+    downvotes: 0,
+    comments: [
+      {
+        id: 356,
+        author: "manager2@make-it-all.co.uk",
+        text: "Try clearing Teams’ cache folder — fixes that most times.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 105,
+    title: "Lift music suggestions 🎵",
+    flair: "non-technical",
+    preview:
+      "Can we change the lift music? It’s been the same for months!",
+    content:
+      "Can we please update the playlist for the lifts? The same tune on loop for 3 months is driving us all spare.",
+    timeAgo: "1 week ago",
+    tags: ["facilities", "fun"],
+    upvotes: 98,
+    downvotes: 5,
+    comments: [
+      {
+        id: 357,
+        author: "manager1@make-it-all.co.uk",
+        text: "Ha! Will pass this to Facilities — perhaps a Christmas playlist soon?",
+        timeAgo: "6 days ago",
+      },
+    ],
+    author: "employee3@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 106,
+    title: "Office lights flickering",
+    flair: "technical",
+    preview:
+      "Lights on the third floor corridor keep flashing.",
+    content:
+      "The LED panels near the stairwell keep flickering every few seconds — might need replacement or wiring check.",
+    timeAgo: "2 days ago",
+    tags: ["maintenance", "facilities"],
+    upvotes: 34,
+    downvotes: 1,
+    comments: [
+      {
+        id: 358,
+        author: "manager1@make-it-all.co.uk",
+        text: "Electrician booked for tomorrow morning.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "employee4@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 107,
+    title: "New mentoring programme launch",
+    flair: "non-technical",
+    preview:
+      "Applications open for 2026 mentoring pairs.",
+    content:
+      "The Make-It-All Mentoring Programme for 2026 is now open. Staff can apply to be mentors or mentees via MakeIToday until **15 December 2025**.",
+    timeAgo: "4 days ago",
+    tags: ["hr", "development"],
+    upvotes: 74,
+    downvotes: 1,
+    comments: [
+      {
+        id: 359,
+        author: "employee1@make-it-all.co.uk",
+        text: "Brilliant initiative — just signed up as a mentor!",
+        timeAgo: "3 days ago",
+      },
+    ],
+    author: "hr1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 108,
+    title: "Shared drive access denied",
+    flair: "technical",
+    preview:
+      "‘Access denied’ errors for several project folders.",
+    content:
+      "Anyone else getting access errors on the shared drive this morning? IT, could this be linked to yesterday’s backup?",
+    timeAgo: "12 hours ago",
+    tags: ["shared-drive", "permissions"],
+    upvotes: 19,
+    downvotes: 0,
+    comments: [
+      {
+        id: 360,
+        author: "manager2@make-it-all.co.uk",
+        text: "Yes, it’s a sync issue. Access should be restored by 3 pm.",
+        timeAgo: "6 hours ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 109,
+    title: "Suggestion: Friday breakfast pastries",
+    flair: "non-technical",
+    preview: "Would be a nice weekly morale boost!",
+    content:
+      "Could we have croissants or pastries on Friday mornings? Small thing but really lifts the mood before the weekend.",
+    timeAgo: "5 days ago",
+    tags: ["culture", "wellbeing"],
+    upvotes: 132,
+    downvotes: 8,
+    comments: [
+      {
+        id: 361,
+        author: "hr1@make-it-all.co.uk",
+        text: "We love that idea! I’ll raise it at the wellbeing committee meeting.",
+        timeAgo: "4 days ago",
+      },
+    ],
+    author: "employee3@make-it-all.co.uk",
+    directedTo: "hr1@make-it-all.co.uk",
+  },
+  {
+    id: 110,
+    title: "VPN update required before 15 November",
+    flair: "technical",
+    preview: "Staff must update VPN client before the next patch cycle.",
+    content:
+      "Please ensure your VPN client is updated to version **5.9.3** before **15 November 2025** to avoid disconnections. Instructions are on MakeIToday > IT Help.",
+    timeAgo: "3 days ago",
+    tags: ["vpn", "it"],
+    upvotes: 45,
+    downvotes: 0,
+    comments: [],
+    author: "manager1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 111,
+    title: "Pet policy clarification",
+    flair: "non-technical",
+    preview:
+      "Are dogs actually allowed in the office?",
+    content:
+      "Someone brought their dog in today — cute, but I thought pets weren’t permitted? Could HR confirm the rule?",
+    timeAgo: "2 days ago",
+    tags: ["policy", "office"],
+    upvotes: 39,
+    downvotes: 6,
+    comments: [
+      {
+        id: 362,
+        author: "hr1@make-it-all.co.uk",
+        text: "Only assistance dogs are permitted — apologies for the confusion.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "employee4@make-it-all.co.uk",
+    directedTo: "hr1@make-it-all.co.uk",
+  },
+  {
+    id: 112,
+    title: "Office phone extensions list missing",
+    flair: "technical",
+    preview: "Used to be under 'Contacts' on MakeIToday.",
+    content:
+      "The internal phone list seems to have vanished from MakeIToday. Anyone know where it’s gone?",
+    timeAgo: "1 day ago",
+    tags: ["intranet", "directory"],
+    upvotes: 21,
+    downvotes: 0,
+    comments: [
+      {
+        id: 363,
+        author: "manager1@make-it-all.co.uk",
+        text: "We’ve moved it to the new ‘People Directory’ tab — link’s updated now.",
+        timeAgo: "20 hours ago",
+      },
+    ],
+    author: "employee1@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 113,
+    title: "Boiler noises in basement",
+    flair: "technical",
+    preview:
+      "Sounds like it’s about to lift off.",
+    content:
+      "Facilities, the boiler in the basement sounds like a train starting up — worth checking before it gives up completely.",
+    timeAgo: "8 hours ago",
+    tags: ["maintenance", "facilities"],
+    upvotes: 18,
+    downvotes: 0,
+    comments: [
+      {
+        id: 364,
+        author: "manager1@make-it-all.co.uk",
+        text: "Engineer booked — appreciate the heads-up.",
+        timeAgo: "4 hours ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 114,
+    title: "Lunch & Learn topics for next quarter",
+    flair: "non-technical",
+    preview:
+      "Looking for staff suggestions for our next knowledge sessions.",
+    content:
+      "We’re planning the next round of *Lunch & Learn* sessions — any topics you’d love to see covered? All ideas welcome!",
+    timeAgo: "3 days ago",
+    tags: ["training", "development"],
+    upvotes: 56,
+    downvotes: 1,
+    comments: [
+      {
+        id: 365,
+        author: "employee3@make-it-all.co.uk",
+        text: "Maybe a cybersecurity myth-busting session?",
+        timeAgo: "2 days ago",
+      },
+    ],
+    author: "manager2@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 115,
+    title: "Slow Wi-Fi near breakout area",
+    flair: "technical",
+    preview:
+      "Wi-Fi speed drops whenever more than five people connect.",
+    content:
+      "Signal strength near the breakout pods seems weak — speed test barely hits 2 Mbps. Could IT take a look?",
+    timeAgo: "2 days ago",
+    tags: ["wifi", "connectivity"],
+    upvotes: 27,
+    downvotes: 0,
+    comments: [
+      {
+        id: 366,
+        author: "manager2@make-it-all.co.uk",
+        text: "We’ll run diagnostics later this week — might add another access point.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "employee4@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 116,
+    title: "Microwave in staff kitchen broken",
+    flair: "non-technical",
+    preview:
+      "Buttons don’t respond — looks completely dead.",
+    content:
+      "The microwave on Floor 1 isn’t turning on at all — no lights or sound. Facilities, could we get a replacement?",
+    timeAgo: "12 hours ago",
+    tags: ["facilities", "kitchen"],
+    upvotes: 40,
+    downvotes: 1,
+    comments: [
+      {
+        id: 367,
+        author: "manager1@make-it-all.co.uk",
+        text: "Replacement arriving tomorrow morning.",
+        timeAgo: "7 hours ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 117,
+    title: "Staff book club starting January",
+    flair: "non-technical",
+    preview:
+      "Monthly reading group to meet in the atrium.",
+    content:
+      "We’re starting a Make-It-All book club from **January 2026**! Meetings will be monthly in the atrium — first pick coming soon.",
+    timeAgo: "4 days ago",
+    tags: ["culture", "social"],
+    upvotes: 87,
+    downvotes: 0,
+    comments: [
+      {
+        id: 368,
+        author: "employee1@make-it-all.co.uk",
+        text: "Fantastic — I’ll bring biscuits to the first one!",
+        timeAgo: "3 days ago",
+      },
+    ],
+    author: "hr1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 118,
+    title: "Firewall access request process",
+    flair: "technical",
+    preview: "Can’t submit a new rule request via MakeIToday.",
+    content:
+      "I’m trying to request firewall access for a supplier portal, but the form keeps throwing an error. Anyone else seeing this?",
+    timeAgo: "1 day ago",
+    tags: ["security", "firewall"],
+    upvotes: 24,
+    downvotes: 0,
+    comments: [
+      {
+        id: 369,
+        author: "manager2@make-it-all.co.uk",
+        text: "Yes, form bug reported — temporary fix coming this afternoon.",
+        timeAgo: "6 hours ago",
+      },
+    ],
+    author: "employee3@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 119,
+    title: "Office plants looking a bit sad 🌿",
+    flair: "non-technical",
+    preview: "Could we get Facilities to refresh the plants?",
+    content:
+      "Some of the plants on Floor 2 look like they’ve seen better days. Maybe we can swap in a few new ones before Christmas?",
+    timeAgo: "3 days ago",
+    tags: ["facilities", "office"],
+    upvotes: 72,
+    downvotes: 1,
+    comments: [
+      {
+        id: 370,
+        author: "manager1@make-it-all.co.uk",
+        text: "Noted — Facilities team is refreshing them next week.",
+        timeAgo: "2 days ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 120,
+    title: "Outlook calendar syncing too slowly",
+    flair: "technical",
+    preview: "Takes hours for updates to show on shared calendars.",
+    content:
+      "Updates to shared Outlook calendars are taking 3–4 hours to appear. Any workaround?",
+    timeAgo: "8 hours ago",
+    tags: ["outlook", "calendar"],
+    upvotes: 18,
+    downvotes: 0,
+    comments: [
+      {
+        id: 371,
+        author: "manager2@make-it-all.co.uk",
+        text: "Microsoft is investigating; for now refresh manually every hour.",
+        timeAgo: "4 hours ago",
+      },
+    ],
+    author: "employee4@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 121,
+    title: "Noise levels in open plan area",
+    flair: "non-technical",
+    preview:
+      "Meetings happening at desks again — hard to focus.",
+    content:
+      "Could we remind everyone to book meeting rooms for calls? It’s getting hard to concentrate in the open plan area lately.",
+    timeAgo: "2 days ago",
+    tags: ["office", "etiquette"],
+    upvotes: 91,
+    downvotes: 2,
+    comments: [
+      {
+        id: 372,
+        author: "manager2@make-it-all.co.uk",
+        text: "Fair point — I’ll include this reminder in the next internal update.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "employee1@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 122,
+    title: "Phone conference system lag",
+    flair: "technical",
+    preview:
+      "Delay on calls between UK and Germany offices.",
+    content:
+      "Our weekly conference with Germany has noticeable lag lately — up to 3 seconds delay. Any configuration tweaks possible?",
+    timeAgo: "1 week ago",
+    tags: ["telecoms", "network"],
+    upvotes: 29,
+    downvotes: 0,
+    comments: [
+      {
+        id: 373,
+        author: "manager1@make-it-all.co.uk",
+        text: "We’re adjusting QoS on the VPN tunnel — should improve by Friday.",
+        timeAgo: "5 days ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 123,
+    title: "Canteen payment terminal issue",
+    flair: "technical",
+    preview:
+      "Card machine declined multiple staff cards today.",
+    content:
+      "The payment terminal in the canteen kept declining several bank cards this morning — might need a reset.",
+    timeAgo: "6 hours ago",
+    tags: ["canteen", "payments"],
+    upvotes: 22,
+    downvotes: 0,
+    comments: [
+      {
+        id: 374,
+        author: "manager1@make-it-all.co.uk",
+        text: "Rebooted now — transactions working again.",
+        timeAgo: "2 hours ago",
+      },
+    ],
+    author: "employee3@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 124,
+    title: "Call for newsletter stories",
+    flair: "non-technical",
+    preview: "HR looking for team highlights for the winter edition.",
+    content:
+      "We’re putting together the Winter Staff Newsletter — please send any project wins, charity updates, or shoutouts by **30 November 2025**!",
+    timeAgo: "2 days ago",
+    tags: ["communications", "hr"],
+    upvotes: 54,
+    downvotes: 1,
+    comments: [
+      {
+        id: 375,
+        author: "employee2@make-it-all.co.uk",
+        text: "Will do — we’ve just finished a big network upgrade worth sharing.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "hr1@make-it-all.co.uk",
+    directedTo: null,
+  },
+        {
+    id: 125,
+    title: "Printer queue jammed again",
+    flair: "technical",
+    preview: "Jobs stuck in the print queue for 20 minutes.",
+    content:
+      "The third-floor printer seems frozen — nothing’s coming through and the queue is growing. Tried rebooting but no luck.",
+    timeAgo: "3 hours ago",
+    tags: ["printing", "it"],
+    upvotes: 26,
+    downvotes: 1,
+    comments: [
+      {
+        id: 376,
+        author: "manager1@make-it-all.co.uk",
+        text: "Cleared remotely — try again now, it should be fine.",
+        timeAgo: "1 hour ago",
+      },
+    ],
+    author: "employee4@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 126,
+    title: "New sustainability goals",
+    flair: "non-technical",
+    preview:
+      "Company aims to reduce paper use by 30% this year.",
+    content:
+      "We’re introducing new sustainability targets — starting with a 30% reduction in paper consumption by switching to digital workflows. Details on MakeIToday under *Green Initiatives*.",
+    timeAgo: "2 days ago",
+    tags: ["sustainability", "policy"],
+    upvotes: 83,
+    downvotes: 3,
+    comments: [
+      {
+        id: 377,
+        author: "employee3@make-it-all.co.uk",
+        text: "Brilliant step forward — let’s go fully paperless soon!",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "ceo@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 127,
+    title: "Teams status not updating automatically",
+    flair: "technical",
+    preview:
+      "Status stuck on 'Away' even while using the computer.",
+    content:
+      "Has anyone else noticed Teams showing 'Away' when you’re clearly active? Started happening this week.",
+    timeAgo: "1 day ago",
+    tags: ["teams", "presence"],
+    upvotes: 19,
+    downvotes: 0,
+    comments: [
+      {
+        id: 378,
+        author: "manager2@make-it-all.co.uk",
+        text: "It’s a known Microsoft bug — fix coming next patch.",
+        timeAgo: "22 hours ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 128,
+    title: "Quiet zone trial in the office",
+    flair: "non-technical",
+    preview:
+      "New designated silent area starting next week.",
+    content:
+      "We’re trialling a 'quiet zone' on the third floor to help with focus work. No calls or loud conversations, please. Feedback welcome after the two-week trial.",
+    timeAgo: "4 days ago",
+    tags: ["productivity", "office"],
+    upvotes: 77,
+    downvotes: 4,
+    comments: [
+      {
+        id: 379,
+        author: "employee4@make-it-all.co.uk",
+        text: "Love this idea — will make deep work so much easier.",
+        timeAgo: "3 days ago",
+      },
+    ],
+    author: "manager1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 129,
+    title: "Requesting admin rights for Power BI",
+    flair: "technical",
+    preview: "Need elevated access for dashboard development.",
+    content:
+      "I’m building departmental dashboards and need Power BI admin permissions. Who should approve this request?",
+    timeAgo: "2 days ago",
+    tags: ["powerbi", "data", "permissions"],
+    upvotes: 21,
+    downvotes: 1,
+    comments: [
+      {
+        id: 380,
+        author: "manager2@make-it-all.co.uk",
+        text: "That’s approved by IT management — raise a ticket via MakeIToday.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "employee3@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 130,
+    title: "Office plants watering schedule",
+    flair: "non-technical",
+    preview: "Some areas look a bit neglected again.",
+    content:
+      "Could we get the plant watering rota back up on MakeIToday? Some of the ferns in Reception are turning crispy.",
+    timeAgo: "3 days ago",
+    tags: ["facilities", "green-office"],
+    upvotes: 58,
+    downvotes: 1,
+    comments: [
+      {
+        id: 381,
+        author: "manager1@make-it-all.co.uk",
+        text: "Schedule’s now pinned again on the Facilities page.",
+        timeAgo: "2 days ago",
+      },
+    ],
+    author: "employee1@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 131,
+    title: "SSO login loop",
+    flair: "technical",
+    preview:
+      "Keep getting redirected when logging into MakeIToday.",
+    content:
+      "Anyone else getting stuck in a sign-in loop when accessing MakeIToday? Browser just keeps refreshing without loading the dashboard.",
+    timeAgo: "1 day ago",
+    tags: ["login", "sso"],
+    upvotes: 32,
+    downvotes: 0,
+    comments: [
+      {
+        id: 382,
+        author: "manager2@make-it-all.co.uk",
+        text: "Clear your cookies and restart — known caching issue.",
+        timeAgo: "20 hours ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 132,
+    title: "Friday quiz returning soon!",
+    flair: "non-technical",
+    preview:
+      "Get ready for the classic end-of-week fun quiz.",
+    content:
+      "Our weekly Friday quiz will return this month! Hosted by Sarah Connor — prizes include free coffees and the legendary golden stapler 🏆.",
+    timeAgo: "5 days ago",
+    tags: ["social", "fun"],
+    upvotes: 102,
+    downvotes: 1,
+    comments: [
+      {
+        id: 383,
+        author: "employee3@make-it-all.co.uk",
+        text: "Golden stapler is mine this time!",
+        timeAgo: "4 days ago",
+      },
+    ],
+    author: "hr1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 133,
+    title: "Outlook auto-archive settings reset",
+    flair: "technical",
+    preview: "Emails reappearing in inbox unexpectedly.",
+    content:
+      "Auto-archived emails have suddenly reappeared in my inbox. Looks like the retention policy changed. Anyone else seeing this?",
+    timeAgo: "3 days ago",
+    tags: ["outlook", "email"],
+    upvotes: 17,
+    downvotes: 0,
+    comments: [
+      {
+        id: 384,
+        author: "manager1@make-it-all.co.uk",
+        text: "Yes, policy updated — archive now runs monthly instead of quarterly.",
+        timeAgo: "2 days ago",
+      },
+    ],
+    author: "employee1@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 134,
+    title: "Staff wellbeing survey results",
+    flair: "non-technical",
+    preview:
+      "Overall satisfaction up 12% this year — great work everyone!",
+    content:
+      "Thank you for completing the 2025 Wellbeing Survey. Overall staff satisfaction rose by 12%! Top scores were for flexibility and management support.",
+    timeAgo: "1 week ago",
+    tags: ["hr", "wellbeing"],
+    upvotes: 84,
+    downvotes: 0,
+    comments: [
+      {
+        id: 385,
+        author: "employee2@make-it-all.co.uk",
+        text: "Love seeing the improvements — feels like a good place to work.",
+        timeAgo: "6 days ago",
+      },
+    ],
+    author: "hr1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 135,
+    title: "Monitors not waking from sleep mode",
+    flair: "technical",
+    preview: "Need to unplug and plug back every time.",
+    content:
+      "Several of us in Design noticed our monitors don’t wake from sleep properly — screens stay black till we replug HDMI.",
+    timeAgo: "12 hours ago",
+    tags: ["hardware", "it"],
+    upvotes: 15,
+    downvotes: 0,
+    comments: [
+      {
+        id: 386,
+        author: "manager2@make-it-all.co.uk",
+        text: "Disable 'Deep Sleep' in monitor settings — that fixes it.",
+        timeAgo: "5 hours ago",
+      },
+    ],
+    author: "employee4@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 136,
+    title: "Office heating schedule tweak",
+    flair: "non-technical",
+    preview:
+      "Temperature feels Arctic in the mornings lately.",
+    content:
+      "Could Facilities bump the heating on a bit earlier? It’s absolutely freezing at 8:30 lately.",
+    timeAgo: "2 days ago",
+    tags: ["facilities", "comfort"],
+    upvotes: 63,
+    downvotes: 2,
+    comments: [
+      {
+        id: 387,
+        author: "manager1@make-it-all.co.uk",
+        text: "We’ll start it 30 minutes earlier tomorrow morning.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "employee3@make-it-all.co.uk",
+    directedTo: "manager1@make-it-all.co.uk",
+  },
+  {
+    id: 137,
+    title: "VPN disconnects every hour",
+    flair: "technical",
+    preview:
+      "Keeps dropping mid-meeting even with good Wi-Fi.",
+    content:
+      "VPN drops like clockwork every 60 minutes. I’ve tried reinstalling — same issue. Anyone else?",
+    timeAgo: "1 day ago",
+    tags: ["vpn", "connectivity"],
+    upvotes: 19,
+    downvotes: 0,
+    comments: [
+      {
+        id: 388,
+        author: "manager2@make-it-all.co.uk",
+        text: "We’re deploying a patch tomorrow to extend idle timeout — that should fix it.",
+        timeAgo: "18 hours ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 138,
+    title: "Charity bake sale success 🎂",
+    flair: "non-technical",
+    preview:
+      "We raised £1,245 for local children’s hospice!",
+    content:
+      "Huge thank you to everyone who baked and bought — we raised **£1,245** at last week’s charity bake sale!",
+    timeAgo: "4 days ago",
+    tags: ["charity", "csr"],
+    upvotes: 143,
+    downvotes: 1,
+    comments: [
+      {
+        id: 389,
+        author: "employee4@make-it-all.co.uk",
+        text: "That Victoria sponge was a game-changer!",
+        timeAgo: "3 days ago",
+      },
+    ],
+    author: "hr1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 139,
+    title: "PowerPoint crashing when inserting videos",
+    flair: "technical",
+    preview:
+      "Keeps freezing on Windows 11 laptops.",
+    content:
+      "PowerPoint crashes when embedding MP4s — tried multiple files. Anyone else?",
+    timeAgo: "2 days ago",
+    tags: ["office", "software"],
+    upvotes: 27,
+    downvotes: 0,
+    comments: [
+      {
+        id: 390,
+        author: "manager2@make-it-all.co.uk",
+        text: "Known issue — install the Office 365 build 2409 update to fix it.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "employee1@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 140,
+    title: "Update: Parking permit renewals",
+    flair: "non-technical",
+    preview: "Renewals open until 15 December.",
+    content:
+      "Car park permit renewal period is open until **15 December 2025**. Submit via MakeIToday > Facilities.",
+    timeAgo: "3 days ago",
+    tags: ["parking", "facilities"],
+    upvotes: 44,
+    downvotes: 0,
+    comments: [
+      {
+        id: 391,
+        author: "employee2@make-it-all.co.uk",
+        text: "Great — thanks for the reminder!",
+        timeAgo: "2 days ago",
+      },
+    ],
+    author: "manager1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 141,
+    title: "Outlook search not finding recent emails",
+    flair: "technical",
+    preview:
+      "Search results stop at last week’s messages.",
+    content:
+      "Search in Outlook desktop stops showing anything after last Friday — indexing issue maybe?",
+    timeAgo: "10 hours ago",
+    tags: ["outlook", "email"],
+    upvotes: 15,
+    downvotes: 0,
+    comments: [
+      {
+        id: 392,
+        author: "manager2@make-it-all.co.uk",
+        text: "Rebuild search index — should resolve it.",
+        timeAgo: "5 hours ago",
+      },
+    ],
+    author: "employee3@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 142,
+    title: "New maternity & paternity leave updates",
+    flair: "non-technical",
+    preview:
+      "Expanded paid leave announced for 2026.",
+    content:
+      "We’re updating our parental leave policy to increase paid leave by two weeks from **January 2026**. Full policy available on MakeIToday.",
+    timeAgo: "5 days ago",
+    tags: ["hr", "policy"],
+    upvotes: 92,
+    downvotes: 1,
+    comments: [
+      {
+        id: 393,
+        author: "employee1@make-it-all.co.uk",
+        text: "That’s wonderful — great to see support for families improving.",
+        timeAgo: "4 days ago",
+      },
+    ],
+    author: "hr1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 143,
+    title: "Wi-Fi password rotation schedule",
+    flair: "technical",
+    preview: "Guest Wi-Fi code changed weekly now.",
+    content:
+      "Guest Wi-Fi credentials will rotate every Monday morning for security. New codes posted on MakeIToday > IT > Wi-Fi Access.",
+    timeAgo: "1 day ago",
+    tags: ["wifi", "security"],
+    upvotes: 35,
+    downvotes: 0,
+    comments: [],
+    author: "manager2@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 144,
+    title: "Company rebranding launch event",
+    flair: "non-technical",
+    preview:
+      "Join us for the new logo reveal next Friday!",
+    content:
+      "Our refreshed branding goes live next week! Come to the atrium on **Friday 8 November, 4 pm** for the big reveal — drinks and nibbles provided.",
+    timeAgo: "3 days ago",
+    tags: ["branding", "events"],
+    upvotes: 119,
+    downvotes: 3,
+    comments: [
+      {
+        id: 394,
+        author: "employee2@make-it-all.co.uk",
+        text: "Excited to see the new look!",
+        timeAgo: "2 days ago",
+      },
+    ],
+    author: "ceo@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 145,
+    title: "USB ports disabled on new PCs",
+    flair: "technical",
+    preview:
+      "Can’t connect personal devices anymore.",
+    content:
+      "The new desktops block USB drives entirely — is there a process to request exceptions for approved hardware?",
+    timeAgo: "2 days ago",
+    tags: ["security", "hardware"],
+    upvotes: 22,
+    downvotes: 0,
+    comments: [
+      {
+        id: 395,
+        author: "manager2@make-it-all.co.uk",
+        text: "Security policy update — exceptions can be requested through IT tickets only.",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "employee4@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 146,
+    title: "Lunch break etiquette",
+    flair: "non-technical",
+    preview:
+      "Reminder to tidy up shared kitchen spaces after eating.",
+    content:
+      "Please remember to leave the kitchen clean after lunch — especially microwaves and tables. Small things make a big difference!",
+    timeAgo: "2 days ago",
+    tags: ["office", "etiquette"],
+    upvotes: 67,
+    downvotes: 2,
+    comments: [
+      {
+        id: 396,
+        author: "employee3@make-it-all.co.uk",
+        text: "Thanks for this — some days it looks like a bomb site!",
+        timeAgo: "1 day ago",
+      },
+    ],
+    author: "manager1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 147,
+    title: "Remote desktop freezing after update",
+    flair: "technical",
+    preview: "Session locks up after 5–10 minutes idle.",
+    content:
+      "Remote Desktop sessions keep freezing since the Windows update last night — forcing re-logins every time.",
+    timeAgo: "8 hours ago",
+    tags: ["remote-desktop", "it"],
+    upvotes: 17,
+    downvotes: 0,
+    comments: [
+      {
+        id: 397,
+        author: "manager2@make-it-all.co.uk",
+        text: "We’re testing new configs tonight — should stabilise soon.",
+        timeAgo: "3 hours ago",
+      },
+    ],
+    author: "employee2@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
+  {
+    id: 148,
+    title: "Friday dress theme suggestions",
+    flair: "non-technical",
+    preview: "Thinking of something fun like ‘Retro Fridays’.",
+    content:
+      "Any fun theme ideas for dress-down Fridays? Maybe 80s, movie day, or sportswear?",
+    timeAgo: "1 week ago",
+    tags: ["culture", "social"],
+    upvotes: 93,
+    downvotes: 5,
+    comments: [
+      {
+        id: 398,
+        author: "employee4@make-it-all.co.uk",
+        text: "Retro Friday gets my vote — flares incoming!",
+        timeAgo: "5 days ago",
+      },
+    ],
+    author: "hr1@make-it-all.co.uk",
+    directedTo: null,
+  },
+  {
+    id: 149,
+    title: "BitLocker recovery keys storage",
+    flair: "technical",
+    preview:
+      "Can staff view their own recovery keys?",
+    content:
+      "Just curious — are BitLocker recovery keys stored centrally, or can we view them ourselves via MakeIToday?",
+    timeAgo: "3 days ago",
+    tags: ["security", "windows"],
+    upvotes: 24,
+    downvotes: 0,
+    comments: [
+      {
+        id: 399,
+        author: "manager2@make-it-all.co.uk",
+        text: "Keys are stored securely by IT — you can’t view them directly for security reasons.",
+        timeAgo: "2 days ago",
+      },
+    ],
+    author: "employee1@make-it-all.co.uk",
+    directedTo: "manager2@make-it-all.co.uk",
+  },
 ];
