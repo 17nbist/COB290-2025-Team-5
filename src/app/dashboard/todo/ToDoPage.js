@@ -68,8 +68,9 @@ export default function ToDoPage() {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-white dark:bg-[#444444] shadow-lg rounded-xl p-5 w-full max-w-sm border border-gray-300"
+                className="p-5 w-full max-w-sm "
               >
+                
                 <Card>
                   {/* Project Card Header */}
                   <button
@@ -110,7 +111,7 @@ export default function ToDoPage() {
         <div className="flex-1 flex flex-col items-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 dark:text-white">To-Do</h1>
 
-          <div className="bg-white dark:bg-[#444444] shadow-lg rounded-xl p-5 w-full max-w-sm border border-gray-300">
+          <div className="p-5 w-full max-w-sm">
             {/* Add Task Input + Button */}
             <div className="flex flex-col sm:flex-row mb-4 gap-2">
               <input
@@ -121,11 +122,11 @@ export default function ToDoPage() {
                 onKeyDown={(e) => {
                   if (e.key === "Enter") addTask();
                 }}
-                className="flex-grow border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className=" bg-white dark:bg-black flex-grow border border-gray-300 px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
               <button
                 onClick={addTask}
-                className="bg-[#878787] hover:bg-[#a9a9a9] dark:bg-[#333333] dark:hover:bg-[#878787] text-white font-medium px-4 py-2 rounded-md transition-all"
+                className="bg-[#0771eb] hover:bg-[#043B7A] text-white font-medium px-4 py-2 rounded-md transition-all"
               >
                 Add
               </button>
