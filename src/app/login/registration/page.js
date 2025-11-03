@@ -20,14 +20,16 @@ export default function RegistrationPage() {
         backgroundImage: "url('/BlueBackground.png')",
       }}
     >
+      
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="text-3xl font-bold mb-6 text-blue drop-shadow-lg"
+        className="text-3xl font-bold mb-6 text-blue-500 drop-shadow-lg"
       >
         Registration
       </motion.h1>
+      
       <UrlForm/>
     </div>
   );
