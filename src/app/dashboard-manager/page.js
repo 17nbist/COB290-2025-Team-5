@@ -7,7 +7,7 @@ import TasksForm from '@/components/TaskForm';
 import { useEffect, useState } from 'react';
 
 const InputDataExample = {
-  labels: ["John D.", "Anita B.", "Holly D.", "Sarah C.", "Phil M.", "Other Staff"],
+  labels: ["Anita B.", "John D.", "Holly D.", "Sarah C.", "Phil M.", "Other Staff"],
   dataSetLabel: "Tasks Assigned",
   data: [7, 13, 40, 3, 14, 34],
   title: "Employee workload",
@@ -103,7 +103,7 @@ const statsProject = [
 const dataTasks = [
   { name: "Add Overview to Dashboard", progress: 0.2, status: "Behind" },
   { name: "Fix hallucination rate", progress: 0.7, status: "Almost Completed" },
-  { name: "fix data breach", progress: 0.8, status: "On Track"},
+  { name: "fix data breach", progress: 0.8, status: "On Track" },
 ];
 
 const statsTasks = [
@@ -289,7 +289,7 @@ export default function Home() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div style={{borderRadius: "15px"}} className="right-side flex flex-col w-full bg-[#c4daff] dark:bg-[#404040] box-border p-2.5 gap-2.5 transition-colors duration-300 overflow-hidden">
+        <div style={{ borderRadius: "15px" }} className="right-side flex flex-col w-full bg-[#c4daff] dark:bg-[#404040] box-border p-2.5 gap-2.5 transition-colors duration-300 overflow-hidden">
           {/* PIE CHART SECTION */}
           <Card className="pie-chart-container" style={{
             width: "100%",
