@@ -1,4 +1,5 @@
 "use client";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function SkeletonLoader({ lines = 3, className = "" }) {
 	return (
