@@ -3,7 +3,6 @@ import React from "react";
 import { MdOutlineEmail, MdLockOutline } from "react-icons/md";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Link from "next/link";
-import SimpleCaptcha from "@/components/SimpleCaptcha";
 
 
 export default function LoginForm({
@@ -15,21 +14,8 @@ export default function LoginForm({
 	onSubmit,
 }) {
 	const [showPassword, setShowPassword] = React.useState(false);
-	const [isCaptchaVerified, setIsCaptchaVerified] = React.useState(false);
-	const [captchaError, setCaptchaError] = React.useState("");
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (!isCaptchaVerified) {
-			setCaptchaError("Please verify you are human by solving the captcha.");
-			return;
-		}
-		setCaptchaError("");
-		onSubmit(e);
-	};
-
 	return (
-		<form style={styles.form} onSubmit={handleSubmit}>
+		<form style={styles.form} onSubmit={onSubmit}>
 			<label style={styles.label}>
 				Email
 				<div style={styles.inputWrapper}>
@@ -71,13 +57,6 @@ export default function LoginForm({
 			</label>
 
 			{error && <p style={styles.error}>{error}</p>}
-
-			<div style={styles.captchaContainer}>
-				<SimpleCaptcha 
-					onVerify={(verified) => setIsCaptchaVerified(verified)} 
-					error={captchaError}
-				/>
-			</div>
 
 			<div style={styles.forgotPasswordWrapper}>
 				<Link href="/login/forgot" style={styles.forgotPassword}>
@@ -122,9 +101,5 @@ const styles = {
 		position: "absolute",
 		right: 8 }
 	,
-	showIcon: { color: "#9ca3af", width: 20, height: 20 },
-	captchaContainer: {
-		marginTop: 4,
-		marginBottom: -4,
-	}
+	showIcon: { color: "#9ca3af", width: 20, height: 20 }
 };

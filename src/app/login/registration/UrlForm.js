@@ -10,7 +10,6 @@ import {
   MdKey,
 } from "react-icons/md";
 import Link from "next/link";
-import SimpleCaptcha from "@/components/SimpleCaptcha";
 
 export default function UrlForm() {
   const [name, setName] = React.useState("");
@@ -23,8 +22,6 @@ export default function UrlForm() {
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const [showAccessCode, setShowAccessCode] = React.useState(false);
-  const [isCaptchaVerified, setIsCaptchaVerified] = React.useState(false);
-  const [captchaError, setCaptchaError] = React.useState("");
 
   const REQUIRED_ACCESS_CODE = "MAKE2025";
 
@@ -64,18 +61,10 @@ export default function UrlForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    if (!isCaptchaVerified) {
-      setCaptchaError("Please verify you are human by solving the captcha.");
-      setError("Please verify you are human by solving the captcha.");
-      return;
-    }
-    
     if (!validateForm()) return;
 
     setSuccess(true);
     setError("");
-    setCaptchaError("");
     console.log({ name, email, password });
 
     setName("");
@@ -217,14 +206,6 @@ export default function UrlForm() {
             </button>
           </div>
         </label>
-
-        {/* Captcha */}
-        <div className="mt-2">
-          <SimpleCaptcha 
-            onVerify={(verified) => setIsCaptchaVerified(verified)} 
-            error={captchaError}
-          />
-        </div>
 
         {/* Error Message (consistent animation + style) */}
         <AnimatePresence>
