@@ -3,7 +3,6 @@ import NavBar from "@/components/NavBar";
 import SearchBar from "@/components/SearchBar";
 import ForumPost from "./ForumPost";
 import CreatePostModal from "./CreatePostModal";
-import Chatbot from "@/components/Chatbot";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/lib/AuthContext";
 import Button from "@/components/Button";
@@ -249,9 +248,6 @@ export default function Forum() {
         userEmail={user?.email}
       />
       </div>
-
-      {/* AI Chatbot */}
-      <Chatbot />
     </>
   );
 }
