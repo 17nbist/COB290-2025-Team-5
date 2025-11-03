@@ -73,6 +73,12 @@ export default function TaskViewToDo({ task }) {
                     type="text"
                     value={todoTitle}
                     onChange={(e) => setTodoTitle(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        addTodo();
+                      }
+                    }}
                     name="text"
                     autoComplete="off"
                     className="

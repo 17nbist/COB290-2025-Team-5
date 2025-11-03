@@ -120,7 +120,18 @@ export default function Forum() {
   };
 
   const handleAdvancedSearch = (filters) => {
-    setAdvancedFilters(filters);
+    // Clean filters to only include non-empty values
+    const cleanedFilters = {};
+    if (filters.keyword?.trim()) cleanedFilters.keyword = filters.keyword.trim();
+    if (filters.author) cleanedFilters.author = filters.author;
+    if (filters.flair) cleanedFilters.flair = filters.flair;
+    if (filters.tags && filters.tags.length > 0) cleanedFilters.tags = filters.tags;
+    if (filters.dateFrom) cleanedFilters.dateFrom = filters.dateFrom;
+    if (filters.dateTo) cleanedFilters.dateTo = filters.dateTo;
+    if (filters.minUpvotes) cleanedFilters.minUpvotes = filters.minUpvotes;
+    if (filters.hasComments) cleanedFilters.hasComments = filters.hasComments;
+    
+    setAdvancedFilters(cleanedFilters);
     setSearchQuery(""); // Clear simple search when using advanced
     setCurrentPage(1);
   };

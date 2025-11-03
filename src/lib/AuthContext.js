@@ -364,6 +364,34 @@ export function AuthProvider({ children }) {
         });
     }
 
+    function addTodoToTask(taskId, todo) {
+        setAllTasks(prev => {
+            const updated = prev.map(task => {
+                if (task.id === taskId) {
+                    const todos = task.todos || [];
+                    const maxId = todos.length > 0 ? Math.max(...todos.map(t => t.id)) : 0;
+                    const newTodo = {
+                        ...todo,
+                        id: maxId + 1,
+                    };
+                    return {
+                        ...task,
+                        todos: [...todos, newTodo]
+                    };
+                }
+                return task;
+            });
+
+            localStorage.setItem('tasks', JSON.stringify(updated));
+            return updated;
+        });
+    }
+
+    function userIsProjectLeader(projectId, userId) {
+        const project = allProjects?.find(p => p.id === projectId);
+        return project?.leaderId === userId;
+    }
+
     function addForumPost(post) {
         setAllForumPosts(prev => {
             const maxId = prev.length > 0 ? Math.max(...prev.map(p => p.id)) : 0;
@@ -442,6 +470,8 @@ export function AuthProvider({ children }) {
                     addToAllTasks,
                     addToAllEvents,
                     updateTodo,
+                    addTodoToTask,
+                    userIsProjectLeader,
                     addToAllProjects,
                     editProjectMembers,
                     addForumPost,
@@ -471,6 +501,8 @@ export function AuthProvider({ children }) {
                 addToAllTasks,
                 addToAllEvents,
                 updateTodo,
+                addTodoToTask,
+                userIsProjectLeader,
                 addToAllProjects,
                 editProjectMembers,
                 addForumPost,
