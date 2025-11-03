@@ -16,7 +16,6 @@ export default function CreateRequestModal({ isOpen, onClose, onSubmit, userEmai
             return;
         }
 
-        // Create better preview (truncate at word boundary)
         const createPreview = (text) => {
             if (text.length <= 100) return text;
             const truncated = text.substring(0, 100);
@@ -24,7 +23,6 @@ export default function CreateRequestModal({ isOpen, onClose, onSubmit, userEmai
             return truncated.substring(0, lastSpace) + '...';
         };
 
-        // Create post object
         const newRequest = {
             id: Date.now(),
             title: title.trim(),

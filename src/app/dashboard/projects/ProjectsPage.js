@@ -7,15 +7,18 @@ import { useEffect, useState } from "react";
 import Button from "@/components/Button";
 import NavBar from "@/components/NavBar";
 import { useAuth } from "@/lib/AuthContext";
+import NetworkGraph from "@/components/NetworkGraph";
+import { HiOutlineShare } from "react-icons/hi";
 
 export default function ProjectsPage({ projects, employees }) {
-	const { user, allProjects } = useAuth();
+	const { user, allProjects, allEvents, allUsers, allTasks } = useAuth();
 	const [searchVal, setSearchVal] = useState("");
 
 	const filterTabs = ["Name", "Due Date"];
 	const [activeFilterTab, setActiveFilterTab] = useState("Name");
 
 	const [showModal, setShowModal] = useState(false);
+	const [showNetworkGraph, setShowNetworkGraph] = useState(false);
 
 
 	function sortByName(a, b) {
@@ -36,7 +39,7 @@ export default function ProjectsPage({ projects, employees }) {
 
 
 	return (
-		<div className="flex flex-col w-[1200px] flex-wrap items-center">
+		<div className="flex flex-col w-[1200px] flex-wrap items-center relative">
 			<div className="flex mb-[30px] items-center justify-between w-full">
 				<div className="w-6xl mx-auto px-4 py-6">
 					<div className="mb-6 flex">
@@ -61,6 +64,9 @@ export default function ProjectsPage({ projects, employees }) {
 			</div>
 
 			<AddProjectModal showModal={showModal} setShowModal={setShowModal} employees={employees} />
+
+
+
 		</div>
 	)
 }

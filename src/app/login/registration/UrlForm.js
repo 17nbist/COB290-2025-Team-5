@@ -67,7 +67,6 @@ export default function UrlForm() {
     setError("");
     console.log({ name, email, password });
 
-    // Clear form fields after success
     setName("");
     setEmail("");
     setPassword("");

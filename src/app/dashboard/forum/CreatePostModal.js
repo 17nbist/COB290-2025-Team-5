@@ -18,7 +18,6 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
             return;
         }
 
-        // Create better preview (truncate at word boundary)
         const createPreview = (text) => {
             if (text.length <= 100) return text;
             const truncated = text.substring(0, 100);
@@ -26,7 +25,6 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
             return truncated.substring(0, lastSpace) + '...';
         };
 
-        // Create post object
         const newPost = {
             id: Date.now(),
             title: title.trim(),
@@ -56,7 +54,7 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <Card style={{maxWidth: "600px", width: "100%"}}>
+            <Card style={{ maxWidth: "600px", width: "100%" }}>
                 {/* Header */}
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-2xl font-bold">Create New Post</h2>
