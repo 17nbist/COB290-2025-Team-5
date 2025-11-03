@@ -7,7 +7,7 @@ import TasksForm from '@/components/TaskForm';
 import { useEffect, useState } from 'react';
 
 const InputDataExample = {
-  labels: ["Andrew H", "Rose S", "Mohammed K", "Tanaka M", "Ming Y"],
+  labels: ["John D.", "Anita B.", "Holly D.", "Sarah C.", "Phil M."],
   dataSetLabel: "Tasks Assigned",
   data: [7, 13, 40, 3, 14, 34],
   title: "Employee workload",
