@@ -158,96 +158,86 @@ export default function Forum() {
   };
 
   return (
-    <>
-      <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-full">
-        <div className="mb-6 flex">
-          <SearchBar onSearch={handleSearch} onAdd={handleAddPost} />
-          <Button
-            outerStyle={{ width: "47px", height: "47px" }}
-            textStyle={{ fontSize: "30px" }}
-            text={"+"}
-            onClick={handleAddPost}
-          />
-        </div>
-
-      <div className="mb-6">
-        <NavBar
-          items={filterTabs}
-          activeTab={activeFilterTab}
-          setActiveTab={(tab) => {
-            setActiveFilterTab(tab);
-            setCurrentPage(1);
-          }}
-          style={{
-            display: "flex",
-            flexWrap: "wrap",       // allow wrapping on small screens
-            gap: "8px",
-          }}
-        />
+    <div className="w-6xl mx-auto px-4 py-6 min-h-full ">
+      <div className="mb-6 flex">
+        <SearchBar onSearch={handleSearch} onAdd={handleAddPost} />
+        <Button outerStyle={{width: "47px", height: "47px"}} textStyle={{fontSize: "30px"}} text={"+"} onClick={handleAddPost}/>
       </div>
 
-      {/* Thin faint line */}
-      <div className="w-full border-t border-black dark:border-gray-300 my-4"></div>
-
-      <div className="mb-6">
-        <NavBar
-          items={sortTabs}
-          activeTab={activeSortTab}
-          setActiveTab={(tab) => {
-            setActiveSortTab(tab);
-            setCurrentPage(1);
-          }}
-          style={{
-            display: "flex",
-            flexWrap: "wrap",       // allow wrapping on small screens
-            gap: "8px",
-          }}
-        />
-      </div>
-
-      <div className="space-y-4">
-        {paginatedPosts.length === 0 ? (
-          <div className="text-center text-gray-400 dark:text-gray-400 py-12">
-            No posts found
-          </div>
-        ) : (
-          paginatedPosts.map((post) => (
-            <ForumPost
-              key={post.id}
-              post={post}
-              onClick={handlePostClick}
-              onUpvote={handleUpvote}
-              onDownvote={handleDownvote}
-            />
-          ))
-        )}
-      </div>
-
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center gap-2 mt-6">
-          <Button
-            text="Previous"
-            onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-            outerStyle={{ opacity: currentPage === 1 ? 0.5 : 1 }}
-          />
-          <span className="text-sm text-gray-600 dark:text-gray-400">
-            Page {currentPage} of {totalPages}
-          </span>
-          <Button
-            text="Next"
-            onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-            outerStyle={{ opacity: currentPage === totalPages ? 0.5 : 1 }}
-          />
-        </div>
-      )}
-
-      <CreatePostModal
-        isOpen={isCreatePostOpen}
-        onClose={() => setIsCreatePostOpen(false)}
-        onSubmit={handleCreatePost}
-        userEmail={user?.email}
+    <div className="mb-6">
+      <NavBar
+        items={filterTabs}
+        activeTab={activeFilterTab}
+        setActiveTab={(tab) => {
+          setActiveFilterTab(tab);
+          setCurrentPage(1);
+        }}
+        style={{
+          display: "flex",
+          flexWrap: "wrap",       // allow wrapping on small screens
+          gap: "8px",
+        }}
       />
+    </div>
+      {/* Thin faint line */}
+    <div className="w-full border-t border-black dark:border-gray-300 my-4"></div>
+
+    <div className="mb-6">
+      <NavBar
+        items={sortTabs}
+        activeTab={activeSortTab}
+        setActiveTab={(tab) => {
+          setActiveSortTab(tab);
+          setCurrentPage(1);
+        }}
+        style={{
+          display: "flex",
+          flexWrap: "wrap",       // allow wrapping on small screens
+          gap: "8px",
+        }}
+      />
+    </div>
+    <div className="space-y-4">
+      {paginatedPosts.length === 0 ? (
+        <div className="text-center text-gray-400 dark:text-gray-400 py-12">
+          No posts found
+        </div>
+      ) : (
+        paginatedPosts.map((post) => (
+          <ForumPost
+            key={post.id}
+            post={post}
+            onClick={handlePostClick}
+            onUpvote={handleUpvote}
+            onDownvote={handleDownvote}
+          />
+        ))
+      )}
+    </div>
+    {totalPages > 1 && (
+      <div className="flex justify-center items-center gap-2 mt-6">
+        <Button
+          text="Previous"
+          onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+          outerStyle={{ opacity: currentPage === 1 ? 0.5 : 1 }}
+        />
+        <span className="text-sm text-gray-600 dark:text-gray-400">
+          Page {currentPage} of {totalPages}
+        </span>
+        <Button
+          text="Next"
+          onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+          outerStyle={{ opacity: currentPage === totalPages ? 0.5 : 1 }}
+        />
       </div>
-    </>
+    )}
+
+    <CreatePostModal
+      isOpen={isCreatePostOpen}
+      onClose={() => setIsCreatePostOpen(false)}
+      onSubmit={handleCreatePost}
+      userEmail={user?.email}
+    />
+    </div>
   );
 }

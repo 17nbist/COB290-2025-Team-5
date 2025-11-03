@@ -28,7 +28,7 @@ export default function TaskViewToDo({ task }) {
         className="
           border border-black 
           bg-white hover:bg-gray-100 transition-colors duration-200
-          dark:bg-[#767676] dark:border-gray-500 dark:hover:bg-[#656565]
+          dark:bg-[#555555] dark:border-gray-500 dark:hover:bg-[#656565]
         "
         style={{
           padding: "24px",
