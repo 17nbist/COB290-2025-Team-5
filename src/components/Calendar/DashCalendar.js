@@ -91,28 +91,23 @@ export default function DashCalendar({tasks}) {
             <Button outerStyle={{height: "30px"}} textStyle={{fontSize: "10px"}} text={"Full Calendar"} onClick={() => {window.location.hash = "Calendar"}}/>
           </div>
           
-          <div
-            style={{
-              display: "grid",
-              overflowX: "auto", 
-              overflowY: "hidden",
-              position: "relative",
-              gridTemplateColumns: `repeat(${getNumberOfDivisions()}, minmax(80px, 1fr))`,
-              borderRadius: "10px",
-              marginTop: "5px",
-              width: "100%",
-              height: "100%",
-              paddingBottom: "8px",
-            }}
-            className="scrollbar-thin scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400"
-          >
+          <div style={{
+            display: "grid",
+            overflowX: "hidden",
+            position: "relative",
+            gridTemplateColumns: `repeat(${getNumberOfDivisions()}, minmax(0, 1fr))`,
+            borderRadius: "10px",
+            marginTop: "5px",
+            width: "100%",
+            height: "100%"
+          }}>
 
             {/* dates and dividors */}
             {
               getDivisionTitles().map((e, i, arr) => (
                 <div key={e}
                   style={{
-                    borderRight: i !== arr.length - 1 ? "1px solid #1572ffff" : "none",
+                    borderRight: i !== arr.length - 1 ? "1px solid #ddd" : "none",
                   }}
                 >
                 <h1 style={{textAlign: "center"}}>{e}</h1>
