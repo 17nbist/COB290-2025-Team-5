@@ -36,12 +36,12 @@ export default function DashboardProfileCard({ Title, Name, Position, TaskAlloca
                         flexWrap: "wrap",
                     }}
                     >
-                    <p style={{ fontSize: "1rem", fontWeight: 600 }}>{Title}</p>
+                    <p className="text-black dark:text-white" style={{ fontSize: "1rem", fontWeight: 600 }}>{Title}</p>
                     <svg
                         width="24px"
                         height="24px"
                         viewBox="0 0 20 20"
-                        fill="#000000"
+                        className="fill-black dark:fill-white"
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <path d="M100.562548,2016.99998 L87.4381713,2016.99998 C86.7317804,2016.99998 86.2101535,2016.30298 86.4765813,2015.66198 C87.7127655,2012.69798 90.6169306,2010.99998 93.9998492,2010.99998 C97.3837885,2010.99998 100.287954,2012.69798 101.524138,2015.66198 C101.790566,2016.30298 101.268939,2016.99998 100.562548,2016.99998Z" />
@@ -71,8 +71,8 @@ export default function DashboardProfileCard({ Title, Name, Position, TaskAlloca
                         }}
                         />
                     </div>
-                    <p style={{ margin: 0, fontWeight: 600, fontSize: "1.1rem" }}>{Name}</p>
-                    <p style={{ margin: 0, color: "#555" }}>{Position}</p>
+                    <p className="text-black dark:text-white" style={{ margin: 0, fontWeight: 600, fontSize: "1.1rem" }}>{Name}</p>
+                    <p className="text-gray-600 dark:text-gray-400" style={{ margin: 0 }}>{Position}</p>
                     </div>
 
                     {/* Bottom Info */}
@@ -96,6 +96,7 @@ export default function DashboardProfileCard({ Title, Name, Position, TaskAlloca
                         }}
                     >
                         <Card
+                        className="bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
                         style={{
                             display: "flex",
                             alignItems: "center",
@@ -103,13 +104,12 @@ export default function DashboardProfileCard({ Title, Name, Position, TaskAlloca
                             gap: "6px",
                             padding: "6px 14px",
                             borderRadius: "9999px",
-                            backgroundColor: "#f8f9fa",
                             boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
                             width: "fit-content",
                             fontSize: "0.9rem",
                         }}
                         >
-                        <FaTasks size={16} color="#333" />
+                        <FaTasks size={16} className="text-gray-700 dark:text-gray-300" />
                         <span>{TaskAllocated}</span>
                         </Card>
                     </div>
@@ -122,6 +122,7 @@ export default function DashboardProfileCard({ Title, Name, Position, TaskAlloca
                         }}
                     >
                         <Card
+                        className="bg-gray-100 dark:bg-gray-800 text-black dark:text-white"
                         style={{
                             display: "flex",
                             alignItems: "center",
@@ -129,13 +130,12 @@ export default function DashboardProfileCard({ Title, Name, Position, TaskAlloca
                             gap: "6px",
                             padding: "6px 14px",
                             borderRadius: "9999px",
-                            backgroundColor: "#f8f9fa",
                             boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
                             width: "fit-content",
                             fontSize: "0.9rem",
                         }}
                         >
-                        <GoProject size={16} color="#333" />
+                        <GoProject size={16} className="text-gray-700 dark:text-gray-300" />
                         <span>{ProjectAllocated}</span>
                         </Card>
                     </div>

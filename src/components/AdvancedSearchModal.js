@@ -95,8 +95,8 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
       <Card style={{ maxWidth: "700px", width: "100%", maxHeight: "90vh", overflow: "auto" }}>
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold flex items-center gap-2">
-            <FaSearch className="text-blue-600" />
+          <h2 className="text-black dark:text-white text-2xl font-bold flex items-center gap-2">
+            <FaSearch className="text-blue-600 dark:text-blue-400" />
             Advanced Search
           </h2>
           <button
@@ -111,7 +111,7 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
         <div className="space-y-4">
           {/* Keyword Search */}
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-medium mb-2 text-black dark:text-white">
               Keyword
             </label>
             <input
@@ -119,19 +119,19 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
               value={filters.keyword}
               onChange={(e) => handleFilterChange("keyword", e.target.value)}
               placeholder="Search in title, content, and tags..."
-              className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white"
+              className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:text-white dark:border-gray-600 dark:focus:border-white dark:placeholder-gray-400"
             />
           </div>
 
           {/* Author Filter */}
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-medium mb-2 text-black dark:text-white">
               Author
             </label>
             <select
               value={filters.author}
               onChange={(e) => handleFilterChange("author", e.target.value)}
-              className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white"
+              className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:text-white dark:border-gray-600 dark:focus:border-white"
             >
               <option value="">All Authors</option>
               {uniqueAuthors.map(author => (
@@ -142,13 +142,13 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
 
           {/* Flair Filter */}
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-medium mb-2 text-black dark:text-white">
               Flair
             </label>
             <select
               value={filters.flair}
               onChange={(e) => handleFilterChange("flair", e.target.value)}
-              className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white"
+              className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:text-white dark:border-gray-600 dark:focus:border-white"
             >
               <option value="">All Flairs</option>
               {uniqueFlairs.map(flair => (
@@ -159,10 +159,10 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
 
           {/* Tags Filter */}
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-medium mb-2 text-black dark:text-white">
               Tags
             </label>
-            <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto p-3 border border-gray-400 rounded-md dark:border-gray-600">
+            <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto p-3 border border-gray-400 rounded-md dark:border-gray-600 bg-white dark:bg-[#242424]">
               {allTags.map(tag => (
                 <button
                   key={tag}
@@ -179,7 +179,7 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
               ))}
             </div>
             {filters.tags.length > 0 && (
-              <p className="text-gray-500 text-xs mt-1">
+              <p className="text-gray-500 dark:text-gray-400 text-xs mt-1">
                 Selected: {filters.tags.join(", ")}
               </p>
             )}
@@ -188,32 +188,32 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
           {/* Date Range */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-sm font-medium mb-2 text-black dark:text-white">
                 From Date
               </label>
               <input
                 type="date"
                 value={filters.dateFrom}
                 onChange={(e) => handleFilterChange("dateFrom", e.target.value)}
-                className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white"
+                className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:text-white dark:border-gray-600 dark:focus:border-white"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-sm font-medium mb-2 text-black dark:text-white">
                 To Date
               </label>
               <input
                 type="date"
                 value={filters.dateTo}
                 onChange={(e) => handleFilterChange("dateTo", e.target.value)}
-                className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white"
+                className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:text-white dark:border-gray-600 dark:focus:border-white"
               />
             </div>
           </div>
 
           {/* Minimum Upvotes */}
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-sm font-medium mb-2 text-black dark:text-white">
               Minimum Upvotes
             </label>
             <input
@@ -222,7 +222,7 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
               onChange={(e) => handleFilterChange("minUpvotes", e.target.value)}
               placeholder="e.g., 10"
               min="0"
-              className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white"
+              className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:text-white dark:border-gray-600 dark:focus:border-white dark:placeholder-gray-400"
             />
           </div>
 
@@ -233,9 +233,9 @@ export default function AdvancedSearchModal({ isOpen, onClose, onSearch, allPost
               id="hasComments"
               checked={filters.hasComments}
               onChange={(e) => handleFilterChange("hasComments", e.target.checked)}
-              className="w-4 h-4 border-gray-400 rounded focus:ring-black dark:focus:ring-white"
+              className="w-4 h-4 border-gray-400 rounded focus:ring-black dark:focus:ring-white text-black dark:text-white"
             />
-            <label htmlFor="hasComments" className="ml-2 text-sm">
+            <label htmlFor="hasComments" className="ml-2 text-sm text-black dark:text-white">
               Only show posts with comments
             </label>
           </div>

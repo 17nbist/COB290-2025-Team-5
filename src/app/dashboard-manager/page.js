@@ -229,11 +229,11 @@ export default function Home() {
           <div className="flex flex-col gap-5 p-2.5 flex-1">
             {/* Header and Input */}
             <div className="flex flex-col justify-center items-center bg-white dark:bg-[#404040] rounded-[10px] p-5 gap-[15px] transition-colors duration-300">
-              <h1 className="text-center text-[clamp(1rem,2.5vw,1.5rem)] m-0 dark:text-white transition-colors duration-300">
+              <h1 className="text-center text-black dark:text-white text-[clamp(1rem,2.5vw,1.5rem)] m-0 transition-colors duration-300">
                 Here is an overview of all the projects you are currently enrolled in!
               </h1>
               <div className="flex gap-2.5 items-center justify-center flex-wrap">
-                <label htmlFor="tentacles" className="text-[0.9rem] font-medium dark:text-white transition-colors duration-300">Benchmark:</label>
+                <label htmlFor="tentacles" className="text-black dark:text-white text-[0.9rem] font-medium transition-colors duration-300">Benchmark:</label>
                 <input
                   type="number"
                   id="tentacles"

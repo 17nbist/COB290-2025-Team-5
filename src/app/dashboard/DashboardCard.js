@@ -11,22 +11,22 @@ export default function DashboardCard({ title, label, result, Icon }) {
     //console.log(gradientClass);
     return (
         <>
-        <Card className={`h-full w-full overflow-hidden text-black p-4 sm:p-6 ${gradientClass}`}>
-            <div className="grid h-full w-full relative gap-4 grid-rows-[auto_1fr]">
-                <div className="flex justify-between items-start flex-wrap gap-2">
-                <p className="text-base sm:text-lg font-semibold">{title}</p>
-                <div className="text-xl sm:text-2xl">{Icon}</div>
-                </div>
+            <Card className={`h-full w-full overflow-hidden text-black dark:text-white p-4 sm:p-6 ${gradientClass}`}>
+                <div className="grid h-full w-full relative gap-4 grid-rows-[auto_1fr]">
+                    <div className="flex justify-between items-start flex-wrap gap-2">
+                        <p className="text-base sm:text-lg font-semibold text-black dark:text-white">{title}</p>
+                        <div className="text-xl sm:text-2xl text-black dark:text-white">{Icon}</div>
+                    </div>
 
-                {/* Bottom content */}
-                <div className="flex flex-col justify-end mt-auto space-y-1 sm:space-y-2">
-                <span className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-none">
-                    {result}
-                </span>
-                <span className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{label}</span>
+                    {/* Bottom content */}
+                    <div className="flex flex-col justify-end mt-auto space-y-1 sm:space-y-2">
+                        <span className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-none text-black dark:text-white">
+                            {result}
+                        </span>
+                        <span className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{label}</span>
+                    </div>
                 </div>
-            </div>
-        </Card>
+            </Card>
 
         </>
         /*

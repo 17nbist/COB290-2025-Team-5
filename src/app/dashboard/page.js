@@ -64,12 +64,12 @@ export default function Home() {
       {/* Header with role indicator and logout */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-8 pt-4 gap-2 sm:gap-0">
         <div className="flex flex-wrap items-center gap-2 sm:gap-4">
-          <span className="text-sm text-gray-600 dark:text-white truncate">
+          <span className="text-sm text-gray-600 dark:text-gray-300 truncate">
             Welcome, {user.name}
           </span>
           <span className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ${user.isManager == true
-            ? 'bg-purple-100 text-purple-800'
-            : 'bg-blue-100 text-blue-800'
+            ? 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200'
+            : 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200'
             }`}>
             {user.isManager ? 'MANAGER DASHBOARD' : 'EMPLOYEE DASHBOARD'}
           </span>

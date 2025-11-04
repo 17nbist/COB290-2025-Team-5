@@ -21,26 +21,26 @@ export default function MiniCalendar({ tasks }) {
         gap: "10px",
       }}
     >
-      <h2 style={{ margin: 0, fontSize: "1.2rem" }}>
+      <h2 className="text-black dark:text-white" style={{ margin: 0, fontSize: "1.2rem" }}>
         Today – {today.toLocaleDateString(undefined, { weekday: "long", month: "short", day: "numeric" })}
       </h2>
 
       {todayTasks.length === 0 ? (
-        <p style={{ color: "#777" }}>No tasks today 🎉</p>
+        <p className="text-gray-600 dark:text-gray-400">No tasks today 🎉</p>
       ) : (
         todayTasks.map(t => (
           <Card
             key={t.id}
+            className="bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-600"
             style={{
               padding: "10px",
-              backgroundColor: "#f9fafb",
-              border: "1px solid #ddd",
+              border: "1px solid",
               cursor: "pointer",
             }}
-            hoverStyle={{ backgroundColor: "#f1f5f9" }}
+            hoverStyle={{ backgroundColor: "rgba(241, 245, 249, 0.5)" }}
           >
-            <h3 style={{ margin: "0 0 4px 0", fontSize: "1rem" }}>{t.title}</h3>
-            <p style={{ margin: 0, fontSize: "0.9rem", color: "#555" }}>
+            <h3 className="text-black dark:text-white" style={{ margin: "0 0 4px 0", fontSize: "1rem" }}>{t.title}</h3>
+            <p className="text-gray-600 dark:text-gray-400" style={{ margin: 0, fontSize: "0.9rem" }}>
               {new Date(t.from).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })} –{" "}
               {new Date(t.to).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
             </p>

@@ -56,7 +56,7 @@ export default function Dashboard() {
 
   if (errText) {
 		return(
-			<div className="flex dark:text-white flex-col w-screen h-screen bg-[#d2d2d2] dark:bg-[#303640]">
+			<div className="flex flex-col w-screen h-screen bg-[#d2d2d2] dark:bg-[#303640] text-black dark:text-white">
 				<h1>{errText}</h1>
 			</div>
 		)
@@ -71,17 +71,16 @@ export default function Dashboard() {
         minHeight: "100vh",
         paddingTop: "60px",
       }}
-      className="dark:text-white bg-[#d2d2d2] dark:bg-[#303030]"
+      className="text-black dark:text-white bg-[#d2d2d2] dark:bg-[#303030]"
     >
       {/* Back Button */}
       <button
         onClick={() => router.push(`/project/${task.projectId}`)}
-        className={"bg-[#f3f3f3] dark:bg-[#989898]"}
+        className="bg-[#f3f3f3] dark:bg-[#989898] text-black dark:text-white"
         style={{
           position: "absolute",
           top: "20px",
           left: "20px",
-          /*background: "#f3f3f3",*/
           padding: "8px 14px",
           borderRadius: "8px",
           cursor: "pointer",

@@ -35,10 +35,9 @@ export default function SearchBar({ onSearch, onAdvancedSearch }) {
           onFocus={(e) => e.target.style.borderColor = "#000000"}
           onBlur={(e) => e.target.style.borderColor = "#e5e7eb"}
         />
-        <span style={{
+        <span className="text-gray-400 dark:text-gray-500" style={{
           position: "absolute",
           right: "16px",
-          color: "#9ca3af",
           fontSize: "16px"
         }}>
           <FcSearch size={20}/>

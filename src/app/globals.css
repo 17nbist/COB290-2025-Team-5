@@ -377,6 +377,7 @@ span {
 /* Markdown Styles */
 .markdown-content {
   line-height: 1.75;
+  color: inherit;
 }
 
 .markdown-content h1,
@@ -389,23 +390,28 @@ span {
   margin-top: 1.5em;
   margin-bottom: 0.5em;
   line-height: 1.25;
+  color: inherit;
 }
 
 .markdown-content h1 {
   font-size: 2em;
+  color: inherit;
 }
 
 .markdown-content h2 {
   font-size: 1.5em;
+  color: inherit;
 }
 
 .markdown-content h3 {
   font-size: 1.25em;
+  color: inherit;
 }
 
 .markdown-content p {
   margin-top: 1em;
   margin-bottom: 1em;
+  color: inherit;
 }
 
 .markdown-content p:first-child {
@@ -436,10 +442,12 @@ span {
 
 .markdown-content strong {
   font-weight: 600;
+  color: inherit;
 }
 
 .markdown-content em {
   font-style: italic;
+  color: inherit;
 }
 
 .markdown-content code {
@@ -448,10 +456,12 @@ span {
   border-radius: 0.25rem;
   font-size: 0.875em;
   font-family: monospace;
+  color: inherit;
 }
 
 .dark .markdown-content code {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #e5e7eb;
 }
 
 .markdown-content pre {
@@ -470,6 +480,11 @@ span {
 .markdown-content pre code {
   background-color: transparent;
   padding: 0;
+  color: inherit;
+}
+
+.dark .markdown-content pre code {
+  color: #e5e7eb;
 }
 
 .markdown-content ul,
@@ -477,11 +492,13 @@ span {
   margin-top: 1em;
   margin-bottom: 1em;
   padding-left: 1.5em;
+  color: inherit;
 }
 
 .markdown-content li {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+  color: inherit;
 }
 
 .markdown-content blockquote {
@@ -491,10 +508,14 @@ span {
   margin-top: 1em;
   margin-bottom: 1em;
   font-style: italic;
+  color: inherit;
 }
 
 .dark .markdown-content blockquote {
-  border-left-color: rgba(255, 255, 255, 0.2);
+  border-left-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.5em 1em;
+  border-radius: 0.25rem;
 }
 
 .markdown-content hr {
@@ -528,6 +549,7 @@ span {
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 0.5em;
   text-align: left;
+  color: inherit;
 }
 
 .dark .markdown-content th,
@@ -542,4 +564,8 @@ span {
 
 .dark .markdown-content th {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .markdown-content {
+  color: #e5e7eb;
 }

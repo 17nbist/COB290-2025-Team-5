@@ -92,7 +92,7 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
             <Card style={{ maxWidth: "600px", width: "100%" }}>
                 {/* Header */}
                 <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-2xl font-bold">Create New Post</h2>
+                    <h2 className="text-black dark:text-white text-2xl font-bold">Create New Post</h2>
                     <button
                         onClick={onClose}
                         className="text-gray-400 hover:text-black dark:hover:text-gray-200 transition-colors"
@@ -105,7 +105,7 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
                 <form onSubmit={handleSubmit}>
                     {/* Title Input */}
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2">
+                        <label className="block text-sm font-medium mb-2 text-black dark:text-white">
                             Title *
                         </label>
                         <input
@@ -113,18 +113,18 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             placeholder="Enter a descriptive title..."
-                            className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white"
+                            className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:text-white dark:border-gray-600 dark:focus:border-white dark:placeholder-gray-400"
                             required
                         />
                     </div>
 
                     {/* Flair Input */}
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2">
+                        <label className="block text-sm font-medium mb-2 text-black dark:text-white">
                             Flair *
                         </label>
                         <select
-                            className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white"
+                            className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:text-white dark:border-gray-600 dark:focus:border-white"
                             onChange={(e) => setFlair(e.target.value)}
                             value={flair}
                             required>
@@ -136,7 +136,7 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
 
                     {/* Content Textarea */}
                     <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2">
+                        <label className="block text-sm font-medium mb-2 text-black dark:text-white">
                             Content *
                         </label>
                         <textarea
@@ -144,17 +144,17 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
                             onChange={(e) => setContent(e.target.value)}
                             placeholder="Write your post content here. Be descriptive and provide context."
                             rows={8}
-                            className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white resize-none"
+                            className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:text-white dark:border-gray-600 dark:focus:border-white dark:placeholder-gray-400 resize-none"
                             required
                         />
-                        <p className="text-gray-500 text-xs mt-1">
+                        <p className="text-gray-500 dark:text-gray-400 text-xs mt-1">
                             {content.length} characters
                         </p>
                     </div>
 
                     {/* Tags Input */}
                     <div className="mb-6">
-                        <label className="block text-sm font-medium mb-2">
+                        <label className="block text-sm font-medium mb-2 text-black dark:text-white">
                             Tags (comma-separated)
                         </label>
                         <input
@@ -162,7 +162,7 @@ export default function CreatePostModal({ isOpen, onClose, onSubmit, userEmail }
                             value={tags}
                             onChange={(e) => setTags(e.target.value)}
                             placeholder="e.g., api, help, question"
-                            className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white"
+                            className="w-full border border-gray-400 rounded-md px-4 py-2 focus:outline-none focus:border-black dark:bg-[#242424] dark:text-white dark:border-gray-600 dark:focus:border-white dark:placeholder-gray-400"
                         />
                     </div>
 

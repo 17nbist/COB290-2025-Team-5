@@ -119,18 +119,18 @@ export default function TopicPage({ params }) {
 
     return (
         <>
-        <div className="bg-[#d2d2d2] dark:bg-[#303030]">
+        <div className="bg-[#d2d2d2] dark:bg-[#303030] min-h-screen">
             <div className="p-6">
                 <button
                     onClick={() => router.push('/dashboard#forum')}
-                    className="mb-4 flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                    className="mb-4 flex items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                 >
                     <FaArrowLeft size={14} />
                     <span>Back to Forum</span>
                 </button>
-                <Card className="hover:border-gray-600 transition-colors duration-200">
+                <Card className="hover:border-gray-600 dark:hover:border-gray-500 transition-colors duration-200">
                     <div className="flex space-x-3">
-                        <h2 className="text-2xl font-semibold mb-3">{post.title}</h2>
+                        <h2 className="text-black dark:text-white text-2xl font-semibold mb-3">{post.title}</h2>
                         <span
                             className={
                                 post.flair === "technical"
@@ -147,24 +147,24 @@ export default function TopicPage({ params }) {
                     </div>
 
                     <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-500">
+                        <div className="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400">
                             <span>posted {post.timeAgo} by {post.author}</span>
                             {post.tags.map((tag, index) => (
                                 <span
                                     key={index}
-                                    className="px-2 py-1 bg-gray-200 dark:bg-[#334155] text-gray-700 dark:text-gray-400 rounded-md"
+                                    className="px-2 py-1 bg-gray-200 dark:bg-[#334155] text-gray-700 dark:text-gray-300 rounded-md"
                                 >
                                     {tag}
                                 </span>
                             ))}
                         </div>
 
-                        <div className="flex items-center gap-4 text-gray-400">
+                        <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400">
                             <button
                                 onClick={handleUpvoteClick}
                                 className={`flex items-center gap-1.5 transition-colors ${userVote === "up"
-                                        ? "text-green-500"
-                                        : "hover:text-green-400"
+                                        ? "text-green-500 dark:text-green-400"
+                                        : "hover:text-green-500 dark:hover:text-green-400"
                                     }`}
                             >
                                 <FaArrowUp size={14} />
@@ -174,15 +174,15 @@ export default function TopicPage({ params }) {
                             <button
                                 onClick={handleDownvoteClick}
                                 className={`flex items-center gap-1.5 transition-colors ${userVote === "down"
-                                        ? "text-red-500"
-                                        : "hover:text-red-400"
+                                        ? "text-red-500 dark:text-red-400"
+                                        : "hover:text-red-500 dark:hover:text-red-400"
                                     }`}
                             >
                                 <FaArrowDown size={14} />
                                 <span className="text-sm font-medium">{post.downvotes}</span>
                             </button>
 
-                            <span className="flex items-center gap-1.5 hover:text-blue-400 transition-colors">
+                            <span className="flex items-center gap-1.5 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
                                 <FaRegCommentDots size={14} />
                                 <span className="text-sm font-medium">{post.comments?.length || 0}</span>
                             </span>
@@ -190,14 +190,14 @@ export default function TopicPage({ params }) {
                     </div>
                 </Card>
             </div>
-            <hr className="border-gray-700 mb-8" />
+            <hr className="border-gray-300 dark:border-gray-600 mb-8" />
 
             <div className="px-6 pb-6">
                 <Card>
                     <form onSubmit={handleSubmitComment}>
-                        <h3 className="text-lg font-semibold mb-2">Add a Comment</h3>
+                        <h3 className="text-black dark:text-white text-lg font-semibold mb-2">Add a Comment</h3>
                         <textarea
-                            className="w-full p-2 border border-gray-400 rounded-md focus:outline-none focus:border-black dark:bg-[#242424] dark:border-gray-600 dark:focus:border-white"
+                            className="w-full p-2 border border-gray-400 rounded-md focus:outline-none focus:border-black dark:bg-[#242424] dark:text-white dark:border-gray-600 dark:focus:border-white dark:placeholder-gray-400"
                             rows="3"
                             placeholder={`Comment as ${user?.email || "..."}`}
                             value={newComment}
@@ -220,7 +220,7 @@ export default function TopicPage({ params }) {
                             <span className="text-xs text-gray-600 dark:text-gray-400">
                                 - {comment.author}
                             </span>
-                            <span className="text-xs text-gray-500">{comment.timeAgo}</span>
+                            <span className="text-xs text-gray-500 dark:text-gray-400">{comment.timeAgo}</span>
                         </div>
                     </Card>
                 ))}

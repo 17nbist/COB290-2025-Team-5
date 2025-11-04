@@ -78,7 +78,7 @@ export default function ProjectPage() {
 
 	if (errText) {
 		return (
-			<div className="flex flex-col w-screen h-screen bg-[#d2d2d2] dark:bg-[#303030]">
+			<div className="flex flex-col w-screen h-screen bg-[#d2d2d2] dark:bg-[#303030] text-black dark:text-white">
 				<h1>{errText}</h1>
 			</div>
 		)
@@ -86,7 +86,7 @@ export default function ProjectPage() {
 
 
 	return (
-		<div className="flex flex-col w-screen h-screen bg-[#d2d2d2] dark:bg-[#303030]">
+		<div className="flex flex-col w-screen h-screen bg-[#d2d2d2] dark:bg-[#303030] text-black dark:text-white">
 			<div className="pt-8 pb-4 flex justify-center">
 				<NavBar
 					activeTab={activeTab}

@@ -237,7 +237,7 @@ export default function Forum() {
 
   return (
     <>
-      <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-full">
+      <div className="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-full dark:bg-[#303030]">
         <div className="mb-6">
         <div className="flex">
           <SearchBar
@@ -255,7 +255,7 @@ export default function Forum() {
         {/* Active Filters Indicator */}
         {Object.keys(advancedFilters).length > 0 && (
           <div className="mt-3 flex items-center gap-2 flex-wrap">
-            <span className="text-sm text-gray-600 dark:text-gray-400">Active Filters:</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300">Active Filters:</span>
             {advancedFilters.keyword && (
               <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">
                 Keyword: {advancedFilters.keyword}
@@ -316,7 +316,7 @@ export default function Forum() {
       </div>
 
       {/* Thin faint line */}
-      <div className="w-full border-t border-black dark:border-gray-300 my-4"></div>
+      <div className="w-full border-t border-black dark:border-gray-500 my-4"></div>
 
       <div className="mb-6">
         <NavBar
@@ -336,7 +336,7 @@ export default function Forum() {
 
       <div className="space-y-4">
         {paginatedPosts.length === 0 ? (
-          <div className="text-center text-gray-400 dark:text-gray-400 py-12">
+          <div className="text-center text-gray-500 dark:text-gray-300 py-12">
             No posts found
           </div>
         ) : (
@@ -362,7 +362,7 @@ export default function Forum() {
             onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
             outerStyle={{ opacity: currentPage === 1 ? 0.5 : 1 }}
           />
-          <span className="text-sm text-gray-600 dark:text-gray-400">
+          <span className="text-sm text-gray-600 dark:text-gray-300">
             Page {currentPage} of {totalPages}
           </span>
           <Button
