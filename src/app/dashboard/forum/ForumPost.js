@@ -20,7 +20,7 @@ export default function ForumPost({ post, onClick, onUpvote, onDownvote }) {
       <div className="flex space-x-3">
         <h2 className="text-black dark:text-white text-xl font-semibold mb-3">{post.title}</h2>
         <span
-        style={{ borderRadius: "10px" }}
+          style={{ borderRadius: "10px" }}
           className={
             post.flair === "technical"
               ? "items-center px-2 py-1 h-[32px] bg-[#ffca1d] text-black rounded-md font-medium"
